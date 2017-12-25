@@ -5,6 +5,24 @@
     
     <url>
     
+      <loc>/post/git/</loc>
+      <lastmod>2017-12-26T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/post/sample-size/</loc>
+      <lastmod>2017-12-25T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/post/first-post/</loc>
       <lastmod>2017-11-27T00:00:00+00:00</lastmod>
     </url>
@@ -207,6 +225,26 @@
     
     <url>
     
+      <loc>/tags/experiments/</loc>
+      <lastmod>2017-12-25T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/git/</loc>
+      <lastmod>2017-12-26T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/tags/hugo/</loc>
       <lastmod>2017-09-03T00:00:00+08:00</lastmod>
       <priority>0</priority>
@@ -219,6 +257,16 @@
     
       <loc>/tags/jekyll/</loc>
       <lastmod>2014-03-10T00:00:00+08:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/learning/</loc>
+      <lastmod>2017-12-25T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -257,6 +305,16 @@
     
     <url>
     
+      <loc>/tags/r/</loc>
+      <lastmod>2017-12-25T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/categories/r/</loc>
       <lastmod>2017-11-27T00:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -279,6 +337,16 @@
     
       <loc>/tags/regression/</loc>
       <lastmod>2015-07-23T21:13:14-05:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/statistics/</loc>
+      <lastmod>2017-12-25T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     

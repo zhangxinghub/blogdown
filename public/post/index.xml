@@ -11,6 +11,42 @@
     <atom:link href="/post/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Git</title>
+      <link>/post/git/</link>
+      <pubDate>Tue, 26 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sample Size</title>
+      <link>/post/sample-size/</link>
+      <pubDate>Mon, 25 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/sample-size/</guid>
+      <description>&lt;p&gt;This note describes how sample size calculator works. There are must be better notes somewhere else, but I find the best notes for me is the note written by myself.&lt;/p&gt;
+&lt;div id=&#34;how-sample-size-is-determined&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;How Sample Size is Determined?&lt;/h2&gt;
+&lt;p&gt;Suppose there are two groups, Treatment (T) and Control (C) group. The research is to test whether there is difference in the proportion of the response between two groups. The null hypothesis is there is no difference in response (&lt;span class=&#34;math inline&#34;&gt;\(H_0\)&lt;/span&gt;: &lt;span class=&#34;math inline&#34;&gt;\(p_T=p_C\)&lt;/span&gt;), and the alternative hypothesis is &lt;span class=&#34;math display&#34;&gt;\[H_A\]&lt;/span&gt;: &lt;span class=&#34;math inline&#34;&gt;\(p_T\neq p_C\)&lt;/span&gt;. Let &lt;span class=&#34;math inline&#34;&gt;\(D_0=p_T-p_C\)&lt;/span&gt; represent difference under the null hypothesis, and &lt;span class=&#34;math inline&#34;&gt;\(D_A=p_T-p_C\)&lt;/span&gt; represent the difference under alternative hypothesis. To construct the statistic test, we calculate a statistic &lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt; and a critical value &lt;span class=&#34;math inline&#34;&gt;\(C\)&lt;/span&gt;. we reject the null hypothesis if &lt;span class=&#34;math inline&#34;&gt;\(|z|&amp;gt;C\)&lt;/span&gt; (i.e., &lt;span class=&#34;math inline&#34;&gt;\(t&amp;gt;C\)&lt;/span&gt; or &lt;span class=&#34;math inline&#34;&gt;\(t&amp;lt;-C\)&lt;/span&gt;). We focus one direction, &lt;span class=&#34;math inline&#34;&gt;\(t&amp;gt;C\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;The statistic &lt;span class=&#34;math display&#34;&gt;\[t=\frac{D}{SD(D)}=\frac{p_T-p_C}{\sqrt{(2\bar{p}\cdot(1-\bar{p}))/n}}\]&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[\bar{p}=\frac{p_T+p_C}{2}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;The significance level &lt;span class=&#34;math inline&#34;&gt;\(\alpha=0.05\)&lt;/span&gt; is defined as &lt;span class=&#34;math inline&#34;&gt;\(P(Reject H_0|H_0)\)&lt;/span&gt;. We use two-sided test, and hence &lt;span class=&#34;math inline&#34;&gt;\(P(t&amp;gt;C|H_0)=\alpha/2\)&lt;/span&gt;. &lt;span class=&#34;math display&#34;&gt;\[\alpha/2=P(t&amp;gt;C|H_0)\]&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[=1-P(t\leq C|H_0)\]&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[=1-P(\frac{t-D_0}{SD}\leq \frac{C-D_0}{SD}|H_0)\]&lt;/span&gt; (under Null hypothesis &lt;span class=&#34;math inline&#34;&gt;\(D_0=p_T-p_C=0\)&lt;/span&gt;) &lt;span class=&#34;math display&#34;&gt;\[=1-\phi(\frac{C}{SD})\]&lt;/span&gt; Then &lt;span class=&#34;math inline&#34;&gt;\(1-\alpha/2=\phi(\frac{C}{SD})\)&lt;/span&gt;. Let &lt;span class=&#34;math inline&#34;&gt;\(z_{1-\alpha}=\frac{C}{SD}\)&lt;/span&gt;, and then &lt;span class=&#34;math inline&#34;&gt;\(C=z\cdot SD\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;The power is related to the probabiltiy of having type II error &lt;span class=&#34;math inline&#34;&gt;\(\beta\)&lt;/span&gt;. The poweris defined as &lt;span class=&#34;math inline&#34;&gt;\(1-P(Reject H_A|H_A)=1-\beta\)&lt;/span&gt;. We use one-sided test. Hence,&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[1-\beta = P(t&amp;gt;C|H_A)\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;I made a function to calculate the sample size assuming the significance level is &lt;span class=&#34;math inline&#34;&gt;\(\alpha= .05\)&lt;/span&gt;. The function is based on the formula: &lt;span class=&#34;math inline&#34;&gt;\(N=\frac{(Z_{1-\alpha/2}+Z_{1-\beta})^2\cdot(p_T(1-p_T)+p_C(1-p_C))}{(p_T-p_C)^2}\)&lt;/span&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;## Calculate Sample Size Based on Binary Outcome
+SampleSize = function(PropTreat, PropCont, Power){
+  N = ((PropTreat*(1-PropTreat)+PropCont*(1-PropCont))*
+    ((qnorm(1-.05/2)+qnorm(1-(1-Power)))^2))/((PropTreat-PropCont)^2)
+  return(ceilling(N))
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;## Calculate Sample Size Based on Binary Outcome
+x = 5 + 1&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>First Post</title>
       <link>/post/first-post/</link>
       <pubDate>Mon, 27 Nov 2017 00:00:00 +0000</pubDate>
