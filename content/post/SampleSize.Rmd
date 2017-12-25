@@ -1,0 +1,50 @@
+---
+title: "Sample Size Calculation for Binary Outcome"
+author: "Xing"
+date: "December 14, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This note describes how sample size calculator works. There are must be better notes somewhere else, but I find the best notes for me is the note written by myself. 
+
+## How Sample Size is Determined?
+
+Suppose there are two groups, Treatment (T) and Control (C) group. The research is to test whether there is difference in the proportion of the response between two groups. The null hypothesis is there is no difference in response ($H_0$: $p_T=p_C$), and the alternative hypothesis is $H_A$: $p_T\neq p_C$. Let $D_0=p_T-p_C$ represent difference under the null hypothesis, and $D_A=p_T-p_C$ represent the difference under alternative hypothesis. To construct the statistic test, we calculate a statistic $t$ and a critical value $C$. we reject the null hypothesis if $|z|>C$ (i.e., $t>C$ or $t<-C$). We focus one direction, $t>C$.
+
+The statistic $t=\frac{D}{SD(D)}=\frac{p_T-p_C}{\sqrt{(2\bar{p}\cdot(1-\bar{p}))/n}}$, $\bar{p}=\frac{p_T+p_C}{2}$
+
+
+The significance level $\alpha=0.05$ is defined as $P(Reject H_0|H_0)$. We use two-sided test, and hence $P(t>C|H_0)=\alpha/2$.
+\[\alpha/2=P(t>C|H_0)\]
+\[=1-P(t\leq C|H_0)\]
+\[=1-P(\frac{t-D_0}{SD}\leq \frac{C-D_0}{SD}|H_0)\] (under Null hypothesis $D_0=p_T-p_C=0$)
+\[=1-\phi(\frac{C}{SD})\]
+Then $1-\alpha/2=\phi(\frac{C}{SD})$. Let $z_{1-\alpha}=\frac{C}{SD}$, and then $C=z\cdot SD$
+
+The power is related to the probabiltiy of having type II error $\beta$. The poweris defined as $1-P(Reject H_A|H_A)=1-\beta$. We use one-sided test. Hence,
+
+\[1-\beta = P(t>C|H_A)\]
+
+
+I made a function to calculate the sample size assuming the significance level is $\alpha= .05$. The function is based on the formula: $N=\frac{(Z_{1-\alpha/2}+Z_{1-\beta})^2\cdot(p_T(1-p_T)+p_C(1-p_C))}{(p_T-p_C)^2}$
+
+```{r function}
+## Calculate Sample Size Based on Binary Outcome
+SampleSize = function(PropTreat, PropCont, Power){
+  N = ((PropTreat*(1-PropTreat)+PropCont*(1-PropCont))*
+    ((qnorm(1-.05/2)+qnorm(1-(1-Power)))^2))/((PropTreat-PropCont)^2)
+  return(ceilling(N))
+}
+```
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
