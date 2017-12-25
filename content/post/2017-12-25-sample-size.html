@@ -2,13 +2,15 @@
 title: Sample Size
 author: Xing
 date: '2017-12-25'
-slug: sample-size
-categories: []
 tags:
-  - Statistics
   - Experiments
-  - R
   - Learning
+  - R
+  - Statistics
+blogdown::html_page:
+   toc: true
+   toc_depth: 3  
+slug: sample-size
 ---
 
 
@@ -16,8 +18,8 @@ tags:
 <p>This note describes how sample size calculator works. There are must be better notes somewhere else, but I find the best notes for me is the note written by myself.</p>
 <div id="how-sample-size-is-determined" class="section level2">
 <h2>How Sample Size is Determined?</h2>
-<p>Suppose there are two groups, Treatment (T) and Control (C) group. The research is to test whether there is difference in the proportion of the response between two groups. The null hypothesis is there is no difference in response (<span class="math inline">\(H_0\)</span>: <span class="math inline">\(p_T=p_C\)</span>), and the alternative hypothesis is <span class="math display">\[H_A\]</span>: <span class="math inline">\(p_T\neq p_C\)</span>. Let <span class="math inline">\(D_0=p_T-p_C\)</span> represent difference under the null hypothesis, and <span class="math inline">\(D_A=p_T-p_C\)</span> represent the difference under alternative hypothesis. To construct the statistic test, we calculate a statistic <span class="math inline">\(t\)</span> and a critical value <span class="math inline">\(C\)</span>. we reject the null hypothesis if <span class="math inline">\(|z|&gt;C\)</span> (i.e., <span class="math inline">\(t&gt;C\)</span> or <span class="math inline">\(t&lt;-C\)</span>). We focus one direction, <span class="math inline">\(t&gt;C\)</span>.</p>
-<p>The statistic <span class="math display">\[t=\frac{D}{SD(D)}=\frac{p_T-p_C}{\sqrt{(2\bar{p}\cdot(1-\bar{p}))/n}}\]</span>, <span class="math display">\[\bar{p}=\frac{p_T+p_C}{2}\]</span></p>
+<p>Suppose there are two groups, Treatment (T) and Control (C) group. The research is to test whether there is difference in the proportion of the response between two groups. The null hypothesis is there is no difference in response (<span class="math inline">\(H_0\)</span>: <span class="math inline">\(p_T=p_C\)</span>), and the alternative hypothesis is <span class="math inline">\(H_A\)</span>: <span class="math inline">\(p_T\neq p_C\)</span>. Let <span class="math inline">\(D_0=p_T-p_C\)</span> represent difference under the null hypothesis, and <span class="math inline">\(D_A=p_T-p_C\)</span> represent the difference under alternative hypothesis. To construct the statistic test, we calculate a statistic <span class="math inline">\(t\)</span> and a critical value <span class="math inline">\(C\)</span>. we reject the null hypothesis if <span class="math inline">\(|z|&gt;C\)</span> (i.e., <span class="math inline">\(t&gt;C\)</span> or <span class="math inline">\(t&lt;-C\)</span>). We focus one direction, <span class="math inline">\(t&gt;C\)</span>.</p>
+<p>The statistic <span class="math inline">\(t=\frac{D}{SD(D)}=\frac{p_T-p_C}{\sqrt{(2\bar{p}\cdot(1-\bar{p}))/n}}\)</span>, <span class="math inline">\(\bar{p}=\frac{p_T+p_C}{2}\)</span></p>
 <p>The significance level <span class="math inline">\(\alpha=0.05\)</span> is defined as <span class="math inline">\(P(Reject H_0|H_0)\)</span>. We use two-sided test, and hence <span class="math inline">\(P(t&gt;C|H_0)=\alpha/2\)</span>. <span class="math display">\[\alpha/2=P(t&gt;C|H_0)\]</span> <span class="math display">\[=1-P(t\leq C|H_0)\]</span> <span class="math display">\[=1-P(\frac{t-D_0}{SD}\leq \frac{C-D_0}{SD}|H_0)\]</span> (under Null hypothesis <span class="math inline">\(D_0=p_T-p_C=0\)</span>) <span class="math display">\[=1-\phi(\frac{C}{SD})\]</span> Then <span class="math inline">\(1-\alpha/2=\phi(\frac{C}{SD})\)</span>. Let <span class="math inline">\(z_{1-\alpha}=\frac{C}{SD}\)</span>, and then <span class="math inline">\(C=z\cdot SD\)</span></p>
 <p>The power is related to the probabiltiy of having type II error <span class="math inline">\(\beta\)</span>. The poweris defined as <span class="math inline">\(1-P(Reject H_A|H_A)=1-\beta\)</span>. We use one-sided test. Hence,</p>
 <p><span class="math display">\[1-\beta = P(t&gt;C|H_A)\]</span></p>

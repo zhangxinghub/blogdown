@@ -7,8 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="theme" content="hugo-academic">
   <meta name="generator" content="Hugo 0.31.1" />
-  <meta name="author" content="Lena Smith">
-  <meta name="description" content="Professor of Artificial Intelligence">
+  <meta name="author" content="Xing Zhang">
+  <meta name="description" content="Postdoc Researcher">
 
   
   <link rel="alternate" hreflang="en-us" href="/post/sample-size/">
@@ -61,8 +61,8 @@
 
   <meta property="twitter:card" content="summary_large_image">
   
-  <meta property="twitter:site" content="@GeorgeCushen">
-  <meta property="twitter:creator" content="@GeorgeCushen">
+  <meta property="twitter:site" content="@https://twitter.com/sobadapple">
+  <meta property="twitter:creator" content="@https://twitter.com/sobadapple">
   
   <meta property="og:site_name" content="Xing&#39;s Site">
   <meta property="og:url" content="/post/sample-size/">
@@ -181,9 +181,6 @@
   
 
   
-  
-  
-  
 
   
   
@@ -236,8 +233,8 @@
         <p>This note describes how sample size calculator works. There are must be better notes somewhere else, but I find the best notes for me is the note written by myself.</p>
 <div id="how-sample-size-is-determined" class="section level2">
 <h2>How Sample Size is Determined?</h2>
-<p>Suppose there are two groups, Treatment (T) and Control (C) group. The research is to test whether there is difference in the proportion of the response between two groups. The null hypothesis is there is no difference in response (<span class="math inline">\(H_0\)</span>: <span class="math inline">\(p_T=p_C\)</span>), and the alternative hypothesis is <span class="math display">\[H_A\]</span>: <span class="math inline">\(p_T\neq p_C\)</span>. Let <span class="math inline">\(D_0=p_T-p_C\)</span> represent difference under the null hypothesis, and <span class="math inline">\(D_A=p_T-p_C\)</span> represent the difference under alternative hypothesis. To construct the statistic test, we calculate a statistic <span class="math inline">\(t\)</span> and a critical value <span class="math inline">\(C\)</span>. we reject the null hypothesis if <span class="math inline">\(|z|&gt;C\)</span> (i.e., <span class="math inline">\(t&gt;C\)</span> or <span class="math inline">\(t&lt;-C\)</span>). We focus one direction, <span class="math inline">\(t&gt;C\)</span>.</p>
-<p>The statistic <span class="math display">\[t=\frac{D}{SD(D)}=\frac{p_T-p_C}{\sqrt{(2\bar{p}\cdot(1-\bar{p}))/n}}\]</span>, <span class="math display">\[\bar{p}=\frac{p_T+p_C}{2}\]</span></p>
+<p>Suppose there are two groups, Treatment (T) and Control (C) group. The research is to test whether there is difference in the proportion of the response between two groups. The null hypothesis is there is no difference in response (<span class="math inline">\(H_0\)</span>: <span class="math inline">\(p_T=p_C\)</span>), and the alternative hypothesis is <span class="math inline">\(H_A\)</span>: <span class="math inline">\(p_T\neq p_C\)</span>. Let <span class="math inline">\(D_0=p_T-p_C\)</span> represent difference under the null hypothesis, and <span class="math inline">\(D_A=p_T-p_C\)</span> represent the difference under alternative hypothesis. To construct the statistic test, we calculate a statistic <span class="math inline">\(t\)</span> and a critical value <span class="math inline">\(C\)</span>. we reject the null hypothesis if <span class="math inline">\(|z|&gt;C\)</span> (i.e., <span class="math inline">\(t&gt;C\)</span> or <span class="math inline">\(t&lt;-C\)</span>). We focus one direction, <span class="math inline">\(t&gt;C\)</span>.</p>
+<p>The statistic <span class="math inline">\(t=\frac{D}{SD(D)}=\frac{p_T-p_C}{\sqrt{(2\bar{p}\cdot(1-\bar{p}))/n}}\)</span>, <span class="math inline">\(\bar{p}=\frac{p_T+p_C}{2}\)</span></p>
 <p>The significance level <span class="math inline">\(\alpha=0.05\)</span> is defined as <span class="math inline">\(P(Reject H_0|H_0)\)</span>. We use two-sided test, and hence <span class="math inline">\(P(t&gt;C|H_0)=\alpha/2\)</span>. <span class="math display">\[\alpha/2=P(t&gt;C|H_0)\]</span> <span class="math display">\[=1-P(t\leq C|H_0)\]</span> <span class="math display">\[=1-P(\frac{t-D_0}{SD}\leq \frac{C-D_0}{SD}|H_0)\]</span> (under Null hypothesis <span class="math inline">\(D_0=p_T-p_C=0\)</span>) <span class="math display">\[=1-\phi(\frac{C}{SD})\]</span> Then <span class="math inline">\(1-\alpha/2=\phi(\frac{C}{SD})\)</span>. Let <span class="math inline">\(z_{1-\alpha}=\frac{C}{SD}\)</span>, and then <span class="math inline">\(C=z\cdot SD\)</span></p>
 <p>The power is related to the probabiltiy of having type II error <span class="math inline">\(\beta\)</span>. The poweris defined as <span class="math inline">\(1-P(Reject H_A|H_A)=1-\beta\)</span>. We use one-sided test. Hence,</p>
 <p><span class="math display">\[1-\beta = P(t&gt;C|H_A)\]</span></p>
@@ -259,13 +256,13 @@ x = 5 + 1</code></pre>
 
 <div class="article-tags">
   
-  <a class="btn btn-primary btn-outline" href="/tags/statistics">Statistics</a>
-  
   <a class="btn btn-primary btn-outline" href="/tags/experiments">Experiments</a>
+  
+  <a class="btn btn-primary btn-outline" href="/tags/learning">Learning</a>
   
   <a class="btn btn-primary btn-outline" href="/tags/r">R</a>
   
-  <a class="btn btn-primary btn-outline" href="/tags/learning">Learning</a>
+  <a class="btn btn-primary btn-outline" href="/tags/statistics">Statistics</a>
   
 </div>
 
@@ -338,12 +335,16 @@ x = 5 + 1</code></pre>
     
 
     
+    <script async defer src="//maps.googleapis.com/maps/api/js?key=AIzaSyAfBdZHZd-JmIsvP2bnRe3hWJFXpqCi630"></script>
+    
 
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha512-3P8rXCuGJdNZOnUx/03c1jOTnMn3rP63nBip5gOP2qmUh5YAdVAvFZ1E+QLZZbC1rtMrQb+mah3AfYW11RUrWA==" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.3/imagesloaded.pkgd.min.js" integrity="sha512-umsR78NN0D23AzgoZ11K7raBD+R6hqKojyBZs1w8WvYlsI+QuKRGBx3LFCwhatzBunCjDuJpDHwxD13sLMbpRA==" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha512-iztkobsvnjKfAtTNdHkGVjAYTrrtlC7mGp/54c40wowO7LhURYl3gVzzcEqGl/qKXQltJ2HwMrdLcNUdo+N/RQ==" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gmaps.js/0.4.25/gmaps.min.js" integrity="sha256-7vjlAeb8OaTrCXZkCNun9djzuB2owUsaO72kXaFDBJs=" crossorigin="anonymous"></script>
     
     
     <script src="/js/hugo-academic.js"></script>

@@ -2,15 +2,19 @@
 title: Sample Size
 author: Xing
 date: '2017-12-25'
-slug: sample-size
-categories: []
 tags:
-  - Statistics
   - Experiments
-  - R
   - Learning
+  - R
+  - Statistics
+blogdown::html_page:
+   toc: true
+   toc_depth: 3  
+slug: sample-size
 ---
-
+---
+{{% toc %}}
+---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -20,9 +24,9 @@ This note describes how sample size calculator works. There are must be better n
 
 ## How Sample Size is Determined?
 
-Suppose there are two groups, Treatment (T) and Control (C) group. The research is to test whether there is difference in the proportion of the response between two groups. The null hypothesis is there is no difference in response ($H_0$: $p_T=p_C$), and the alternative hypothesis is $$H_A$$: $p_T\neq p_C$. Let $D_0=p_T-p_C$ represent difference under the null hypothesis, and $D_A=p_T-p_C$ represent the difference under alternative hypothesis. To construct the statistic test, we calculate a statistic $t$ and a critical value $C$. we reject the null hypothesis if $|z|>C$ (i.e., $t>C$ or $t<-C$). We focus one direction, $t>C$.
+Suppose there are two groups, Treatment (T) and Control (C) group. The research is to test whether there is difference in the proportion of the response between two groups. The null hypothesis is there is no difference in response ($H_0$: $p_T=p_C$), and the alternative hypothesis is $H_A$: $p_T\neq p_C$. Let $D_0=p_T-p_C$ represent difference under the null hypothesis, and $D_A=p_T-p_C$ represent the difference under alternative hypothesis. To construct the statistic test, we calculate a statistic $t$ and a critical value $C$. we reject the null hypothesis if $|z|>C$ (i.e., $t>C$ or $t<-C$). We focus one direction, $t>C$.
 
-The statistic $$t=\frac{D}{SD(D)}=\frac{p_T-p_C}{\sqrt{(2\bar{p}\cdot(1-\bar{p}))/n}}$$, $$\bar{p}=\frac{p_T+p_C}{2}$$
+The statistic $t=\frac{D}{SD(D)}=\frac{p_T-p_C}{\sqrt{(2\bar{p}\cdot(1-\bar{p}))/n}}$, $\bar{p}=\frac{p_T+p_C}{2}$
 
 
 The significance level $\alpha=0.05$ is defined as $P(Reject H_0|H_0)$. We use two-sided test, and hence $P(t>C|H_0)=\alpha/2$.
