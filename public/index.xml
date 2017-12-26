@@ -11,28 +11,53 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>Sample Size</title>
+      <title>A Note on Sample Size Calculation</title>
       <link>/post/sample-size/</link>
       <pubDate>Mon, 25 Dec 2017 00:00:00 +0000</pubDate>
       
       <guid>/post/sample-size/</guid>
-      <description>&lt;p&gt;This note describes how sample size calculator works. There are must be better notes somewhere else, but I find the best notes for me is the note written by myself.&lt;/p&gt;
-&lt;div id=&#34;how-sample-size-is-determined&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;How Sample Size is Determined?&lt;/h2&gt;
-&lt;p&gt;Suppose there are two groups, Treatment (T) and Control (C) group. The research is to test whether there is difference in the proportion of the response between two groups. The null hypothesis is there is no difference in response (&lt;span class=&#34;math inline&#34;&gt;\(H_0\)&lt;/span&gt;: &lt;span class=&#34;math inline&#34;&gt;\(p_T=p_C\)&lt;/span&gt;), and the alternative hypothesis is &lt;span class=&#34;math inline&#34;&gt;\(H_A\)&lt;/span&gt;: &lt;span class=&#34;math inline&#34;&gt;\(p_T\neq p_C\)&lt;/span&gt;. Let &lt;span class=&#34;math inline&#34;&gt;\(D_0=p_T-p_C\)&lt;/span&gt; represent difference under the null hypothesis, and &lt;span class=&#34;math inline&#34;&gt;\(D_A=p_T-p_C\)&lt;/span&gt; represent the difference under alternative hypothesis. To construct the statistic test, we calculate a statistic &lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt; and a critical value &lt;span class=&#34;math inline&#34;&gt;\(C\)&lt;/span&gt;. we reject the null hypothesis if &lt;span class=&#34;math inline&#34;&gt;\(|z|&amp;gt;C\)&lt;/span&gt; (i.e., &lt;span class=&#34;math inline&#34;&gt;\(t&amp;gt;C\)&lt;/span&gt; or &lt;span class=&#34;math inline&#34;&gt;\(t&amp;lt;-C\)&lt;/span&gt;). We focus one direction, &lt;span class=&#34;math inline&#34;&gt;\(t&amp;gt;C\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;The statistic &lt;span class=&#34;math inline&#34;&gt;\(t=\frac{D}{SD(D)}=\frac{p_T-p_C}{\sqrt{(2\bar{p}\cdot(1-\bar{p}))/n}}\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(\bar{p}=\frac{p_T+p_C}{2}\)&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;The significance level &lt;span class=&#34;math inline&#34;&gt;\(\alpha=0.05\)&lt;/span&gt; is defined as &lt;span class=&#34;math inline&#34;&gt;\(P(Reject H_0|H_0)\)&lt;/span&gt;. We use two-sided test, and hence &lt;span class=&#34;math inline&#34;&gt;\(P(t&amp;gt;C|H_0)=\alpha/2\)&lt;/span&gt;. &lt;span class=&#34;math display&#34;&gt;\[\alpha/2=P(t&amp;gt;C|H_0)\]&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[=1-P(t\leq C|H_0)\]&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[=1-P(\frac{t-D_0}{SD}\leq \frac{C-D_0}{SD}|H_0)\]&lt;/span&gt; (under Null hypothesis &lt;span class=&#34;math inline&#34;&gt;\(D_0=p_T-p_C=0\)&lt;/span&gt;) &lt;span class=&#34;math display&#34;&gt;\[=1-\phi(\frac{C}{SD})\]&lt;/span&gt; Then &lt;span class=&#34;math inline&#34;&gt;\(1-\alpha/2=\phi(\frac{C}{SD})\)&lt;/span&gt;. Let &lt;span class=&#34;math inline&#34;&gt;\(z_{1-\alpha}=\frac{C}{SD}\)&lt;/span&gt;, and then &lt;span class=&#34;math inline&#34;&gt;\(C=z\cdot SD\)&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;The power is related to the probabiltiy of having type II error &lt;span class=&#34;math inline&#34;&gt;\(\beta\)&lt;/span&gt;. The poweris defined as &lt;span class=&#34;math inline&#34;&gt;\(1-P(Reject H_A|H_A)=1-\beta\)&lt;/span&gt;. We use one-sided test. Hence,&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[1-\beta = P(t&amp;gt;C|H_A)\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;I made a function to calculate the sample size assuming the significance level is &lt;span class=&#34;math inline&#34;&gt;\(\alpha= .05\)&lt;/span&gt;. The function is based on the formula: &lt;span class=&#34;math inline&#34;&gt;\(N=\frac{(Z_{1-\alpha/2}+Z_{1-\beta})^2\cdot(p_T(1-p_T)+p_C(1-p_C))}{(p_T-p_C)^2}\)&lt;/span&gt;&lt;/p&gt;
+      <description>&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#how-sample-size-is-determined&#34;&gt;How Sample Size is Determined?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#some-r-code&#34;&gt;Some R code&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#is-it-the-end-of-the-day-if-alpha-0.005&#34;&gt;Is it the end of the day if &lt;span class=&#34;math inline&#34;&gt;\(\alpha = 0.005\)&lt;/span&gt;?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This note describes how sample size calculator works. There must be better notes somewhere else, but I find the best notes for me is the note written by myself.&lt;/p&gt;
+&lt;div id=&#34;how-sample-size-is-determined&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;How Sample Size is Determined?&lt;/h1&gt;
+&lt;p&gt;First we have to imagine that &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; participants will be randomly assigned into two groups: Treatment (T) and Control (C) group. Assume that there are equal numbers of participants in each group (&lt;span class=&#34;math inline&#34;&gt;\(N_T=N_C\)&lt;/span&gt;). The researcher is interested in testing whether the mean of the distribution &lt;span class=&#34;math inline&#34;&gt;\(\mu\)&lt;/span&gt; in two groups are different. More specifically, the researcher is comparing the two hypotheses:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[H_0: \mu_T-\mu_C=\mu_0=0\]&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[H_A: \mu_T-\mu_C =\mu_A \neq 0\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;The researcher is interested in the impact of the treatment on variable &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;. Let &lt;span class=&#34;math inline&#34;&gt;\(X_T\)&lt;/span&gt; denote the sample average of the treatment group, and &lt;span class=&#34;math inline&#34;&gt;\(X_C\)&lt;/span&gt; the sample average of the control group. The significance level is defined as &lt;span class=&#34;math inline&#34;&gt;\(\alpha=Prob(Reject \quad H_0|H_0)\)&lt;/span&gt;. It can be expressed in the following way: &lt;span class=&#34;math inline&#34;&gt;\(\alpha = Prob(X_T-X_C\geq v|H_0)\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt; is the critical value. For two-sided test &lt;span class=&#34;math inline&#34;&gt;\(\frac{\alpha}{2} = Prob(X_T-X_C\geq v|H_0)\)&lt;/span&gt;. That is, if we want to reject the null hypothesis, the difference &lt;span class=&#34;math inline&#34;&gt;\(X_T-X_C\)&lt;/span&gt; should be large enough. Some simple algebra is needed to derive the critical value:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\frac{\alpha}{2}=Prob(\mu_T-\mu_C\geq v|H_0)\]&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[=1-Prob(X_T-X_C\leq v|H_0)\]&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[=1-Prob(\frac{X_T-X_C-\mu_0}{\sigma_N}\leq \frac{v-mu_0}{\sigma_N}|H_0)\]&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[=1-Prob(\frac{X_T-X_C}{\sigma_N}\leq \frac{v}{\sigma_N}|H_0)\]&lt;/span&gt;(under Null hypothesis &lt;span class=&#34;math inline&#34;&gt;\(\mu_0=0\)&lt;/span&gt;) &lt;span class=&#34;math display&#34;&gt;\[=1-\phi(\frac{v}{\sigma_N})\]&lt;/span&gt;(&lt;span class=&#34;math inline&#34;&gt;\(\phi\)&lt;/span&gt; is standardized normal distribution function)&lt;/p&gt;
+&lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(z_{1-\frac{\alpha}{2}}=\frac{v}{\sigma_N}\)&lt;/span&gt;, and then &lt;span class=&#34;math inline&#34;&gt;\(v=z_{1-\frac{\alpha}{2}} \cdot \sigma_N\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Since power is defined as the probability of accepting the alternative hypothesis given that the alternative is true &lt;span class=&#34;math inline&#34;&gt;\(1-\beta=Prob(Accept \quad H_A|H_A)=Prob(X_T-X_C\geq v|H_A)\)&lt;/span&gt;, which can be expressed as: &lt;span class=&#34;math display&#34;&gt;\[1-\beta=1-Prob(X_T-X_C\leq z_{1-\frac{\alpha}{2}} \cdot \sigma_N |H_A)\]&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[=1-Prob(\frac{X_T-X_C-\mu_A}{\sigma_N}\leq \frac{z_{1-\frac{\alpha}{2}} \cdot \sigma_N-\mu_A}{\sigma_N}|H_A)\]&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[=1-\phi(\frac{z_{1-\frac{\alpha}{2}} \cdot \sigma_N -\mu_A}{\sigma_N})\]&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[=\phi(\frac{\mu_A}{\sigma_N}-z_{1-\frac{\alpha}{2}})\]&lt;/span&gt; As a result, &lt;span class=&#34;math inline&#34;&gt;\(z_{1-\beta}=\frac{\mu_A}{\sigma_N}-z_{1-\frac{\alpha}{2}}\)&lt;/span&gt;. Under the alternative hypothesis, &lt;span class=&#34;math inline&#34;&gt;\(X_T-X_C \sim N(\mu_A,\sigma^2/n)\)&lt;/span&gt;. Now suppose the variable of interest is binomial distributed. Then &lt;span class=&#34;math inline&#34;&gt;\(\sigma_N=\sqrt{X_T(1-X_T)/N_T + X_C(1-X_C)/N_C}\)&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[\frac{1}{\sqrt{X_T(1-X_T)/N_T + X_C(1-X_C)/N_C}}= \frac{z_{1-\beta}+z_{1-\frac{\alpha}{2}}}{X_T-X_C}\]&lt;/span&gt; $ $&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[N_T=N_C=(X_T(1-X_T)+X_C(1-X_C))\cdot (\frac{z_{1-\beta}+z_{1-\frac{\alpha}{2}}}{X_T-X_C})^2\]&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;some-r-code&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Some R code&lt;/h1&gt;
+&lt;p&gt;Hence, if we want to calculate the sample size, we only need to specify the expected rate/proportion in treatment, the expected rate/proportion in control, power, and the significance level. The code to calculate sample size for binary outcome assuming &lt;span class=&#34;math inline&#34;&gt;\(\alpha= .05\)&lt;/span&gt; is:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;## Calculate Sample Size Based on Binary Outcome
 SampleSize = function(PropTreat, PropCont, Power){
   N = ((PropTreat*(1-PropTreat)+PropCont*(1-PropCont))*
     ((qnorm(1-.05/2)+qnorm(1-(1-Power)))^2))/((PropTreat-PropCont)^2)
   return(ceilling(N))
 }&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;## Calculate Sample Size Based on Binary Outcome
-x = 5 + 1&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Using the same logic, we can get the formula to calculate the sample size for normally distributed outcome:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;## Calculate Sample Size Based on Continuous Outcome
+## Two sided test at 0.05 significance level
+## kappa is the ratio of the sample size in control and treatment
+## SDTreat is the standard deviation 
+SampleSizeM = function(MeanTreat, MeanCont, SDTreat, SDCont, Power){
+  NTreat =(SDTreat^2+SDCont^2)*
+    ((qnorm(1-.05/2)+qnorm(1-(1-Power)))/(MeanTreat-MeanCont))^2
+  return(ceiling(NTreat))
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;is-it-the-end-of-the-day-if-alpha-0.005&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Is it the end of the day if &lt;span class=&#34;math inline&#34;&gt;\(\alpha = 0.005\)&lt;/span&gt;?&lt;/h1&gt;
+&lt;p&gt;One concern I had when first saw this &lt;a href=&#34;https://www.nature.com/articles/s41562-017-0189-z&#34;&gt;paper&lt;/a&gt; by Benjamin et al (2017) on redefining statistical significance. They proposed to &lt;strong&gt;change the default P-value threshold for statistical significance from 0.05 to 0.005 for claims of new discoveries.&lt;/strong&gt; That is the proposed p-value is only one tenth of the conventional one!! Suppose the world changed to &lt;code&gt;p=0.005&lt;/code&gt;. Do we need &lt;strong&gt;10X&lt;/strong&gt; more sample? As a researcher without sufficient funding, we care about how much additional sample we need suppose the alternative hypothesis is true. The original paper gave an answer for this question. We can use the function to illustrate the additional sample we need.&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>

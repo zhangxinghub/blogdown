@@ -1,5 +1,5 @@
 ---
-title: Sample Size
+title: A Note on Sample Size Calculation
 author: Xing
 date: '2017-12-25'
 tags:
@@ -7,42 +7,45 @@ tags:
   - Learning
   - R
   - Statistics
-blogdown::html_page:
-   toc: true
-   toc_depth: 3  
+output:
+  blogdown::html_page:
+    toc: true
 slug: sample-size
 ---
----
-{{% toc %}}
----
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+This note describes how sample size calculator works. There must be better notes somewhere else, but I find the best notes for me is the note written by myself. 
 
-This note describes how sample size calculator works. There are must be better notes somewhere else, but I find the best notes for me is the note written by myself. 
+# How Sample Size is Determined?
 
-## How Sample Size is Determined?
+First we have to imagine that $N$ participants will be randomly assigned into two groups: Treatment (T) and Control (C) group. Assume that there are equal numbers of participants in each group ($N_T=N_C$). The researcher is interested in testing whether the mean of the distribution $\mu$ in two groups are different. More specifically, the researcher is comparing the two hypotheses:
 
-Suppose there are two groups, Treatment (T) and Control (C) group. The research is to test whether there is difference in the proportion of the response between two groups. The null hypothesis is there is no difference in response ($H_0$: $p_T=p_C$), and the alternative hypothesis is $H_A$: $p_T\neq p_C$. Let $D_0=p_T-p_C$ represent difference under the null hypothesis, and $D_A=p_T-p_C$ represent the difference under alternative hypothesis. To construct the statistic test, we calculate a statistic $t$ and a critical value $C$. we reject the null hypothesis if $|z|>C$ (i.e., $t>C$ or $t<-C$). We focus one direction, $t>C$.
+$$H_0: \mu_T-\mu_C=\mu_0=0$$
+$$H_A: \mu_T-\mu_C =\mu_A \neq 0$$
 
-The statistic $t=\frac{D}{SD(D)}=\frac{p_T-p_C}{\sqrt{(2\bar{p}\cdot(1-\bar{p}))/n}}$, $\bar{p}=\frac{p_T+p_C}{2}$
+The researcher is interested in the impact of the treatment on variable $x$. Let $X_T$ denote the sample average of the treatment group, and $X_C$ the sample average of the control group. The significance level is defined as $\alpha=Prob(Reject \quad H_0|H_0)$. It can be expressed in the following way: $\alpha = Prob(X_T-X_C\geq v|H_0)$, where $v$ is the critical value. For two-sided test $\frac{\alpha}{2} = Prob(X_T-X_C\geq v|H_0)$. That is, if we want to reject the null hypothesis, the difference $X_T-X_C$ should be large enough. Some simple algebra is needed to derive the critical value:
 
+\[\frac{\alpha}{2}=Prob(\mu_T-\mu_C\geq v|H_0)\]
+\[=1-Prob(X_T-X_C\leq v|H_0)\]
+\[=1-Prob(\frac{X_T-X_C-\mu_0}{\sigma_N}\leq \frac{v-mu_0}{\sigma_N}|H_0)\]
+\[=1-Prob(\frac{X_T-X_C}{\sigma_N}\leq \frac{v}{\sigma_N}|H_0)\](under Null hypothesis $\mu_0=0$)
+\[=1-\phi(\frac{v}{\sigma_N})\]($\phi$ is standardized normal distribution function)
 
-The significance level $\alpha=0.05$ is defined as $P(Reject H_0|H_0)$. We use two-sided test, and hence $P(t>C|H_0)=\alpha/2$.
-\[\alpha/2=P(t>C|H_0)\]
-\[=1-P(t\leq C|H_0)\]
-\[=1-P(\frac{t-D_0}{SD}\leq \frac{C-D_0}{SD}|H_0)\] (under Null hypothesis $D_0=p_T-p_C=0$)
-\[=1-\phi(\frac{C}{SD})\]
-Then $1-\alpha/2=\phi(\frac{C}{SD})$. Let $z_{1-\alpha}=\frac{C}{SD}$, and then $C=z\cdot SD$
+Let $z_{1-\frac{\alpha}{2}}=\frac{v}{\sigma_N}$, and then $v=z_{1-\frac{\alpha}{2}} \cdot \sigma_N$.
 
-The power is related to the probabiltiy of having type II error $\beta$. The poweris defined as $1-P(Reject H_A|H_A)=1-\beta$. We use one-sided test. Hence,
+Since power is defined as the probability of accepting the alternative hypothesis given that the alternative is true $1-\beta=Prob(Accept \quad H_A|H_A)=Prob(X_T-X_C\geq v|H_A)$, which can be expressed as:
+\[1-\beta=1-Prob(X_T-X_C\leq z_{1-\frac{\alpha}{2}} \cdot \sigma_N |H_A)\]
+\[=1-Prob(\frac{X_T-X_C-\mu_A}{\sigma_N}\leq \frac{z_{1-\frac{\alpha}{2}} \cdot \sigma_N-\mu_A}{\sigma_N}|H_A)\]
+\[=1-\phi(\frac{z_{1-\frac{\alpha}{2}} \cdot \sigma_N -\mu_A}{\sigma_N})\]
+\[=\phi(\frac{\mu_A}{\sigma_N}-z_{1-\frac{\alpha}{2}})\]
+As a result, $z_{1-\beta}=\frac{\mu_A}{\sigma_N}-z_{1-\frac{\alpha}{2}}$. Under the alternative hypothesis, $X_T-X_C \sim N(\mu_A,\sigma^2/n)$. Now suppose the variable of interest is binomial distributed. Then $\sigma_N=\sqrt{X_T(1-X_T)/N_T + X_C(1-X_C)/N_C}$
+$$\frac{1}{\sqrt{X_T(1-X_T)/N_T + X_C(1-X_C)/N_C}}= \frac{z_{1-\beta}+z_{1-\frac{\alpha}{2}}}{X_T-X_C}$$
+$ \Rightarrow $
 
-\[1-\beta = P(t>C|H_A)\]
+$$N_T=N_C=(X_T(1-X_T)+X_C(1-X_C))\cdot (\frac{z_{1-\beta}+z_{1-\frac{\alpha}{2}}}{X_T-X_C})^2$$
 
+# Some R code
 
-I made a function to calculate the sample size assuming the significance level is $\alpha= .05$. The function is based on the formula: $N=\frac{(Z_{1-\alpha/2}+Z_{1-\beta})^2\cdot(p_T(1-p_T)+p_C(1-p_C))}{(p_T-p_C)^2}$
-
+Hence, if we want to calculate the sample size, we only need to specify the expected rate/proportion in treatment, the expected rate/proportion in control, power, and the significance level. The code to calculate sample size for binary outcome assuming $\alpha= .05$ is: 
 ```{r}
 ## Calculate Sample Size Based on Binary Outcome
 SampleSize = function(PropTreat, PropCont, Power){
@@ -52,7 +55,23 @@ SampleSize = function(PropTreat, PropCont, Power){
 }
 ```
 
+Using the same logic, we can get the formula to calculate the sample size for normally distributed outcome:
+
 ```{r}
-## Calculate Sample Size Based on Binary Outcome
-x = 5 + 1
+## Calculate Sample Size Based on Continuous Outcome
+## Two sided test at 0.05 significance level
+## kappa is the ratio of the sample size in control and treatment
+## SDTreat is the standard deviation 
+SampleSizeM = function(MeanTreat, MeanCont, SDTreat, SDCont, Power){
+  NTreat =(SDTreat^2+SDCont^2)*
+    ((qnorm(1-.05/2)+qnorm(1-(1-Power)))/(MeanTreat-MeanCont))^2
+  return(ceiling(NTreat))
+}
 ```
+# Is it the end of the day if $\alpha = 0.005$?
+
+One concern I had when first saw this [paper](https://www.nature.com/articles/s41562-017-0189-z) by Benjamin et al (2017) on redefining statistical significance. They proposed to **change the default P-value threshold for statistical significance from 0.05 to 0.005 for claims of new discoveries.** That is the proposed p-value is only one tenth of the conventional one!! Suppose the world changed to `p=0.005`. Do we need **10X** more sample? As a researcher without sufficient funding, we care about how much additional sample we need suppose the alternative hypothesis is true. The original paper gave an answer for this question. We can use the function to illustrate the additional sample we need.
+
+
+
+

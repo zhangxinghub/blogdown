@@ -161,69 +161,6 @@
   
   
   
-    
-
-
-
-<section id="hero" class="hero-overlay" style="
-
-background-color: #666;
-
-
-background-image:
-linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-url('/img/headers/bubbles-wide.jpg');
-
-;">
-
-  <div class="container">
-
-    <h1 class="hero-title" itemprop="headline">
-      Academic
-    </h1>
-
-    
-    <p class="hero-lead">The highly flexible website framework for Hugo with an extensible plugin mechanism. Create a beautifully simple site in under 10 minutes 🚀
-<br>
-<small><a id="academic-release" href="https://sourcethemes.com/academic/tags/updates">Latest release</a></small>
-<br><br>
-<iframe style="display: inline-block;" src="https://ghbtns.com/github-btn.html?user=gcushen&amp;repo=hugo-academic&amp;type=star&amp;count=true&amp;size=large" scrolling="0" width="160px" height="30px" frameborder="0"></iframe>
-<iframe style="display: inline-block;" src="https://ghbtns.com/github-btn.html?user=gcushen&amp;repo=hugo-academic&amp;type=fork&amp;count=true&amp;size=large" scrolling="0" width="158px" height="30px" frameborder="0"></iframe></p>
-
-<script type="text/javascript">
-  (function defer() {
-    if (window.jQuery) {
-      jQuery(document).ready(function(){
-        GetLatestReleaseInfo();
-      });
-    } else {
-      setTimeout(function() { defer() }, 50);
-    }
-  })();  
-  function GetLatestReleaseInfo() {
-    $.getJSON('https://api.github.com/repos/gcushen/hugo-academic/tags').done(function (json) {
-      let release = json[0];
-      // let downloadURL = release.zipball_url;
-      $('#academic-release').text('Latest release ' + release.name);  
-    });    
-}  
-</script>
-</p>
-    
-
-    
-    <p><a href="./post/getting-started/" class="btn btn-light btn-outline btn-large"><i class="fa fa-download"></i> Install Now</a></p>
-    
-
-  </div>
-
-</section>
-
-  
-
-  
-  
-  
   <section id="about" class="home-section">
     <div class="container">
       
@@ -640,69 +577,6 @@ url('/img/headers/bubbles-wide.jpg');
   
   
   
-  <section id="talks" class="home-section">
-    <div class="container">
-      
-
-
-
-
-<div class="row">
-  <div class="col-xs-12 col-md-4 section-heading">
-    <h1>Recent &amp; Upcoming Talks</h1>
-    
-    
-  </div>
-  <div class="col-xs-12 col-md-8">
-    
-
-    
-      
-        <div class="pub-list-item" style="margin-bottom: 1rem" itemscope itemtype="http://schema.org/Event">
-  <i class="fa fa-comment-o pub-icon" aria-hidden="true"></i>
-  <span itemprop="name"><a href="/talk/example-talk/">Example Talk</a></span>
-  <div itemprop="startDate">
-    
-    Jun 1, 2030
-    
-      1:00 PM
-    
-  </div>
-  <div class="talk-metadata">
-    
-            Academic Theme Conference
-    
-  </div>
-  <div class="talk-links">
-    
-
-
-
-
-
-
-
-<a class="btn btn-primary btn-outline btn-xs" href="/project/deep-learning/">
-  Project
-</a>
-
-
-
-  </div>
-</div>
-
-      
-    
-  </div>
-</div>
-
-    </div>
-  </section>
-  
-
-  
-  
-  
   <section id="posts" class="home-section">
     <div class="container">
       
@@ -753,7 +627,7 @@ url('/img/headers/bubbles-wide.jpg');
   
   
   <h3 class="article-title" itemprop="name">
-    <a href="/post/sample-size/" itemprop="url">Sample Size</a>
+    <a href="/post/sample-size/" itemprop="url">A Note on Sample Size Calculation</a>
   </h3>
   
 
@@ -769,7 +643,7 @@ url('/img/headers/bubbles-wide.jpg');
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    2 min read
+    3 min read
   </span>
   
 
@@ -784,8 +658,8 @@ url('/img/headers/bubbles-wide.jpg');
 
   <div class="article-style" itemprop="articleBody">
     
-    This note describes how sample size calculator works. There are must be better notes somewhere else, but I find the best notes for me is the note written by myself.
-How Sample Size is Determined?Suppose there are two groups, Treatment (T) and Control (C) group. The research is to test whether there is difference in the proportion of the response between two groups. The null hypothesis is there is no difference in response (\(H_0\): \(p_T=p_C\)), and the alternative hypothesis is \(H_A\): \(p_T\neq p_C\).
+    How Sample Size is Determined?Some R codeIs it the end of the day if \(\alpha = 0.005\)?This note describes how sample size calculator works. There must be better notes somewhere else, but I find the best notes for me is the note written by myself.
+How Sample Size is Determined?First we have to imagine that \(N\) participants will be randomly assigned into two groups: Treatment (T) and Control (C) group.
     
   </div>
   <p class="read-more">
@@ -801,145 +675,6 @@ How Sample Size is Determined?Suppose there are two groups, Treatment (T) and C
     
 
   </div>
-</div>
-
-    </div>
-  </section>
-  
-
-  
-  
-  
-  <section id="projects" class="home-section">
-    <div class="container">
-      
-
-
-
-<div class="row">
-  <div class="col-xs-12 col-md-4 section-heading">
-    <h1>Projects</h1>
-    
-  </div>
-  <div class="col-xs-12 col-md-8">
-    
-
-    
-    
-    <span class="hidden default-project-filter">*</span>
-    
-
-    
-    
-    <div class="project-toolbar">
-      <div class="project-filters">
-        <div class="btn-toolbar">
-          <div class="btn-group">
-            
-              <a href="#" data-filter="*" class="btn btn-primary btn-large active">All</a>
-            
-              <a href="#" data-filter=".deep-learning" class="btn btn-primary btn-large">Deep Learning</a>
-            
-              <a href="#" data-filter=".demo" class="btn btn-primary btn-large">Other</a>
-            
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    
-
-    
-
-    <div class="row isotope projects-container js-layout-masonry">
-
-      
-      
-      
-      
-      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-6 project-item isotope-item deep-learning">
-        <div class="card">
-          
-          <a href="/project/deep-learning/" title="" class="card-image hover-overlay"
-             >
-            <img src="/img/bubbles.jpg" alt="" class="img-responsive">
-          </a>
-          
-          <div class="card-text">
-            <h4><a href="/project/deep-learning/" >Deep Learning</a></h4>
-            <div class="card-desription">
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      
-      
-      
-      
-      
-      
-      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-6 project-item isotope-item demo">
-        <div class="card">
-          
-          <a href="http://example.org" title="" class="card-image hover-overlay"
-             target="_blank">
-            <img src="/img/boards.jpg" alt="" class="img-responsive">
-          </a>
-          
-          <div class="card-text">
-            <h4><a href="http://example.org" target="_blank">External Project</a></h4>
-            <div class="card-desription">
-              <p>An example of linking directly to an external project website using <code>external_link</code>.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-
-    </div>
-
-    
-
-  </div>
-</div>
-
-    </div>
-  </section>
-  
-
-  
-  
-  
-  <section id="teaching" class="home-section">
-    <div class="container">
-      
-
-
-<div class="row">
-  
-  <div class="col-xs-12 col-md-4 section-heading">
-    <h1>Teaching</h1>
-    
-  </div>
-  <div class="col-xs-12 col-md-8">
-    <p>This is an example of using the <em>custom</em> widget to create your own homepage section.</p>
-
-<p>I am a teaching instructor for the following courses at University X:</p>
-
-<ul>
-<li>CS101: An intro to computer science</li>
-<li>CS102: An intro to computer science</li>
-<li>CS103: An intro to computer science</li>
-<li>CS104: An intro to computer science</li>
-<li>CS105: An intro to computer science</li>
-<li>CS106: An intro to computer science</li>
-<li>CS107: An intro to computer science</li>
-</ul>
-
-  </div>
-  
 </div>
 
     </div>
