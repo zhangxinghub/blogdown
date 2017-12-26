@@ -40,7 +40,7 @@ slug: sample-size
 SampleSize = function(PropTreat, PropCont, Power){
   N = ((PropTreat*(1-PropTreat)+PropCont*(1-PropCont))*
     ((qnorm(1-.05/2)+qnorm(1-(1-Power)))^2))/((PropTreat-PropCont)^2)
-  return(ceilling(N))
+  return(ceiling(N))
 }</code></pre>
 <p>Using the same logic, we can get the formula to calculate the sample size for normally distributed outcome:</p>
 <pre class="r"><code>## Calculate Sample Size Based on Continuous Outcome
@@ -55,5 +55,39 @@ SampleSizeM = function(MeanTreat, MeanCont, SDTreat, SDCont, Power){
 </div>
 <div id="is-it-the-end-of-the-day-if-alpha-0.005" class="section level1">
 <h1>Is it the end of the day if <span class="math inline">\(\alpha = 0.005\)</span>?</h1>
-<p>One concern I had when first saw this <a href="https://www.nature.com/articles/s41562-017-0189-z">paper</a> by Benjamin et al (2017) on redefining statistical significance. They proposed to <strong>change the default P-value threshold for statistical significance from 0.05 to 0.005 for claims of new discoveries.</strong> That is the proposed p-value is only one tenth of the conventional one!! Suppose the world changed to <code>p=0.005</code>. Do we need <strong>10X</strong> more sample? As a researcher without sufficient funding, we care about how much additional sample we need suppose the alternative hypothesis is true. The original paper gave an answer for this question. We can use the function to illustrate the additional sample we need.</p>
+<p>One concern I had when first saw this <a href="https://www.nature.com/articles/s41562-017-0189-z">paper</a> by Benjamin et al (2017) on redefining statistical significance. They proposed to <strong>change the default P-value threshold for statistical significance from 0.05 to 0.005 for claims of new discoveries.</strong> That is the proposed p-value is only one tenth of the conventional one!! Suppose the world changed to <code>p=0.005</code>. Do we need <strong>10X</strong> more sample? As a researcher without sufficient funding, we care about how much additional sample we need suppose the alternative hypothesis is true. The original paper gave an answer for this question. It only requires the sample size to increase <code>70%</code>. Consider the following senariors:</p>
+<ul>
+<li>Suppose the rate of response in the control group is 50%, 40%, …,10%;</li>
+<li>Suppose the treatment will reduce 2%, 4%, 6%, and 10% percentage points .</li>
+</ul>
+<p>That is, if the rate of reponse in the control group is 50%, we look at the desired sample size if the treatment will reduce the rate to 48%, 46%, 44%, and 40%. Similar to other base rate. As a result, we will have a <strong>5 X 5</strong> matrix for respective sample size. We compare difference between the case where <span class="math inline">\(\alpha = 0.05\)</span> and <span class="math inline">\(\alpha = 0.005\)</span>.</p>
+<pre class="r"><code>SampleSize05 = function(PropTreat, PropCont, Power){
+  N = ((PropTreat*(1-PropTreat)+PropCont*(1-PropCont))*
+    ((qnorm(1-.05/2)+qnorm(1-(1-Power)))^2))/((PropTreat-PropCont)^2)
+  return(ceiling(N))
+}
+SampleSize005 = function(PropTreat, PropCont, Power){
+  N = ((PropTreat*(1-PropTreat)+PropCont*(1-PropCont))*
+    ((qnorm(1-.005/2)+qnorm(1-(1-Power)))^2))/((PropTreat-PropCont)^2)
+  return(ceiling(N))
+}
+
+pCon = c(0.5,0.4,0.3,0.2,0.1)
+Reduced = c(0.02,0.04,0.06,0.08,0.1)
+mSampleSiz05 = matrix(NA,nrow=5,ncol=5)
+mSampleSiz005 = matrix(NA,nrow=5,ncol=5)
+for (i in 1:5){
+  for(j in 1:5){
+    mSampleSiz05[i,j] = SampleSize05((pCon[i]-Reduced[j]),pCon[i],0.8)
+    mSampleSiz005[i,j] = SampleSize005((pCon[i]-Reduced[j]),pCon[i],0.8)
+
+  }
+}
+(Increased.Sample.Size = (mSampleSiz005-mSampleSiz05)/mSampleSiz05)</code></pre>
+<pre><code>##           [,1]      [,2]      [,3]      [,4]      [,5]
+## [1,] 0.6960424 0.6961145 0.6952909 0.6947195 0.6961039
+## [2,] 0.6960249 0.6958406 0.6959526 0.6939502 0.6949153
+## [3,] 0.6960505 0.6965552 0.6962617 0.6965812 0.6941581
+## [4,] 0.6961564 0.6955017 0.6944444 0.6963190 0.6903553
+## [5,] 0.6957334 0.6954103 0.6964286 0.6888889 0.6901408</code></pre>
 </div>

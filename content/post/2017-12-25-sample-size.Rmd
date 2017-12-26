@@ -12,6 +12,9 @@ output:
     toc: true
 slug: sample-size
 ---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
 
 This note describes how sample size calculator works. There must be better notes somewhere else, but I find the best notes for me is the note written by myself. 
 
@@ -51,7 +54,7 @@ Hence, if we want to calculate the sample size, we only need to specify the expe
 SampleSize = function(PropTreat, PropCont, Power){
   N = ((PropTreat*(1-PropTreat)+PropCont*(1-PropCont))*
     ((qnorm(1-.05/2)+qnorm(1-(1-Power)))^2))/((PropTreat-PropCont)^2)
-  return(ceilling(N))
+  return(ceiling(N))
 }
 ```
 
@@ -70,7 +73,39 @@ SampleSizeM = function(MeanTreat, MeanCont, SDTreat, SDCont, Power){
 ```
 # Is it the end of the day if $\alpha = 0.005$?
 
-One concern I had when first saw this [paper](https://www.nature.com/articles/s41562-017-0189-z) by Benjamin et al (2017) on redefining statistical significance. They proposed to **change the default P-value threshold for statistical significance from 0.05 to 0.005 for claims of new discoveries.** That is the proposed p-value is only one tenth of the conventional one!! Suppose the world changed to `p=0.005`. Do we need **10X** more sample? As a researcher without sufficient funding, we care about how much additional sample we need suppose the alternative hypothesis is true. The original paper gave an answer for this question. We can use the function to illustrate the additional sample we need.
+One concern I had when first saw this [paper](https://www.nature.com/articles/s41562-017-0189-z) by Benjamin et al (2017) on redefining statistical significance. They proposed to **change the default P-value threshold for statistical significance from 0.05 to 0.005 for claims of new discoveries.** That is the proposed p-value is only one tenth of the conventional one!! Suppose the world changed to `p=0.005`. Do we need **10X** more sample? As a researcher without sufficient funding, we care about how much additional sample we need suppose the alternative hypothesis is true. The original paper gave an answer for this question. It only requires the sample size to increase `70%`. Consider the following senariors:
+
+* Suppose the rate of response in the control group is 50%, 40%, ...,10%;
+* Suppose the treatment will reduce 2%, 4%, 6%, and 10% percentage points .
+
+That is, if the rate of reponse in the control group is 50%, we look at the desired sample size if the treatment will reduce the rate to 48%, 46%, 44%, and 40%. Similar to other base rate. As a result, we will have a **5 X 5** matrix for respective sample size. We compare difference between the case where $\alpha = 0.05$ and $\alpha = 0.005$.
+
+```{r Results}
+SampleSize05 = function(PropTreat, PropCont, Power){
+  N = ((PropTreat*(1-PropTreat)+PropCont*(1-PropCont))*
+    ((qnorm(1-.05/2)+qnorm(1-(1-Power)))^2))/((PropTreat-PropCont)^2)
+  return(ceiling(N))
+}
+SampleSize005 = function(PropTreat, PropCont, Power){
+  N = ((PropTreat*(1-PropTreat)+PropCont*(1-PropCont))*
+    ((qnorm(1-.005/2)+qnorm(1-(1-Power)))^2))/((PropTreat-PropCont)^2)
+  return(ceiling(N))
+}
+
+pCon = c(0.5,0.4,0.3,0.2,0.1)
+Reduced = c(0.02,0.04,0.06,0.08,0.1)
+mSampleSiz05 = matrix(NA,nrow=5,ncol=5)
+mSampleSiz005 = matrix(NA,nrow=5,ncol=5)
+for (i in 1:5){
+  for(j in 1:5){
+    mSampleSiz05[i,j] = SampleSize05((pCon[i]-Reduced[j]),pCon[i],0.8)
+    mSampleSiz005[i,j] = SampleSize005((pCon[i]-Reduced[j]),pCon[i],0.8)
+
+  }
+}
+(Increased.Sample.Size = (mSampleSiz005-mSampleSiz05)/mSampleSiz05)
+```
+
 
 
 
