@@ -18,7 +18,7 @@ slug: sample-size
 <ul>
 <li><a href="#how-sample-size-is-determined">How Sample Size is Determined?</a></li>
 <li><a href="#some-r-code">Some R code</a></li>
-<li><a href="#is-it-the-end-of-the-day-if-alpha-0.005">Is it the end of the day if <span class="math inline">\(\alpha = 0.005\)</span>?</a></li>
+<li><a href="#is-it-the-end-of-the-world-if-alpha-0.005">Is it the end of the world if <span class="math inline">\(\alpha = 0.005\)</span>?</a></li>
 </ul>
 </div>
 
@@ -53,9 +53,9 @@ SampleSizeM = function(MeanTreat, MeanCont, SDTreat, SDCont, Power){
   return(ceiling(NTreat))
 }</code></pre>
 </div>
-<div id="is-it-the-end-of-the-day-if-alpha-0.005" class="section level1">
-<h1>Is it the end of the day if <span class="math inline">\(\alpha = 0.005\)</span>?</h1>
-<p>One concern I had when first saw this <a href="https://www.nature.com/articles/s41562-017-0189-z">paper</a> by Benjamin et al (2017) on redefining statistical significance. They proposed to <strong>change the default P-value threshold for statistical significance from 0.05 to 0.005 for claims of new discoveries.</strong> That is the proposed p-value is only one tenth of the conventional one!! Suppose the world changed to <code>p=0.005</code>. Do we need <strong>10X</strong> more sample? As a researcher without sufficient funding, we care about how much additional sample we need suppose the alternative hypothesis is true. The original paper gave an answer for this question. It only requires the sample size to increase <code>70%</code>. Consider the following senariors:</p>
+<div id="is-it-the-end-of-the-world-if-alpha-0.005" class="section level1">
+<h1>Is it the end of the world if <span class="math inline">\(\alpha = 0.005\)</span>?</h1>
+<p>In this <a href="https://www.nature.com/articles/s41562-017-0189-z">paper</a> by Benjamin et al (2017) on redefining statistical significance, they proposed to <strong>change the default P-value threshold for statistical significance from 0.05 to 0.005 for claims of new discoveries.</strong> That is the proposed p-value is only one tenth of the conventional one!! Suppose the world changed to <code>p=0.005</code>. Do we need <strong>10X</strong> more sample? As a researcher without sufficient funding, we care about how much additional sample we need suppose the alternative hypothesis is true. The original paper gave an answer for this question. It only requires the sample size to increase by <code>70%</code>. Consider the following senariors:</p>
 <ul>
 <li>Suppose the rate of response in the control group is 50%, 40%, …,10%;</li>
 <li>Suppose the treatment will reduce 2%, 4%, 6%, and 10% percentage points .</li>
@@ -90,4 +90,5 @@ for (i in 1:5){
 ## [3,] 0.6960505 0.6965552 0.6962617 0.6965812 0.6941581
 ## [4,] 0.6961564 0.6955017 0.6944444 0.6963190 0.6903553
 ## [5,] 0.6957334 0.6954103 0.6964286 0.6888889 0.6901408</code></pre>
+<p>As can be seen, all are very clost to <code>70%</code> given different baste rate and different magnitude of effect.</p>
 </div>

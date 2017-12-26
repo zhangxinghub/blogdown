@@ -71,9 +71,9 @@ SampleSizeM = function(MeanTreat, MeanCont, SDTreat, SDCont, Power){
   return(ceiling(NTreat))
 }
 ```
-# Is it the end of the day if $\alpha = 0.005$?
+# Is it the end of the world if $\alpha = 0.005$?
 
-One concern I had when first saw this [paper](https://www.nature.com/articles/s41562-017-0189-z) by Benjamin et al (2017) on redefining statistical significance. They proposed to **change the default P-value threshold for statistical significance from 0.05 to 0.005 for claims of new discoveries.** That is the proposed p-value is only one tenth of the conventional one!! Suppose the world changed to `p=0.005`. Do we need **10X** more sample? As a researcher without sufficient funding, we care about how much additional sample we need suppose the alternative hypothesis is true. The original paper gave an answer for this question. It only requires the sample size to increase `70%`. Consider the following senariors:
+In this [paper](https://www.nature.com/articles/s41562-017-0189-z) by Benjamin et al (2017) on redefining statistical significance, they proposed to **change the default P-value threshold for statistical significance from 0.05 to 0.005 for claims of new discoveries.** That is the proposed p-value is only one tenth of the conventional one!! Suppose the world changed to `p=0.005`. Do we need **10X** more sample? As a researcher without sufficient funding, we care about how much additional sample we need suppose the alternative hypothesis is true. The original paper gave an answer for this question. It only requires the sample size to increase by `70%`. Consider the following senariors:
 
 * Suppose the rate of response in the control group is 50%, 40%, ...,10%;
 * Suppose the treatment will reduce 2%, 4%, 6%, and 10% percentage points .
@@ -105,7 +105,7 @@ for (i in 1:5){
 }
 (Increased.Sample.Size = (mSampleSiz005-mSampleSiz05)/mSampleSiz05)
 ```
-
+As can be seen, all are very clost to `70%` given different baste rate and different magnitude of effect. 
 
 
 
