@@ -66,7 +66,7 @@
   
   <meta property="og:site_name" content="Xing&#39;s Site">
   <meta property="og:url" content="/post/sample-size/">
-  <meta property="og:title" content="A Note on Sample Size Calculation | Xing&#39;s Site">
+  <meta property="og:title" content="Is it the end of the world if $\alpha=0.005$ is new norm? | Xing&#39;s Site">
   <meta property="og:description" content="">
   <meta property="og:locale" content="en-us">
   
@@ -77,7 +77,7 @@
 
   
 
-  <title>A Note on Sample Size Calculation | Xing&#39;s Site</title>
+  <title>Is it the end of the world if $\alpha=0.005$ is new norm? | Xing&#39;s Site</title>
 
 </head>
 <body id="top" data-spy="scroll" data-target="#toc" data-offset="71" >
@@ -157,7 +157,7 @@
 
   <div class="article-container">
     <div class="article-inner">
-      <h1 itemprop="name">A Note on Sample Size Calculation</h1>
+      <h1 itemprop="name">Is it the end of the world if $\alpha=0.005$ is new norm?</h1>
 
       
 
@@ -188,7 +188,7 @@
   <ul class="share">
     <li>
       <a class="twitter"
-         href="https://twitter.com/intent/tweet?text=A%20Note%20on%20Sample%20Size%20Calculation&amp;url=%2fpost%2fsample-size%2f"
+         href="https://twitter.com/intent/tweet?text=Is%20it%20the%20end%20of%20the%20world%20if%20%24%5calpha%3d0.005%24%20is%20new%20norm%3f&amp;url=%2fpost%2fsample-size%2f"
          target="_blank" rel="noopener">
         <i class="fa fa-twitter"></i>
       </a>
@@ -202,21 +202,21 @@
     </li>
     <li>
       <a class="linkedin"
-         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fpost%2fsample-size%2f&amp;title=A%20Note%20on%20Sample%20Size%20Calculation"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fpost%2fsample-size%2f&amp;title=Is%20it%20the%20end%20of%20the%20world%20if%20%24%5calpha%3d0.005%24%20is%20new%20norm%3f"
          target="_blank" rel="noopener">
         <i class="fa fa-linkedin"></i>
       </a>
     </li>
     <li>
       <a class="weibo"
-         href="http://service.weibo.com/share/share.php?url=%2fpost%2fsample-size%2f&amp;title=A%20Note%20on%20Sample%20Size%20Calculation"
+         href="http://service.weibo.com/share/share.php?url=%2fpost%2fsample-size%2f&amp;title=Is%20it%20the%20end%20of%20the%20world%20if%20%24%5calpha%3d0.005%24%20is%20new%20norm%3f"
          target="_blank" rel="noopener">
         <i class="fa fa-weibo"></i>
       </a>
     </li>
     <li>
       <a class="email"
-         href="mailto:?subject=A%20Note%20on%20Sample%20Size%20Calculation&amp;body=%2fpost%2fsample-size%2f">
+         href="mailto:?subject=Is%20it%20the%20end%20of%20the%20world%20if%20%24%5calpha%3d0.005%24%20is%20new%20norm%3f&amp;body=%2fpost%2fsample-size%2f">
         <i class="fa fa-envelope"></i>
       </a>
     </li>
@@ -233,12 +233,12 @@
         <div id="TOC">
 <ul>
 <li><a href="#how-sample-size-is-determined">How Sample Size is Determined?</a></li>
-<li><a href="#some-r-code">Some R code</a></li>
 <li><a href="#is-it-the-end-of-the-world-if-alpha-0.005">Is it the end of the world if <span class="math inline">\(\alpha = 0.005\)</span>?</a></li>
 </ul>
 </div>
 
-<p>This note describes how sample size calculator works. There must be better notes somewhere else, but I find the best notes for me is the note written by myself.</p>
+<p>In this <a href="https://www.nature.com/articles/s41562-017-0189-z">paper</a> by Benjamin et al (2017) on redefining statistical significance, they proposed to <strong>change the default P-value threshold for statistical significance from 0.05 to 0.005 for claims of new discoveries.</strong> That is the proposed p-value is one tenth of the conventional one!! Suppose the world changed to <code>p=0.005</code>. Do we need <strong>10X</strong> more sample? As a researcher without sufficient funding, we care about how much additional sample we need suppose our hypothesis is true.</p>
+<p>First let’s review how sample size is calculated. It is really a good review of basic concepts in probability theory and statistics.</p>
 <div id="how-sample-size-is-determined" class="section level1">
 <h1>How Sample Size is Determined?</h1>
 <p>First we have to imagine that <span class="math inline">\(N\)</span> participants will be randomly assigned into two groups: Treatment (T) and Control (C) group. Assume that there are equal numbers of participants in each group (<span class="math inline">\(N_T=N_C\)</span>). The researcher is interested in testing whether the mean of the distribution <span class="math inline">\(\mu\)</span> in two groups are different. More specifically, the researcher is comparing the two hypotheses:</p>
@@ -248,9 +248,6 @@
 <p>Let <span class="math inline">\(z_{1-\frac{\alpha}{2}}=\frac{v}{\sigma_N}\)</span>, and then <span class="math inline">\(v=z_{1-\frac{\alpha}{2}} \cdot \sigma_N\)</span>.</p>
 <p>Since power is defined as the probability of accepting the alternative hypothesis given that the alternative is true <span class="math inline">\(1-\beta=Prob(Accept \quad H_A|H_A)=Prob(X_T-X_C\geq v|H_A)\)</span>, which can be expressed as: <span class="math display">\[1-\beta=1-Prob(X_T-X_C\leq z_{1-\frac{\alpha}{2}} \cdot \sigma_N |H_A)\]</span> <span class="math display">\[=1-Prob(\frac{X_T-X_C-\mu_A}{\sigma_N}\leq \frac{z_{1-\frac{\alpha}{2}} \cdot \sigma_N-\mu_A}{\sigma_N}|H_A)\]</span> <span class="math display">\[=1-\phi(\frac{z_{1-\frac{\alpha}{2}} \cdot \sigma_N -\mu_A}{\sigma_N})\]</span> <span class="math display">\[=\phi(\frac{\mu_A}{\sigma_N}-z_{1-\frac{\alpha}{2}})\]</span> As a result, <span class="math inline">\(z_{1-\beta}=\frac{\mu_A}{\sigma_N}-z_{1-\frac{\alpha}{2}}\)</span>. Under the alternative hypothesis, <span class="math inline">\(X_T-X_C \sim N(\mu_A,\sigma^2/n)\)</span>. Now suppose the variable of interest is binomial distributed. Then <span class="math inline">\(\sigma_N=\sqrt{X_T(1-X_T)/N_T + X_C(1-X_C)/N_C}\)</span> <span class="math display">\[\frac{1}{\sqrt{X_T(1-X_T)/N_T + X_C(1-X_C)/N_C}}= \frac{z_{1-\beta}+z_{1-\frac{\alpha}{2}}}{X_T-X_C}\]</span> $ $</p>
 <p><span class="math display">\[N_T=N_C=(X_T(1-X_T)+X_C(1-X_C))\cdot (\frac{z_{1-\beta}+z_{1-\frac{\alpha}{2}}}{X_T-X_C})^2\]</span></p>
-</div>
-<div id="some-r-code" class="section level1">
-<h1>Some R code</h1>
 <p>Hence, if we want to calculate the sample size, we only need to specify the expected rate/proportion in treatment, the expected rate/proportion in control, power, and the significance level. The code to calculate sample size for binary outcome assuming <span class="math inline">\(\alpha= .05\)</span> is:</p>
 <pre class="r"><code>## Calculate Sample Size Based on Binary Outcome
 SampleSize = function(PropTreat, PropCont, Power){
@@ -271,7 +268,7 @@ SampleSizeM = function(MeanTreat, MeanCont, SDTreat, SDCont, Power){
 </div>
 <div id="is-it-the-end-of-the-world-if-alpha-0.005" class="section level1">
 <h1>Is it the end of the world if <span class="math inline">\(\alpha = 0.005\)</span>?</h1>
-<p>In this <a href="https://www.nature.com/articles/s41562-017-0189-z">paper</a> by Benjamin et al (2017) on redefining statistical significance, they proposed to <strong>change the default P-value threshold for statistical significance from 0.05 to 0.005 for claims of new discoveries.</strong> That is the proposed p-value is only one tenth of the conventional one!! Suppose the world changed to <code>p=0.005</code>. Do we need <strong>10X</strong> more sample? As a researcher without sufficient funding, we care about how much additional sample we need suppose the alternative hypothesis is true. The original paper gave an answer for this question. It only requires the sample size to increase by <code>70%</code>. Consider the following senariors:</p>
+<p>The original paper gave an answer for this question. It only requires the sample size to increase by <code>70%</code>. Consider the following senariors:</p>
 <ul>
 <li>Suppose the rate of response in the control group is 50%, 40%, …,10%;</li>
 <li>Suppose the treatment will reduce 2%, 4%, 6%, and 10% percentage points .</li>
@@ -306,7 +303,7 @@ for (i in 1:5){
 ## [3,] 0.6960505 0.6965552 0.6962617 0.6965812 0.6941581
 ## [4,] 0.6961564 0.6955017 0.6944444 0.6963190 0.6903553
 ## [5,] 0.6957334 0.6954103 0.6964286 0.6888889 0.6901408</code></pre>
-<p>As can be seen, all are very clost to <code>70%</code> given different baste rate and different magnitude of effect.</p>
+<p>As can be seen, all are very clost to <code>70%</code> given different baste rate and different magnitude of effect. From <code>0.05</code> to <code>0.005</code>, we do not need 10 times of the sample size.</p>
 </div>
 
       </div>

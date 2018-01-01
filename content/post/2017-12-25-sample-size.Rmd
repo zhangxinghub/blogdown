@@ -1,5 +1,5 @@
 ---
-title: A Note on Sample Size Calculation
+title: Is it the end of the world if $\alpha=0.005$ is new norm?
 author: Xing
 date: '2017-12-25'
 tags:
@@ -16,7 +16,9 @@ slug: sample-size
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-This note describes how sample size calculator works. There must be better notes somewhere else, but I find the best notes for me is the note written by myself. 
+In this [paper](https://www.nature.com/articles/s41562-017-0189-z) by Benjamin et al (2017) on redefining statistical significance, they proposed to **change the default P-value threshold for statistical significance from 0.05 to 0.005 for claims of new discoveries.** That is the proposed p-value is one tenth of the conventional one!! Suppose the world changed to `p=0.005`. Do we need **10X** more sample? As a researcher without sufficient funding, we care about how much additional sample we need suppose our hypothesis is true.
+
+First let's review how sample size is calculated. It is really a good review of basic concepts in probability theory and statistics.
 
 # How Sample Size is Determined?
 
@@ -46,8 +48,6 @@ $ \Rightarrow $
 
 $$N_T=N_C=(X_T(1-X_T)+X_C(1-X_C))\cdot (\frac{z_{1-\beta}+z_{1-\frac{\alpha}{2}}}{X_T-X_C})^2$$
 
-# Some R code
-
 Hence, if we want to calculate the sample size, we only need to specify the expected rate/proportion in treatment, the expected rate/proportion in control, power, and the significance level. The code to calculate sample size for binary outcome assuming $\alpha= .05$ is: 
 ```{r}
 ## Calculate Sample Size Based on Binary Outcome
@@ -73,7 +73,7 @@ SampleSizeM = function(MeanTreat, MeanCont, SDTreat, SDCont, Power){
 ```
 # Is it the end of the world if $\alpha = 0.005$?
 
-In this [paper](https://www.nature.com/articles/s41562-017-0189-z) by Benjamin et al (2017) on redefining statistical significance, they proposed to **change the default P-value threshold for statistical significance from 0.05 to 0.005 for claims of new discoveries.** That is the proposed p-value is only one tenth of the conventional one!! Suppose the world changed to `p=0.005`. Do we need **10X** more sample? As a researcher without sufficient funding, we care about how much additional sample we need suppose the alternative hypothesis is true. The original paper gave an answer for this question. It only requires the sample size to increase by `70%`. Consider the following senariors:
+The original paper gave an answer for this question. It only requires the sample size to increase by `70%`. Consider the following senariors:
 
 * Suppose the rate of response in the control group is 50%, 40%, ...,10%;
 * Suppose the treatment will reduce 2%, 4%, 6%, and 10% percentage points .
@@ -105,8 +105,4 @@ for (i in 1:5){
 }
 (Increased.Sample.Size = (mSampleSiz005-mSampleSiz05)/mSampleSiz05)
 ```
-As can be seen, all are very clost to `70%` given different baste rate and different magnitude of effect. 
-
-
-
-
+As can be seen, all are very clost to `70%` given different baste rate and different magnitude of effect. From `0.05` to `0.005`, we do not need 10 times of the sample size. 
