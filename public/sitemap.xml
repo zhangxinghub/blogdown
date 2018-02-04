@@ -23,6 +23,15 @@
     
     <url>
     
+      <loc>/post/how-much-can-we-learn-from-google-search-data/</loc>
+      <lastmod>2017-10-05T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/tags/academic/</loc>
       <lastmod>2017-01-01T00:00:00+00:00</lastmod>
     </url>
@@ -124,6 +133,16 @@
     
     <url>
     
+      <loc>/tags/book/</loc>
+      <lastmod>2017-10-05T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/categories/</loc>
       <priority>0</priority>
     </url>
@@ -145,6 +164,16 @@
     
       <loc>/tags/data/</loc>
       <lastmod>2017-12-30T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/data-science/</loc>
+      <lastmod>2017-10-05T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -185,6 +214,26 @@
     
       <loc>/tags/experiments/</loc>
       <lastmod>2017-12-25T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/gender/</loc>
+      <lastmod>2017-10-05T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/google/</loc>
+      <lastmod>2017-10-05T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     

@@ -171,6 +171,27 @@ for (i in 1:5){
     </item>
     
     <item>
+      <title>How much we can learn from Google search data</title>
+      <link>/post/how-much-can-we-learn-from-google-search-data/</link>
+      <pubDate>Thu, 05 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/how-much-can-we-learn-from-google-search-data/</guid>
+      <description>&lt;hr /&gt;
+&lt;p&gt;I just finished the book &lt;a href=&#34;https://www.amazon.com/Everybody-Lies-Internet-About-Really/dp/0062390856/ref=sr_1_1?ie=UTF8&amp;amp;qid=1515677064&amp;amp;sr=8-1&amp;amp;keywords=everyone+lies+book&#34;&gt;Everybody Lies: Big Data, New Data, and What the Internet Can Tell Us About Who We Really Are&lt;/a&gt; by Seth Stephens-Davidowitz, which is a highly rated book. The author devoted a great amount of text to the Google Trends data. My fun part of reading this book is that I could dig the results from the Google Trends &lt;a href=&#34;https://trends.google.com/trends/&#34;&gt;website&lt;/a&gt; myself.&lt;/p&gt;
+&lt;p&gt;Here is one example: in the book the author argues that Google search reveals that contemporary American parents are far more focused on their son’s intelligence than on their daughters. The author has an article on New York Times &lt;a href=&#34;https://www.nytimes.com/2014/01/19/opinion/sunday/google-tell-me-is-my-son-a-genius.html?rref=collection%2Fbyline%2Fseth-stephens-davidowitz&amp;amp;mtrref=www.nytimes.com&amp;amp;assetType=opinion&#34;&gt;article&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I first reproduce the graph here. The upper panel is the search volume for “Is my daughter a genius?” and “Is my son a genius?” from 2004 to 2017. As can be seen, in most years, there are more searches for “Is my son a genius?” than “Is my daughter a genius?”. The lower panel is the average search volume. The volume for son (1.38) is almost three times than that for the daughter (0.44).&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2017-10-05-how-much-can-we-learn-from-google-search-data_files/figure-html/DaughterSon-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Okay, it seems that American parents care whether their son is genius more than their daughters. What about “myself”? Do people care themselves whether they are genius? I contrast the search volume of &lt;strong&gt;“Am I a genius”&lt;/strong&gt; against the search for son and daughter. After all, we are narcissists, kind of. The figure is shown below.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2017-10-05-how-much-can-we-learn-from-google-search-data_files/figure-html/DaughterSonSelf-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;The search volume for “Am I a genius” is way way higher than the search volume for son and daughter. See, we are narcissistic. Not surprising at all.&lt;/p&gt;
+&lt;p&gt;Let’s try something crazy: do people care whether their &lt;strong&gt;dogs&lt;/strong&gt; are genius?&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2017-10-05-how-much-can-we-learn-from-google-search-data_files/figure-html/DaughterSonDog-1.png&#34; width=&#34;768&#34; /&gt; There are more searches on dog than daughter! Dog’s intelligence is more important than daughter’s? If this is true, no matter whether you are a feminist, this is jarring. But, wait a minute, really? Drawing conclusions from the data is very tricky. To reach the conclusions that parents are biased, we have to assume the distributions of the intelligence between boys and girls are identical, which may not be the case. Girls actually outperform boys in academically. Don’t get me wrong. I am not saying there is no gender bias issue these days. I am just saying the evidence from the Google search may not precisely reflect this issue.&lt;/p&gt;
+&lt;p&gt;Why are there more searches on dog than daughter about intelligence? One explanation is people do not apply the word “genius” equally among the objects. That is, the criteria for identifying “genius” is different. An ownder of a dog may start to search whether her dog is genius when she finds the dog can understand simple sign language. The threshold for kids is much higher. Another reason is much simpler: there are more demestic dogs in the US than girls. According to this &lt;a href=&#34;https://www.statista.com/statistics/198100/dogs-in-the-united-states-since-2000/&#34;&gt;source&lt;/a&gt;, in 2017, a total of about 89.7 million dogs lived in households in the United States as pets, which is more than twice as much as 40.2 million, the number of girls aged between 0 to 19 (see &lt;a href=&#34;https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?src=bkmk&#34;&gt;here&lt;/a&gt;). But when comparing “genius cat” vs. “genius dog”, there are more searches on “genius dog” than “genius cat” though there are more domestic cat (95.6 million) than dogs (well, dogs are &lt;a href=&#34;https://news.nationalgeographic.com/2017/11/dog-cat-brains-neurons-intelligence-study-spd/&#34;&gt;shown&lt;/a&gt; to have more neurons in the brain).&lt;/p&gt;
+&lt;p&gt;All in all, the book raised more quesionts than it addressed.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Example Talk</title>
       <link>/talk/example-talk/</link>
       <pubDate>Sun, 01 Jan 2017 00:00:00 +0800</pubDate>
