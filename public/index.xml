@@ -11,6 +11,87 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Personalized Data Summary Function Using &#34;data.table&#34;</title>
+      <link>/post/personalized-data-summary-function-using-data-table/</link>
+      <pubDate>Fri, 19 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/personalized-data-summary-function-using-data-table/</guid>
+      <description>&lt;p&gt;One function I miss about &lt;em&gt;Stata&lt;/em&gt; is its &lt;em&gt;tabstat&lt;/em&gt;. By using just one line code, it can produce very useful summary statistics such as &lt;code&gt;mean&lt;/code&gt;, and &lt;code&gt;standard error&lt;/code&gt; by groups by conditions. R has its own built-in summary function – &lt;code&gt;summary()&lt;/code&gt;, too, but in most cases in my research, I found the summaries produced is barely useful. Consider the following pseudo-data:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(data.table)
+set.seed(10)
+N = 120
+DT = data.table(x = rnorm(N,1), y = rnorm(N,2),
+                category = sample(letters[1:3], N, replace = T))
+DT[1:10]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##              x         y category
+##  1:  1.0187462 1.5186344        c
+##  2:  0.8157475 2.2028818        a
+##  3: -0.3713305 1.9682603        c
+##  4:  0.4008323 0.8044197        a
+##  5:  1.2945451 2.6236812        c
+##  6:  1.3897943 1.0851955        c
+##  7: -0.2080762 2.2487580        b
+##  8:  0.6363240 0.9373772        b
+##  9: -0.6266727 1.6360178        c
+## 10:  0.7435216 0.7930051        a&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If we summarize the variable &lt;code&gt;x&lt;/code&gt; using &lt;code&gt;summary()&lt;/code&gt;, it gives:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(DT$x)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+## -1.1853  0.2380  0.9101  0.9235  1.7119  3.2205&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In most the case, I want to have a sense of the dispersion of the mean, number of non-mising observations. More importantly, I want to have a data table from which I can generate a barchart, which is very common in analyzing experimental data. Since I almost need this types of summary function for all of my on-going project, why not make a personalized one for myself and potential other users? Here it is.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;SumFunOne = function(Data, Var, Group, StatList){
+  arguments &amp;lt;- as.list(match.call())
+  x = eval(arguments$Var, Data)
+  category = eval(arguments$Group, Data)
+  keep = StatList
+  result = Data[,  .(Mean = mean(x, na.rm=TRUE), 
+                     N = sum(!is.na(x)), 
+                     SE = sd(x, na.rm=TRUE)/sqrt(sum(!is.na(x))),
+                     median = median(x),
+                     max = max(x),
+                     min = min(x),
+                     Missing = sum(is.na(x))),
+                     by = .(category)][,..keep][order(category)]
+  return(result)
+}
+(Data.Summary = SumFunOne(DT, x, category, c(&amp;quot;category&amp;quot;,&amp;quot;Mean&amp;quot;,&amp;quot;N&amp;quot;,&amp;quot;SE&amp;quot;)))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    category      Mean  N        SE
+## 1:        a 1.0233245 36 0.1561983
+## 2:        b 0.9516208 41 0.1353133
+## 3:        c 0.8131563 43 0.1560230&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The function &lt;code&gt;SumFunOne()&lt;/code&gt; has 4 inputs: &lt;code&gt;Data&lt;/code&gt; (should be in &lt;code&gt;data.table&lt;/code&gt;), &lt;code&gt;Var&lt;/code&gt; – variable to be summarized, &lt;code&gt;Group&lt;/code&gt; – the group variable I want to condition on, and &lt;code&gt;StatList&lt;/code&gt; – the statistics I want to show. We can also subset the data using &lt;code&gt;DT[y&amp;gt;0]&lt;/code&gt; in the input. Given the results, I can easily draw a barchart with standard errors and number of observations in &lt;code&gt;ggplot2&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2018-01-19-personalized-data-summary-function-using-data-table_files/figure-html/ShowBarChart-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Well, what if I want to summarize multiple variables? The goal is to have a counterpart of Stata’s &lt;em&gt;tabstat&lt;/em&gt; in R, isn’t it? It is straightforward, too. We just need to use the powerful &lt;code&gt;.SD&lt;/code&gt; in &lt;code&gt;data.table&lt;/code&gt; to apply the summary function to multiple variables. But we define the summary function first outside of the data.table. For simplicity, I only show three statistics: &lt;code&gt;Mean&lt;/code&gt;, &lt;code&gt;N&lt;/code&gt; and &lt;code&gt;SE&lt;/code&gt;. &lt;code&gt;varList&lt;/code&gt; is the variable list we want to summrize.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;SumFunMult = function(Data, varList, Group){
+  arguments &amp;lt;- as.list(match.call())
+  category = eval(arguments$Group, Data)
+  my.summary &amp;lt;- function(x){
+    c(Mean = mean(x, na.rm=TRUE), 
+      N = sum(!is.na(x)), 
+      SE = sd(x, na.rm=TRUE)/sqrt(sum(!is.na(x))))
+  }
+  result = Data[, lapply(.SD, my.summary), by=.(category), .SDcols= varList]
+  Stats = rep(c(&amp;quot;Mean&amp;quot;,&amp;quot;N&amp;quot;,&amp;quot;SE&amp;quot;),length(unique(category)))
+  summary = cbind(Stats,result)
+  return(summary)
+}
+
+SumFunMult(DT, c(&amp;quot;x&amp;quot;,&amp;quot;y&amp;quot;),category)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    Stats category          x          y
+## 1:  Mean        c  0.8131563  1.6547724
+## 2:     N        c 43.0000000 43.0000000
+## 3:    SE        c  0.1560230  0.1491735
+## 4:  Mean        a  1.0233245  1.8356193
+## 5:     N        a 36.0000000 36.0000000
+## 6:    SE        a  0.1561983  0.1652287
+## 7:  Mean        b  0.9516208  2.0720581
+## 8:     N        b 41.0000000 41.0000000
+## 9:    SE        b  0.1353133  0.1404608&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Next task is the develop it into a package so that I can easily call the function to summarize and visualize the summary statistics…&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>U-Shape Test using &#34;Two Lines&#34;</title>
       <link>/post/u-shape-test-using-two-lines/</link>
       <pubDate>Sat, 30 Dec 2017 00:00:00 +0000</pubDate>
@@ -187,7 +268,7 @@ for (i in 1:5){
 &lt;p&gt;Let’s try something crazy: do people care whether their &lt;strong&gt;dogs&lt;/strong&gt; are genius?&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;/post/2017-10-05-how-much-can-we-learn-from-google-search-data_files/figure-html/DaughterSonDog-1.png&#34; width=&#34;768&#34; /&gt; There are more searches on dog than daughter! Dog’s intelligence is more important than daughter’s? If this is true, no matter whether you are a feminist, this is jarring. But, wait a minute, really? Drawing conclusions from the data is very tricky. To reach the conclusions that parents are biased, we have to assume the distributions of the intelligence between boys and girls are identical, which may not be the case. Girls actually outperform boys in academically. Don’t get me wrong. I am not saying there is no gender bias issue these days. I am just saying the evidence from the Google search may not precisely reflect this issue.&lt;/p&gt;
 &lt;p&gt;Why are there more searches on dog than daughter about intelligence? One explanation is people do not apply the word “genius” equally among the objects. That is, the criteria for identifying “genius” is different. An ownder of a dog may start to search whether her dog is genius when she finds the dog can understand simple sign language. The threshold for kids is much higher. Another reason is much simpler: there are more demestic dogs in the US than girls. According to this &lt;a href=&#34;https://www.statista.com/statistics/198100/dogs-in-the-united-states-since-2000/&#34;&gt;source&lt;/a&gt;, in 2017, a total of about 89.7 million dogs lived in households in the United States as pets, which is more than twice as much as 40.2 million, the number of girls aged between 0 to 19 (see &lt;a href=&#34;https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?src=bkmk&#34;&gt;here&lt;/a&gt;). But when comparing “genius cat” vs. “genius dog”, there are more searches on “genius dog” than “genius cat” though there are more domestic cat (95.6 million) than dogs (well, dogs are &lt;a href=&#34;https://news.nationalgeographic.com/2017/11/dog-cat-brains-neurons-intelligence-study-spd/&#34;&gt;shown&lt;/a&gt; to have more neurons in the brain).&lt;/p&gt;
-&lt;p&gt;All in all, the book raised more quesionts than it addressed.&lt;/p&gt;
+&lt;p&gt;All in all, the book raised more questions than it addressed.&lt;/p&gt;
 </description>
     </item>
     

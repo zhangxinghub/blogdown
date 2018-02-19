@@ -11,7 +11,7 @@
   <meta name="description" content="Postdoc Researcher">
 
   
-  <link rel="alternate" hreflang="en-us" href="/post/how-much-can-we-learn-from-google-search-data/">
+  <link rel="alternate" hreflang="en-us" href="/post/personalized-data-summary-function-using-data-table/">
 
   
   
@@ -57,7 +57,7 @@
   <link rel="icon" type="image/png" href="/img/icon.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
 
-  <link rel="canonical" href="/post/how-much-can-we-learn-from-google-search-data/">
+  <link rel="canonical" href="/post/personalized-data-summary-function-using-data-table/">
 
   <meta property="twitter:card" content="summary_large_image">
   
@@ -65,19 +65,19 @@
   <meta property="twitter:creator" content="@https://twitter.com/sobadapple">
   
   <meta property="og:site_name" content="Xing&#39;s Site">
-  <meta property="og:url" content="/post/how-much-can-we-learn-from-google-search-data/">
-  <meta property="og:title" content="How much we can learn from Google search data | Xing&#39;s Site">
+  <meta property="og:url" content="/post/personalized-data-summary-function-using-data-table/">
+  <meta property="og:title" content="Personalized Data Summary Function Using &#34;data.table&#34; | Xing&#39;s Site">
   <meta property="og:description" content="">
   <meta property="og:locale" content="en-us">
   
-  <meta property="article:published_time" content="2017-10-05T00:00:00&#43;00:00">
+  <meta property="article:published_time" content="2018-01-19T00:00:00&#43;00:00">
   
-  <meta property="article:modified_time" content="2017-10-05T00:00:00&#43;00:00">
-  
-
+  <meta property="article:modified_time" content="2018-01-19T00:00:00&#43;00:00">
   
 
-  <title>How much we can learn from Google search data | Xing&#39;s Site</title>
+  
+
+  <title>Personalized Data Summary Function Using &#34;data.table&#34; | Xing&#39;s Site</title>
 
 </head>
 <body id="top" data-spy="scroll" data-target="#toc" data-offset="71" >
@@ -157,7 +157,7 @@
 
   <div class="article-container">
     <div class="article-inner">
-      <h1 itemprop="name">How much we can learn from Google search data</h1>
+      <h1 itemprop="name">Personalized Data Summary Function Using &#34;data.table&#34;</h1>
 
       
 
@@ -165,8 +165,8 @@
 
   <span class="article-date">
     
-    <time datetime="2017-10-05 00:00:00 &#43;0000 UTC" itemprop="datePublished">
-      Oct 5, 2017
+    <time datetime="2018-01-19 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+      Jan 19, 2018
     </time>
   </span>
 
@@ -191,35 +191,35 @@
   <ul class="share">
     <li>
       <a class="twitter"
-         href="https://twitter.com/intent/tweet?text=How%20much%20we%20can%20learn%20from%20Google%20search%20data&amp;url=%2fpost%2fhow-much-can-we-learn-from-google-search-data%2f"
+         href="https://twitter.com/intent/tweet?text=Personalized%20Data%20Summary%20Function%20Using%20%22data.table%22&amp;url=%2fpost%2fpersonalized-data-summary-function-using-data-table%2f"
          target="_blank" rel="noopener">
         <i class="fa fa-twitter"></i>
       </a>
     </li>
     <li>
       <a class="facebook"
-         href="https://www.facebook.com/sharer.php?u=%2fpost%2fhow-much-can-we-learn-from-google-search-data%2f"
+         href="https://www.facebook.com/sharer.php?u=%2fpost%2fpersonalized-data-summary-function-using-data-table%2f"
          target="_blank" rel="noopener">
         <i class="fa fa-facebook"></i>
       </a>
     </li>
     <li>
       <a class="linkedin"
-         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fpost%2fhow-much-can-we-learn-from-google-search-data%2f&amp;title=How%20much%20we%20can%20learn%20from%20Google%20search%20data"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fpost%2fpersonalized-data-summary-function-using-data-table%2f&amp;title=Personalized%20Data%20Summary%20Function%20Using%20%22data.table%22"
          target="_blank" rel="noopener">
         <i class="fa fa-linkedin"></i>
       </a>
     </li>
     <li>
       <a class="weibo"
-         href="http://service.weibo.com/share/share.php?url=%2fpost%2fhow-much-can-we-learn-from-google-search-data%2f&amp;title=How%20much%20we%20can%20learn%20from%20Google%20search%20data"
+         href="http://service.weibo.com/share/share.php?url=%2fpost%2fpersonalized-data-summary-function-using-data-table%2f&amp;title=Personalized%20Data%20Summary%20Function%20Using%20%22data.table%22"
          target="_blank" rel="noopener">
         <i class="fa fa-weibo"></i>
       </a>
     </li>
     <li>
       <a class="email"
-         href="mailto:?subject=How%20much%20we%20can%20learn%20from%20Google%20search%20data&amp;body=%2fpost%2fhow-much-can-we-learn-from-google-search-data%2f">
+         href="mailto:?subject=Personalized%20Data%20Summary%20Function%20Using%20%22data.table%22&amp;body=%2fpost%2fpersonalized-data-summary-function-using-data-table%2f">
         <i class="fa fa-envelope"></i>
       </a>
     </li>
@@ -233,18 +233,78 @@
 
 
       <div class="article-style" itemprop="articleBody">
-        <hr />
-<p>I just finished the book <a href="https://www.amazon.com/Everybody-Lies-Internet-About-Really/dp/0062390856/ref=sr_1_1?ie=UTF8&amp;qid=1515677064&amp;sr=8-1&amp;keywords=everyone+lies+book">Everybody Lies: Big Data, New Data, and What the Internet Can Tell Us About Who We Really Are</a> by Seth Stephens-Davidowitz, which is a highly rated book. The author devoted a great amount of text to the Google Trends data. My fun part of reading this book is that I could dig the results from the Google Trends <a href="https://trends.google.com/trends/">website</a> myself.</p>
-<p>Here is one example: in the book the author argues that Google search reveals that contemporary American parents are far more focused on their son’s intelligence than on their daughters. The author has an article on New York Times <a href="https://www.nytimes.com/2014/01/19/opinion/sunday/google-tell-me-is-my-son-a-genius.html?rref=collection%2Fbyline%2Fseth-stephens-davidowitz&amp;mtrref=www.nytimes.com&amp;assetType=opinion">article</a>.</p>
-<p>I first reproduce the graph here. The upper panel is the search volume for “Is my daughter a genius?” and “Is my son a genius?” from 2004 to 2017. As can be seen, in most years, there are more searches for “Is my son a genius?” than “Is my daughter a genius?”. The lower panel is the average search volume. The volume for son (1.38) is almost three times than that for the daughter (0.44).</p>
-<p><img src="/post/2017-10-05-how-much-can-we-learn-from-google-search-data_files/figure-html/DaughterSon-1.png" width="768" /></p>
-<p>Okay, it seems that American parents care whether their son is genius more than their daughters. What about “myself”? Do people care themselves whether they are genius? I contrast the search volume of <strong>“Am I a genius”</strong> against the search for son and daughter. After all, we are narcissists, kind of. The figure is shown below.</p>
-<p><img src="/post/2017-10-05-how-much-can-we-learn-from-google-search-data_files/figure-html/DaughterSonSelf-1.png" width="768" /></p>
-<p>The search volume for “Am I a genius” is way way higher than the search volume for son and daughter. See, we are narcissistic. Not surprising at all.</p>
-<p>Let’s try something crazy: do people care whether their <strong>dogs</strong> are genius?</p>
-<p><img src="/post/2017-10-05-how-much-can-we-learn-from-google-search-data_files/figure-html/DaughterSonDog-1.png" width="768" /> There are more searches on dog than daughter! Dog’s intelligence is more important than daughter’s? If this is true, no matter whether you are a feminist, this is jarring. But, wait a minute, really? Drawing conclusions from the data is very tricky. To reach the conclusions that parents are biased, we have to assume the distributions of the intelligence between boys and girls are identical, which may not be the case. Girls actually outperform boys in academically. Don’t get me wrong. I am not saying there is no gender bias issue these days. I am just saying the evidence from the Google search may not precisely reflect this issue.</p>
-<p>Why are there more searches on dog than daughter about intelligence? One explanation is people do not apply the word “genius” equally among the objects. That is, the criteria for identifying “genius” is different. An ownder of a dog may start to search whether her dog is genius when she finds the dog can understand simple sign language. The threshold for kids is much higher. Another reason is much simpler: there are more demestic dogs in the US than girls. According to this <a href="https://www.statista.com/statistics/198100/dogs-in-the-united-states-since-2000/">source</a>, in 2017, a total of about 89.7 million dogs lived in households in the United States as pets, which is more than twice as much as 40.2 million, the number of girls aged between 0 to 19 (see <a href="https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?src=bkmk">here</a>). But when comparing “genius cat” vs. “genius dog”, there are more searches on “genius dog” than “genius cat” though there are more domestic cat (95.6 million) than dogs (well, dogs are <a href="https://news.nationalgeographic.com/2017/11/dog-cat-brains-neurons-intelligence-study-spd/">shown</a> to have more neurons in the brain).</p>
-<p>All in all, the book raised more questions than it addressed.</p>
+        <p>One function I miss about <em>Stata</em> is its <em>tabstat</em>. By using just one line code, it can produce very useful summary statistics such as <code>mean</code>, and <code>standard error</code> by groups by conditions. R has its own built-in summary function – <code>summary()</code>, too, but in most cases in my research, I found the summaries produced is barely useful. Consider the following pseudo-data:</p>
+<pre class="r"><code>library(data.table)
+set.seed(10)
+N = 120
+DT = data.table(x = rnorm(N,1), y = rnorm(N,2),
+                category = sample(letters[1:3], N, replace = T))
+DT[1:10]</code></pre>
+<pre><code>##              x         y category
+##  1:  1.0187462 1.5186344        c
+##  2:  0.8157475 2.2028818        a
+##  3: -0.3713305 1.9682603        c
+##  4:  0.4008323 0.8044197        a
+##  5:  1.2945451 2.6236812        c
+##  6:  1.3897943 1.0851955        c
+##  7: -0.2080762 2.2487580        b
+##  8:  0.6363240 0.9373772        b
+##  9: -0.6266727 1.6360178        c
+## 10:  0.7435216 0.7930051        a</code></pre>
+<p>If we summarize the variable <code>x</code> using <code>summary()</code>, it gives:</p>
+<pre class="r"><code>summary(DT$x)</code></pre>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+## -1.1853  0.2380  0.9101  0.9235  1.7119  3.2205</code></pre>
+<p>In most the case, I want to have a sense of the dispersion of the mean, number of non-mising observations. More importantly, I want to have a data table from which I can generate a barchart, which is very common in analyzing experimental data. Since I almost need this types of summary function for all of my on-going project, why not make a personalized one for myself and potential other users? Here it is.</p>
+<pre class="r"><code>SumFunOne = function(Data, Var, Group, StatList){
+  arguments &lt;- as.list(match.call())
+  x = eval(arguments$Var, Data)
+  category = eval(arguments$Group, Data)
+  keep = StatList
+  result = Data[,  .(Mean = mean(x, na.rm=TRUE), 
+                     N = sum(!is.na(x)), 
+                     SE = sd(x, na.rm=TRUE)/sqrt(sum(!is.na(x))),
+                     median = median(x),
+                     max = max(x),
+                     min = min(x),
+                     Missing = sum(is.na(x))),
+                     by = .(category)][,..keep][order(category)]
+  return(result)
+}
+(Data.Summary = SumFunOne(DT, x, category, c(&quot;category&quot;,&quot;Mean&quot;,&quot;N&quot;,&quot;SE&quot;)))</code></pre>
+<pre><code>##    category      Mean  N        SE
+## 1:        a 1.0233245 36 0.1561983
+## 2:        b 0.9516208 41 0.1353133
+## 3:        c 0.8131563 43 0.1560230</code></pre>
+<p>The function <code>SumFunOne()</code> has 4 inputs: <code>Data</code> (should be in <code>data.table</code>), <code>Var</code> – variable to be summarized, <code>Group</code> – the group variable I want to condition on, and <code>StatList</code> – the statistics I want to show. We can also subset the data using <code>DT[y&gt;0]</code> in the input. Given the results, I can easily draw a barchart with standard errors and number of observations in <code>ggplot2</code>:</p>
+<p><img src="/post/2018-01-19-personalized-data-summary-function-using-data-table_files/figure-html/ShowBarChart-1.png" width="768" /></p>
+<p>Well, what if I want to summarize multiple variables? The goal is to have a counterpart of Stata’s <em>tabstat</em> in R, isn’t it? It is straightforward, too. We just need to use the powerful <code>.SD</code> in <code>data.table</code> to apply the summary function to multiple variables. But we define the summary function first outside of the data.table. For simplicity, I only show three statistics: <code>Mean</code>, <code>N</code> and <code>SE</code>. <code>varList</code> is the variable list we want to summrize.</p>
+<pre class="r"><code>SumFunMult = function(Data, varList, Group){
+  arguments &lt;- as.list(match.call())
+  category = eval(arguments$Group, Data)
+  my.summary &lt;- function(x){
+    c(Mean = mean(x, na.rm=TRUE), 
+      N = sum(!is.na(x)), 
+      SE = sd(x, na.rm=TRUE)/sqrt(sum(!is.na(x))))
+  }
+  result = Data[, lapply(.SD, my.summary), by=.(category), .SDcols= varList]
+  Stats = rep(c(&quot;Mean&quot;,&quot;N&quot;,&quot;SE&quot;),length(unique(category)))
+  summary = cbind(Stats,result)
+  return(summary)
+}
+
+SumFunMult(DT, c(&quot;x&quot;,&quot;y&quot;),category)</code></pre>
+<pre><code>##    Stats category          x          y
+## 1:  Mean        c  0.8131563  1.6547724
+## 2:     N        c 43.0000000 43.0000000
+## 3:    SE        c  0.1560230  0.1491735
+## 4:  Mean        a  1.0233245  1.8356193
+## 5:     N        a 36.0000000 36.0000000
+## 6:    SE        a  0.1561983  0.1652287
+## 7:  Mean        b  0.9516208  2.0720581
+## 8:     N        b 41.0000000 41.0000000
+## 9:    SE        b  0.1353133  0.1404608</code></pre>
+<p>Next task is the develop it into a package so that I can easily call the function to summarize and visualize the summary statistics…</p>
 
       </div>
 
@@ -253,13 +313,11 @@
 
 <div class="article-tags">
   
-  <a class="btn btn-primary btn-outline" href="/tags/data-science">Data Science</a>
+  <a class="btn btn-primary btn-outline" href="/tags/r">R</a>
   
-  <a class="btn btn-primary btn-outline" href="/tags/google">Google</a>
+  <a class="btn btn-primary btn-outline" href="/tags/data">Data</a>
   
-  <a class="btn btn-primary btn-outline" href="/tags/gender">Gender</a>
-  
-  <a class="btn btn-primary btn-outline" href="/tags/book">Book</a>
+  <a class="btn btn-primary btn-outline" href="/tags/statistics">Statistics</a>
   
 </div>
 
@@ -271,6 +329,18 @@
 </article>
 
 
+
+<div class="article-container article-widget">
+  <div class="hr-light"></div>
+  <h3>Related</h3>
+  <ul>
+    
+    <li><a href="/post/u-shape-test-using-two-lines/">U-Shape Test using &#34;Two Lines&#34;</a></li>
+    
+    <li><a href="/post/sample-size/">Is it the end of the world if $\alpha=0.005$ is new norm?</a></li>
+    
+  </ul>
+</div>
 
 
 
