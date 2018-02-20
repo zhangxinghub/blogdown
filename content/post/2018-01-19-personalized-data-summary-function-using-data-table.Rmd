@@ -2,15 +2,14 @@
 title: Personalized Data Summary Function Using "data.table"
 author: Xing
 date: '2018-01-19'
-slug: personalized-data-summary-function-using-data-table
-categories: []
 tags:
-  - R
   - Data
+  - R
   - Statistics
+slug: personalized-data-summary-function-using-data-table
 output:
- blogdown::html_page:
-    toc: false  
+  blogdown::html_page:
+    toc: no
 ---
 
 One function I miss about *Stata* is its *tabstat*. By using just one line code, it can produce very useful summary statistics such as `mean`, and `standard error` by groups by conditions. R has its own built-in summary function -- `summary()`, too, but in most cases in my research, I found the summaries produced is barely useful. Consider the following pseudo-data:
