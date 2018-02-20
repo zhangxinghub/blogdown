@@ -14,15 +14,6 @@
     
     <url>
     
-      <loc>/post/u-shape-test-using-two-lines/</loc>
-      <lastmod>2017-12-30T00:00:00+00:00</lastmod>
-    </url>
-    
-  
-    
-    
-    <url>
-    
       <loc>/post/sample-size/</loc>
       <lastmod>2017-12-25T00:00:00+00:00</lastmod>
     </url>
@@ -96,16 +87,6 @@
     
     <url>
     
-      <loc>/tags/clustered-standard-error/</loc>
-      <lastmod>2017-12-30T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
       <loc>/tags/data/</loc>
       <lastmod>2018-01-19T00:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -118,16 +99,6 @@
     
       <loc>/tags/data-science/</loc>
       <lastmod>2017-10-05T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/tags/econometrics/</loc>
-      <lastmod>2017-12-30T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -168,16 +139,6 @@
     
       <loc>/tags/learning/</loc>
       <lastmod>2017-12-25T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/tags/model-selection/</loc>
-      <lastmod>2017-12-30T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
