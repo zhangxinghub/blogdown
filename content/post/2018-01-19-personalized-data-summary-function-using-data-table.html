@@ -41,7 +41,7 @@ DT[1:10]</code></pre>
   arguments &lt;- as.list(match.call())
   x = eval(arguments$Var, Data)
   category = eval(arguments$Group, Data)
-  keep = StatList
+  keep = c(&quot;category&quot;,StatList)
   result = Data[,  .(Mean = mean(x, na.rm=TRUE), 
                      N = sum(!is.na(x)), 
                      SE = sd(x, na.rm=TRUE)/sqrt(sum(!is.na(x))),
@@ -52,7 +52,7 @@ DT[1:10]</code></pre>
                      by = .(category)][,..keep][order(category)]
   return(result)
 }
-(Data.Summary = SumFunOne(DT, x, category, c(&quot;category&quot;,&quot;Mean&quot;,&quot;N&quot;,&quot;SE&quot;)))</code></pre>
+(Data.Summary = SumFunOne(DT, x, category, c(&quot;Mean&quot;,&quot;N&quot;,&quot;SE&quot;)))</code></pre>
 <pre><code>##    category      Mean  N        SE
 ## 1:        a 1.0233245 36 0.1561983
 ## 2:        b 0.9516208 41 0.1353133

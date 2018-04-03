@@ -1,0 +1,61 @@
+---
+title: Fake News Consumption and Segregation on Twitter
+author: Xing
+date: '2018-03-28'
+tags:
+  - Data Science
+  - Fake News
+  - Polarization
+  - Social Media
+  - Twitter
+  - Visualization
+slug: fake-news-consumption-and-segregation-on-twitter
+---
+
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+To form accurate beliefs about the world (e.g., whether the earth is flat or a sphere, whether vaccination causes autism, etc), people must encounter diverse views and opinions which will sometimes contradict their
+pre-existing views. Many scholars concerned that the emergence of social media reduces the cost of acquiring information from a wide range of sources, facilitating consumers to self-segregate and limit themselves to the information sources that are likely to confirm their views. 
+
+The issue is how bad is this problem? Not so bad on Facebook according to some recent empirical research. Here I will show my findings using Twitter data. 
+
+
+![My picture](NASA2.png)
+
+```{r results, eval = FALSE}
+x = 1
+# library(rtweet)
+# library(tidyverse)
+# library(UpSetR)
+# 
+# TwitterAccount <- c("NASA", "FlatEarthOrg", "FlatEarthToday")
+# # Fetch the data from Twitter using get_followers() function
+# followers <- map_df(TwitterAccount,
+#                     ~ get_followers(.x, n = 3000000, retryonratelimit = TRUE) %>%
+#                       mutate(account = .x))
+# followers <- read_csv("NASA.csv")
+# Uniq_followers <- unique(followers$user_id)
+# 
+# # for each follower, get a binary indicator of whether they follow each tweeter or not and bind to one dataframe
+# FollowDummies <- TwitterAccount %>%
+#   map_dfc(~ ifelse(Uniq_followers %in% filter(followers, account == .x)$user_id, 1, 0) %>%
+#             as.data.frame) # UpSetR doesn't like tibbles
+# # set column names
+# names(FollowDummies) <- TwitterAccount
+# 
+# # plot the sets with UpSetR
+# upset(FollowDummies,
+#       nsets = 5,
+#       main.bar.color = "maroon",
+#       sets.bar.color = "DarkCyan",
+#       sets.x.label = "Follower Count",
+#       text.scale = c(rep(1.4, 5), 1),
+#       order.by = "freq")
+```
+
+
+
+

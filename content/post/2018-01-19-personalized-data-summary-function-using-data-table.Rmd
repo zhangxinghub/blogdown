@@ -36,7 +36,7 @@ SumFunOne = function(Data, Var, Group, StatList){
   arguments <- as.list(match.call())
   x = eval(arguments$Var, Data)
   category = eval(arguments$Group, Data)
-  keep = StatList
+  keep = c("category",StatList)
   result = Data[,  .(Mean = mean(x, na.rm=TRUE), 
                      N = sum(!is.na(x)), 
                      SE = sd(x, na.rm=TRUE)/sqrt(sum(!is.na(x))),
@@ -47,7 +47,7 @@ SumFunOne = function(Data, Var, Group, StatList){
                      by = .(category)][,..keep][order(category)]
   return(result)
 }
-(Data.Summary = SumFunOne(DT, x, category, c("category","Mean","N","SE")))
+(Data.Summary = SumFunOne(DT, x, category, c("Mean","N","SE")))
 ```
 
 The function `SumFunOne()` has 4 inputs: `Data` (should be in `data.table`), `Var` -- variable to be summarized, `Group` -- the group variable I want to condition on, and `StatList` -- the statistics I want to show. We can also subset the data using `DT[y>0]` in the input. Given the results, I can easily draw a barchart with standard errors and number of observations in `ggplot2`:
