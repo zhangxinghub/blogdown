@@ -14,7 +14,7 @@ slug: fake-news-consumption-and-segregation-on-twitter
 
 ---
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = TRUE)
 ```
 
 To form accurate beliefs about the world (e.g., whether the earth is flat or a sphere, whether vaccination causes autism, etc), people must encounter diverse views and opinions which will sometimes contradict their
@@ -22,38 +22,49 @@ pre-existing views. Many scholars concerned that the emergence of social media r
 
 The issue is how bad is this problem? Not so bad on Facebook according to some recent empirical research. Here I will show my findings using Twitter data. 
 
+I focus on two groups of people, the first groups is the followers of the NASA (the National Aeronautics and Space Administration of USA) official Twitter account `@NASA` with 29.1 million followers; the other group is the Twitter followers of [the Flat Earth Society](https://wiki.tfes.org/The_Flat_Earth_Wiki) `@FlatEarthOrg` (fortunatley, the number is not big, about 48,000 followers). The goal of the Flat Earth Society is to **"unravel the true mysteries of the universe and demonstrate that the earth is flat and that Round Earth doctrine is little more than an elaborate hoax"**. The society consists of people who belief that the earth is flat rather than a sphere. The society has their own theory of flat earth. No Joking!! See their [FAQ](https://wiki.tfes.org/Frequently_Asked_Questions) about how a flat earth would work, and how this theory would outperform the existing theory of the shape of earth.
 
-![My picture](NASA2.png)
+Suppose the members of the Flat Earth Society are a group of astronomy enthusiasts. My question is, how many of them are also interested in following the update from NASA? That is, we want to know the intersecting set of the audiences of both NASA and the Flat Earth Society (see the figure below).
 
-```{r results, eval = FALSE}
-x = 1
-# library(rtweet)
-# library(tidyverse)
-# library(UpSetR)
-# 
-# TwitterAccount <- c("NASA", "FlatEarthOrg", "FlatEarthToday")
-# # Fetch the data from Twitter using get_followers() function
-# followers <- map_df(TwitterAccount,
-#                     ~ get_followers(.x, n = 3000000, retryonratelimit = TRUE) %>%
-#                       mutate(account = .x))
-# followers <- read_csv("NASA.csv")
-# Uniq_followers <- unique(followers$user_id)
-# 
-# # for each follower, get a binary indicator of whether they follow each tweeter or not and bind to one dataframe
-# FollowDummies <- TwitterAccount %>%
-#   map_dfc(~ ifelse(Uniq_followers %in% filter(followers, account == .x)$user_id, 1, 0) %>%
-#             as.data.frame) # UpSetR doesn't like tibbles
-# # set column names
-# names(FollowDummies) <- TwitterAccount
-# 
-# # plot the sets with UpSetR
-# upset(FollowDummies,
-#       nsets = 5,
-#       main.bar.color = "maroon",
-#       sets.bar.color = "DarkCyan",
-#       sets.x.label = "Follower Count",
-#       text.scale = c(rep(1.4, 5), 1),
-#       order.by = "freq")
+![](/img/NASA_FES.png)
+I downloaded all the followers of `@NASA` and `@FlatEarthOrg` using `rtweet` package and plot the intersect set using `UpSetR` packages (see R code appended in the end). I also got the follower from  the official Twitter feed of  `@FlatEarthOrg` -- Flat Earth Today (`@FlatEarthToday`). The picture is quite amusing! 
+
+![](/img/NASA2.png)
+
+The bars on the bottom left show total follower count for each twitter handle. The bars at the top show the count of the intersections denoted in the dot matrix below them. So for columns in the matrix with only 1 dot, the bar above it shows the count of unique (no intersection) followers that twitter has. This would be the outer area of a Venn diagram that has not intersected with anything else. Columns with 2 or more dots show the count of followers the dotted twitter handles share (intersecting sections of a Venn diagram).
+
+The punchline is **only 5% of the followers of @FlatEarthOrg are also the followers of @NASA!!** If they believe that the earth is flat, basically they are not interested in what NASA would say about the universe.
+
+
+```{r code, eval = FALSE}
+
+library(rtweet)
+library(tidyverse)
+library(UpSetR)
+
+TwitterAccount <- c("NASA", "FlatEarthOrg", "FlatEarthToday")
+# Fetch the data from Twitter using get_followers() function
+followers <- map_df(TwitterAccount,
+                    ~ get_followers(.x, n = 3000000, retryonratelimit = TRUE) %>%
+                      mutate(account = .x))
+followers <- read_csv("NASA.csv")
+Uniq_followers <- unique(followers$user_id)
+
+# for each follower, get a binary indicator of whether they follow each tweeter or not and bind to one dataframe
+FollowDummies <- TwitterAccount %>%
+  map_dfc(~ ifelse(Uniq_followers %in% filter(followers, account == .x)$user_id, 1, 0) %>%
+            as.data.frame) # UpSetR doesn't like tibbles
+# set column names
+names(FollowDummies) <- TwitterAccount
+
+# plot the sets with UpSetR
+upset(FollowDummies,
+      nsets = 5,
+      main.bar.color = "maroon",
+      sets.bar.color = "DarkCyan",
+      sets.x.label = "Follower Count",
+      text.scale = c(rep(1.4, 5), 1),
+      order.by = "freq")
 ```
 
 

@@ -11,6 +11,54 @@
     <atom:link href="/post/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Fake News Consumption and Segregation on Twitter</title>
+      <link>/post/fake-news-consumption-and-segregation-on-twitter/</link>
+      <pubDate>Wed, 28 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/fake-news-consumption-and-segregation-on-twitter/</guid>
+      <description>&lt;hr /&gt;
+&lt;p&gt;To form accurate beliefs about the world (e.g., whether the earth is flat or a sphere, whether vaccination causes autism, etc), people must encounter diverse views and opinions which will sometimes contradict their pre-existing views. Many scholars concerned that the emergence of social media reduces the cost of acquiring information from a wide range of sources, facilitating consumers to self-segregate and limit themselves to the information sources that are likely to confirm their views.&lt;/p&gt;
+&lt;p&gt;The issue is how bad is this problem? Not so bad on Facebook according to some recent empirical research. Here I will show my findings using Twitter data.&lt;/p&gt;
+&lt;p&gt;I focus on two groups of people, the first groups is the followers of the NASA (the National Aeronautics and Space Administration of USA) official Twitter account &lt;code&gt;@NASA&lt;/code&gt; with 29.1 million followers; the other group is the Twitter followers of &lt;a href=&#34;https://wiki.tfes.org/The_Flat_Earth_Wiki&#34;&gt;the Flat Earth Society&lt;/a&gt; &lt;code&gt;@FlatEarthOrg&lt;/code&gt; (fortunatley, the number is not big, about 48,000 followers). The goal of the Flat Earth Society is to &lt;strong&gt;“unravel the true mysteries of the universe and demonstrate that the earth is flat and that Round Earth doctrine is little more than an elaborate hoax”&lt;/strong&gt;. The society consists of people who belief that the earth is flat rather than a sphere. The society has their own theory of flat earth. No Joking!! See their &lt;a href=&#34;https://wiki.tfes.org/Frequently_Asked_Questions&#34;&gt;FAQ&lt;/a&gt; about how a flat earth would work, and how this theory would outperform the existing theory of the shape of earth.&lt;/p&gt;
+&lt;p&gt;Suppose the members of the Flat Earth Society are a group of astronomy enthusiasts. My question is, how many of them are also interested in following the update from NASA? That is, we want to know the intersecting set of the audiences of both NASA and the Flat Earth Society (see the figure below).&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/img/NASA_FES.png&#34; /&gt; I downloaded all the followers of &lt;code&gt;@NASA&lt;/code&gt; and &lt;code&gt;@FlatEarthOrg&lt;/code&gt; using &lt;code&gt;rtweet&lt;/code&gt; package and plot the intersect set using &lt;code&gt;UpSetR&lt;/code&gt; packages (see R code appended in the end). I also got the follower from the official Twitter feed of &lt;code&gt;@FlatEarthOrg&lt;/code&gt; – Flat Earth Today (&lt;code&gt;@FlatEarthToday&lt;/code&gt;). The picture is quite amusing!&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;/img/NASA2.png&#34; /&gt;
+
+&lt;/div&gt;
+&lt;p&gt;The bars on the bottom left show total follower count for each twitter handle. The bars at the top show the count of the intersections denoted in the dot matrix below them. So for columns in the matrix with only 1 dot, the bar above it shows the count of unique (no intersection) followers that twitter has. This would be the outer area of a Venn diagram that has not intersected with anything else. Columns with 2 or more dots show the count of followers the dotted twitter handles share (intersecting sections of a Venn diagram).&lt;/p&gt;
+&lt;p&gt;The punchline is &lt;strong&gt;only 5% of the followers of &lt;span class=&#34;citation&#34;&gt;@FlatEarthOrg&lt;/span&gt; are also the followers of &lt;span class=&#34;citation&#34;&gt;@NASA&lt;/span&gt;!!&lt;/strong&gt; If they believe that the earth is flat, basically they are not interested in what NASA would say about the universe.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(rtweet)
+library(tidyverse)
+library(UpSetR)
+
+TwitterAccount &amp;lt;- c(&amp;quot;NASA&amp;quot;, &amp;quot;FlatEarthOrg&amp;quot;, &amp;quot;FlatEarthToday&amp;quot;)
+# Fetch the data from Twitter using get_followers() function
+followers &amp;lt;- map_df(TwitterAccount,
+                    ~ get_followers(.x, n = 3000000, retryonratelimit = TRUE) %&amp;gt;%
+                      mutate(account = .x))
+followers &amp;lt;- read_csv(&amp;quot;NASA.csv&amp;quot;)
+Uniq_followers &amp;lt;- unique(followers$user_id)
+
+# for each follower, get a binary indicator of whether they follow each tweeter or not and bind to one dataframe
+FollowDummies &amp;lt;- TwitterAccount %&amp;gt;%
+  map_dfc(~ ifelse(Uniq_followers %in% filter(followers, account == .x)$user_id, 1, 0) %&amp;gt;%
+            as.data.frame) # UpSetR doesn&amp;#39;t like tibbles
+# set column names
+names(FollowDummies) &amp;lt;- TwitterAccount
+
+# plot the sets with UpSetR
+upset(FollowDummies,
+      nsets = 5,
+      main.bar.color = &amp;quot;maroon&amp;quot;,
+      sets.bar.color = &amp;quot;DarkCyan&amp;quot;,
+      sets.x.label = &amp;quot;Follower Count&amp;quot;,
+      text.scale = c(rep(1.4, 5), 1),
+      order.by = &amp;quot;freq&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Personalized Data Summary Function Using &#34;data.table&#34;</title>
       <link>/post/personalized-data-summary-function-using-data-table/</link>
       <pubDate>Fri, 19 Jan 2018 00:00:00 +0000</pubDate>
@@ -43,7 +91,7 @@ DT[1:10]&lt;/code&gt;&lt;/pre&gt;
   arguments &amp;lt;- as.list(match.call())
   x = eval(arguments$Var, Data)
   category = eval(arguments$Group, Data)
-  keep = StatList
+  keep = c(&amp;quot;category&amp;quot;,StatList)
   result = Data[,  .(Mean = mean(x, na.rm=TRUE), 
                      N = sum(!is.na(x)), 
                      SE = sd(x, na.rm=TRUE)/sqrt(sum(!is.na(x))),
@@ -54,7 +102,7 @@ DT[1:10]&lt;/code&gt;&lt;/pre&gt;
                      by = .(category)][,..keep][order(category)]
   return(result)
 }
-(Data.Summary = SumFunOne(DT, x, category, c(&amp;quot;category&amp;quot;,&amp;quot;Mean&amp;quot;,&amp;quot;N&amp;quot;,&amp;quot;SE&amp;quot;)))&lt;/code&gt;&lt;/pre&gt;
+(Data.Summary = SumFunOne(DT, x, category, c(&amp;quot;Mean&amp;quot;,&amp;quot;N&amp;quot;,&amp;quot;SE&amp;quot;)))&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##    category      Mean  N        SE
 ## 1:        a 1.0233245 36 0.1561983
 ## 2:        b 0.9516208 41 0.1353133

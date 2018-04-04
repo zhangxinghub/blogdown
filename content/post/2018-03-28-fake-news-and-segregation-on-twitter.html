@@ -17,7 +17,39 @@ slug: fake-news-consumption-and-segregation-on-twitter
 <hr />
 <p>To form accurate beliefs about the world (e.g., whether the earth is flat or a sphere, whether vaccination causes autism, etc), people must encounter diverse views and opinions which will sometimes contradict their pre-existing views. Many scholars concerned that the emergence of social media reduces the cost of acquiring information from a wide range of sources, facilitating consumers to self-segregate and limit themselves to the information sources that are likely to confirm their views.</p>
 <p>The issue is how bad is this problem? Not so bad on Facebook according to some recent empirical research. Here I will show my findings using Twitter data.</p>
+<p>I focus on two groups of people, the first groups is the followers of the NASA (the National Aeronautics and Space Administration of USA) official Twitter account <code>@NASA</code> with 29.1 million followers; the other group is the Twitter followers of <a href="https://wiki.tfes.org/The_Flat_Earth_Wiki">the Flat Earth Society</a> <code>@FlatEarthOrg</code> (fortunatley, the number is not big, about 48,000 followers). The goal of the Flat Earth Society is to <strong>“unravel the true mysteries of the universe and demonstrate that the earth is flat and that Round Earth doctrine is little more than an elaborate hoax”</strong>. The society consists of people who belief that the earth is flat rather than a sphere. The society has their own theory of flat earth. No Joking!! See their <a href="https://wiki.tfes.org/Frequently_Asked_Questions">FAQ</a> about how a flat earth would work, and how this theory would outperform the existing theory of the shape of earth.</p>
+<p>Suppose the members of the Flat Earth Society are a group of astronomy enthusiasts. My question is, how many of them are also interested in following the update from NASA? That is, we want to know the intersecting set of the audiences of both NASA and the Flat Earth Society (see the figure below).</p>
+<p><img src="/img/NASA_FES.png" /> I downloaded all the followers of <code>@NASA</code> and <code>@FlatEarthOrg</code> using <code>rtweet</code> package and plot the intersect set using <code>UpSetR</code> packages (see R code appended in the end). I also got the follower from the official Twitter feed of <code>@FlatEarthOrg</code> – Flat Earth Today (<code>@FlatEarthToday</code>). The picture is quite amusing!</p>
 <div class="figure">
-<img src="NASA2.png" alt="My picture" />
-<p class="caption">My picture</p>
+<img src="/img/NASA2.png" />
+
 </div>
+<p>The bars on the bottom left show total follower count for each twitter handle. The bars at the top show the count of the intersections denoted in the dot matrix below them. So for columns in the matrix with only 1 dot, the bar above it shows the count of unique (no intersection) followers that twitter has. This would be the outer area of a Venn diagram that has not intersected with anything else. Columns with 2 or more dots show the count of followers the dotted twitter handles share (intersecting sections of a Venn diagram).</p>
+<p>The punchline is <strong>only 5% of the followers of <span class="citation">@FlatEarthOrg</span> are also the followers of <span class="citation">@NASA</span>!!</strong> If they believe that the earth is flat, basically they are not interested in what NASA would say about the universe.</p>
+<pre class="r"><code>library(rtweet)
+library(tidyverse)
+library(UpSetR)
+
+TwitterAccount &lt;- c(&quot;NASA&quot;, &quot;FlatEarthOrg&quot;, &quot;FlatEarthToday&quot;)
+# Fetch the data from Twitter using get_followers() function
+followers &lt;- map_df(TwitterAccount,
+                    ~ get_followers(.x, n = 3000000, retryonratelimit = TRUE) %&gt;%
+                      mutate(account = .x))
+followers &lt;- read_csv(&quot;NASA.csv&quot;)
+Uniq_followers &lt;- unique(followers$user_id)
+
+# for each follower, get a binary indicator of whether they follow each tweeter or not and bind to one dataframe
+FollowDummies &lt;- TwitterAccount %&gt;%
+  map_dfc(~ ifelse(Uniq_followers %in% filter(followers, account == .x)$user_id, 1, 0) %&gt;%
+            as.data.frame) # UpSetR doesn&#39;t like tibbles
+# set column names
+names(FollowDummies) &lt;- TwitterAccount
+
+# plot the sets with UpSetR
+upset(FollowDummies,
+      nsets = 5,
+      main.bar.color = &quot;maroon&quot;,
+      sets.bar.color = &quot;DarkCyan&quot;,
+      sets.x.label = &quot;Follower Count&quot;,
+      text.scale = c(rep(1.4, 5), 1),
+      order.by = &quot;freq&quot;)</code></pre>
