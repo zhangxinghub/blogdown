@@ -37,7 +37,7 @@ library(UpSetR)
 TwitterAccount &amp;lt;- c(&amp;quot;NASA&amp;quot;, &amp;quot;FlatEarthOrg&amp;quot;, &amp;quot;FlatEarthToday&amp;quot;)
 # Fetch the data from Twitter using get_followers() function
 followers &amp;lt;- map_df(TwitterAccount,
-                    ~ get_followers(.x, n = 3000000, retryonratelimit = TRUE) %&amp;gt;%
+                    ~ get_followers(.x, n = 30000000, retryonratelimit = TRUE) %&amp;gt;%
                       mutate(account = .x))
 Uniq_followers &amp;lt;- unique(followers$user_id)
 

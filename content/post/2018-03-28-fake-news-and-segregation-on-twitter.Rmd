@@ -50,7 +50,7 @@ library(UpSetR)
 TwitterAccount <- c("NASA", "FlatEarthOrg", "FlatEarthToday")
 # Fetch the data from Twitter using get_followers() function
 followers <- map_df(TwitterAccount,
-                    ~ get_followers(.x, n = 3000000, retryonratelimit = TRUE) %>%
+                    ~ get_followers(.x, n = 30000000, retryonratelimit = TRUE) %>%
                       mutate(account = .x))
 Uniq_followers <- unique(followers$user_id)
 
