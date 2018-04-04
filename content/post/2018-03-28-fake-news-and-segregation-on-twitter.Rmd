@@ -31,11 +31,10 @@ I downloaded all the followers of `@NASA` and `@FlatEarthOrg` using `rtweet` pac
 
 ![](/img/NASA2.png)
 
-The bars on the bottom left show total follower count for each twitter handle. The bars at the top show the count of the intersections denoted in the dot matrix below them. So for columns in the matrix with only 1 dot, the bar above it shows the count of unique (no intersection) followers that twitter has. This would be the outer area of a Venn diagram that has not intersected with anything else. Columns with 2 or more dots show the count of followers the dotted twitter handles share (intersecting sections of a Venn diagram).
+The bars on the bottom left show total numbers of follower each twitter account. The bars at the top show the count of the intersections denoted in the dot matrix below them. Hence, if the columns in the matrix are with only 1 dot, the bars above it show the count of unique (no intersection) followers that Twitter account has, which is the outer area of a Venn diagram that has not intersected with anything else. If the columns are with 2 or more dots, they show the count of followers the dotted twitter accounts share (intersecting sections of a Venn diagram). As can be seen, the largest intersecting set is between `@FlatEarthOrg` and `@FlatEarthToday`. The followers are hightly overlapped. Among the 48,000 followers of `@FlatEarthOrg`, only 2938 (2373 who followed @FlatEarthOrg and @NASA plus 565 followed all three accounts) are the followers of `@NASA`. 
 
-The punchline is **only 5% of the followers of @FlatEarthOrg are also the followers of @NASA!!** If they believe that the earth is flat, basically they are not interested in what NASA would say about the universe.
+The punchline is **only 6% of the followers of @FlatEarthOrg are also the followers of @NASA!!** If they believe that the earth is flat, basically they are not interested in what NASA would say about the universe on Twitter.
 
-The largest intersecting set is between `@FlatEarthOrg` and `@FlatEarthToday`. The followers are hightly overlapped. But among the followers of `@FlatEarthOrg`, only 2373 are the followers of `@NASA`. 
 
 Is the social media segregated by people's belief? In this case study, I think so.
 
