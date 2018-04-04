@@ -26,6 +26,8 @@ slug: fake-news-consumption-and-segregation-on-twitter
 </div>
 <p>The bars on the bottom left show total follower count for each twitter handle. The bars at the top show the count of the intersections denoted in the dot matrix below them. So for columns in the matrix with only 1 dot, the bar above it shows the count of unique (no intersection) followers that twitter has. This would be the outer area of a Venn diagram that has not intersected with anything else. Columns with 2 or more dots show the count of followers the dotted twitter handles share (intersecting sections of a Venn diagram).</p>
 <p>The punchline is <strong>only 5% of the followers of <span class="citation">@FlatEarthOrg</span> are also the followers of <span class="citation">@NASA</span>!!</strong> If they believe that the earth is flat, basically they are not interested in what NASA would say about the universe.</p>
+<p>The largest intersecting set is between <code>@FlatEarthOrg</code> and <code>@FlatEarthToday</code>. The followers are hightly overlapped. But among the followers of <code>@FlatEarthOrg</code>, only 2373 are the followers of <code>@NASA</code>.</p>
+<p>Is the social media segregated by people’s belief? In this case study, I think so.</p>
 <pre class="r"><code>library(rtweet)
 library(tidyverse)
 library(UpSetR)
@@ -35,7 +37,6 @@ TwitterAccount &lt;- c(&quot;NASA&quot;, &quot;FlatEarthOrg&quot;, &quot;FlatEar
 followers &lt;- map_df(TwitterAccount,
                     ~ get_followers(.x, n = 3000000, retryonratelimit = TRUE) %&gt;%
                       mutate(account = .x))
-followers &lt;- read_csv(&quot;NASA.csv&quot;)
 Uniq_followers &lt;- unique(followers$user_id)
 
 # for each follower, get a binary indicator of whether they follow each tweeter or not and bind to one dataframe

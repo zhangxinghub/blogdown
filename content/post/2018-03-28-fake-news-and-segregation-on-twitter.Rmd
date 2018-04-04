@@ -35,6 +35,11 @@ The bars on the bottom left show total follower count for each twitter handle. T
 
 The punchline is **only 5% of the followers of @FlatEarthOrg are also the followers of @NASA!!** If they believe that the earth is flat, basically they are not interested in what NASA would say about the universe.
 
+The largest intersecting set is between `@FlatEarthOrg` and `@FlatEarthToday`. The followers are hightly overlapped. But among the followers of `@FlatEarthOrg`, only 2373 are the followers of `@NASA`. 
+
+Is the social media segregated by people's belief? In this case study, I think so.
+
+
 
 ```{r code, eval = FALSE}
 
@@ -47,7 +52,6 @@ TwitterAccount <- c("NASA", "FlatEarthOrg", "FlatEarthToday")
 followers <- map_df(TwitterAccount,
                     ~ get_followers(.x, n = 3000000, retryonratelimit = TRUE) %>%
                       mutate(account = .x))
-followers <- read_csv("NASA.csv")
 Uniq_followers <- unique(followers$user_id)
 
 # for each follower, get a binary indicator of whether they follow each tweeter or not and bind to one dataframe
