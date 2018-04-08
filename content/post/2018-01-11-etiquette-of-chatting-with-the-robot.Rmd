@@ -1,0 +1,15 @@
+---
+title: Etiquette of Chatting with the Robot
+author: Xing
+date: '2018-01-11'
+slug: etiquette-of-chatting-with-the-robot
+categories: []
+tags:
+  - Artificial Intelligence
+  - Bot
+  - Experiments
+  - Human-computer Interaction
+  - Customer Service
+---
+
+More and more websites start to use chatbot in their front page. Mostly it serves as a complimentary to search function on the conventional website. 

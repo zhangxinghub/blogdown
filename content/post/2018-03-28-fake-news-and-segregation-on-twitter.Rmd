@@ -18,11 +18,14 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 To form accurate beliefs about the world (e.g., whether the earth is flat or a sphere, whether vaccination causes autism, etc), people must encounter diverse views and opinions which will sometimes contradict their
-pre-existing views. Many scholars concerned that the emergence of social media reduces the cost of acquiring information from a wide range of sources, facilitating consumers to self-segregate and limit themselves to the information sources that are likely to confirm their views. 
+pre-existing views. Many scholars concerned that the emergence of internet especially recent social media reduces the cost of acquiring information from a wide range of sources, facilitating consumers to self-segregate and limit themselves to the information sources that are likely to confirm their views. 
 
-The issue is how bad is this problem? Not so bad on Facebook according to some recent empirical research. Here I will show my findings using Twitter data. 
+The issue is how bad is this problem? Not so bad according to some recent empirical research. Using data from General Social Survey, [Genzkow and Shapiro (2011)](https://qje.oxfordjournals.org/content/126/4/1799) found that the chance that two people with opposing political views  visit the same news site is about 40%. In another research using deidentified Facebook data, [Bakshy et al. (2015)](http://education.biu.ac.il/files/education/shared/science-2015-bakshy-1130-2.pdf) found that among the Facebook users who declared their ideology, 28.5% of the news they see on Facebook is from the opposite ideology.
 
-I focus on two groups of people, the first groups is the followers of the NASA (the National Aeronautics and Space Administration of USA) official Twitter account `@NASA` with 29.1 million followers; the other group is the Twitter followers of [the Flat Earth Society](https://wiki.tfes.org/The_Flat_Earth_Wiki) `@FlatEarthOrg` (fortunatley, the number is not big, about 48,000 followers). The goal of the Flat Earth Society is to **"unravel the true mysteries of the universe and demonstrate that the earth is flat and that Round Earth doctrine is little more than an elaborate hoax"**. The society consists of people who belief that the earth is flat rather than a sphere. The society has their own theory of flat earth. No Joking!! See their [FAQ](https://wiki.tfes.org/Frequently_Asked_Questions) about how a flat earth would work, and how this theory would outperform the existing theory of the shape of earth.
+In this article, I am focusing on Twitter. Unlike Facebook on which the formation of the "friendship" can simply because they are relatives or co-workers (obligated to "friend"), users on Twitter can be anomynous, and the formation of relationship can be purely based on interest.
+
+
+I focus on two groups of people, the first groups is the followers of the NASA (the National Aeronautics and Space Administration of USA) official Twitter account `@NASA` with 29.1 million followers; the other group is the Twitter followers of [the Flat Earth Society](https://wiki.tfes.org/The_Flat_Earth_Wiki) `@FlatEarthOrg` (about 48,000 followers). The goal of the Flat Earth Society is to **"unravel the true mysteries of the universe and demonstrate that the earth is flat and that Round Earth doctrine is little more than an elaborate hoax"**. The society consists of people who belief that the earth is flat rather than a sphere. The society has their own theory of flat earth. No Joking!! See their [FAQ](https://wiki.tfes.org/Frequently_Asked_Questions) about how a flat earth would work, and how this theory would outperform the existing theory of the shape of earth.
 
 Suppose the members of the Flat Earth Society are a group of astronomy enthusiasts. My question is, how many of them are also interested in following the update from NASA? That is, we want to know the intersecting set of the audiences of both NASA and the Flat Earth Society (see the figure below).
 
@@ -36,7 +39,7 @@ The bars on the bottom left show total numbers of follower each twitter account.
 The punchline is **only 6% of the followers of @FlatEarthOrg are also the followers of @NASA!!** If they believe that the earth is flat, basically they are not interested in what NASA would say about the universe on Twitter.
 
 
-Is the social media segregated by people's belief? In this case study, I think so.
+Is the social media segregated by people's belief? This case study may not be able to give a definite answer. 
 
 
 
