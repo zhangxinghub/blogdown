@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Data Science on Xing&#39;s Site</title>
+    <link>/tags/data-science/</link>
+    <description>Recent content in Data Science on Xing&#39;s Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; Zhang Xing</copyright>
+    <lastBuildDate>Wed, 28 Mar 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/data-science/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Fake News Consumption and Segregation on Twitter</title>
+      <link>/post/fake-news-consumption-and-segregation-on-twitter/</link>
+      <pubDate>Wed, 28 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/fake-news-consumption-and-segregation-on-twitter/</guid>
+      <description>To form accurate beliefs about the world (e.g., whether the earth is flat or a sphere, whether vaccination causes autism, etc), people must encounter diverse views and opinions which will sometimes contradict their pre-existing views. Many scholars concerned that the emergence of internet especially recent social media reduces the cost of acquiring information from a wide range of sources, facilitating consumers to self-segregate and limit themselves to the information sources that are likely to confirm their views.</description>
+    </item>
+    
+    <item>
+      <title>How much we can learn from Google search data</title>
+      <link>/post/how-much-can-we-learn-from-google-search-data/</link>
+      <pubDate>Thu, 05 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/how-much-can-we-learn-from-google-search-data/</guid>
+      <description>I just finished the book Everybody Lies: Big Data, New Data, and What the Internet Can Tell Us About Who We Really Are by Seth Stephens-Davidowitz, which is a highly rated book. The author devoted a great amount of text to the Google Trends data. My fun part of reading this book is that I could dig the results from the Google Trends website myself.
+Here is one example: in the book the author argues that Google search reveals that contemporary American parents are far more focused on their son’s intelligence than on their daughters.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -8,7 +8,9 @@
     <language>en-us</language>
     <copyright>&amp;copy; Zhang Xing</copyright>
     <lastBuildDate>Sun, 01 Jan 2017 00:00:00 +0800</lastBuildDate>
-    <atom:link href="/post/" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Fake News Consumption and Segregation on Twitter</title>
@@ -16,46 +18,7 @@
       <pubDate>Wed, 28 Mar 2018 00:00:00 +0000</pubDate>
       
       <guid>/post/fake-news-consumption-and-segregation-on-twitter/</guid>
-      <description>&lt;hr /&gt;
-&lt;p&gt;To form accurate beliefs about the world (e.g., whether the earth is flat or a sphere, whether vaccination causes autism, etc), people must encounter diverse views and opinions which will sometimes contradict their pre-existing views. Many scholars concerned that the emergence of social media reduces the cost of acquiring information from a wide range of sources, facilitating consumers to self-segregate and limit themselves to the information sources that are likely to confirm their views.&lt;/p&gt;
-&lt;p&gt;The issue is how bad is this problem? Not so bad on Facebook according to some recent empirical research. Here I will show my findings using Twitter data.&lt;/p&gt;
-&lt;p&gt;I focus on two groups of people, the first groups is the followers of the NASA (the National Aeronautics and Space Administration of USA) official Twitter account &lt;code&gt;@NASA&lt;/code&gt; with 29.1 million followers; the other group is the Twitter followers of &lt;a href=&#34;https://wiki.tfes.org/The_Flat_Earth_Wiki&#34;&gt;the Flat Earth Society&lt;/a&gt; &lt;code&gt;@FlatEarthOrg&lt;/code&gt; (fortunatley, the number is not big, about 48,000 followers). The goal of the Flat Earth Society is to &lt;strong&gt;“unravel the true mysteries of the universe and demonstrate that the earth is flat and that Round Earth doctrine is little more than an elaborate hoax”&lt;/strong&gt;. The society consists of people who belief that the earth is flat rather than a sphere. The society has their own theory of flat earth. No Joking!! See their &lt;a href=&#34;https://wiki.tfes.org/Frequently_Asked_Questions&#34;&gt;FAQ&lt;/a&gt; about how a flat earth would work, and how this theory would outperform the existing theory of the shape of earth.&lt;/p&gt;
-&lt;p&gt;Suppose the members of the Flat Earth Society are a group of astronomy enthusiasts. My question is, how many of them are also interested in following the update from NASA? That is, we want to know the intersecting set of the audiences of both NASA and the Flat Earth Society (see the figure below).&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/img/NASA_FES.png&#34; /&gt; I downloaded all the followers of &lt;code&gt;@NASA&lt;/code&gt; and &lt;code&gt;@FlatEarthOrg&lt;/code&gt; using &lt;code&gt;rtweet&lt;/code&gt; package and plot the intersect set using &lt;code&gt;UpSetR&lt;/code&gt; packages (see R code appended in the end). I also got the follower from the official Twitter feed of &lt;code&gt;@FlatEarthOrg&lt;/code&gt; – Flat Earth Today (&lt;code&gt;@FlatEarthToday&lt;/code&gt;). The picture is quite amusing!&lt;/p&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/img/NASA2.png&#34; /&gt;
-
-&lt;/div&gt;
-&lt;p&gt;The bars on the bottom left show total numbers of follower each twitter account. The bars at the top show the count of the intersections denoted in the dot matrix below them. Hence, if the columns in the matrix are with only 1 dot, the bars above it show the count of unique (no intersection) followers that Twitter account has, which is the outer area of a Venn diagram that has not intersected with anything else. If the columns are with 2 or more dots, they show the count of followers the dotted twitter accounts share (intersecting sections of a Venn diagram). As can be seen, the largest intersecting set is between &lt;code&gt;@FlatEarthOrg&lt;/code&gt; and &lt;code&gt;@FlatEarthToday&lt;/code&gt;. The followers are hightly overlapped. Among the 48,000 followers of &lt;code&gt;@FlatEarthOrg&lt;/code&gt;, only 2938 (2373 who followed &lt;span class=&#34;citation&#34;&gt;@FlatEarthOrg&lt;/span&gt; and &lt;span class=&#34;citation&#34;&gt;@NASA&lt;/span&gt; plus 565 followed all three accounts) are the followers of &lt;code&gt;@NASA&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;The punchline is &lt;strong&gt;only 6% of the followers of &lt;span class=&#34;citation&#34;&gt;@FlatEarthOrg&lt;/span&gt; are also the followers of &lt;span class=&#34;citation&#34;&gt;@NASA&lt;/span&gt;!!&lt;/strong&gt; If they believe that the earth is flat, basically they are not interested in what NASA would say about the universe on Twitter.&lt;/p&gt;
-&lt;p&gt;Is the social media segregated by people’s belief? In this case study, I think so.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(rtweet)
-library(tidyverse)
-library(UpSetR)
-
-TwitterAccount &amp;lt;- c(&amp;quot;NASA&amp;quot;, &amp;quot;FlatEarthOrg&amp;quot;, &amp;quot;FlatEarthToday&amp;quot;)
-# Fetch the data from Twitter using get_followers() function
-followers &amp;lt;- map_df(TwitterAccount,
-                    ~ get_followers(.x, n = 30000000, retryonratelimit = TRUE) %&amp;gt;%
-                      mutate(account = .x))
-Uniq_followers &amp;lt;- unique(followers$user_id)
-
-# for each follower, get a binary indicator of whether they follow each tweeter or not and bind to one dataframe
-FollowDummies &amp;lt;- TwitterAccount %&amp;gt;%
-  map_dfc(~ ifelse(Uniq_followers %in% filter(followers, account == .x)$user_id, 1, 0) %&amp;gt;%
-            as.data.frame) # UpSetR doesn&amp;#39;t like tibbles
-# set column names
-names(FollowDummies) &amp;lt;- TwitterAccount
-
-# plot the sets with UpSetR
-upset(FollowDummies,
-      nsets = 5,
-      main.bar.color = &amp;quot;maroon&amp;quot;,
-      sets.bar.color = &amp;quot;DarkCyan&amp;quot;,
-      sets.x.label = &amp;quot;Follower Count&amp;quot;,
-      text.scale = c(rep(1.4, 5), 1),
-      order.by = &amp;quot;freq&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>To form accurate beliefs about the world (e.g., whether the earth is flat or a sphere, whether vaccination causes autism, etc), people must encounter diverse views and opinions which will sometimes contradict their pre-existing views. Many scholars concerned that the emergence of internet especially recent social media reduces the cost of acquiring information from a wide range of sources, facilitating consumers to self-segregate and limit themselves to the information sources that are likely to confirm their views.</description>
     </item>
     
     <item>
@@ -64,79 +27,17 @@ upset(FollowDummies,
       <pubDate>Fri, 19 Jan 2018 00:00:00 +0000</pubDate>
       
       <guid>/post/personalized-data-summary-function-using-data-table/</guid>
-      <description>&lt;p&gt;One function I miss about &lt;em&gt;Stata&lt;/em&gt; is its &lt;em&gt;tabstat&lt;/em&gt;. By using just one line code, it can produce very useful summary statistics such as &lt;code&gt;mean&lt;/code&gt;, and &lt;code&gt;standard error&lt;/code&gt; by groups by conditions. R has its own built-in summary function – &lt;code&gt;summary()&lt;/code&gt;, too, but in most cases in my research, I found the summaries produced is barely useful. Consider the following pseudo-data:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(data.table)
-set.seed(10)
-N = 120
-DT = data.table(x = rnorm(N,1), y = rnorm(N,2),
-                category = sample(letters[1:3], N, replace = T))
-DT[1:10]&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##              x         y category
-##  1:  1.0187462 1.5186344        c
-##  2:  0.8157475 2.2028818        a
-##  3: -0.3713305 1.9682603        c
-##  4:  0.4008323 0.8044197        a
-##  5:  1.2945451 2.6236812        c
-##  6:  1.3897943 1.0851955        c
-##  7: -0.2080762 2.2487580        b
-##  8:  0.6363240 0.9373772        b
-##  9: -0.6266727 1.6360178        c
-## 10:  0.7435216 0.7930051        a&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;If we summarize the variable &lt;code&gt;x&lt;/code&gt; using &lt;code&gt;summary()&lt;/code&gt;, it gives:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(DT$x)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-## -1.1853  0.2380  0.9101  0.9235  1.7119  3.2205&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;In most the case, I want to have a sense of the dispersion of the mean, number of non-mising observations. More importantly, I want to have a data table from which I can generate a barchart, which is very common in analyzing experimental data. Since I almost need this types of summary function for all of my on-going project, why not make a personalized one for myself and potential other users? Here it is.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;SumFunOne = function(Data, Var, Group, StatList){
-  arguments &amp;lt;- as.list(match.call())
-  x = eval(arguments$Var, Data)
-  category = eval(arguments$Group, Data)
-  keep = c(&amp;quot;category&amp;quot;,StatList)
-  result = Data[,  .(Mean = mean(x, na.rm=TRUE), 
-                     N = sum(!is.na(x)), 
-                     SE = sd(x, na.rm=TRUE)/sqrt(sum(!is.na(x))),
-                     median = median(x),
-                     max = max(x),
-                     min = min(x),
-                     Missing = sum(is.na(x))),
-                     by = .(category)][,..keep][order(category)]
-  return(result)
-}
-(Data.Summary = SumFunOne(DT, x, category, c(&amp;quot;Mean&amp;quot;,&amp;quot;N&amp;quot;,&amp;quot;SE&amp;quot;)))&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##    category      Mean  N        SE
-## 1:        a 1.0233245 36 0.1561983
-## 2:        b 0.9516208 41 0.1353133
-## 3:        c 0.8131563 43 0.1560230&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The function &lt;code&gt;SumFunOne()&lt;/code&gt; has 4 inputs: &lt;code&gt;Data&lt;/code&gt; (should be in &lt;code&gt;data.table&lt;/code&gt;), &lt;code&gt;Var&lt;/code&gt; – variable to be summarized, &lt;code&gt;Group&lt;/code&gt; – the group variable I want to condition on, and &lt;code&gt;StatList&lt;/code&gt; – the statistics I want to show. We can also subset the data using &lt;code&gt;DT[y&amp;gt;0]&lt;/code&gt; in the input. Given the results, I can easily draw a barchart with standard errors and number of observations in &lt;code&gt;ggplot2&lt;/code&gt;:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-01-19-personalized-data-summary-function-using-data-table_files/figure-html/ShowBarChart-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;Well, what if I want to summarize multiple variables? The goal is to have a counterpart of Stata’s &lt;em&gt;tabstat&lt;/em&gt; in R, isn’t it? It is straightforward, too. We just need to use the powerful &lt;code&gt;.SD&lt;/code&gt; in &lt;code&gt;data.table&lt;/code&gt; to apply the summary function to multiple variables. But we define the summary function first outside of the data.table. For simplicity, I only show three statistics: &lt;code&gt;Mean&lt;/code&gt;, &lt;code&gt;N&lt;/code&gt; and &lt;code&gt;SE&lt;/code&gt;. &lt;code&gt;varList&lt;/code&gt; is the variable list we want to summrize.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;SumFunMult = function(Data, varList, Group){
-  arguments &amp;lt;- as.list(match.call())
-  category = eval(arguments$Group, Data)
-  my.summary &amp;lt;- function(x){
-    c(Mean = mean(x, na.rm=TRUE), 
-      N = sum(!is.na(x)), 
-      SE = sd(x, na.rm=TRUE)/sqrt(sum(!is.na(x))))
-  }
-  result = Data[, lapply(.SD, my.summary), by=.(category), .SDcols= varList]
-  Stats = rep(c(&amp;quot;Mean&amp;quot;,&amp;quot;N&amp;quot;,&amp;quot;SE&amp;quot;),length(unique(category)))
-  summary = cbind(Stats,result)
-  return(summary)
-}
-
-SumFunMult(DT, c(&amp;quot;x&amp;quot;,&amp;quot;y&amp;quot;),category)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##    Stats category          x          y
-## 1:  Mean        c  0.8131563  1.6547724
-## 2:     N        c 43.0000000 43.0000000
-## 3:    SE        c  0.1560230  0.1491735
-## 4:  Mean        a  1.0233245  1.8356193
-## 5:     N        a 36.0000000 36.0000000
-## 6:    SE        a  0.1561983  0.1652287
-## 7:  Mean        b  0.9516208  2.0720581
-## 8:     N        b 41.0000000 41.0000000
-## 9:    SE        b  0.1353133  0.1404608&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Next task is the develop it into a package so that I can easily call the function to summarize and visualize the summary statistics…&lt;/p&gt;
-</description>
+      <description>One function I miss about Stata is its tabstat. By using just one line code, it can produce very useful summary statistics such as mean, and standard error by groups by conditions. R has its own built-in summary function – summary(), too, but in most cases in my research, I found the summaries produced is barely useful. Consider the following pseudo-data:
+library(data.table)set.seed(10)N = 120DT = data.table(x = rnorm(N,1), y = rnorm(N,2),category = sample(letters[1:3], N, replace = T))DT[1:10]## x y category## 1: 1.</description>
+    </item>
+    
+    <item>
+      <title>Etiquette of Chatting with the Robot</title>
+      <link>/post/etiquette-of-chatting-with-the-robot/</link>
+      <pubDate>Thu, 11 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/etiquette-of-chatting-with-the-robot/</guid>
+      <description>More and more websites start to use chatbot in their front page. Mostly it serves as a complimentary to search function on the conventional website.</description>
     </item>
     
     <item>
@@ -145,82 +46,18 @@ SumFunMult(DT, c(&amp;quot;x&amp;quot;,&amp;quot;y&amp;quot;),category)&lt;/code
       <pubDate>Mon, 25 Dec 2017 00:00:00 +0000</pubDate>
       
       <guid>/post/sample-size/</guid>
-      <description>&lt;div id=&#34;TOC&#34;&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#how-sample-size-is-determined&#34;&gt;How Sample Size is Determined?&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#is-it-the-end-of-the-world-if-alpha-0.005&#34;&gt;Is it the end of the world if &lt;span class=&#34;math inline&#34;&gt;\(\alpha = 0.005\)&lt;/span&gt;?&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-
-&lt;p&gt;In this &lt;a href=&#34;https://www.nature.com/articles/s41562-017-0189-z&#34;&gt;paper&lt;/a&gt; by Benjamin et al (2017) on redefining statistical significance, they proposed to &lt;strong&gt;change the default P-value threshold for statistical significance from 0.05 to 0.005 for claims of new discoveries.&lt;/strong&gt; That is the proposed p-value is one tenth of the conventional one!! Suppose the world changed to &lt;code&gt;p=0.005&lt;/code&gt;. Do we need &lt;strong&gt;10X&lt;/strong&gt; more sample? As a researcher without sufficient funding, we care about how much additional sample we need suppose our hypothesis is true.&lt;/p&gt;
-&lt;p&gt;First let’s review how sample size is calculated. It is really a good review of basic concepts in probability theory and statistics.&lt;/p&gt;
-&lt;div id=&#34;how-sample-size-is-determined&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;How Sample Size is Determined?&lt;/h1&gt;
-&lt;p&gt;First we have to imagine that &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; participants will be randomly assigned into two groups: Treatment (T) and Control (C) group. Assume that there are equal numbers of participants in each group (&lt;span class=&#34;math inline&#34;&gt;\(N_T=N_C\)&lt;/span&gt;). The researcher is interested in testing whether the mean of the distribution &lt;span class=&#34;math inline&#34;&gt;\(\mu\)&lt;/span&gt; in two groups are different. More specifically, the researcher is comparing the two hypotheses:&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[H_0: \mu_T-\mu_C=\mu_0=0\]&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[H_A: \mu_T-\mu_C =\mu_A \neq 0\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;The researcher is interested in the impact of the treatment on variable &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;. Let &lt;span class=&#34;math inline&#34;&gt;\(X_T\)&lt;/span&gt; denote the sample average of the treatment group, and &lt;span class=&#34;math inline&#34;&gt;\(X_C\)&lt;/span&gt; the sample average of the control group. The significance level is defined as &lt;span class=&#34;math inline&#34;&gt;\(\alpha=Prob(Reject \quad H_0|H_0)\)&lt;/span&gt;. It can be expressed in the following way: &lt;span class=&#34;math inline&#34;&gt;\(\alpha = Prob(X_T-X_C\geq v|H_0)\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt; is the critical value. For two-sided test &lt;span class=&#34;math inline&#34;&gt;\(\frac{\alpha}{2} = Prob(X_T-X_C\geq v|H_0)\)&lt;/span&gt;. That is, if we want to reject the null hypothesis, the difference &lt;span class=&#34;math inline&#34;&gt;\(X_T-X_C\)&lt;/span&gt; should be large enough. Some simple algebra is needed to derive the critical value:&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\frac{\alpha}{2}=Prob(\mu_T-\mu_C\geq v|H_0)\]&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[=1-Prob(X_T-X_C\leq v|H_0)\]&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[=1-Prob(\frac{X_T-X_C-\mu_0}{\sigma_N}\leq \frac{v-mu_0}{\sigma_N}|H_0)\]&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[=1-Prob(\frac{X_T-X_C}{\sigma_N}\leq \frac{v}{\sigma_N}|H_0)\]&lt;/span&gt;(under Null hypothesis &lt;span class=&#34;math inline&#34;&gt;\(\mu_0=0\)&lt;/span&gt;) &lt;span class=&#34;math display&#34;&gt;\[=1-\phi(\frac{v}{\sigma_N})\]&lt;/span&gt;(&lt;span class=&#34;math inline&#34;&gt;\(\phi\)&lt;/span&gt; is standardized normal distribution function)&lt;/p&gt;
-&lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(z_{1-\frac{\alpha}{2}}=\frac{v}{\sigma_N}\)&lt;/span&gt;, and then &lt;span class=&#34;math inline&#34;&gt;\(v=z_{1-\frac{\alpha}{2}} \cdot \sigma_N\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;Since power is defined as the probability of accepting the alternative hypothesis given that the alternative is true &lt;span class=&#34;math inline&#34;&gt;\(1-\beta=Prob(Accept \quad H_A|H_A)=Prob(X_T-X_C\geq v|H_A)\)&lt;/span&gt;, which can be expressed as: &lt;span class=&#34;math display&#34;&gt;\[1-\beta=1-Prob(X_T-X_C\leq z_{1-\frac{\alpha}{2}} \cdot \sigma_N |H_A)\]&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[=1-Prob(\frac{X_T-X_C-\mu_A}{\sigma_N}\leq \frac{z_{1-\frac{\alpha}{2}} \cdot \sigma_N-\mu_A}{\sigma_N}|H_A)\]&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[=1-\phi(\frac{z_{1-\frac{\alpha}{2}} \cdot \sigma_N -\mu_A}{\sigma_N})\]&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[=\phi(\frac{\mu_A}{\sigma_N}-z_{1-\frac{\alpha}{2}})\]&lt;/span&gt; As a result, &lt;span class=&#34;math inline&#34;&gt;\(z_{1-\beta}=\frac{\mu_A}{\sigma_N}-z_{1-\frac{\alpha}{2}}\)&lt;/span&gt;. Under the alternative hypothesis, &lt;span class=&#34;math inline&#34;&gt;\(X_T-X_C \sim N(\mu_A,\sigma^2/n)\)&lt;/span&gt;. Now suppose the variable of interest is binomial distributed. Then &lt;span class=&#34;math inline&#34;&gt;\(\sigma_N=\sqrt{X_T(1-X_T)/N_T + X_C(1-X_C)/N_C}\)&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[\frac{1}{\sqrt{X_T(1-X_T)/N_T + X_C(1-X_C)/N_C}}= \frac{z_{1-\beta}+z_{1-\frac{\alpha}{2}}}{X_T-X_C}\]&lt;/span&gt; $ $&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[N_T=N_C=(X_T(1-X_T)+X_C(1-X_C))\cdot (\frac{z_{1-\beta}+z_{1-\frac{\alpha}{2}}}{X_T-X_C})^2\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Hence, if we want to calculate the sample size, we only need to specify the expected rate/proportion in treatment, the expected rate/proportion in control, power, and the significance level. The code to calculate sample size for binary outcome assuming &lt;span class=&#34;math inline&#34;&gt;\(\alpha= .05\)&lt;/span&gt; is:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;## Calculate Sample Size Based on Binary Outcome
-SampleSize = function(PropTreat, PropCont, Power){
-  N = ((PropTreat*(1-PropTreat)+PropCont*(1-PropCont))*
-    ((qnorm(1-.05/2)+qnorm(1-(1-Power)))^2))/((PropTreat-PropCont)^2)
-  return(ceiling(N))
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Using the same logic, we can get the formula to calculate the sample size for normally distributed outcome:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;## Calculate Sample Size Based on Continuous Outcome
-## Two sided test at 0.05 significance level
-## kappa is the ratio of the sample size in control and treatment
-## SDTreat is the standard deviation 
-SampleSizeM = function(MeanTreat, MeanCont, SDTreat, SDCont, Power){
-  NTreat =(SDTreat^2+SDCont^2)*
-    ((qnorm(1-.05/2)+qnorm(1-(1-Power)))/(MeanTreat-MeanCont))^2
-  return(ceiling(NTreat))
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;is-it-the-end-of-the-world-if-alpha-0.005&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Is it the end of the world if &lt;span class=&#34;math inline&#34;&gt;\(\alpha = 0.005\)&lt;/span&gt;?&lt;/h1&gt;
-&lt;p&gt;The original paper gave an answer for this question. It only requires the sample size to increase by &lt;code&gt;70%&lt;/code&gt;. Consider the following senariors:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Suppose the rate of response in the control group is 50%, 40%, …,10%;&lt;/li&gt;
-&lt;li&gt;Suppose the treatment will reduce 2%, 4%, 6%, and 10% percentage points .&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;That is, if the rate of reponse in the control group is 50%, we look at the desired sample size if the treatment will reduce the rate to 48%, 46%, 44%, and 40%. Similar to other base rate. As a result, we will have a &lt;strong&gt;5 X 5&lt;/strong&gt; matrix for respective sample size. We compare difference between the case where &lt;span class=&#34;math inline&#34;&gt;\(\alpha = 0.05\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\alpha = 0.005\)&lt;/span&gt;.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;SampleSize05 = function(PropTreat, PropCont, Power){
-  N = ((PropTreat*(1-PropTreat)+PropCont*(1-PropCont))*
-    ((qnorm(1-.05/2)+qnorm(1-(1-Power)))^2))/((PropTreat-PropCont)^2)
-  return(ceiling(N))
-}
-SampleSize005 = function(PropTreat, PropCont, Power){
-  N = ((PropTreat*(1-PropTreat)+PropCont*(1-PropCont))*
-    ((qnorm(1-.005/2)+qnorm(1-(1-Power)))^2))/((PropTreat-PropCont)^2)
-  return(ceiling(N))
-}
-
-pCon = c(0.5,0.4,0.3,0.2,0.1)
-Reduced = c(0.02,0.04,0.06,0.08,0.1)
-mSampleSiz05 = matrix(NA,nrow=5,ncol=5)
-mSampleSiz005 = matrix(NA,nrow=5,ncol=5)
-for (i in 1:5){
-  for(j in 1:5){
-    mSampleSiz05[i,j] = SampleSize05((pCon[i]-Reduced[j]),pCon[i],0.8)
-    mSampleSiz005[i,j] = SampleSize005((pCon[i]-Reduced[j]),pCon[i],0.8)
-
-  }
-}
-(Increased.Sample.Size = (mSampleSiz005-mSampleSiz05)/mSampleSiz05)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##           [,1]      [,2]      [,3]      [,4]      [,5]
-## [1,] 0.6960424 0.6961145 0.6952909 0.6947195 0.6961039
-## [2,] 0.6960249 0.6958406 0.6959526 0.6939502 0.6949153
-## [3,] 0.6960505 0.6965552 0.6962617 0.6965812 0.6941581
-## [4,] 0.6961564 0.6955017 0.6944444 0.6963190 0.6903553
-## [5,] 0.6957334 0.6954103 0.6964286 0.6888889 0.6901408&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;As can be seen, all are very clost to &lt;code&gt;70%&lt;/code&gt; given different baste rate and different magnitude of effect. From &lt;code&gt;0.05&lt;/code&gt; to &lt;code&gt;0.005&lt;/code&gt;, we do not need 10 times of the sample size.&lt;/p&gt;
-&lt;/div&gt;
-</description>
+      <description>How Sample Size is Determined?Is it the end of the world if \(\alpha = 0.005\)?In this paper by Benjamin et al (2017) on redefining statistical significance, they proposed to change the default P-value threshold for statistical significance from 0.05 to 0.005 for claims of new discoveries. That is the proposed p-value is one tenth of the conventional one!! Suppose the world changed to p=0.005. Do we need 10X more sample?</description>
+    </item>
+    
+    <item>
+      <title>Limited Attention in Response to Email Scam -- A Toy Model</title>
+      <link>/post/limited-attention-in-response-to-email-scam-a-toy-model/</link>
+      <pubDate>Mon, 20 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/limited-attention-in-response-to-email-scam-a-toy-model/</guid>
+      <description>About one year ago or so, I started a project on consumer’s fraud protection issue, especially on how to protect consumers from falling prey to phishing emails – the emails sent by scammers to obtain senstive information such as password, credit card number.
+Sequence of the game:
+When a user receives an email, the prior belief that the email is unsafe and safe is \(B_{0}\) and \(1-B_{0}\), respectively.The user exerts some effort \(e\) to verify whether the email is safe.</description>
     </item>
     
     <item>
@@ -229,19 +66,8 @@ for (i in 1:5){
       <pubDate>Thu, 05 Oct 2017 00:00:00 +0000</pubDate>
       
       <guid>/post/how-much-can-we-learn-from-google-search-data/</guid>
-      <description>&lt;hr /&gt;
-&lt;p&gt;I just finished the book &lt;a href=&#34;https://www.amazon.com/Everybody-Lies-Internet-About-Really/dp/0062390856/ref=sr_1_1?ie=UTF8&amp;amp;qid=1515677064&amp;amp;sr=8-1&amp;amp;keywords=everyone+lies+book&#34;&gt;Everybody Lies: Big Data, New Data, and What the Internet Can Tell Us About Who We Really Are&lt;/a&gt; by Seth Stephens-Davidowitz, which is a highly rated book. The author devoted a great amount of text to the Google Trends data. My fun part of reading this book is that I could dig the results from the Google Trends &lt;a href=&#34;https://trends.google.com/trends/&#34;&gt;website&lt;/a&gt; myself.&lt;/p&gt;
-&lt;p&gt;Here is one example: in the book the author argues that Google search reveals that contemporary American parents are far more focused on their son’s intelligence than on their daughters. The author has an article on New York Times &lt;a href=&#34;https://www.nytimes.com/2014/01/19/opinion/sunday/google-tell-me-is-my-son-a-genius.html?rref=collection%2Fbyline%2Fseth-stephens-davidowitz&amp;amp;mtrref=www.nytimes.com&amp;amp;assetType=opinion&#34;&gt;article&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;I first reproduce the graph here. The upper panel is the search volume for “Is my daughter a genius?” and “Is my son a genius?” from 2004 to 2017. As can be seen, in most years, there are more searches for “Is my son a genius?” than “Is my daughter a genius?”. The lower panel is the average search volume. The volume for son (1.38) is almost three times than that for the daughter (0.44).&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2017-10-05-how-much-can-we-learn-from-google-search-data_files/figure-html/DaughterSon-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;Okay, it seems that American parents care whether their son is genius more than their daughters. What about “myself”? Do people care themselves whether they are genius? I contrast the search volume of &lt;strong&gt;“Am I a genius”&lt;/strong&gt; against the search for son and daughter. After all, we are narcissists, kind of. The figure is shown below.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2017-10-05-how-much-can-we-learn-from-google-search-data_files/figure-html/DaughterSonSelf-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;The search volume for “Am I a genius” is way way higher than the search volume for son and daughter. See, we are narcissistic. Not surprising at all.&lt;/p&gt;
-&lt;p&gt;Let’s try something crazy: do people care whether their &lt;strong&gt;dogs&lt;/strong&gt; are genius?&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2017-10-05-how-much-can-we-learn-from-google-search-data_files/figure-html/DaughterSonDog-1.png&#34; width=&#34;768&#34; /&gt; There are more searches on dog than daughter! Dog’s intelligence is more important than daughter’s? If this is true, no matter whether you are a feminist, this is jarring. But, wait a minute, really? Drawing conclusions from the data is very tricky. To reach the conclusions that parents are biased, we have to assume the distributions of the intelligence between boys and girls are identical, which may not be the case. Girls actually outperform boys in academically. Don’t get me wrong. I am not saying there is no gender bias issue these days. I am just saying the evidence from the Google search may not precisely reflect this issue.&lt;/p&gt;
-&lt;p&gt;Why are there more searches on dog than daughter about intelligence? One explanation is people do not apply the word “genius” equally among the objects. That is, the criteria for identifying “genius” is different. An ownder of a dog may start to search whether her dog is genius when she finds the dog can understand simple sign language. The threshold for kids is much higher. Another reason is much simpler: there are more demestic dogs in the US than girls. According to this &lt;a href=&#34;https://www.statista.com/statistics/198100/dogs-in-the-united-states-since-2000/&#34;&gt;source&lt;/a&gt;, in 2017, a total of about 89.7 million dogs lived in households in the United States as pets, which is more than twice as much as 40.2 million, the number of girls aged between 0 to 19 (see &lt;a href=&#34;https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?src=bkmk&#34;&gt;here&lt;/a&gt;). But when comparing “genius cat” vs. “genius dog”, there are more searches on “genius dog” than “genius cat” though there are more domestic cat (95.6 million) than dogs (well, dogs are &lt;a href=&#34;https://news.nationalgeographic.com/2017/11/dog-cat-brains-neurons-intelligence-study-spd/&#34;&gt;shown&lt;/a&gt; to have more neurons in the brain).&lt;/p&gt;
-&lt;p&gt;All in all, the book raised more questions than it addressed.&lt;/p&gt;
-</description>
+      <description>I just finished the book Everybody Lies: Big Data, New Data, and What the Internet Can Tell Us About Who We Really Are by Seth Stephens-Davidowitz, which is a highly rated book. The author devoted a great amount of text to the Google Trends data. My fun part of reading this book is that I could dig the results from the Google Trends website myself.
+Here is one example: in the book the author argues that Google search reveals that contemporary American parents are far more focused on their son’s intelligence than on their daughters.</description>
     </item>
     
   </channel>

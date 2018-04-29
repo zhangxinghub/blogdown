@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Experiments on Xing&#39;s Site</title>
+    <link>/tags/experiments/</link>
+    <description>Recent content in Experiments on Xing&#39;s Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; Zhang Xing</copyright>
+    <lastBuildDate>Thu, 11 Jan 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/experiments/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Etiquette of Chatting with the Robot</title>
+      <link>/post/etiquette-of-chatting-with-the-robot/</link>
+      <pubDate>Thu, 11 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/etiquette-of-chatting-with-the-robot/</guid>
+      <description>More and more websites start to use chatbot in their front page. Mostly it serves as a complimentary to search function on the conventional website.</description>
+    </item>
+    
+    <item>
+      <title>Is it the end of the world if $\alpha=0.005$ is new norm?</title>
+      <link>/post/sample-size/</link>
+      <pubDate>Mon, 25 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/sample-size/</guid>
+      <description>How Sample Size is Determined?Is it the end of the world if \(\alpha = 0.005\)?In this paper by Benjamin et al (2017) on redefining statistical significance, they proposed to change the default P-value threshold for statistical significance from 0.05 to 0.005 for claims of new discoveries. That is the proposed p-value is one tenth of the conventional one!! Suppose the world changed to p=0.005. Do we need 10X more sample?</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -23,8 +23,26 @@
     
     <url>
     
+      <loc>/post/etiquette-of-chatting-with-the-robot/</loc>
+      <lastmod>2018-01-11T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/post/sample-size/</loc>
       <lastmod>2017-12-25T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/post/limited-attention-in-response-to-email-scam-a-toy-model/</loc>
+      <lastmod>2017-11-20T00:00:00+00:00</lastmod>
     </url>
     
   
@@ -77,6 +95,16 @@
     
     <url>
     
+      <loc>/tags/artificial-intelligence/</loc>
+      <lastmod>2018-01-11T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/tags/book/</loc>
       <lastmod>2017-10-05T00:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -87,7 +115,37 @@
     
     <url>
     
+      <loc>/tags/bot/</loc>
+      <lastmod>2018-01-11T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/categories/</loc>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/consumer-behavior/</loc>
+      <lastmod>2017-11-20T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/customer-service/</loc>
+      <lastmod>2018-01-11T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -117,7 +175,7 @@
     <url>
     
       <loc>/tags/experiments/</loc>
-      <lastmod>2017-12-25T00:00:00+00:00</lastmod>
+      <lastmod>2018-01-11T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -128,6 +186,16 @@
     
       <loc>/tags/fake-news/</loc>
       <lastmod>2018-03-28T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/game-theory/</loc>
+      <lastmod>2017-11-20T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -156,8 +224,38 @@
     
     <url>
     
+      <loc>/tags/human-computer-interaction/</loc>
+      <lastmod>2018-01-11T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/tags/learning/</loc>
       <lastmod>2017-12-25T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/limited-attention/</loc>
+      <lastmod>2017-11-20T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/model/</loc>
+      <lastmod>2017-11-20T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
