@@ -22,15 +22,6 @@
     </item>
     
     <item>
-      <title>Artificial Intelligence</title>
-      <link>/tags/artificial-intelligence/</link>
-      <pubDate>Thu, 11 Jan 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/artificial-intelligence/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Book</title>
       <link>/tags/book/</link>
       <pubDate>Thu, 05 Oct 2017 00:00:00 +0000</pubDate>
@@ -40,29 +31,11 @@
     </item>
     
     <item>
-      <title>Bot</title>
-      <link>/tags/bot/</link>
-      <pubDate>Thu, 11 Jan 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/bot/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Consumer Behavior</title>
       <link>/tags/consumer-behavior/</link>
       <pubDate>Mon, 20 Nov 2017 00:00:00 +0000</pubDate>
       
       <guid>/tags/consumer-behavior/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Customer Service</title>
-      <link>/tags/customer-service/</link>
-      <pubDate>Thu, 11 Jan 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/customer-service/</guid>
       <description></description>
     </item>
     
@@ -87,7 +60,7 @@
     <item>
       <title>Experiments</title>
       <link>/tags/experiments/</link>
-      <pubDate>Thu, 11 Jan 2018 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 25 Dec 2017 00:00:00 +0000</pubDate>
       
       <guid>/tags/experiments/</guid>
       <description></description>
@@ -130,15 +103,6 @@
     </item>
     
     <item>
-      <title>Human-computer Interaction</title>
-      <link>/tags/human-computer-interaction/</link>
-      <pubDate>Thu, 11 Jan 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/human-computer-interaction/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Learning</title>
       <link>/tags/learning/</link>
       <pubDate>Mon, 25 Dec 2017 00:00:00 +0000</pubDate>
@@ -171,6 +135,15 @@
       <pubDate>Wed, 28 Mar 2018 00:00:00 +0000</pubDate>
       
       <guid>/tags/polarization/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Privacy</title>
+      <link>/tags/privacy/</link>
+      <pubDate>Thu, 14 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/privacy/</guid>
       <description></description>
     </item>
     

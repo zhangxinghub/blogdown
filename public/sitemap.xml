@@ -23,8 +23,8 @@
     
     <url>
     
-      <loc>/post/etiquette-of-chatting-with-the-robot/</loc>
-      <lastmod>2018-01-11T00:00:00+00:00</lastmod>
+      <loc>/post/sample-size/</loc>
+      <lastmod>2017-12-25T00:00:00+00:00</lastmod>
     </url>
     
   
@@ -32,8 +32,8 @@
     
     <url>
     
-      <loc>/post/sample-size/</loc>
-      <lastmod>2017-12-25T00:00:00+00:00</lastmod>
+      <loc>/post/anonymize-using-digest/</loc>
+      <lastmod>2017-12-14T00:00:00+00:00</lastmod>
     </url>
     
   
@@ -95,28 +95,8 @@
     
     <url>
     
-      <loc>/tags/artificial-intelligence/</loc>
-      <lastmod>2018-01-11T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
       <loc>/tags/book/</loc>
       <lastmod>2017-10-05T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/tags/bot/</loc>
-      <lastmod>2018-01-11T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -136,16 +116,6 @@
     
       <loc>/tags/consumer-behavior/</loc>
       <lastmod>2017-11-20T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/tags/customer-service/</loc>
-      <lastmod>2018-01-11T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -175,7 +145,7 @@
     <url>
     
       <loc>/tags/experiments/</loc>
-      <lastmod>2018-01-11T00:00:00+00:00</lastmod>
+      <lastmod>2017-12-25T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -224,16 +194,6 @@
     
     <url>
     
-      <loc>/tags/human-computer-interaction/</loc>
-      <lastmod>2018-01-11T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
       <loc>/tags/learning/</loc>
       <lastmod>2017-12-25T00:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -266,6 +226,16 @@
     
       <loc>/tags/polarization/</loc>
       <lastmod>2018-03-28T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/privacy/</loc>
+      <lastmod>2017-12-14T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     

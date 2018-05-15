@@ -480,82 +480,6 @@ library(data.table)set.seed(10)N = 120DT = data.table(x = rnorm(N,1), y = rno
       
           
       
-          
-      
-
-      
-      
-        
-        
-
-<div class="article-list-item" itemscope itemprop="blogPost">
-  
-  
-  <h3 class="article-title" itemprop="name">
-    <a href="/post/etiquette-of-chatting-with-the-robot/" itemprop="url">Etiquette of Chatting with the Robot</a>
-  </h3>
-  
-
-<div class="article-metadata">
-
-  <span class="article-date">
-    
-    <time datetime="2018-01-11 00:00:00 &#43;0000 UTC" itemprop="datePublished">
-      Jan 11, 2018
-    </time>
-  </span>
-
-  
-  <span class="middot-divider"></span>
-  <span class="article-reading-time">
-    1 min read
-  </span>
-  
-
-  
-  
-
-  
-  
-  
-  
-
-  
-
-</div>
-
-  <div class="article-style" itemprop="articleBody">
-    
-    <p>More and more websites start to use chatbot in their front page. Mostly it serves as a complimentary to search function on the conventional website.</p>
-
-    
-  </div>
-  <p class="read-more">
-    <a href="/post/etiquette-of-chatting-with-the-robot/" class="btn btn-primary btn-outline">
-      CONTINUE READING
-    </a>
-  </p>
-</div>
-
-      
-
-      
-
-        
-
-        
-        
-
-        
-        
-          
-      
-          
-      
-          
-      
-          
-      
 
       
       
@@ -636,6 +560,80 @@ library(data.table)set.seed(10)N = 120DT = data.table(x = rnorm(N,1), y = rno
   
   
   <h3 class="article-title" itemprop="name">
+    <a href="/post/anonymize-using-digest/" itemprop="url">Anonymize Individuals using digest()</a>
+  </h3>
+  
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    
+    <time datetime="2017-12-14 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+      Dec 14, 2017
+    </time>
+  </span>
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    3 min read
+  </span>
+  
+
+  
+  
+
+  
+  
+  
+  
+
+  
+
+</div>
+
+  <div class="article-style" itemprop="articleBody">
+    
+    When requesting individual level data from others (a company or a government agency), we usually need to properly anomymize the individuals to protect their privacy. The following is an example:
+(Data = data.frame(Name = c(&quot;John Smith&quot;, &quot;Jenny Ford&quot;,&quot;Vivian Lee&quot;), Secret = c(&quot;Hate dog&quot;,&quot;Afraid of ghost&quot;,&quot;A bathroom dancer&quot;)))## Name Secret## 1 John Smith Hate dog## 2 Jenny Ford Afraid of ghost## 3 Vivian Lee A bathroom dancerOne simple way is we can just drop the Name, and only keep the Secret since we are more interested in their secrets.
+    
+  </div>
+  <p class="read-more">
+    <a href="/post/anonymize-using-digest/" class="btn btn-primary btn-outline">
+      CONTINUE READING
+    </a>
+  </p>
+</div>
+
+      
+
+      
+
+        
+
+        
+        
+
+        
+        
+          
+      
+          
+      
+          
+      
+          
+      
+
+      
+      
+        
+        
+
+<div class="article-list-item" itemscope itemprop="blogPost">
+  
+  
+  <h3 class="article-title" itemprop="name">
     <a href="/post/limited-attention-in-response-to-email-scam-a-toy-model/" itemprop="url">Limited Attention in Response to Email Scam -- A Toy Model</a>
   </h3>
   
@@ -667,9 +665,7 @@ library(data.table)set.seed(10)N = 120DT = data.table(x = rnorm(N,1), y = rno
 
   <div class="article-style" itemprop="articleBody">
     
-    About one year ago or so, I started a project on consumer’s fraud protection issue, especially on how to protect consumers from falling prey to phishing emails – the emails sent by scammers to obtain senstive information such as password, credit card number.
-Sequence of the game:
-When a user receives an email, the prior belief that the email is unsafe and safe is \(B_{0}\) and \(1-B_{0}\), respectively.The user exerts some effort \(e\) to verify whether the email is safe.
+    About one year ago or so, I started a project on consumer’s fraud protection issue, especially on how to protect consumers from falling prey to phishing emails – the emails sent by scammers to obtain senstive information such as password, credit card number. How to model consumer’s response to the scam? Natually I would assume that conusmers have limited attention. That is, paying attention is effortful and costly. More effort the consumer exerts, the more accurate information the consumer will acquire.
     
   </div>
   <p class="read-more">
@@ -724,21 +720,7 @@ Sequence of the game:
           
           
           
-          <a href="/tags/artificial-intelligence" style="font-size:0.8rem">Artificial Intelligence</a>
-        
-          
-          
-          
-          
-          
           <a href="/tags/book" style="font-size:0.8rem">Book</a>
-        
-          
-          
-          
-          
-          
-          <a href="/tags/bot" style="font-size:0.8rem">Bot</a>
         
           
           
@@ -752,13 +734,6 @@ Sequence of the game:
           
           
           
-          <a href="/tags/customer-service" style="font-size:0.8rem">Customer Service</a>
-        
-          
-          
-          
-          
-          
           <a href="/tags/data" style="font-size:0.8rem">Data</a>
         
           
@@ -766,14 +741,14 @@ Sequence of the game:
           
           
           
-          <a href="/tags/data-science" style="font-size:1.8725805810714777rem">Data Science</a>
+          <a href="/tags/data-science" style="font-size:2.1472181256129828rem">Data Science</a>
         
           
           
           
           
           
-          <a href="/tags/experiments" style="font-size:1.8725805810714777rem">Experiments</a>
+          <a href="/tags/experiments" style="font-size:1.65rem">Experiments</a>
         
           
           
@@ -808,13 +783,6 @@ Sequence of the game:
           
           
           
-          <a href="/tags/human-computer-interaction" style="font-size:0.8rem">Human-computer Interaction</a>
-        
-          
-          
-          
-          
-          
           <a href="/tags/learning" style="font-size:0.8rem">Learning</a>
         
           
@@ -843,7 +811,14 @@ Sequence of the game:
           
           
           
-          <a href="/tags/r" style="font-size:1.8725805810714777rem">R</a>
+          <a href="/tags/privacy" style="font-size:0.8rem">Privacy</a>
+        
+          
+          
+          
+          
+          
+          <a href="/tags/r" style="font-size:2.1472181256129828rem">R</a>
         
           
           
@@ -857,7 +832,7 @@ Sequence of the game:
           
           
           
-          <a href="/tags/statistics" style="font-size:1.8725805810714777rem">Statistics</a>
+          <a href="/tags/statistics" style="font-size:1.65rem">Statistics</a>
         
           
           

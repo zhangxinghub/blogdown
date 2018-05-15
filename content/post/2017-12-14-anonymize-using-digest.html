@@ -1,0 +1,56 @@
+---
+title: Anonymize Individuals using digest()
+author: Xing
+date: '2017-12-14'
+slug: anonymize-using-digest
+categories: []
+tags:
+  - Data Science
+  - Experiments
+  - R
+  - Privacy
+header:
+  caption: ''
+  image: ''
+---
+
+
+
+<p>When requesting individual level data from others (a company or a government agency), we usually need to properly anomymize the individuals to protect their privacy. The following is an example:</p>
+<pre class="r"><code>(Data = data.frame(Name = c(&quot;John Smith&quot;, &quot;Jenny Ford&quot;,&quot;Vivian Lee&quot;), 
+                  Secret = c(&quot;Hate dog&quot;,&quot;Afraid of ghost&quot;,&quot;A bathroom dancer&quot;)))</code></pre>
+<pre><code>##         Name            Secret
+## 1 John Smith          Hate dog
+## 2 Jenny Ford   Afraid of ghost
+## 3 Vivian Lee A bathroom dancer</code></pre>
+<p>One simple way is we can just drop the <strong>Name</strong>, and only keep the <strong>Secret</strong> since we are more interested in their secrets. But what if we need to update individuals’ information periodically? We need a unique identifier for each individual so that it can link to his/her new information. The tricky part is that we cannot use their name as the identifier. We have to create a “cyphertext”&quot; that only the data provider can interpret but we cannot.</p>
+<p>In many cases, the data providers do not have the capacity to create a cyphertext in a systematic way. They either 1) do not provide the data due to privacy concerns, or 2) the data does not an identifier we can use in the future. Here I use R’s <code>digest()</code> package to show how to anomymize individuals and generate an identifier using <code>sha1</code> algorithm. <code>sha1</code> (Secure Hash Algorithm 1) is a cryptographic hash function which takes an input and produces a 40 digits long hash value known as a message digest. The user needs to have the random seed to decrypt the hash value and recover the original value. We can just pass the code to the data provider, and ask them to run it (R is free!). What they need to remember is jus the random seed.</p>
+<pre class="r"><code>library(digest)
+# Suppose variable Name is the variable to be hashed
+# But we have to make the string to be hashed as character
+Data$CharName &lt;- as.character(Data$Name)
+# sha1() function only work on one string each time
+# Hence we first vectorize this function so it can work on a column
+vSha1 &lt;- Vectorize(sha1)
+
+#########################################################################
+## Set the random see for the hash function                            ##
+## Procedurally, if you want to make sure that youself cannot recover  ##
+## the original name, you let them to set the seed and run the code.   ##
+SeedForDigest = 200 
+#########################################################################
+
+## Hash it!
+# To avoid serializing the vector, we set serialize=FALSE
+
+Data$HashedName = vSha1(Data$CharName, algo=c(&quot;sha1&quot;), serialize=FALSE, file=FALSE, 
+                     length=Inf, skip=&quot;auto&quot;, ascii=FALSE, raw=FALSE, seed=SeedForDigest, 
+                     errormode=c(&quot;warn&quot;))
+### Drop the original name
+Data$Name = NULL
+Data$CharName = NULL
+Data</code></pre>
+<pre><code>##              Secret                               HashedName
+## 1          Hate dog f3a82702bb67f0e1e54cf48e00d04b7960f5041d
+## 2   Afraid of ghost 55fd163065050770f063b60bca14ffcb62604b79
+## 3 A bathroom dancer 39c02d0609f6e88ff8d1a34d5454fe7631a3d485</code></pre>

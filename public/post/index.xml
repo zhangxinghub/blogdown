@@ -32,15 +32,6 @@ library(data.table)set.seed(10)N = 120DT = data.table(x = rnorm(N,1), y = rno
     </item>
     
     <item>
-      <title>Etiquette of Chatting with the Robot</title>
-      <link>/post/etiquette-of-chatting-with-the-robot/</link>
-      <pubDate>Thu, 11 Jan 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/post/etiquette-of-chatting-with-the-robot/</guid>
-      <description>More and more websites start to use chatbot in their front page. Mostly it serves as a complimentary to search function on the conventional website.</description>
-    </item>
-    
-    <item>
       <title>Is it the end of the world if $\alpha=0.005$ is new norm?</title>
       <link>/post/sample-size/</link>
       <pubDate>Mon, 25 Dec 2017 00:00:00 +0000</pubDate>
@@ -50,14 +41,22 @@ library(data.table)set.seed(10)N = 120DT = data.table(x = rnorm(N,1), y = rno
     </item>
     
     <item>
+      <title>Anonymize Individuals using digest()</title>
+      <link>/post/anonymize-using-digest/</link>
+      <pubDate>Thu, 14 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/anonymize-using-digest/</guid>
+      <description>When requesting individual level data from others (a company or a government agency), we usually need to properly anomymize the individuals to protect their privacy. The following is an example:
+(Data = data.frame(Name = c(&amp;quot;John Smith&amp;quot;, &amp;quot;Jenny Ford&amp;quot;,&amp;quot;Vivian Lee&amp;quot;), Secret = c(&amp;quot;Hate dog&amp;quot;,&amp;quot;Afraid of ghost&amp;quot;,&amp;quot;A bathroom dancer&amp;quot;)))## Name Secret## 1 John Smith Hate dog## 2 Jenny Ford Afraid of ghost## 3 Vivian Lee A bathroom dancerOne simple way is we can just drop the Name, and only keep the Secret since we are more interested in their secrets.</description>
+    </item>
+    
+    <item>
       <title>Limited Attention in Response to Email Scam -- A Toy Model</title>
       <link>/post/limited-attention-in-response-to-email-scam-a-toy-model/</link>
       <pubDate>Mon, 20 Nov 2017 00:00:00 +0000</pubDate>
       
       <guid>/post/limited-attention-in-response-to-email-scam-a-toy-model/</guid>
-      <description>About one year ago or so, I started a project on consumer’s fraud protection issue, especially on how to protect consumers from falling prey to phishing emails – the emails sent by scammers to obtain senstive information such as password, credit card number.
-Sequence of the game:
-When a user receives an email, the prior belief that the email is unsafe and safe is \(B_{0}\) and \(1-B_{0}\), respectively.The user exerts some effort \(e\) to verify whether the email is safe.</description>
+      <description>About one year ago or so, I started a project on consumer’s fraud protection issue, especially on how to protect consumers from falling prey to phishing emails – the emails sent by scammers to obtain senstive information such as password, credit card number. How to model consumer’s response to the scam? Natually I would assume that conusmers have limited attention. That is, paying attention is effortful and costly. More effort the consumer exerts, the more accurate information the consumer will acquire.</description>
     </item>
     
     <item>

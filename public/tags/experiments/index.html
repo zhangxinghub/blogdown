@@ -72,7 +72,7 @@
   <meta property="og:description" content="Postdoc Researcher">
   <meta property="og:locale" content="en-us">
   
-  <meta property="og:updated_time" content="2018-01-11T00:00:00&#43;00:00">
+  <meta property="og:updated_time" content="2017-12-25T00:00:00&#43;00:00">
   
 
   
@@ -162,13 +162,6 @@
   
   
   <div>
-    <h2><a href="/post/etiquette-of-chatting-with-the-robot/">Etiquette of Chatting with the Robot</a></h2>
-    <div class="article-style">
-      
-    </div>
-  </div>
-  
-  <div>
     <h2><a href="/post/sample-size/">Is it the end of the world if $\alpha=0.005$ is new norm?</a></h2>
     <div class="article-style">
       
@@ -176,6 +169,27 @@
 Is it the end of the world if (\alpha = 0.005)?</p>
 
 <p>In this paper by Benjamin et al (2017) on redefining statistical significance, they proposed to change the default P-value threshold for statistical significance from 0.05 to 0.005 for claims of new discoveries. That is the proposed p-value is one tenth of the conventional one!! Suppose the world changed to p=0.005. Do we need 10X more sample?</p>
+
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/post/anonymize-using-digest/">Anonymize Individuals using digest()</a></h2>
+    <div class="article-style">
+      
+      <p>When requesting individual level data from others (a company or a government agency), we usually need to properly anomymize the individuals to protect their privacy. The following is an example:
+(Data = data.frame(Name = c(&quot;John Smith&quot;, &quot;Jenny Ford&quot;,&quot;Vivian Lee&quot;), Secret = c(&quot;Hate dog&quot;,&quot;Afraid of ghost&quot;,&quot;A bathroom dancer&quot;)))</p>
+
+<h2 id="name-secret">Name Secret</h2>
+
+<h2 id="1-john-smith-hate-dog">1 John Smith Hate dog</h2>
+
+<h2 id="2-jenny-ford-afraid-of-ghost">2 Jenny Ford Afraid of ghost</h2>
+
+<h2 id="3-vivian-lee-a-bathroom-dancer">3 Vivian Lee A bathroom dancer</h2>
+
+<p>One simple way is we can just drop the Name, and only keep the Secret since we are more interested in their secrets.</p>
 
       
     </div>

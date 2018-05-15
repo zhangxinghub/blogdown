@@ -141,16 +141,6 @@ SumFunMult(DT, c(&amp;quot;x&amp;quot;,&amp;quot;y&amp;quot;),category)&lt;/code
     </item>
     
     <item>
-      <title>Etiquette of Chatting with the Robot</title>
-      <link>/post/etiquette-of-chatting-with-the-robot/</link>
-      <pubDate>Thu, 11 Jan 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/post/etiquette-of-chatting-with-the-robot/</guid>
-      <description>&lt;p&gt;More and more websites start to use chatbot in their front page. Mostly it serves as a complimentary to search function on the conventional website.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
       <title>Is it the end of the world if $\alpha=0.005$ is new norm?</title>
       <link>/post/sample-size/</link>
       <pubDate>Mon, 25 Dec 2017 00:00:00 +0000</pubDate>
@@ -235,13 +225,59 @@ for (i in 1:5){
     </item>
     
     <item>
+      <title>Anonymize Individuals using digest()</title>
+      <link>/post/anonymize-using-digest/</link>
+      <pubDate>Thu, 14 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/anonymize-using-digest/</guid>
+      <description>&lt;p&gt;When requesting individual level data from others (a company or a government agency), we usually need to properly anomymize the individuals to protect their privacy. The following is an example:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;(Data = data.frame(Name = c(&amp;quot;John Smith&amp;quot;, &amp;quot;Jenny Ford&amp;quot;,&amp;quot;Vivian Lee&amp;quot;), 
+                  Secret = c(&amp;quot;Hate dog&amp;quot;,&amp;quot;Afraid of ghost&amp;quot;,&amp;quot;A bathroom dancer&amp;quot;)))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##         Name            Secret
+## 1 John Smith          Hate dog
+## 2 Jenny Ford   Afraid of ghost
+## 3 Vivian Lee A bathroom dancer&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;One simple way is we can just drop the &lt;strong&gt;Name&lt;/strong&gt;, and only keep the &lt;strong&gt;Secret&lt;/strong&gt; since we are more interested in their secrets. But what if we need to update individuals’ information periodically? We need a unique identifier for each individual so that it can link to his/her new information. The tricky part is that we cannot use their name as the identifier. We have to create a “cyphertext”&amp;quot; that only the data provider can interpret but we cannot.&lt;/p&gt;
+&lt;p&gt;In many cases, the data providers do not have the capacity to create a cyphertext in a systematic way. They either 1) do not provide the data due to privacy concerns, or 2) the data does not an identifier we can use in the future. Here I use R’s &lt;code&gt;digest()&lt;/code&gt; package to show how to anomymize individuals and generate an identifier using &lt;code&gt;sha1&lt;/code&gt; algorithm. &lt;code&gt;sha1&lt;/code&gt; (Secure Hash Algorithm 1) is a cryptographic hash function which takes an input and produces a 40 digits long hash value known as a message digest. The user needs to have the random seed to decrypt the hash value and recover the original value. We can just pass the code to the data provider, and ask them to run it (R is free!). What they need to remember is jus the random seed.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(digest)
+# Suppose variable Name is the variable to be hashed
+# But we have to make the string to be hashed as character
+Data$CharName &amp;lt;- as.character(Data$Name)
+# sha1() function only work on one string each time
+# Hence we first vectorize this function so it can work on a column
+vSha1 &amp;lt;- Vectorize(sha1)
+
+#########################################################################
+## Set the random see for the hash function                            ##
+## Procedurally, if you want to make sure that youself cannot recover  ##
+## the original name, you let them to set the seed and run the code.   ##
+SeedForDigest = 200 
+#########################################################################
+
+## Hash it!
+# To avoid serializing the vector, we set serialize=FALSE
+
+Data$HashedName = vSha1(Data$CharName, algo=c(&amp;quot;sha1&amp;quot;), serialize=FALSE, file=FALSE, 
+                     length=Inf, skip=&amp;quot;auto&amp;quot;, ascii=FALSE, raw=FALSE, seed=SeedForDigest, 
+                     errormode=c(&amp;quot;warn&amp;quot;))
+### Drop the original name
+Data$Name = NULL
+Data$CharName = NULL
+Data&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##              Secret                               HashedName
+## 1          Hate dog f3a82702bb67f0e1e54cf48e00d04b7960f5041d
+## 2   Afraid of ghost 55fd163065050770f063b60bca14ffcb62604b79
+## 3 A bathroom dancer 39c02d0609f6e88ff8d1a34d5454fe7631a3d485&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Limited Attention in Response to Email Scam -- A Toy Model</title>
       <link>/post/limited-attention-in-response-to-email-scam-a-toy-model/</link>
       <pubDate>Mon, 20 Nov 2017 00:00:00 +0000</pubDate>
       
       <guid>/post/limited-attention-in-response-to-email-scam-a-toy-model/</guid>
-      <description>&lt;p&gt;About one year ago or so, I started a project on consumer’s fraud protection issue, especially on how to protect consumers from falling prey to phishing emails – the emails sent by scammers to obtain senstive information such as password, credit card number.&lt;/p&gt;
-&lt;p&gt;Sequence of the game:&lt;/p&gt;
+      <description>&lt;p&gt;About one year ago or so, I started a project on consumer’s fraud protection issue, especially on how to protect consumers from falling prey to phishing emails – the emails sent by scammers to obtain senstive information such as password, credit card number. How to model consumer’s response to the scam? Natually I would assume that conusmers have limited attention. That is, paying attention is effortful and costly. More effort the consumer exerts, the more accurate information the consumer will acquire. Therefore the consumer has to make tradeoff between acquiring accurate information and exerting effort. A simple (toy) model is built as follows:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;When a user receives an email, the prior belief that the email is unsafe and safe is &lt;span class=&#34;math inline&#34;&gt;\(B_{0}\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(1-B_{0}\)&lt;/span&gt;, respectively.&lt;/li&gt;
 &lt;li&gt;The user exerts some effort &lt;span class=&#34;math inline&#34;&gt;\(e\)&lt;/span&gt; to verify whether the email is safe. Given the effort level &lt;span class=&#34;math inline&#34;&gt;\(e\)&lt;/span&gt;, the user would receive a signal &lt;span class=&#34;math inline&#34;&gt;\(s\)&lt;/span&gt; which is informative about the nature of the email.&lt;/li&gt;

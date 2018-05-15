@@ -18,9 +18,7 @@
       <pubDate>Mon, 20 Nov 2017 00:00:00 +0000</pubDate>
       
       <guid>/post/limited-attention-in-response-to-email-scam-a-toy-model/</guid>
-      <description>About one year ago or so, I started a project on consumer’s fraud protection issue, especially on how to protect consumers from falling prey to phishing emails – the emails sent by scammers to obtain senstive information such as password, credit card number.
-Sequence of the game:
-When a user receives an email, the prior belief that the email is unsafe and safe is \(B_{0}\) and \(1-B_{0}\), respectively.The user exerts some effort \(e\) to verify whether the email is safe.</description>
+      <description>About one year ago or so, I started a project on consumer’s fraud protection issue, especially on how to protect consumers from falling prey to phishing emails – the emails sent by scammers to obtain senstive information such as password, credit card number. How to model consumer’s response to the scam? Natually I would assume that conusmers have limited attention. That is, paying attention is effortful and costly. More effort the consumer exerts, the more accurate information the consumer will acquire.</description>
     </item>
     
   </channel>

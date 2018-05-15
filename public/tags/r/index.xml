@@ -31,5 +31,15 @@ library(data.table)set.seed(10)N = 120DT = data.table(x = rnorm(N,1), y = rno
       <description>How Sample Size is Determined?Is it the end of the world if \(\alpha = 0.005\)?In this paper by Benjamin et al (2017) on redefining statistical significance, they proposed to change the default P-value threshold for statistical significance from 0.05 to 0.005 for claims of new discoveries. That is the proposed p-value is one tenth of the conventional one!! Suppose the world changed to p=0.005. Do we need 10X more sample?</description>
     </item>
     
+    <item>
+      <title>Anonymize Individuals using digest()</title>
+      <link>/post/anonymize-using-digest/</link>
+      <pubDate>Thu, 14 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/anonymize-using-digest/</guid>
+      <description>When requesting individual level data from others (a company or a government agency), we usually need to properly anomymize the individuals to protect their privacy. The following is an example:
+(Data = data.frame(Name = c(&amp;quot;John Smith&amp;quot;, &amp;quot;Jenny Ford&amp;quot;,&amp;quot;Vivian Lee&amp;quot;), Secret = c(&amp;quot;Hate dog&amp;quot;,&amp;quot;Afraid of ghost&amp;quot;,&amp;quot;A bathroom dancer&amp;quot;)))## Name Secret## 1 John Smith Hate dog## 2 Jenny Ford Afraid of ghost## 3 Vivian Lee A bathroom dancerOne simple way is we can just drop the Name, and only keep the Secret since we are more interested in their secrets.</description>
+    </item>
+    
   </channel>
 </rss>
