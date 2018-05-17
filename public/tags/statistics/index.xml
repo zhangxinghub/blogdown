@@ -23,7 +23,7 @@ library(data.table)set.seed(10)N = 120DT = data.table(x = rnorm(N,1), y = rno
     </item>
     
     <item>
-      <title>Is it the end of the world if $\alpha=0.005$ is new norm?</title>
+      <title>Is it the end of the world if $\alpha=0.005$ is the new norm?</title>
       <link>/post/sample-size/</link>
       <pubDate>Mon, 25 Dec 2017 00:00:00 +0000</pubDate>
       

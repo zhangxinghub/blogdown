@@ -1,5 +1,5 @@
 ---
-title: Is it the end of the world if $\alpha=0.005$ is new norm?
+title: Is it the end of the world if $\alpha=0.005$ is the new norm?
 author: Xing
 date: '2017-12-25'
 tags:
