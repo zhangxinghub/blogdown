@@ -12,7 +12,7 @@ paginate = 10
 disqusShortname = ""
 
 # Enable analytics by entering your Google Analytics tracking ID
-googleAnalytics = ""
+googleAnalytics = "UA-119938801-1"
 
 # Default language to use (if you setup multilingual support)
 defaultContentLanguage = "en"
@@ -40,7 +40,7 @@ defaultContentLanguageInSubdir = false
 
   # Your details.
   name = "Xing Zhang"
-  role = "Postdoc Researcher"
+  role = "Postdoctoral Researcher"
 
   # Organizations/Affiliations.
   #   Separate multiple entries with a comma, using the form: `[ {name="Org1", url=""}, {name="Org2", url=""} ]`.
@@ -242,24 +242,24 @@ defaultContentLanguageInSubdir = false
 #  weight = 2
 
 [[menu.main]]
-  name = "Posts"
+  name = "Blog Posts"
   url = "#posts"
   weight = 3
 
-#[[menu.main]]
-#  name = "Projects"
-#  url = "#projects"
-#  weight = 4
+[[menu.main]]
+  name = "Projects"
+  url = "#projects"
+  weight = 4
 
 #[[menu.main]]
 #  name = "Teaching"
 #  url = "#teaching"
 #  weight = 5
 
-#[[menu.main]]
-#  name = "Contact"
-#  url = "#contact"
-#  weight = 6
+[[menu.main]]
+  name = "Contact"
+  url = "#contact"
+  weight = 6
 
 # Taxonomies.
 [taxonomies]
