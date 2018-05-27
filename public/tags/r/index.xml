@@ -28,7 +28,7 @@ library(data.table)set.seed(10)N = 120DT = data.table(x = rnorm(N,1), y = rno
       <pubDate>Mon, 25 Dec 2017 00:00:00 +0000</pubDate>
       
       <guid>/post/sample-size/</guid>
-      <description>How Sample Size is Determined?Is it the end of the world if \(\alpha = 0.005\)?In this paper by Benjamin et al (2017) on redefining statistical significance, they proposed to change the default P-value threshold for statistical significance from 0.05 to 0.005 for claims of new discoveries. That is the proposed p-value is one tenth of the conventional one!! Suppose the world changed to p=0.005. Do we need 10X more sample?</description>
+      <description>In this paper by Benjamin et al (2017) on redefining statistical significance, they proposed to change the default P-value threshold for statistical significance from 0.05 to 0.005 for claims of new discoveries. That is the proposed p-value is one tenth of the conventional one!! Suppose the world changed to p=0.005. Do we need 10X more sample? As a researcher without sufficient funding, we care about how much additional sample we need suppose our hypothesis is true.</description>
     </item>
     
     <item>

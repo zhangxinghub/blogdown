@@ -9,17 +9,11 @@ tags:
   - Statistics
 output:
   blogdown::html_page:
-    toc: true
+    toc: false
 slug: sample-size
 ---
 
 
-<div id="TOC">
-<ul>
-<li><a href="#how-sample-size-is-determined">How Sample Size is Determined?</a></li>
-<li><a href="#is-it-the-end-of-the-world-if-alpha-0.005">Is it the end of the world if <span class="math inline">\(\alpha = 0.005\)</span>?</a></li>
-</ul>
-</div>
 
 <p>In this <a href="https://www.nature.com/articles/s41562-017-0189-z">paper</a> by Benjamin et al (2017) on redefining statistical significance, they proposed to <strong>change the default P-value threshold for statistical significance from 0.05 to 0.005 for claims of new discoveries.</strong> That is the proposed p-value is one tenth of the conventional one!! Suppose the world changed to <code>p=0.005</code>. Do we need <strong>10X</strong> more sample? As a researcher without sufficient funding, we care about how much additional sample we need suppose our hypothesis is true.</p>
 <p>First let’s review how sample size is calculated. It is really a good review of basic concepts in probability theory and statistics.</p>

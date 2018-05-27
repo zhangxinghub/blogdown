@@ -9,7 +9,7 @@ tags:
   - Statistics
 output:
   blogdown::html_page:
-    toc: true
+    toc: false
 slug: sample-size
 ---
 ```{r setup, include=FALSE}
