@@ -1,26 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Privacy on Xing&#39;s Site</title>
-    <link>/tags/privacy/</link>
-    <description>Recent content in Privacy on Xing&#39;s Site</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>&amp;copy; Zhang Xing</copyright>
-    <lastBuildDate>Thu, 14 Dec 2017 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/tags/privacy/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Anonymize Individuals using digest()</title>
-      <link>/post/anonymize-using-digest/</link>
-      <pubDate>Thu, 14 Dec 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/post/anonymize-using-digest/</guid>
-      <description>When requesting individual level data from others (a company or a government agency), we usually need to properly anomymize the individuals to protect their privacy. The following is an example:
-(Data = data.frame(Name = c(&amp;quot;John Smith&amp;quot;, &amp;quot;Jenny Ford&amp;quot;,&amp;quot;Vivian Lee&amp;quot;), Secret = c(&amp;quot;Hate dog&amp;quot;,&amp;quot;Afraid of ghost&amp;quot;,&amp;quot;A bathroom dancer&amp;quot;)))## Name Secret## 1 John Smith Hate dog## 2 Jenny Ford Afraid of ghost## 3 Vivian Lee A bathroom dancerOne simple way is we can just drop the Name, and only keep the Secret since we are more interested in their secrets.</description>
-    </item>
-    
-  </channel>
-</rss>

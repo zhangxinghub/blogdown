@@ -22,38 +22,20 @@
     </item>
     
     <item>
-      <title>Book</title>
-      <link>/tags/book/</link>
-      <pubDate>Thu, 05 Oct 2017 00:00:00 +0000</pubDate>
+      <title>Deep-learning</title>
+      <link>/tags/deep-learning/</link>
+      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>/tags/book/</guid>
+      <guid>/tags/deep-learning/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Consumer Behavior</title>
-      <link>/tags/consumer-behavior/</link>
-      <pubDate>Mon, 20 Nov 2017 00:00:00 +0000</pubDate>
+      <title>Demo</title>
+      <link>/tags/demo/</link>
+      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>/tags/consumer-behavior/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Data</title>
-      <link>/tags/data/</link>
-      <pubDate>Fri, 19 Jan 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/data/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Data Science</title>
-      <link>/tags/data-science/</link>
-      <pubDate>Wed, 28 Mar 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/data-science/</guid>
+      <guid>/tags/demo/</guid>
       <description></description>
     </item>
     
@@ -67,42 +49,6 @@
     </item>
     
     <item>
-      <title>Fake News</title>
-      <link>/tags/fake-news/</link>
-      <pubDate>Wed, 28 Mar 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/fake-news/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Game Theory</title>
-      <link>/tags/game-theory/</link>
-      <pubDate>Mon, 20 Nov 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/game-theory/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Gender</title>
-      <link>/tags/gender/</link>
-      <pubDate>Thu, 05 Oct 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/gender/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Google</title>
-      <link>/tags/google/</link>
-      <pubDate>Thu, 05 Oct 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/google/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Learning</title>
       <link>/tags/learning/</link>
       <pubDate>Mon, 25 Dec 2017 00:00:00 +0000</pubDate>
@@ -112,83 +58,20 @@
     </item>
     
     <item>
-      <title>Limited Attention</title>
-      <link>/tags/limited-attention/</link>
-      <pubDate>Mon, 20 Nov 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/limited-attention/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Model</title>
-      <link>/tags/model/</link>
-      <pubDate>Mon, 20 Nov 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/model/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Polarization</title>
-      <link>/tags/polarization/</link>
-      <pubDate>Wed, 28 Mar 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/polarization/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Privacy</title>
-      <link>/tags/privacy/</link>
-      <pubDate>Thu, 14 Dec 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/privacy/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>R</title>
       <link>/tags/r/</link>
-      <pubDate>Fri, 19 Jan 2018 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 25 Dec 2017 00:00:00 +0000</pubDate>
       
       <guid>/tags/r/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Social Media</title>
-      <link>/tags/social-media/</link>
-      <pubDate>Wed, 28 Mar 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/social-media/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Statistics</title>
       <link>/tags/statistics/</link>
-      <pubDate>Fri, 19 Jan 2018 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 25 Dec 2017 00:00:00 +0000</pubDate>
       
       <guid>/tags/statistics/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Twitter</title>
-      <link>/tags/twitter/</link>
-      <pubDate>Wed, 28 Mar 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/twitter/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Visualization</title>
-      <link>/tags/visualization/</link>
-      <pubDate>Wed, 28 Mar 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/visualization/</guid>
       <description></description>
     </item>
     

@@ -1,26 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Data on Xing&#39;s Site</title>
-    <link>/tags/data/</link>
-    <description>Recent content in Data on Xing&#39;s Site</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>&amp;copy; Zhang Xing</copyright>
-    <lastBuildDate>Fri, 19 Jan 2018 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/tags/data/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Personalized Data Summary Function Using &#34;data.table&#34;</title>
-      <link>/post/personalized-data-summary-function-using-data-table/</link>
-      <pubDate>Fri, 19 Jan 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/post/personalized-data-summary-function-using-data-table/</guid>
-      <description>One function I miss about Stata is its tabstat. By using just one line code, it can produce very useful summary statistics such as mean, and standard error by groups by conditions. R has its own built-in summary function – summary(), too, but in most cases in my research, I found the summaries produced is barely useful. Consider the following pseudo-data:
-library(data.table)set.seed(10)N = 120DT = data.table(x = rnorm(N,1), y = rnorm(N,2),category = sample(letters[1:3], N, replace = T))DT[1:10]## x y category## 1: 1.</description>
-    </item>
-    
-  </channel>
-</rss>

@@ -12,7 +12,7 @@ paginate = 10
 disqusShortname = ""
 
 # Enable analytics by entering your Google Analytics tracking ID
-googleAnalytics = "UA-119938801-1"
+googleAnalytics = ""
 
 # Default language to use (if you setup multilingual support)
 defaultContentLanguage = "en"
@@ -40,7 +40,7 @@ defaultContentLanguageInSubdir = false
 
   # Your details.
   name = "Xing Zhang"
-  role = "Postdoctoral Researcher"
+  role = "Postdoc Researcher"
 
   # Organizations/Affiliations.
   #   Separate multiple entries with a comma, using the form: `[ {name="Org1", url=""}, {name="Org2", url=""} ]`.
@@ -151,15 +151,15 @@ defaultContentLanguageInSubdir = false
   #   The numeric ID is used in a publication's frontmatter to categorize it.
   #   The language can be edited below.
   #   For multi-lingual sites, copy this block to each language section at the end of this file.
-  #publication_types = [
-  #  'Uncategorized',  # 0
-  #  'Conference proceedings',  # 1
-  #  'Journal',  # 2
-  #  'Work in progress',  # 3
-  #  'Technical report',  # 4
-  #  'Book',  # 5
-  #  'Book chapter'  # 6
-  #]
+  publication_types = [
+    'Uncategorized',  # 0
+    'Conference proceedings',  # 1
+    'Journal',  # 2
+    'Work in progress',  # 3
+    'Technical report',  # 4
+    'Book',  # 5
+    'Book chapter'  # 6
+  ]
 
   # Configuration of talk pages.
   [params.talks]
@@ -173,16 +173,16 @@ defaultContentLanguageInSubdir = false
     date_format = "January, 2006"
 
   # Configuration of project pages.
- # [params.projects]
+  [params.projects]
     # List publications and talks related to the project?
- #   list_children = true
+    list_children = true
 
     # Publication list format.
     #   0 = Simple
     #   1 = Detailed
     #   2 = APA
     #   3 = MLA
-#    publication_format = 3
+    publication_format = 3
 
   # Social/Academic Networking
   #
@@ -241,25 +241,25 @@ defaultContentLanguageInSubdir = false
 #  url = "#publications_selected"
 #  weight = 2
 
+[[menu.main]]
+  name = "Posts"
+  url = "#posts"
+  weight = 3
+
 #[[menu.main]]
 #  name = "Projects"
 #  url = "#projects"
 #  weight = 4
-
-[[menu.main]]
-  name = "Blog Posts"
-  url = "#posts"
-  weight = 3
 
 #[[menu.main]]
 #  name = "Teaching"
 #  url = "#teaching"
 #  weight = 5
 
-[[menu.main]]
-  name = "Contact"
-  url = "#contact"
-  weight = 6
+#[[menu.main]]
+#  name = "Contact"
+#  url = "#contact"
+#  weight = 6
 
 # Taxonomies.
 [taxonomies]
