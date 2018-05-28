@@ -23,15 +23,6 @@
     
     <url>
     
-      <loc>/post/u-shape-test-using-two-lines/</loc>
-      <lastmod>2017-12-30T00:00:00+00:00</lastmod>
-    </url>
-    
-  
-    
-    
-    <url>
-    
       <loc>/post/sample-size/</loc>
       <lastmod>2017-12-25T00:00:00+00:00</lastmod>
     </url>
@@ -104,6 +95,24 @@
     
     <url>
     
+      <loc>/project/deep-learning/</loc>
+      <lastmod>2016-04-27T00:00:00+08:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/project/example-external-project/</loc>
+      <lastmod>2016-04-27T00:00:00+08:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/tags/book/</loc>
       <lastmod>2017-10-05T00:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -115,16 +124,6 @@
     <url>
     
       <loc>/categories/</loc>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/tags/clustered-standard-error/</loc>
-      <lastmod>2017-12-30T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -163,8 +162,18 @@
     
     <url>
     
-      <loc>/tags/econometrics/</loc>
-      <lastmod>2017-12-30T00:00:00+00:00</lastmod>
+      <loc>/tags/deep-learning/</loc>
+      <lastmod>2016-04-27T00:00:00+08:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/demo/</loc>
+      <lastmod>2016-04-27T00:00:00+08:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -253,16 +262,6 @@
     
     <url>
     
-      <loc>/tags/model-selection/</loc>
-      <lastmod>2017-12-30T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
       <loc>/tags/polarization/</loc>
       <lastmod>2018-03-28T00:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -275,6 +274,16 @@
     
       <loc>/tags/privacy/</loc>
       <lastmod>2017-12-14T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/project/</loc>
+      <lastmod>2016-04-27T00:00:00+08:00</lastmod>
       <priority>0</priority>
     </url>
     

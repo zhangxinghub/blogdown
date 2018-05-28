@@ -31,15 +31,6 @@
     </item>
     
     <item>
-      <title>Clustered Standard Error</title>
-      <link>/tags/clustered-standard-error/</link>
-      <pubDate>Sat, 30 Dec 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/clustered-standard-error/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Consumer Behavior</title>
       <link>/tags/consumer-behavior/</link>
       <pubDate>Mon, 20 Nov 2017 00:00:00 +0000</pubDate>
@@ -67,11 +58,20 @@
     </item>
     
     <item>
-      <title>Econometrics</title>
-      <link>/tags/econometrics/</link>
-      <pubDate>Sat, 30 Dec 2017 00:00:00 +0000</pubDate>
+      <title>Deep-learning</title>
+      <link>/tags/deep-learning/</link>
+      <pubDate>Wed, 27 Apr 2016 00:00:00 +0800</pubDate>
       
-      <guid>/tags/econometrics/</guid>
+      <guid>/tags/deep-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Demo</title>
+      <link>/tags/demo/</link>
+      <pubDate>Wed, 27 Apr 2016 00:00:00 +0800</pubDate>
+      
+      <guid>/tags/demo/</guid>
       <description></description>
     </item>
     
@@ -144,15 +144,6 @@
       <pubDate>Mon, 20 Nov 2017 00:00:00 +0000</pubDate>
       
       <guid>/tags/model/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Model Selection</title>
-      <link>/tags/model-selection/</link>
-      <pubDate>Sat, 30 Dec 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/model-selection/</guid>
       <description></description>
     </item>
     

@@ -8,17 +8,29 @@
   <meta name="theme" content="hugo-academic">
   <meta name="generator" content="Hugo 0.40.1" />
   <meta name="author" content="Xing Zhang">
-  <meta name="description" content="Postdoc Researcher">
+
+  
+  
+  
+  
+    
+      
+    
+  
+  <meta name="description" content="One function I miss about Stata is its tabstat. By using just one line code, it can produce very useful summary statistics such as mean, and standard error by groups by conditions. R has its own built-in summary function – summary(), too, but in most cases in my research, I found the summaries produced is barely useful. Consider the following pseudo-data:
+library(data.table)set.seed(10)N = 120DT = data.table(x = rnorm(N,1), y = rnorm(N,2),category = sample(letters[1:3], N, replace = T))DT[1:10]## x y category## 1: 1.">
 
   
   <link rel="alternate" hreflang="en-us" href="/post/personalized-data-summary-function-using-data-table/">
 
   
-  
 
 
   
 
+  
+  
+  <meta name="theme-color" content="#0095eb">
   
   
   
@@ -37,6 +49,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha512-6MXa8B6uaO18Hid6blRMetEIoPqHf7Ux1tnyIQdpt9qI5OACx7C+O3IVTr98vwGnlcg0LOLa02i9Y1HpVhlfiw==" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.1/css/academicons.min.css" integrity="sha512-NThgw3XKQ1absAahW6to7Ey42uycrVvfNfyjqcFNgCmOCQ5AR4AO0SiXrN+8ZtYeappp56lk1WtvjVmEa+VR6A==" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/%!s(<nil>)/jquery.fancybox.min.css" integrity="%!s(<nil>)" crossorigin="anonymous">
   
   
   
@@ -46,6 +59,20 @@
   <link rel="stylesheet" href="/styles.css">
   
 
+  
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-119938801-1', 'auto');
+      
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    
   
 
   
@@ -67,7 +94,8 @@
   <meta property="og:site_name" content="Xing&#39;s Site">
   <meta property="og:url" content="/post/personalized-data-summary-function-using-data-table/">
   <meta property="og:title" content="Personalized Data Summary Function Using &#34;data.table&#34; | Xing&#39;s Site">
-  <meta property="og:description" content="">
+  <meta property="og:description" content="One function I miss about Stata is its tabstat. By using just one line code, it can produce very useful summary statistics such as mean, and standard error by groups by conditions. R has its own built-in summary function – summary(), too, but in most cases in my research, I found the summaries produced is barely useful. Consider the following pseudo-data:
+library(data.table)set.seed(10)N = 120DT = data.table(x = rnorm(N,1), y = rnorm(N,2),category = sample(letters[1:3], N, replace = T))DT[1:10]## x y category## 1: 1.">
   <meta property="og:locale" content="en-us">
   
   <meta property="article:published_time" content="2018-01-19T00:00:00&#43;00:00">
@@ -75,6 +103,7 @@
   <meta property="article:modified_time" content="2018-01-19T00:00:00&#43;00:00">
   
 
+  
   
 
   <title>Personalized Data Summary Function Using &#34;data.table&#34; | Xing&#39;s Site</title>
@@ -108,7 +137,9 @@
         
 
         
-
+        
+        
+        
         
           
         
@@ -125,7 +156,9 @@
         
 
         
-
+        
+        
+        
         
           
         
@@ -133,7 +166,45 @@
         <li class="nav-item">
           <a href="/#posts">
             
-            <span>Posts</span>
+            <span>Blog Posts</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#projects">
+            
+            <span>Projects</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#contact">
+            
+            <span>Contact</span>
             
           </a>
         </li>
@@ -156,18 +227,20 @@
 
 
   <div class="article-container">
-    <div class="article-inner">
-      <h1 itemprop="name">Personalized Data Summary Function Using &#34;data.table&#34;</h1>
+    <h1 itemprop="name">Personalized Data Summary Function Using &#34;data.table&#34;</h1>
 
-      
+    
 
 <div class="article-metadata">
 
   <span class="article-date">
     
-    <time datetime="2018-01-19 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+    <time datetime="2018-01-19 00:00:00 &#43;0000 UTC" itemprop="datePublished dateModified">
       Jan 19, 2018
     </time>
+  </span>
+  <span itemscope itemprop="author publisher" itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Xing Zhang">
   </span>
 
   
@@ -229,8 +302,8 @@
 </div>
 
 
-      <div class="article-style" itemprop="articleBody">
-        <p>One function I miss about <em>Stata</em> is its <em>tabstat</em>. By using just one line code, it can produce very useful summary statistics such as <code>mean</code>, and <code>standard error</code> by groups by conditions. R has its own built-in summary function – <code>summary()</code>, too, but in most cases in my research, I found the summaries produced is barely useful. Consider the following pseudo-data:</p>
+    <div class="article-style" itemprop="articleBody">
+      <p>One function I miss about <em>Stata</em> is its <em>tabstat</em>. By using just one line code, it can produce very useful summary statistics such as <code>mean</code>, and <code>standard error</code> by groups by conditions. R has its own built-in summary function – <code>summary()</code>, too, but in most cases in my research, I found the summaries produced is barely useful. Consider the following pseudo-data:</p>
 <pre class="r"><code>library(data.table)
 set.seed(10)
 N = 120
@@ -303,51 +376,46 @@ SumFunMult(DT, c(&quot;x&quot;,&quot;y&quot;),category)</code></pre>
 ## 9:    SE        b  0.1353133  0.1404608</code></pre>
 <p>Next task is the develop it into a package so that I can easily call the function to summarize and visualize the summary statistics…</p>
 
-      </div>
+    </div>
 
-      
+    
 
 
 <div class="article-tags">
   
-  <a class="btn btn-primary btn-outline" href="/tags/data">Data</a>
+  <a class="btn btn-primary btn-outline" href="/tags/data/">Data</a>
   
-  <a class="btn btn-primary btn-outline" href="/tags/r">R</a>
+  <a class="btn btn-primary btn-outline" href="/tags/r/">R</a>
   
-  <a class="btn btn-primary btn-outline" href="/tags/statistics">Statistics</a>
+  <a class="btn btn-primary btn-outline" href="/tags/statistics/">Statistics</a>
   
 </div>
 
 
 
+
+    
+    
+    <div class="article-widget">
+      <div class="hr-light"></div>
+      <h3>Related</h3>
+      <ul>
+        
+        <li><a href="/post/sample-size/">Is it the end of the world if $\alpha=0.005$ is the new norm?</a></li>
+        
+        <li><a href="/post/anonymize-using-digest/">Anonymize Individuals using digest()</a></li>
+        
+      </ul>
     </div>
+    
+
+    
+
+    
+
+
   </div>
-
 </article>
-
-
-
-<div class="article-container article-widget">
-  <div class="hr-light"></div>
-  <h3>Related</h3>
-  <ul>
-    
-    <li><a href="/post/u-shape-test-using-two-lines/">U-Shape Test using &#34;Two Lines&#34;</a></li>
-    
-    <li><a href="/post/sample-size/">Is it the end of the world if $\alpha=0.005$ is the new norm?</a></li>
-    
-    <li><a href="/post/anonymize-using-digest/">Anonymize Individuals using digest()</a></li>
-    
-  </ul>
-</div>
-
-
-
-
-<div class="article-container">
-  
-
-</div>
 
 <footer class="site-footer">
   <div class="container">
@@ -409,6 +477,7 @@ SumFunMult(DT, c(&quot;x&quot;,&quot;y&quot;),category)</code></pre>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.3/imagesloaded.pkgd.min.js" integrity="sha512-umsR78NN0D23AzgoZ11K7raBD+R6hqKojyBZs1w8WvYlsI+QuKRGBx3LFCwhatzBunCjDuJpDHwxD13sLMbpRA==" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha512-iztkobsvnjKfAtTNdHkGVjAYTrrtlC7mGp/54c40wowO7LhURYl3gVzzcEqGl/qKXQltJ2HwMrdLcNUdo+N/RQ==" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/%!s(<nil>)/jquery.fancybox.min.js" integrity="%!s(<nil>)" crossorigin="anonymous"></script>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gmaps.js/0.4.25/gmaps.min.js" integrity="sha256-7vjlAeb8OaTrCXZkCNun9djzuB2owUsaO72kXaFDBJs=" crossorigin="anonymous"></script>
     
