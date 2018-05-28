@@ -173,16 +173,16 @@ defaultContentLanguageInSubdir = false
     date_format = "January, 2006"
 
   # Configuration of project pages.
-  [params.projects]
+ # [params.projects]
     # List publications and talks related to the project?
-    list_children = true
+ #   list_children = true
 
     # Publication list format.
     #   0 = Simple
     #   1 = Detailed
     #   2 = APA
     #   3 = MLA
-    publication_format = 3
+#    publication_format = 3
 
   # Social/Academic Networking
   #
