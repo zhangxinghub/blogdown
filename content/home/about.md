@@ -4,6 +4,8 @@ widget = "about"
 active = true
 date = "2017-12-25T00:00:00"
 
+{{% staticref "files/cv.pdf" %}}Download my CV{{% /staticref %}}
+
 # Order that this section will appear in.
 weight = 5
 
@@ -12,7 +14,7 @@ weight = 5
   interests = [
     "Behavioral Economics",
     "Judgement and Decision Making",
-    "Consumer Belief Learning"
+    "Consumer Learning"
   ]
 
 # List your qualifications (such as academic degrees).

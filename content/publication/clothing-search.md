@@ -37,7 +37,7 @@ projects = ["deep-learning"]
 
 # Links (optional).
 #url_pdf = "http://www.pnas.org/content/113/10/2780"
-#url_preprint = "http://eprints.soton.ac.uk/352095/1/Cushen-IMV2013.pdf"
+#url_preprint = ""
 #url_code = "#"
 #url_dataset = "#"
 #url_project = "#"
