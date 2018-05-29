@@ -1,6 +1,6 @@
 +++
-title = "Mobile visual clothing search"
-date = "2013-07-01"
+title = "Delay Discounting, Genetic Sensitivity, and Leukocyte Telomere Length"
+date = "2016-07-01"
 
 # Authors. Comma separated list, e.g. `["Bob Smith", "David Jones"]`.
 authors = ["GA Cushen", "MS Nixon"]
@@ -33,7 +33,7 @@ selected = true
 # Projects (optional).
 #   Associate this publication with one or more of your projects.
 #   Simply enter the filename (excluding '.md') of your project file in `content/project/`.
-projects = ["example-external-project"]
+projects = ["deep-learning"]
 
 # Links (optional).
 url_pdf = "http://eprints.soton.ac.uk/352095/1/Cushen-IMV2013.pdf"
@@ -59,7 +59,7 @@ highlight = true
 # Featured image
 # Place your image in the `static/img/` folder and reference its filename below, e.g. `image = "example.jpg"`.
 [header]
-image = "headers/bubbles-wide.jpg"
+image = "headers/DNA.jpg"
 caption = "My caption :smile:"
 
 +++

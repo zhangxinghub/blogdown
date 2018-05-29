@@ -1,6 +1,6 @@
 +++
 # Date this page was created.
-date = "2016-04-27"
+date = "2018-04-27"
 
 # Project title.
 title = "Biology and Consumer Self Control"
@@ -13,7 +13,7 @@ image_preview = "Telomere.jpg"
 
 # Tags: can be used for filtering projects.
 # Example: `tags = ["machine-learning", "deep-learning"]`
-tags = ["deep-learning"]
+tags = ["Self-Control","Neuromarketing"]
 
 # Optional external URL for project (replaces project detail page).
 external_link = ""
