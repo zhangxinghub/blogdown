@@ -1,0 +1,99 @@
+---
+title: Limited Attention in Response to Email Scam -- A Toy Model
+author: Xing
+date: '2017-11-20'
+tags:
+  - Consumer Behavior
+  - Game Theory
+  - Limited Attention
+  - Model
+slug: limited-attention-in-response-to-email-scam-a-toy-model
+header:
+  caption: ''
+  image: ''
+---
+
+
+
+<p>About one year ago or so, I started a project on consumer’s fraud protection issue, especially on how to protect consumers from falling prey to phishing emails – the emails sent by scammers to obtain senstive information such as password, credit card number. How to model consumer’s response to the scam? Natually I would assume that conusmers have limited attention. That is, paying attention is effortful and costly. More effort the consumer exerts, the more accurate information the consumer will acquire. Therefore the consumer has to make tradeoff between acquiring accurate information and exerting effort. A simple (toy) model is built as follows:</p>
+<ul>
+<li>When a user receives an email, the prior belief that the email is unsafe and safe is <span class="math inline">\(B_{0}\)</span> and <span class="math inline">\(1-B_{0}\)</span>, respectively.</li>
+<li>The user exerts some effort <span class="math inline">\(e\)</span> to verify whether the email is safe. Given the effort level <span class="math inline">\(e\)</span>, the user would receive a signal <span class="math inline">\(s\)</span> which is informative about the nature of the email.</li>
+<li>Based on the signal, the user updates her belief <span class="math inline">\(B_{t}\)</span> and decides whether to neglect or comply to the content of the email.</li>
+<li>If the email is safe, the user will receive <span class="math inline">\(v\)</span> (<span class="math inline">\(v&gt;0\)</span>) by complying to it and incur cost <span class="math inline">\(m\)</span> (<span class="math inline">\(m&gt;0\)</span>) by neglecting it. If the email is unsafe, the user will receive damage <span class="math inline">\(d\)</span> (<span class="math inline">\(d&gt;0\)</span>) by complying to it and receive <span class="math inline">\(0\)</span> by neglecting it.</li>
+</ul>
+<div class="figure">
+<img src="/img/LimitedAttentionFig1.png" />
+
+</div>
+<p>We model the user’s limited attention as a process of costly information acquisition. There are two types of email: <span class="math inline">\(T=\{safe, unsafe\}=\{1, -1\}\)</span> and <span class="math inline">\(P(T=1)=B_{0}\)</span>. The user observe a signal <span class="math inline">\(S=\{-1,1\}\)</span> about the type of the email. The informativeness of the signal <span class="math inline">\(S\)</span> is represented as:</p>
+<p><span class="math display">\[\small g(S=s|T)=\frac{1+T\cdot s}{2}\]</span></p>
+<p>From equation above, we can easily verify that <span class="math inline">\(\small g(S=1|T=1)=g(S=-1|T=-1)=1\)</span> and <span class="math inline">\(\small g(S=-1|T=1)=g(S=1|T=-1)=0\)</span>. For simplicity, here we assume the signal is perfectly correlated with the type of the email.</p>
+<p>The user chooses the effort level <span class="math inline">\(e\)</span> (<span class="math inline">\(e\in [0,1]\)</span>) to verify the email. The effort level will determine the informativeness of the signal that the user will observe. Given the effort level and the type of the email, the distribution of the signal the user receives is a mixture between an informative experiment <span class="math inline">\(g(S=s|T)\)</span> and an uninformative signal <span class="math inline">\(h(s)=\frac{1}{2}\)</span></p>
+<p><span class="math display">\[\small f(S=s|T,e)=e\cdot g(S=s|T)+(1-e)\cdot \frac{1}{2}\]</span></p>
+<p>As a result, the signal is perfectly informative if the user exerts effort <span class="math inline">\(e=1\)</span>:</p>
+<p><span class="math display">\[\small f(s=1|T=1,e=1)=f(s=-1|T=-1,e=1)=1\]</span> <span class="math display">\[\small f(s=-1|T=1,e=1)=f(s=1|T=-1,e=1)=0\]</span></p>
+<p>The signal is completely uninformative if the user exerts effort <span class="math inline">\(e=0\)</span>: <span class="math display">\[\small f(s=1|T=1,e=0)=f(s=-1|T=-1,e=0)=\frac{1}{2}\]</span> <span class="math display">\[\small f(s=-1|T=1,e=0)=f(s=1|T=-1,e=0)=\frac{1}{2}\]</span></p>
+<p>Conditional on the signal and effort level, the user update her belief about the nature of the email in a Bayesian fashion:</p>
+<p><span class="math display">\[\small B(T=1|S=s,e)\]</span> <span class="math display">\[\small =\frac{f(S=s|T=1,e)\cdot P(T=1)}{f(S=s|T=1,e)\cdot P(T=1)+f(S=s|T=-1,e)\cdot P(T=-1)}\]</span></p>
+<p>Based on the updated belief, the user decides whether to neglect the email or comply to the content of the email, represented by <span class="math inline">\(A=\{n, c\}\)</span>. The expected utility of neglecting and complying are <span class="math inline">\(E[U_n]\)</span> and <span class="math inline">\(E[U_c]\)</span>, respectively. The user would comply to the content of the email if <span class="math inline">\(E[U_c] \geq E[U_n]\)</span>. That is:</p>
+<p><span class="math display">\[\small \begin{split}
+&amp; B(T=1|S=s,e)\cdot v + B(T=-1|S=s,e)\cdot(-d)  \\
+&amp;\quad \geq B(T=1|S=s,e)\cdot (-m) + B(T=-1|S=s,e)\cdot 0 
+\end{split}\]</span></p>
+<p><span class="math inline">\(\Rightarrow\)</span> <span class="math display">\[\small \frac{d}{v+m}\leq \frac{f(S=s|T=1,e)}{f(S=s|T=-1,e)}\]</span></p>
+<p><span class="math display">\[\small =\frac{[e\cdot \frac{1+s}{2}+(1-e)\cdot \frac{1}{2}]\cdot B_0}{[e\cdot \frac{1-s}{2}+(1-e)\cdot \frac{1}{2}]\cdot (1-B_0)}\]</span></p>
+<p>The user solves the following problem:</p>
+<p><span class="math display">\[V(e, A) = arg\max_{e \in [0,1]}\Big[\sum_{T\in \Gamma}\sum_{s \in S}P(T)\cdot f(s|T,e)\Big]\Big[\max_{a\in A}\sum_{T\in \Gamma}B(T|s,e)U_a \Big]-K(e)\]</span></p>
+<p><span class="math inline">\(K(e)\)</span> is the cost of paying attention by exerting <span class="math inline">\(e\)</span>. The first term in equation  is the probability of each signal, and the second is the maximum achievable expected utility from choosing to neglect (<span class="math inline">\(a=n\)</span>) or comply (<span class="math inline">\(a=c\)</span>) to the email given the updated belief <span class="math inline">\(B(T|s,e)\)</span>.</p>
+<p>To gain some basic intuition of the model, assume the user chooses only two effort level: <span class="math inline">\(e\in \{0,1\}\)</span>. If <span class="math inline">\(e=1\)</span>, then <span class="math inline">\(K(e)=k\)</span>. And we further assume <span class="math inline">\(B_0\geq \frac{d}{v+m+d}\)</span>, which implies that if the user exerts no effort <span class="math inline">\(e=0\)</span> and hence receives uninformative signal <span class="math inline">\(\small f(s=1|T=1,0)=f(s=-1|T=1,0)=f(s=1|T=-1,0)=f(s=-1|T=-1,0)=\frac{1}{2}\)</span>, the user would comply to the email (by equation ). If the user exert <span class="math inline">\(e=1\)</span>, then the signal is completely informative (by equation above). As a result, the user will neglect the email if observing <span class="math inline">\(s=-1\)</span> and comply to the email if observing <span class="math inline">\(s=1\)</span>.</p>
+<p>If the user exerts <span class="math inline">\(e=0\)</span>, then:</p>
+<p><span class="math display">\[\small \begin{split}
+&amp; B_0 \Big\{ f(s=1|T=1,0)[B(T=1|s=1,0)\cdot v + B(T=-1|s=1,0)\cdot (-d)] \\
+&amp;\quad  +f(s=-1|T=1,0)[B(T=1|s=-1,0)\cdot v + B(T=-1|s=-1,0)\cdot (-d)]\Big\} \\
+&amp;\quad  (1-B_0) \Big\{ f(s=1|T=-1,0)[B(T=1|s=1,0)\cdot v + B(T=-1|s=1,0)\cdot (-d)] \\
+&amp;\quad  +f(s=-1|T=-1,0)[B(T=1|s=-1,0)\cdot v + B(T=-1|s=-1,0)\cdot (-d)]\Big\} \\
+&amp;\quad = B_0 \cdot v + (1-B_0)\cdot (-d)
+\end{split}\]</span></p>
+<p>If the user exerts <span class="math inline">\(e=1\)</span>, then:</p>
+<p><span class="math display">\[\small \begin{split}
+&amp; B_0 \Big\{ f(s=1|T=1,1)[B(T=1|s=1,1)\cdot v + B(T=-1|s=1,1 )\cdot (-d)] \\
+&amp;\quad  +f(s=-1|T=1,0)[B(T=1|s=-1,0)\cdot (-m) + B(T=-1|s=-1,0)\cdot 0]\Big\} \\
+&amp;\quad  (1-B_0) \Big\{ f(s=1|T=-1,0)[B(T=1|s=1,0)\cdot v + B(T=-1|s=1,0)\cdot (-d)] \\
+&amp;\quad  +f(s=-1|T=-1,0)[B(T=1|s=-1,0)\cdot (-m) + B(T=-1|s=-1,0)\cdot 0]\Big\} -k \\
+&amp;\quad = B_0\cdot v-k
+\end{split}\]</span></p>
+<p>From equations above, <span class="math inline">\(V(1,A)\geq V(0,A)\)</span> if <span class="math inline">\(B_0\leq \frac{d-k}{d}\)</span>. Together with early assumption that <span class="math inline">\(B_0\geq \frac{d}{v+m+d}\)</span>, we have the observation that if <span class="math inline">\(\frac{d}{v+m+d}\leq B_0 \leq \frac{d-k}{d}\)</span> (suppose <span class="math inline">\(k\leq \frac{d(v+m)}{v+m+d}\)</span>), then the user will exert <span class="math inline">\(e=1\)</span>.</p>
+<p>On the other hand, suppose <span class="math inline">\(B_0\leq \frac{d}{v+m+d}\)</span>, and then the user will choose to neglect the email conditional on a completely uninformative signal. If the user exerts <span class="math inline">\(e=0\)</span>, then:</p>
+<p><span class="math display">\[\small \begin{split}
+&amp; B_0 \Big\{ f(s=1|T=1,0)[B(T=1|s=1,0)\cdot (-m) + B(T=-1|s=1,0)\cdot 0] \\
+&amp;\quad  +f(s=-1|T=1,0)[B(T=1|s=-1,0)\cdot (-m) + B(T=-1|s=-1,0)\cdot 0]\Big\} \\
+&amp;\quad  (1-B_0) \Big\{ f(s=1|T=-1,0)[B(T=1|s=1,0)\cdot (-m) + B(T=-1|s=1,0)\cdot 0] \\
+&amp;\quad  +f(s=-1|T=-1,0)[B(T=1|s=-1,0)\cdot (-m) + B(T=-1|s=-1,0)\cdot 0]\Big\} \\
+&amp;\quad = B_0 \cdot (-m)
+\end{split}\]</span></p>
+<p>If the user exerts <span class="math inline">\(e=1\)</span>, then:</p>
+<p><span class="math display">\[\small \begin{split}
+&amp; B_0 \Big\{ f(s=1|T=1,1)[B(T=1|s=1,1)\cdot v + B(T=-1|s=1,1 )\cdot (-d)] \\
+&amp;\quad  +f(s=-1|T=1,0)[B(T=1|s=-1,0)\cdot (-m) + B(T=-1|s=-1,0)\cdot 0]\Big\} \\
+&amp;\quad  (1-B_0) \Big\{ f(s=1|T=-1,0)[B(T=1|s=1,0)\cdot v + B(T=-1|s=1,0)\cdot (-d)] \\
+&amp;\quad  +f(s=-1|T=-1,0)[B(T=1|s=-1,0)\cdot (-m) + B(T=-1|s=-1,0)\cdot 0]\Big\} -k \\
+&amp;\quad = B_0\cdot v-k
+\end{split}\]</span></p>
+<p>In such case, the user will exert <span class="math inline">\(e=1\)</span> if <span class="math inline">\(\frac{k}{v+m}\leq B_0 \leq \frac{d}{v+m+d}\)</span>.</p>
+<p>As can be seen, if <span class="math inline">\(B_0\leq \frac{k}{v+m}\)</span> which implies that the prior of receiving a safe email is low, exerting effort is not cost-effective, and the user will exert zero effort and neglect the email irrespective of the signals. If <span class="math inline">\(B_0\geq \frac{d-k}{d}\)</span>, implying that the prior of receiving a safe email is high, exerting effort is not cost-effective either, and the user will exert zero effort and comply to the email irrespective of the signals. The user will exert <span class="math inline">\(e=1\)</span> only when <span class="math inline">\(\frac{k}{v+m} \leq B_0 \leq \frac{d-k}{d}\)</span>. User’s prior <span class="math inline">\(B_0\)</span> and corresponding action is presented in Figure 2.</p>
+<div class="figure">
+<img src="/img/LimitedAttentionFig2.png" />
+
+</div>
+<p><strong>Observations:</strong> From the analysis above, we obtained the following observations:</p>
+<ul>
+<li><strong>Impact of attention cost:</strong> If the cost of paying attention is decreasing, i.e., <span class="math inline">\(k\)</span> goes smaller, the region that <span class="math inline">\(e=1\)</span> becomes larger. When <span class="math inline">\(k=0\)</span>, the user will always exert effort.</li>
+<li><strong>Impact of value of complying:</strong> As the value of complying to a safe email <span class="math inline">\(v\)</span> or the cost of neglecting a safe email <span class="math inline">\(m\)</span> increases, the region that <span class="math inline">\(e=1\)</span> becomes larger.</li>
+<li><strong>Impact of cost of complying:</strong> As the cost of complying to a unsafe email <span class="math inline">\(d\)</span> increase, the region that <span class="math inline">\(e=1\)</span> becomes larger.</li>
+<li><strong>Impact of cost of complying:</strong> Suppose the user cannot exert <span class="math inline">\(e=1\)</span> (which may be resulted from fatigue), the user will choose <span class="math inline">\(\{e=0, comply\}\)</span> if <span class="math inline">\(B_0\geq \frac{d}{v+m+d}\)</span> and choose <span class="math inline">\(\{e=0, neglect\}\)</span> if <span class="math inline">\(B_0&lt;\frac{d}{v+m+d}\)</span> (see Figure 3).</li>
+</ul>
+<div class="figure">
+<img src="/img/LimitedAttentionFig3.png" />
+
+</div>

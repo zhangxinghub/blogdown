@@ -227,7 +227,106 @@
   
   
   <h3 class="article-title" itemprop="name">
-    <a href="/post/sample-size/" itemprop="url">Sample Size</a>
+    <a href="/post/fake-news-consumption-and-segregation-on-twitter/" itemprop="url">Fake News Consumption and Segregation on Twitter</a>
+  </h3>
+  
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    
+    <time datetime="2018-03-28 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+      Mar 28, 2018
+    </time>
+  </span>
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    4 min read
+  </span>
+  
+
+  
+  
+
+  
+
+  
+
+</div>
+
+  <div class="article-style" itemprop="articleBody">
+    
+    To form accurate beliefs about the world (e.g., whether the earth is flat or a sphere, whether vaccination causes autism, etc), people must encounter diverse views and opinions which will sometimes contradict their pre-existing views. Many scholars concerned that the emergence of internet especially recent social media reduces the cost of acquiring information from a wide range of sources, facilitating consumers to self-segregate and limit themselves to the information sources that are likely to confirm their views.
+    
+  </div>
+  <p class="read-more">
+    <a href="/post/fake-news-consumption-and-segregation-on-twitter/" class="btn btn-primary btn-outline">
+      CONTINUE READING
+    </a>
+  </p>
+</div>
+
+  
+    
+    
+
+<div class="article-list-item" itemscope itemprop="blogPost">
+  
+  
+  <h3 class="article-title" itemprop="name">
+    <a href="/post/personalized-data-summary-function-using-data-table/" itemprop="url">Personalized Data Summary Function Using &#34;data.table&#34;</a>
+  </h3>
+  
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    
+    <time datetime="2018-01-19 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+      Jan 19, 2018
+    </time>
+  </span>
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    3 min read
+  </span>
+  
+
+  
+  
+
+  
+
+  
+
+</div>
+
+  <div class="article-style" itemprop="articleBody">
+    
+    One function I miss about Stata is its tabstat. By using just one line code, it can produce very useful summary statistics such as mean, and standard error by groups by conditions. R has its own built-in summary function – summary(), too, but in most cases in my research, I found the summaries produced is barely useful. Consider the following pseudo-data:
+library(data.table)set.seed(10)N = 120DT = data.table(x = rnorm(N,1), y = rnorm(N,2),category = sample(letters[1:3], N, replace = T))DT[1:10]## x y category## 1: 1.
+    
+  </div>
+  <p class="read-more">
+    <a href="/post/personalized-data-summary-function-using-data-table/" class="btn btn-primary btn-outline">
+      CONTINUE READING
+    </a>
+  </p>
+</div>
+
+  
+    
+    
+
+<div class="article-list-item" itemscope itemprop="blogPost">
+  
+  
+  <h3 class="article-title" itemprop="name">
+    <a href="/post/sample-size/" itemprop="url">Is it the end of the world if $\alpha=0.005$ is the new norm?</a>
   </h3>
   
 
@@ -243,7 +342,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    2 min read
+    4 min read
   </span>
   
 
@@ -258,12 +357,166 @@
 
   <div class="article-style" itemprop="articleBody">
     
-    This note describes how sample size calculator works. There are must be better notes somewhere else, but I find the best notes for me is the note written by myself.
-How Sample Size is Determined?Suppose there are two groups, Treatment (T) and Control (C) group. The research is to test whether there is difference in the proportion of the response between two groups. The null hypothesis is there is no difference in response (\(H_0\): \(p_T=p_C\)), and the alternative hypothesis is \(H_A\): \(p_T\neq p_C\).
+    In this paper by Benjamin et al (2017) on redefining statistical significance, they proposed to change the default P-value threshold for statistical significance from 0.05 to 0.005 for claims of new discoveries. That is the proposed p-value is one tenth of the conventional one!! Suppose the world changed to p=0.005. Do we need 10X more sample? As a researcher without sufficient funding, we care about how much additional sample we need suppose our hypothesis is true.
     
   </div>
   <p class="read-more">
     <a href="/post/sample-size/" class="btn btn-primary btn-outline">
+      CONTINUE READING
+    </a>
+  </p>
+</div>
+
+  
+    
+    
+
+<div class="article-list-item" itemscope itemprop="blogPost">
+  
+  
+  <h3 class="article-title" itemprop="name">
+    <a href="/post/anonymize-using-digest/" itemprop="url">Anonymize Individuals using digest()</a>
+  </h3>
+  
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    
+    <time datetime="2017-12-14 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+      Dec 14, 2017
+    </time>
+  </span>
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    3 min read
+  </span>
+  
+
+  
+  
+
+  
+  
+  
+  
+
+  
+
+</div>
+
+  <div class="article-style" itemprop="articleBody">
+    
+    When requesting individual level data from others (a company or a government agency), we usually need to properly anomymize the individuals to protect their privacy. The following is an example:
+(Data = data.frame(Name = c(&quot;John Smith&quot;, &quot;Jenny Ford&quot;,&quot;Vivian Lee&quot;), Secret = c(&quot;Hate dog&quot;,&quot;Afraid of ghost&quot;,&quot;A bathroom dancer&quot;)))## Name Secret## 1 John Smith Hate dog## 2 Jenny Ford Afraid of ghost## 3 Vivian Lee A bathroom dancerOne simple way is we can just drop the Name, and only keep the Secret since we are more interested in their secrets.
+    
+  </div>
+  <p class="read-more">
+    <a href="/post/anonymize-using-digest/" class="btn btn-primary btn-outline">
+      CONTINUE READING
+    </a>
+  </p>
+</div>
+
+  
+    
+    
+
+<div class="article-list-item" itemscope itemprop="blogPost">
+  
+  
+  <h3 class="article-title" itemprop="name">
+    <a href="/post/limited-attention-in-response-to-email-scam-a-toy-model/" itemprop="url">Limited Attention in Response to Email Scam -- A Toy Model</a>
+  </h3>
+  
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    
+    <time datetime="2017-11-20 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+      Nov 20, 2017
+    </time>
+  </span>
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    6 min read
+  </span>
+  
+
+  
+  
+
+  
+
+  
+
+</div>
+
+  <div class="article-style" itemprop="articleBody">
+    
+    About one year ago or so, I started a project on consumer’s fraud protection issue, especially on how to protect consumers from falling prey to phishing emails – the emails sent by scammers to obtain senstive information such as password, credit card number. How to model consumer’s response to the scam? Natually I would assume that conusmers have limited attention. That is, paying attention is effortful and costly. More effort the consumer exerts, the more accurate information the consumer will acquire.
+    
+  </div>
+  <p class="read-more">
+    <a href="/post/limited-attention-in-response-to-email-scam-a-toy-model/" class="btn btn-primary btn-outline">
+      CONTINUE READING
+    </a>
+  </p>
+</div>
+
+  
+    
+    
+
+<div class="article-list-item" itemscope itemprop="blogPost">
+  
+  
+  <h3 class="article-title" itemprop="name">
+    <a href="/post/how-much-can-we-learn-from-google-search-data/" itemprop="url">How much we can learn from Google search data</a>
+  </h3>
+  
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    
+    <time datetime="2017-10-05 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+      Oct 5, 2017
+    </time>
+  </span>
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    3 min read
+  </span>
+  
+
+  
+  
+
+  
+  
+  
+  
+
+  
+
+</div>
+
+  <div class="article-style" itemprop="articleBody">
+    
+    I just finished the book Everybody Lies: Big Data, New Data, and What the Internet Can Tell Us About Who We Really Are by Seth Stephens-Davidowitz, which is a highly rated book. The author devoted a great amount of text to the Google Trends data. My fun part of reading this book is that I could dig the results from the Google Trends website myself.
+Here is one example: in the book the author argues that Google search reveals that contemporary American parents are far more focused on their son’s intelligence than on their daughters.
+    
+  </div>
+  <p class="read-more">
+    <a href="/post/how-much-can-we-learn-from-google-search-data/" class="btn btn-primary btn-outline">
       CONTINUE READING
     </a>
   </p>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Consumer Behavior on Xing&#39;s Site</title>
+    <link>/tags/consumer-behavior/</link>
+    <description>Recent content in Consumer Behavior on Xing&#39;s Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; Zhang Xing</copyright>
+    <lastBuildDate>Mon, 20 Nov 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/consumer-behavior/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Limited Attention in Response to Email Scam -- A Toy Model</title>
+      <link>/post/limited-attention-in-response-to-email-scam-a-toy-model/</link>
+      <pubDate>Mon, 20 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/limited-attention-in-response-to-email-scam-a-toy-model/</guid>
+      <description>About one year ago or so, I started a project on consumer’s fraud protection issue, especially on how to protect consumers from falling prey to phishing emails – the emails sent by scammers to obtain senstive information such as password, credit card number. How to model consumer’s response to the scam? Natually I would assume that conusmers have limited attention. That is, paying attention is effortful and costly. More effort the consumer exerts, the more accurate information the consumer will acquire.</description>
+    </item>
+    
+  </channel>
+</rss>

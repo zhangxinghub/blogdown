@@ -1,0 +1,78 @@
+---
+title: Fake News Consumption and Segregation on Twitter
+author: Xing
+date: '2018-03-28'
+tags:
+  - Data Science
+  - Fake News
+  - Polarization
+  - Social Media
+  - Twitter
+  - Visualization
+slug: fake-news-consumption-and-segregation-on-twitter
+---
+
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+To form accurate beliefs about the world (e.g., whether the earth is flat or a sphere, whether vaccination causes autism, etc), people must encounter diverse views and opinions which will sometimes contradict their
+pre-existing views. Many scholars concerned that the emergence of internet especially recent social media reduces the cost of acquiring information from a wide range of sources, facilitating consumers to self-segregate and limit themselves to the information sources that are likely to confirm their views. 
+
+The issue is how bad is this problem? Not so bad according to some recent empirical research. Using data from General Social Survey, [Genzkow and Shapiro (2011)](https://qje.oxfordjournals.org/content/126/4/1799) found that the chance that two people with opposing political views  visit the same news site is about 40%. In another research using deidentified Facebook data, [Bakshy et al. (2015)](http://education.biu.ac.il/files/education/shared/science-2015-bakshy-1130-2.pdf) found that among the Facebook users who declared their ideology, 28.5% of the news they see on Facebook is from the opposite ideology.
+
+In this article, I am focusing on Twitter. Unlike Facebook on which the formation of the "friendship" can simply because they are relatives or co-workers (obligated to "friend"), users on Twitter can be anomynous, and the formation of relationship can be purely based on interest.
+
+
+I focus on two groups of people, the first groups is the followers of the NASA (the National Aeronautics and Space Administration of USA) official Twitter account `@NASA` with 29.1 million followers; the other group is the Twitter followers of [the Flat Earth Society](https://wiki.tfes.org/The_Flat_Earth_Wiki) `@FlatEarthOrg` (about 48,000 followers). The goal of the Flat Earth Society is to **"unravel the true mysteries of the universe and demonstrate that the earth is flat and that Round Earth doctrine is little more than an elaborate hoax"**. The society consists of people who belief that the earth is flat rather than a sphere. The society has their own theory of flat earth. No Joking!! See their [FAQ](https://wiki.tfes.org/Frequently_Asked_Questions) about how a flat earth would work, and how this theory would outperform the existing theory of the shape of earth.
+
+Suppose the members of the Flat Earth Society are a group of astronomy enthusiasts. My question is, how many of them are also interested in following the update from NASA? That is, we want to know the intersecting set of the audiences of both NASA and the Flat Earth Society (see the figure below).
+
+![](/img/NASA_FES.png)
+I downloaded all the followers of `@NASA` and `@FlatEarthOrg` using `rtweet` package and plot the intersect set using `UpSetR` packages (see R code appended in the end). I also got the follower from  the official Twitter feed of  `@FlatEarthOrg` -- Flat Earth Today (`@FlatEarthToday`). The picture is quite amusing! 
+
+![](/img/NASA2.png)
+
+The bars on the bottom left show total numbers of follower each twitter account. The bars at the top show the count of the intersections denoted in the dot matrix below them. Hence, if the columns in the matrix are with only 1 dot, the bars above it show the count of unique (no intersection) followers that Twitter account has, which is the outer area of a Venn diagram that has not intersected with anything else. If the columns are with 2 or more dots, they show the count of followers the dotted twitter accounts share (intersecting sections of a Venn diagram). As can be seen, the largest intersecting set is between `@FlatEarthOrg` and `@FlatEarthToday`. The followers are hightly overlapped. Among the 48,000 followers of `@FlatEarthOrg`, only 2938 (2373 who followed @FlatEarthOrg and @NASA plus 565 followed all three accounts) are the followers of `@NASA`. 
+
+The punchline is **only 6% of the followers of @FlatEarthOrg are also the followers of @NASA!!** If they believe that the earth is flat, basically they are not interested in what NASA would say about the universe on Twitter.
+
+
+Is the social media segregated by people's belief? This case study may not be able to give a definite answer. 
+
+
+
+```{r code, eval = FALSE}
+
+library(rtweet)
+library(tidyverse)
+library(UpSetR)
+
+TwitterAccount <- c("NASA", "FlatEarthOrg", "FlatEarthToday")
+# Fetch the data from Twitter using get_followers() function
+followers <- map_df(TwitterAccount,
+                    ~ get_followers(.x, n = 30000000, retryonratelimit = TRUE) %>%
+                      mutate(account = .x))
+Uniq_followers <- unique(followers$user_id)
+
+# for each follower, get a binary indicator of whether they follow each tweeter or not and bind to one dataframe
+FollowDummies <- TwitterAccount %>%
+  map_dfc(~ ifelse(Uniq_followers %in% filter(followers, account == .x)$user_id, 1, 0) %>%
+            as.data.frame) # UpSetR doesn't like tibbles
+# set column names
+names(FollowDummies) <- TwitterAccount
+
+# plot the sets with UpSetR
+upset(FollowDummies,
+      nsets = 5,
+      main.bar.color = "maroon",
+      sets.bar.color = "DarkCyan",
+      sets.x.label = "Follower Count",
+      text.scale = c(rep(1.4, 5), 1),
+      order.by = "freq")
+```
+
+
+
+

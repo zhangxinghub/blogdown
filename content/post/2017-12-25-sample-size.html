@@ -1,5 +1,5 @@
 ---
-title: Sample Size
+title: Is it the end of the world if $\alpha=0.005$ is the new norm?
 author: Xing
 date: '2017-12-25'
 tags:
@@ -7,29 +7,79 @@ tags:
   - Learning
   - R
   - Statistics
-blogdown::html_page:
-   toc: true
-   toc_depth: 3  
+output:
+  blogdown::html_page:
+    toc: false
 slug: sample-size
 ---
 
 
 
-<p>This note describes how sample size calculator works. There are must be better notes somewhere else, but I find the best notes for me is the note written by myself.</p>
-<div id="how-sample-size-is-determined" class="section level2">
-<h2>How Sample Size is Determined?</h2>
-<p>Suppose there are two groups, Treatment (T) and Control (C) group. The research is to test whether there is difference in the proportion of the response between two groups. The null hypothesis is there is no difference in response (<span class="math inline">\(H_0\)</span>: <span class="math inline">\(p_T=p_C\)</span>), and the alternative hypothesis is <span class="math inline">\(H_A\)</span>: <span class="math inline">\(p_T\neq p_C\)</span>. Let <span class="math inline">\(D_0=p_T-p_C\)</span> represent difference under the null hypothesis, and <span class="math inline">\(D_A=p_T-p_C\)</span> represent the difference under alternative hypothesis. To construct the statistic test, we calculate a statistic <span class="math inline">\(t\)</span> and a critical value <span class="math inline">\(C\)</span>. we reject the null hypothesis if <span class="math inline">\(|z|&gt;C\)</span> (i.e., <span class="math inline">\(t&gt;C\)</span> or <span class="math inline">\(t&lt;-C\)</span>). We focus one direction, <span class="math inline">\(t&gt;C\)</span>.</p>
-<p>The statistic <span class="math inline">\(t=\frac{D}{SD(D)}=\frac{p_T-p_C}{\sqrt{(2\bar{p}\cdot(1-\bar{p}))/n}}\)</span>, <span class="math inline">\(\bar{p}=\frac{p_T+p_C}{2}\)</span></p>
-<p>The significance level <span class="math inline">\(\alpha=0.05\)</span> is defined as <span class="math inline">\(P(Reject H_0|H_0)\)</span>. We use two-sided test, and hence <span class="math inline">\(P(t&gt;C|H_0)=\alpha/2\)</span>. <span class="math display">\[\alpha/2=P(t&gt;C|H_0)\]</span> <span class="math display">\[=1-P(t\leq C|H_0)\]</span> <span class="math display">\[=1-P(\frac{t-D_0}{SD}\leq \frac{C-D_0}{SD}|H_0)\]</span> (under Null hypothesis <span class="math inline">\(D_0=p_T-p_C=0\)</span>) <span class="math display">\[=1-\phi(\frac{C}{SD})\]</span> Then <span class="math inline">\(1-\alpha/2=\phi(\frac{C}{SD})\)</span>. Let <span class="math inline">\(z_{1-\alpha}=\frac{C}{SD}\)</span>, and then <span class="math inline">\(C=z\cdot SD\)</span></p>
-<p>The power is related to the probabiltiy of having type II error <span class="math inline">\(\beta\)</span>. The poweris defined as <span class="math inline">\(1-P(Reject H_A|H_A)=1-\beta\)</span>. We use one-sided test. Hence,</p>
-<p><span class="math display">\[1-\beta = P(t&gt;C|H_A)\]</span></p>
-<p>I made a function to calculate the sample size assuming the significance level is <span class="math inline">\(\alpha= .05\)</span>. The function is based on the formula: <span class="math inline">\(N=\frac{(Z_{1-\alpha/2}+Z_{1-\beta})^2\cdot(p_T(1-p_T)+p_C(1-p_C))}{(p_T-p_C)^2}\)</span></p>
+<p>In this <a href="https://www.nature.com/articles/s41562-017-0189-z">paper</a> by Benjamin et al (2017) on redefining statistical significance, they proposed to <strong>change the default P-value threshold for statistical significance from 0.05 to 0.005 for claims of new discoveries.</strong> That is the proposed p-value is one tenth of the conventional one!! Suppose the world changed to <code>p=0.005</code>. Do we need <strong>10X</strong> more sample? As a researcher without sufficient funding, we care about how much additional sample we need suppose our hypothesis is true.</p>
+<p>First let’s review how sample size is calculated. It is really a good review of basic concepts in probability theory and statistics.</p>
+<div id="how-sample-size-is-determined" class="section level1">
+<h1>How Sample Size is Determined?</h1>
+<p>First we have to imagine that <span class="math inline">\(N\)</span> participants will be randomly assigned into two groups: Treatment (T) and Control (C) group. Assume that there are equal numbers of participants in each group (<span class="math inline">\(N_T=N_C\)</span>). The researcher is interested in testing whether the mean of the distribution <span class="math inline">\(\mu\)</span> in two groups are different. More specifically, the researcher is comparing the two hypotheses:</p>
+<p><span class="math display">\[H_0: \mu_T-\mu_C=\mu_0=0\]</span> <span class="math display">\[H_A: \mu_T-\mu_C =\mu_A \neq 0\]</span></p>
+<p>The researcher is interested in the impact of the treatment on variable <span class="math inline">\(x\)</span>. Let <span class="math inline">\(X_T\)</span> denote the sample average of the treatment group, and <span class="math inline">\(X_C\)</span> the sample average of the control group. The significance level is defined as <span class="math inline">\(\alpha=Prob(Reject \quad H_0|H_0)\)</span>. It can be expressed in the following way: <span class="math inline">\(\alpha = Prob(X_T-X_C\geq v|H_0)\)</span>, where <span class="math inline">\(v\)</span> is the critical value. For two-sided test <span class="math inline">\(\frac{\alpha}{2} = Prob(X_T-X_C\geq v|H_0)\)</span>. That is, if we want to reject the null hypothesis, the difference <span class="math inline">\(X_T-X_C\)</span> should be large enough. Some simple algebra is needed to derive the critical value:</p>
+<p><span class="math display">\[\frac{\alpha}{2}=Prob(\mu_T-\mu_C\geq v|H_0)\]</span> <span class="math display">\[=1-Prob(X_T-X_C\leq v|H_0)\]</span> <span class="math display">\[=1-Prob(\frac{X_T-X_C-\mu_0}{\sigma_N}\leq \frac{v-mu_0}{\sigma_N}|H_0)\]</span> <span class="math display">\[=1-Prob(\frac{X_T-X_C}{\sigma_N}\leq \frac{v}{\sigma_N}|H_0)\]</span>(under Null hypothesis <span class="math inline">\(\mu_0=0\)</span>) <span class="math display">\[=1-\phi(\frac{v}{\sigma_N})\]</span>(<span class="math inline">\(\phi\)</span> is standardized normal distribution function)</p>
+<p>Let <span class="math inline">\(z_{1-\frac{\alpha}{2}}=\frac{v}{\sigma_N}\)</span>, and then <span class="math inline">\(v=z_{1-\frac{\alpha}{2}} \cdot \sigma_N\)</span>.</p>
+<p>Since power is defined as the probability of accepting the alternative hypothesis given that the alternative is true <span class="math inline">\(1-\beta=Prob(Accept \quad H_A|H_A)=Prob(X_T-X_C\geq v|H_A)\)</span>, which can be expressed as: <span class="math display">\[1-\beta=1-Prob(X_T-X_C\leq z_{1-\frac{\alpha}{2}} \cdot \sigma_N |H_A)\]</span> <span class="math display">\[=1-Prob(\frac{X_T-X_C-\mu_A}{\sigma_N}\leq \frac{z_{1-\frac{\alpha}{2}} \cdot \sigma_N-\mu_A}{\sigma_N}|H_A)\]</span> <span class="math display">\[=1-\phi(\frac{z_{1-\frac{\alpha}{2}} \cdot \sigma_N -\mu_A}{\sigma_N})\]</span> <span class="math display">\[=\phi(\frac{\mu_A}{\sigma_N}-z_{1-\frac{\alpha}{2}})\]</span> As a result, <span class="math inline">\(z_{1-\beta}=\frac{\mu_A}{\sigma_N}-z_{1-\frac{\alpha}{2}}\)</span>. Under the alternative hypothesis, <span class="math inline">\(X_T-X_C \sim N(\mu_A,\sigma^2/n)\)</span>. Now suppose the variable of interest is binomial distributed. Then <span class="math inline">\(\sigma_N=\sqrt{X_T(1-X_T)/N_T + X_C(1-X_C)/N_C}\)</span> <span class="math display">\[\frac{1}{\sqrt{X_T(1-X_T)/N_T + X_C(1-X_C)/N_C}}= \frac{z_{1-\beta}+z_{1-\frac{\alpha}{2}}}{X_T-X_C}\]</span> $ $</p>
+<p><span class="math display">\[N_T=N_C=(X_T(1-X_T)+X_C(1-X_C))\cdot (\frac{z_{1-\beta}+z_{1-\frac{\alpha}{2}}}{X_T-X_C})^2\]</span></p>
+<p>Hence, if we want to calculate the sample size, we only need to specify the expected rate/proportion in treatment, the expected rate/proportion in control, power, and the significance level. The code to calculate sample size for binary outcome assuming <span class="math inline">\(\alpha= .05\)</span> is:</p>
 <pre class="r"><code>## Calculate Sample Size Based on Binary Outcome
 SampleSize = function(PropTreat, PropCont, Power){
   N = ((PropTreat*(1-PropTreat)+PropCont*(1-PropCont))*
     ((qnorm(1-.05/2)+qnorm(1-(1-Power)))^2))/((PropTreat-PropCont)^2)
-  return(ceilling(N))
+  return(ceiling(N))
 }</code></pre>
-<pre class="r"><code>## Calculate Sample Size Based on Binary Outcome
-x = 5 + 1</code></pre>
+<p>Using the same logic, we can get the formula to calculate the sample size for normally distributed outcome:</p>
+<pre class="r"><code>## Calculate Sample Size Based on Continuous Outcome
+## Two sided test at 0.05 significance level
+## kappa is the ratio of the sample size in control and treatment
+## SDTreat is the standard deviation 
+SampleSizeM = function(MeanTreat, MeanCont, SDTreat, SDCont, Power){
+  NTreat =(SDTreat^2+SDCont^2)*
+    ((qnorm(1-.05/2)+qnorm(1-(1-Power)))/(MeanTreat-MeanCont))^2
+  return(ceiling(NTreat))
+}</code></pre>
+</div>
+<div id="is-it-the-end-of-the-world-if-alpha-0.005" class="section level1">
+<h1>Is it the end of the world if <span class="math inline">\(\alpha = 0.005\)</span>?</h1>
+<p>The original paper gave an answer for this question. It only requires the sample size to increase by <code>70%</code>. Consider the following senariors:</p>
+<ul>
+<li>Suppose the rate of response in the control group is 50%, 40%, …,10%;</li>
+<li>Suppose the treatment will reduce 2%, 4%, 6%, and 10% percentage points .</li>
+</ul>
+<p>That is, if the rate of reponse in the control group is 50%, we look at the desired sample size if the treatment will reduce the rate to 48%, 46%, 44%, and 40%. Similar to other base rate. As a result, we will have a <strong>5 X 5</strong> matrix for respective sample size. We compare difference between the case where <span class="math inline">\(\alpha = 0.05\)</span> and <span class="math inline">\(\alpha = 0.005\)</span>.</p>
+<pre class="r"><code>SampleSize05 = function(PropTreat, PropCont, Power){
+  N = ((PropTreat*(1-PropTreat)+PropCont*(1-PropCont))*
+    ((qnorm(1-.05/2)+qnorm(1-(1-Power)))^2))/((PropTreat-PropCont)^2)
+  return(ceiling(N))
+}
+SampleSize005 = function(PropTreat, PropCont, Power){
+  N = ((PropTreat*(1-PropTreat)+PropCont*(1-PropCont))*
+    ((qnorm(1-.005/2)+qnorm(1-(1-Power)))^2))/((PropTreat-PropCont)^2)
+  return(ceiling(N))
+}
+
+pCon = c(0.5,0.4,0.3,0.2,0.1)
+Reduced = c(0.02,0.04,0.06,0.08,0.1)
+mSampleSiz05 = matrix(NA,nrow=5,ncol=5)
+mSampleSiz005 = matrix(NA,nrow=5,ncol=5)
+for (i in 1:5){
+  for(j in 1:5){
+    mSampleSiz05[i,j] = SampleSize05((pCon[i]-Reduced[j]),pCon[i],0.8)
+    mSampleSiz005[i,j] = SampleSize005((pCon[i]-Reduced[j]),pCon[i],0.8)
+
+  }
+}
+(Increased.Sample.Size = (mSampleSiz005-mSampleSiz05)/mSampleSiz05)</code></pre>
+<pre><code>##           [,1]      [,2]      [,3]      [,4]      [,5]
+## [1,] 0.6960424 0.6961145 0.6952909 0.6947195 0.6961039
+## [2,] 0.6960249 0.6958406 0.6959526 0.6939502 0.6949153
+## [3,] 0.6960505 0.6965552 0.6962617 0.6965812 0.6941581
+## [4,] 0.6961564 0.6955017 0.6944444 0.6963190 0.6903553
+## [5,] 0.6957334 0.6954103 0.6964286 0.6888889 0.6901408</code></pre>
+<p>As can be seen, all are very clost to <code>70%</code> given different baste rate and different magnitude of effect. From <code>0.05</code> to <code>0.005</code>, we do not need 10 times of the sample size.</p>
 </div>

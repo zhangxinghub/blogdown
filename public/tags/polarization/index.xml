@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Polarization on Xing&#39;s Site</title>
+    <link>/tags/polarization/</link>
+    <description>Recent content in Polarization on Xing&#39;s Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; Zhang Xing</copyright>
+    <lastBuildDate>Wed, 28 Mar 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/polarization/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Fake News Consumption and Segregation on Twitter</title>
+      <link>/post/fake-news-consumption-and-segregation-on-twitter/</link>
+      <pubDate>Wed, 28 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/fake-news-consumption-and-segregation-on-twitter/</guid>
+      <description>To form accurate beliefs about the world (e.g., whether the earth is flat or a sphere, whether vaccination causes autism, etc), people must encounter diverse views and opinions which will sometimes contradict their pre-existing views. Many scholars concerned that the emergence of internet especially recent social media reduces the cost of acquiring information from a wide range of sources, facilitating consumers to self-segregate and limit themselves to the information sources that are likely to confirm their views.</description>
+    </item>
+    
+  </channel>
+</rss>

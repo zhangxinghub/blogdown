@@ -7,33 +7,372 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Zhang Xing</copyright>
-    <lastBuildDate>Sun, 15 Oct 2017 00:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 25 Dec 2017 00:00:00 +0000</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>Sample Size</title>
+      <title>Fake News Consumption and Segregation on Twitter</title>
+      <link>/post/fake-news-consumption-and-segregation-on-twitter/</link>
+      <pubDate>Wed, 28 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/fake-news-consumption-and-segregation-on-twitter/</guid>
+      <description>&lt;hr /&gt;
+&lt;p&gt;To form accurate beliefs about the world (e.g., whether the earth is flat or a sphere, whether vaccination causes autism, etc), people must encounter diverse views and opinions which will sometimes contradict their pre-existing views. Many scholars concerned that the emergence of internet especially recent social media reduces the cost of acquiring information from a wide range of sources, facilitating consumers to self-segregate and limit themselves to the information sources that are likely to confirm their views.&lt;/p&gt;
+&lt;p&gt;The issue is how bad is this problem? Not so bad according to some recent empirical research. Using data from General Social Survey, &lt;a href=&#34;https://qje.oxfordjournals.org/content/126/4/1799&#34;&gt;Genzkow and Shapiro (2011)&lt;/a&gt; found that the chance that two people with opposing political views visit the same news site is about 40%. In another research using deidentified Facebook data, &lt;a href=&#34;http://education.biu.ac.il/files/education/shared/science-2015-bakshy-1130-2.pdf&#34;&gt;Bakshy et al. (2015)&lt;/a&gt; found that among the Facebook users who declared their ideology, 28.5% of the news they see on Facebook is from the opposite ideology.&lt;/p&gt;
+&lt;p&gt;In this article, I am focusing on Twitter. Unlike Facebook on which the formation of the “friendship” can simply because they are relatives or co-workers (obligated to “friend”), users on Twitter can be anomynous, and the formation of relationship can be purely based on interest.&lt;/p&gt;
+&lt;p&gt;I focus on two groups of people, the first groups is the followers of the NASA (the National Aeronautics and Space Administration of USA) official Twitter account &lt;code&gt;@NASA&lt;/code&gt; with 29.1 million followers; the other group is the Twitter followers of &lt;a href=&#34;https://wiki.tfes.org/The_Flat_Earth_Wiki&#34;&gt;the Flat Earth Society&lt;/a&gt; &lt;code&gt;@FlatEarthOrg&lt;/code&gt; (about 48,000 followers). The goal of the Flat Earth Society is to &lt;strong&gt;“unravel the true mysteries of the universe and demonstrate that the earth is flat and that Round Earth doctrine is little more than an elaborate hoax”&lt;/strong&gt;. The society consists of people who belief that the earth is flat rather than a sphere. The society has their own theory of flat earth. No Joking!! See their &lt;a href=&#34;https://wiki.tfes.org/Frequently_Asked_Questions&#34;&gt;FAQ&lt;/a&gt; about how a flat earth would work, and how this theory would outperform the existing theory of the shape of earth.&lt;/p&gt;
+&lt;p&gt;Suppose the members of the Flat Earth Society are a group of astronomy enthusiasts. My question is, how many of them are also interested in following the update from NASA? That is, we want to know the intersecting set of the audiences of both NASA and the Flat Earth Society (see the figure below).&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/img/NASA_FES.png&#34; /&gt; I downloaded all the followers of &lt;code&gt;@NASA&lt;/code&gt; and &lt;code&gt;@FlatEarthOrg&lt;/code&gt; using &lt;code&gt;rtweet&lt;/code&gt; package and plot the intersect set using &lt;code&gt;UpSetR&lt;/code&gt; packages (see R code appended in the end). I also got the follower from the official Twitter feed of &lt;code&gt;@FlatEarthOrg&lt;/code&gt; – Flat Earth Today (&lt;code&gt;@FlatEarthToday&lt;/code&gt;). The picture is quite amusing!&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;/img/NASA2.png&#34; /&gt;
+
+&lt;/div&gt;
+&lt;p&gt;The bars on the bottom left show total numbers of follower each twitter account. The bars at the top show the count of the intersections denoted in the dot matrix below them. Hence, if the columns in the matrix are with only 1 dot, the bars above it show the count of unique (no intersection) followers that Twitter account has, which is the outer area of a Venn diagram that has not intersected with anything else. If the columns are with 2 or more dots, they show the count of followers the dotted twitter accounts share (intersecting sections of a Venn diagram). As can be seen, the largest intersecting set is between &lt;code&gt;@FlatEarthOrg&lt;/code&gt; and &lt;code&gt;@FlatEarthToday&lt;/code&gt;. The followers are hightly overlapped. Among the 48,000 followers of &lt;code&gt;@FlatEarthOrg&lt;/code&gt;, only 2938 (2373 who followed &lt;span class=&#34;citation&#34;&gt;@FlatEarthOrg&lt;/span&gt; and &lt;span class=&#34;citation&#34;&gt;@NASA&lt;/span&gt; plus 565 followed all three accounts) are the followers of &lt;code&gt;@NASA&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;The punchline is &lt;strong&gt;only 6% of the followers of &lt;span class=&#34;citation&#34;&gt;@FlatEarthOrg&lt;/span&gt; are also the followers of &lt;span class=&#34;citation&#34;&gt;@NASA&lt;/span&gt;!!&lt;/strong&gt; If they believe that the earth is flat, basically they are not interested in what NASA would say about the universe on Twitter.&lt;/p&gt;
+&lt;p&gt;Is the social media segregated by people’s belief? This case study may not be able to give a definite answer.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(rtweet)
+library(tidyverse)
+library(UpSetR)
+
+TwitterAccount &amp;lt;- c(&amp;quot;NASA&amp;quot;, &amp;quot;FlatEarthOrg&amp;quot;, &amp;quot;FlatEarthToday&amp;quot;)
+# Fetch the data from Twitter using get_followers() function
+followers &amp;lt;- map_df(TwitterAccount,
+                    ~ get_followers(.x, n = 30000000, retryonratelimit = TRUE) %&amp;gt;%
+                      mutate(account = .x))
+Uniq_followers &amp;lt;- unique(followers$user_id)
+
+# for each follower, get a binary indicator of whether they follow each tweeter or not and bind to one dataframe
+FollowDummies &amp;lt;- TwitterAccount %&amp;gt;%
+  map_dfc(~ ifelse(Uniq_followers %in% filter(followers, account == .x)$user_id, 1, 0) %&amp;gt;%
+            as.data.frame) # UpSetR doesn&amp;#39;t like tibbles
+# set column names
+names(FollowDummies) &amp;lt;- TwitterAccount
+
+# plot the sets with UpSetR
+upset(FollowDummies,
+      nsets = 5,
+      main.bar.color = &amp;quot;maroon&amp;quot;,
+      sets.bar.color = &amp;quot;DarkCyan&amp;quot;,
+      sets.x.label = &amp;quot;Follower Count&amp;quot;,
+      text.scale = c(rep(1.4, 5), 1),
+      order.by = &amp;quot;freq&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Personalized Data Summary Function Using &#34;data.table&#34;</title>
+      <link>/post/personalized-data-summary-function-using-data-table/</link>
+      <pubDate>Fri, 19 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/personalized-data-summary-function-using-data-table/</guid>
+      <description>&lt;p&gt;One function I miss about &lt;em&gt;Stata&lt;/em&gt; is its &lt;em&gt;tabstat&lt;/em&gt;. By using just one line code, it can produce very useful summary statistics such as &lt;code&gt;mean&lt;/code&gt;, and &lt;code&gt;standard error&lt;/code&gt; by groups by conditions. R has its own built-in summary function – &lt;code&gt;summary()&lt;/code&gt;, too, but in most cases in my research, I found the summaries produced is barely useful. Consider the following pseudo-data:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(data.table)
+set.seed(10)
+N = 120
+DT = data.table(x = rnorm(N,1), y = rnorm(N,2),
+                category = sample(letters[1:3], N, replace = T))
+DT[1:10]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##              x         y category
+##  1:  1.0187462 1.5186344        c
+##  2:  0.8157475 2.2028818        a
+##  3: -0.3713305 1.9682603        c
+##  4:  0.4008323 0.8044197        a
+##  5:  1.2945451 2.6236812        c
+##  6:  1.3897943 1.0851955        c
+##  7: -0.2080762 2.2487580        b
+##  8:  0.6363240 0.9373772        b
+##  9: -0.6266727 1.6360178        c
+## 10:  0.7435216 0.7930051        a&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If we summarize the variable &lt;code&gt;x&lt;/code&gt; using &lt;code&gt;summary()&lt;/code&gt;, it gives:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(DT$x)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+## -1.1853  0.2380  0.9101  0.9235  1.7119  3.2205&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In most the case, I want to have a sense of the dispersion of the mean, number of non-mising observations. More importantly, I want to have a data table from which I can generate a barchart, which is very common in analyzing experimental data. Since I almost need this types of summary function for all of my on-going project, why not make a personalized one for myself and potential other users? Here it is.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;SumFunOne = function(Data, Var, Group, StatList){
+  arguments &amp;lt;- as.list(match.call())
+  x = eval(arguments$Var, Data)
+  category = eval(arguments$Group, Data)
+  keep = c(&amp;quot;category&amp;quot;,StatList)
+  result = Data[,  .(Mean = mean(x, na.rm=TRUE), 
+                     N = sum(!is.na(x)), 
+                     SE = sd(x, na.rm=TRUE)/sqrt(sum(!is.na(x))),
+                     median = median(x),
+                     max = max(x),
+                     min = min(x),
+                     Missing = sum(is.na(x))),
+                     by = .(category)][,..keep][order(category)]
+  return(result)
+}
+(Data.Summary = SumFunOne(DT, x, category, c(&amp;quot;Mean&amp;quot;,&amp;quot;N&amp;quot;,&amp;quot;SE&amp;quot;)))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    category      Mean  N        SE
+## 1:        a 1.0233245 36 0.1561983
+## 2:        b 0.9516208 41 0.1353133
+## 3:        c 0.8131563 43 0.1560230&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The function &lt;code&gt;SumFunOne()&lt;/code&gt; has 4 inputs: &lt;code&gt;Data&lt;/code&gt; (should be in &lt;code&gt;data.table&lt;/code&gt;), &lt;code&gt;Var&lt;/code&gt; – variable to be summarized, &lt;code&gt;Group&lt;/code&gt; – the group variable I want to condition on, and &lt;code&gt;StatList&lt;/code&gt; – the statistics I want to show. We can also subset the data using &lt;code&gt;DT[y&amp;gt;0]&lt;/code&gt; in the input. Given the results, I can easily draw a barchart with standard errors and number of observations in &lt;code&gt;ggplot2&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2018-01-19-personalized-data-summary-function-using-data-table_files/figure-html/ShowBarChart-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Well, what if I want to summarize multiple variables? The goal is to have a counterpart of Stata’s &lt;em&gt;tabstat&lt;/em&gt; in R, isn’t it? It is straightforward, too. We just need to use the powerful &lt;code&gt;.SD&lt;/code&gt; in &lt;code&gt;data.table&lt;/code&gt; to apply the summary function to multiple variables. But we define the summary function first outside of the data.table. For simplicity, I only show three statistics: &lt;code&gt;Mean&lt;/code&gt;, &lt;code&gt;N&lt;/code&gt; and &lt;code&gt;SE&lt;/code&gt;. &lt;code&gt;varList&lt;/code&gt; is the variable list we want to summrize.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;SumFunMult = function(Data, varList, Group){
+  arguments &amp;lt;- as.list(match.call())
+  category = eval(arguments$Group, Data)
+  my.summary &amp;lt;- function(x){
+    c(Mean = mean(x, na.rm=TRUE), 
+      N = sum(!is.na(x)), 
+      SE = sd(x, na.rm=TRUE)/sqrt(sum(!is.na(x))))
+  }
+  result = Data[, lapply(.SD, my.summary), by=.(category), .SDcols= varList]
+  Stats = rep(c(&amp;quot;Mean&amp;quot;,&amp;quot;N&amp;quot;,&amp;quot;SE&amp;quot;),length(unique(category)))
+  summary = cbind(Stats,result)
+  return(summary)
+}
+
+SumFunMult(DT, c(&amp;quot;x&amp;quot;,&amp;quot;y&amp;quot;),category)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    Stats category          x          y
+## 1:  Mean        c  0.8131563  1.6547724
+## 2:     N        c 43.0000000 43.0000000
+## 3:    SE        c  0.1560230  0.1491735
+## 4:  Mean        a  1.0233245  1.8356193
+## 5:     N        a 36.0000000 36.0000000
+## 6:    SE        a  0.1561983  0.1652287
+## 7:  Mean        b  0.9516208  2.0720581
+## 8:     N        b 41.0000000 41.0000000
+## 9:    SE        b  0.1353133  0.1404608&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Next task is the develop it into a package so that I can easily call the function to summarize and visualize the summary statistics…&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Is it the end of the world if $\alpha=0.005$ is the new norm?</title>
       <link>/post/sample-size/</link>
       <pubDate>Mon, 25 Dec 2017 00:00:00 +0000</pubDate>
       
       <guid>/post/sample-size/</guid>
-      <description>&lt;p&gt;This note describes how sample size calculator works. There are must be better notes somewhere else, but I find the best notes for me is the note written by myself.&lt;/p&gt;
-&lt;div id=&#34;how-sample-size-is-determined&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;How Sample Size is Determined?&lt;/h2&gt;
-&lt;p&gt;Suppose there are two groups, Treatment (T) and Control (C) group. The research is to test whether there is difference in the proportion of the response between two groups. The null hypothesis is there is no difference in response (&lt;span class=&#34;math inline&#34;&gt;\(H_0\)&lt;/span&gt;: &lt;span class=&#34;math inline&#34;&gt;\(p_T=p_C\)&lt;/span&gt;), and the alternative hypothesis is &lt;span class=&#34;math inline&#34;&gt;\(H_A\)&lt;/span&gt;: &lt;span class=&#34;math inline&#34;&gt;\(p_T\neq p_C\)&lt;/span&gt;. Let &lt;span class=&#34;math inline&#34;&gt;\(D_0=p_T-p_C\)&lt;/span&gt; represent difference under the null hypothesis, and &lt;span class=&#34;math inline&#34;&gt;\(D_A=p_T-p_C\)&lt;/span&gt; represent the difference under alternative hypothesis. To construct the statistic test, we calculate a statistic &lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt; and a critical value &lt;span class=&#34;math inline&#34;&gt;\(C\)&lt;/span&gt;. we reject the null hypothesis if &lt;span class=&#34;math inline&#34;&gt;\(|z|&amp;gt;C\)&lt;/span&gt; (i.e., &lt;span class=&#34;math inline&#34;&gt;\(t&amp;gt;C\)&lt;/span&gt; or &lt;span class=&#34;math inline&#34;&gt;\(t&amp;lt;-C\)&lt;/span&gt;). We focus one direction, &lt;span class=&#34;math inline&#34;&gt;\(t&amp;gt;C\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;The statistic &lt;span class=&#34;math inline&#34;&gt;\(t=\frac{D}{SD(D)}=\frac{p_T-p_C}{\sqrt{(2\bar{p}\cdot(1-\bar{p}))/n}}\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(\bar{p}=\frac{p_T+p_C}{2}\)&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;The significance level &lt;span class=&#34;math inline&#34;&gt;\(\alpha=0.05\)&lt;/span&gt; is defined as &lt;span class=&#34;math inline&#34;&gt;\(P(Reject H_0|H_0)\)&lt;/span&gt;. We use two-sided test, and hence &lt;span class=&#34;math inline&#34;&gt;\(P(t&amp;gt;C|H_0)=\alpha/2\)&lt;/span&gt;. &lt;span class=&#34;math display&#34;&gt;\[\alpha/2=P(t&amp;gt;C|H_0)\]&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[=1-P(t\leq C|H_0)\]&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[=1-P(\frac{t-D_0}{SD}\leq \frac{C-D_0}{SD}|H_0)\]&lt;/span&gt; (under Null hypothesis &lt;span class=&#34;math inline&#34;&gt;\(D_0=p_T-p_C=0\)&lt;/span&gt;) &lt;span class=&#34;math display&#34;&gt;\[=1-\phi(\frac{C}{SD})\]&lt;/span&gt; Then &lt;span class=&#34;math inline&#34;&gt;\(1-\alpha/2=\phi(\frac{C}{SD})\)&lt;/span&gt;. Let &lt;span class=&#34;math inline&#34;&gt;\(z_{1-\alpha}=\frac{C}{SD}\)&lt;/span&gt;, and then &lt;span class=&#34;math inline&#34;&gt;\(C=z\cdot SD\)&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;The power is related to the probabiltiy of having type II error &lt;span class=&#34;math inline&#34;&gt;\(\beta\)&lt;/span&gt;. The poweris defined as &lt;span class=&#34;math inline&#34;&gt;\(1-P(Reject H_A|H_A)=1-\beta\)&lt;/span&gt;. We use one-sided test. Hence,&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[1-\beta = P(t&amp;gt;C|H_A)\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;I made a function to calculate the sample size assuming the significance level is &lt;span class=&#34;math inline&#34;&gt;\(\alpha= .05\)&lt;/span&gt;. The function is based on the formula: &lt;span class=&#34;math inline&#34;&gt;\(N=\frac{(Z_{1-\alpha/2}+Z_{1-\beta})^2\cdot(p_T(1-p_T)+p_C(1-p_C))}{(p_T-p_C)^2}\)&lt;/span&gt;&lt;/p&gt;
+      <description>&lt;p&gt;In this &lt;a href=&#34;https://www.nature.com/articles/s41562-017-0189-z&#34;&gt;paper&lt;/a&gt; by Benjamin et al (2017) on redefining statistical significance, they proposed to &lt;strong&gt;change the default P-value threshold for statistical significance from 0.05 to 0.005 for claims of new discoveries.&lt;/strong&gt; That is the proposed p-value is one tenth of the conventional one!! Suppose the world changed to &lt;code&gt;p=0.005&lt;/code&gt;. Do we need &lt;strong&gt;10X&lt;/strong&gt; more sample? As a researcher without sufficient funding, we care about how much additional sample we need suppose our hypothesis is true.&lt;/p&gt;
+&lt;p&gt;First let’s review how sample size is calculated. It is really a good review of basic concepts in probability theory and statistics.&lt;/p&gt;
+&lt;div id=&#34;how-sample-size-is-determined&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;How Sample Size is Determined?&lt;/h1&gt;
+&lt;p&gt;First we have to imagine that &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; participants will be randomly assigned into two groups: Treatment (T) and Control (C) group. Assume that there are equal numbers of participants in each group (&lt;span class=&#34;math inline&#34;&gt;\(N_T=N_C\)&lt;/span&gt;). The researcher is interested in testing whether the mean of the distribution &lt;span class=&#34;math inline&#34;&gt;\(\mu\)&lt;/span&gt; in two groups are different. More specifically, the researcher is comparing the two hypotheses:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[H_0: \mu_T-\mu_C=\mu_0=0\]&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[H_A: \mu_T-\mu_C =\mu_A \neq 0\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;The researcher is interested in the impact of the treatment on variable &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;. Let &lt;span class=&#34;math inline&#34;&gt;\(X_T\)&lt;/span&gt; denote the sample average of the treatment group, and &lt;span class=&#34;math inline&#34;&gt;\(X_C\)&lt;/span&gt; the sample average of the control group. The significance level is defined as &lt;span class=&#34;math inline&#34;&gt;\(\alpha=Prob(Reject \quad H_0|H_0)\)&lt;/span&gt;. It can be expressed in the following way: &lt;span class=&#34;math inline&#34;&gt;\(\alpha = Prob(X_T-X_C\geq v|H_0)\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt; is the critical value. For two-sided test &lt;span class=&#34;math inline&#34;&gt;\(\frac{\alpha}{2} = Prob(X_T-X_C\geq v|H_0)\)&lt;/span&gt;. That is, if we want to reject the null hypothesis, the difference &lt;span class=&#34;math inline&#34;&gt;\(X_T-X_C\)&lt;/span&gt; should be large enough. Some simple algebra is needed to derive the critical value:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\frac{\alpha}{2}=Prob(\mu_T-\mu_C\geq v|H_0)\]&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[=1-Prob(X_T-X_C\leq v|H_0)\]&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[=1-Prob(\frac{X_T-X_C-\mu_0}{\sigma_N}\leq \frac{v-mu_0}{\sigma_N}|H_0)\]&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[=1-Prob(\frac{X_T-X_C}{\sigma_N}\leq \frac{v}{\sigma_N}|H_0)\]&lt;/span&gt;(under Null hypothesis &lt;span class=&#34;math inline&#34;&gt;\(\mu_0=0\)&lt;/span&gt;) &lt;span class=&#34;math display&#34;&gt;\[=1-\phi(\frac{v}{\sigma_N})\]&lt;/span&gt;(&lt;span class=&#34;math inline&#34;&gt;\(\phi\)&lt;/span&gt; is standardized normal distribution function)&lt;/p&gt;
+&lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(z_{1-\frac{\alpha}{2}}=\frac{v}{\sigma_N}\)&lt;/span&gt;, and then &lt;span class=&#34;math inline&#34;&gt;\(v=z_{1-\frac{\alpha}{2}} \cdot \sigma_N\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Since power is defined as the probability of accepting the alternative hypothesis given that the alternative is true &lt;span class=&#34;math inline&#34;&gt;\(1-\beta=Prob(Accept \quad H_A|H_A)=Prob(X_T-X_C\geq v|H_A)\)&lt;/span&gt;, which can be expressed as: &lt;span class=&#34;math display&#34;&gt;\[1-\beta=1-Prob(X_T-X_C\leq z_{1-\frac{\alpha}{2}} \cdot \sigma_N |H_A)\]&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[=1-Prob(\frac{X_T-X_C-\mu_A}{\sigma_N}\leq \frac{z_{1-\frac{\alpha}{2}} \cdot \sigma_N-\mu_A}{\sigma_N}|H_A)\]&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[=1-\phi(\frac{z_{1-\frac{\alpha}{2}} \cdot \sigma_N -\mu_A}{\sigma_N})\]&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[=\phi(\frac{\mu_A}{\sigma_N}-z_{1-\frac{\alpha}{2}})\]&lt;/span&gt; As a result, &lt;span class=&#34;math inline&#34;&gt;\(z_{1-\beta}=\frac{\mu_A}{\sigma_N}-z_{1-\frac{\alpha}{2}}\)&lt;/span&gt;. Under the alternative hypothesis, &lt;span class=&#34;math inline&#34;&gt;\(X_T-X_C \sim N(\mu_A,\sigma^2/n)\)&lt;/span&gt;. Now suppose the variable of interest is binomial distributed. Then &lt;span class=&#34;math inline&#34;&gt;\(\sigma_N=\sqrt{X_T(1-X_T)/N_T + X_C(1-X_C)/N_C}\)&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[\frac{1}{\sqrt{X_T(1-X_T)/N_T + X_C(1-X_C)/N_C}}= \frac{z_{1-\beta}+z_{1-\frac{\alpha}{2}}}{X_T-X_C}\]&lt;/span&gt; $ $&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[N_T=N_C=(X_T(1-X_T)+X_C(1-X_C))\cdot (\frac{z_{1-\beta}+z_{1-\frac{\alpha}{2}}}{X_T-X_C})^2\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Hence, if we want to calculate the sample size, we only need to specify the expected rate/proportion in treatment, the expected rate/proportion in control, power, and the significance level. The code to calculate sample size for binary outcome assuming &lt;span class=&#34;math inline&#34;&gt;\(\alpha= .05\)&lt;/span&gt; is:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;## Calculate Sample Size Based on Binary Outcome
 SampleSize = function(PropTreat, PropCont, Power){
   N = ((PropTreat*(1-PropTreat)+PropCont*(1-PropCont))*
     ((qnorm(1-.05/2)+qnorm(1-(1-Power)))^2))/((PropTreat-PropCont)^2)
-  return(ceilling(N))
+  return(ceiling(N))
 }&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;## Calculate Sample Size Based on Binary Outcome
-x = 5 + 1&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Using the same logic, we can get the formula to calculate the sample size for normally distributed outcome:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;## Calculate Sample Size Based on Continuous Outcome
+## Two sided test at 0.05 significance level
+## kappa is the ratio of the sample size in control and treatment
+## SDTreat is the standard deviation 
+SampleSizeM = function(MeanTreat, MeanCont, SDTreat, SDCont, Power){
+  NTreat =(SDTreat^2+SDCont^2)*
+    ((qnorm(1-.05/2)+qnorm(1-(1-Power)))/(MeanTreat-MeanCont))^2
+  return(ceiling(NTreat))
+}&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
+&lt;div id=&#34;is-it-the-end-of-the-world-if-alpha-0.005&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Is it the end of the world if &lt;span class=&#34;math inline&#34;&gt;\(\alpha = 0.005\)&lt;/span&gt;?&lt;/h1&gt;
+&lt;p&gt;The original paper gave an answer for this question. It only requires the sample size to increase by &lt;code&gt;70%&lt;/code&gt;. Consider the following senariors:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Suppose the rate of response in the control group is 50%, 40%, …,10%;&lt;/li&gt;
+&lt;li&gt;Suppose the treatment will reduce 2%, 4%, 6%, and 10% percentage points .&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;That is, if the rate of reponse in the control group is 50%, we look at the desired sample size if the treatment will reduce the rate to 48%, 46%, 44%, and 40%. Similar to other base rate. As a result, we will have a &lt;strong&gt;5 X 5&lt;/strong&gt; matrix for respective sample size. We compare difference between the case where &lt;span class=&#34;math inline&#34;&gt;\(\alpha = 0.05\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\alpha = 0.005\)&lt;/span&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;SampleSize05 = function(PropTreat, PropCont, Power){
+  N = ((PropTreat*(1-PropTreat)+PropCont*(1-PropCont))*
+    ((qnorm(1-.05/2)+qnorm(1-(1-Power)))^2))/((PropTreat-PropCont)^2)
+  return(ceiling(N))
+}
+SampleSize005 = function(PropTreat, PropCont, Power){
+  N = ((PropTreat*(1-PropTreat)+PropCont*(1-PropCont))*
+    ((qnorm(1-.005/2)+qnorm(1-(1-Power)))^2))/((PropTreat-PropCont)^2)
+  return(ceiling(N))
+}
+
+pCon = c(0.5,0.4,0.3,0.2,0.1)
+Reduced = c(0.02,0.04,0.06,0.08,0.1)
+mSampleSiz05 = matrix(NA,nrow=5,ncol=5)
+mSampleSiz005 = matrix(NA,nrow=5,ncol=5)
+for (i in 1:5){
+  for(j in 1:5){
+    mSampleSiz05[i,j] = SampleSize05((pCon[i]-Reduced[j]),pCon[i],0.8)
+    mSampleSiz005[i,j] = SampleSize005((pCon[i]-Reduced[j]),pCon[i],0.8)
+
+  }
+}
+(Increased.Sample.Size = (mSampleSiz005-mSampleSiz05)/mSampleSiz05)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##           [,1]      [,2]      [,3]      [,4]      [,5]
+## [1,] 0.6960424 0.6961145 0.6952909 0.6947195 0.6961039
+## [2,] 0.6960249 0.6958406 0.6959526 0.6939502 0.6949153
+## [3,] 0.6960505 0.6965552 0.6962617 0.6965812 0.6941581
+## [4,] 0.6961564 0.6955017 0.6944444 0.6963190 0.6903553
+## [5,] 0.6957334 0.6954103 0.6964286 0.6888889 0.6901408&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;As can be seen, all are very clost to &lt;code&gt;70%&lt;/code&gt; given different baste rate and different magnitude of effect. From &lt;code&gt;0.05&lt;/code&gt; to &lt;code&gt;0.005&lt;/code&gt;, we do not need 10 times of the sample size.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Anonymize Individuals using digest()</title>
+      <link>/post/anonymize-using-digest/</link>
+      <pubDate>Thu, 14 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/anonymize-using-digest/</guid>
+      <description>&lt;p&gt;When requesting individual level data from others (a company or a government agency), we usually need to properly anomymize the individuals to protect their privacy. The following is an example:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;(Data = data.frame(Name = c(&amp;quot;John Smith&amp;quot;, &amp;quot;Jenny Ford&amp;quot;,&amp;quot;Vivian Lee&amp;quot;), 
+                  Secret = c(&amp;quot;Hate dog&amp;quot;,&amp;quot;Afraid of ghost&amp;quot;,&amp;quot;A bathroom dancer&amp;quot;)))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##         Name            Secret
+## 1 John Smith          Hate dog
+## 2 Jenny Ford   Afraid of ghost
+## 3 Vivian Lee A bathroom dancer&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;One simple way is we can just drop the &lt;strong&gt;Name&lt;/strong&gt;, and only keep the &lt;strong&gt;Secret&lt;/strong&gt; since we are more interested in their secrets. But what if we need to update individuals’ information periodically? We need a unique identifier for each individual so that it can link to his/her new information. The tricky part is that we cannot use their name as the identifier. We have to create a “cyphertext”&amp;quot; that only the data provider can interpret but we cannot.&lt;/p&gt;
+&lt;p&gt;In many cases, the data providers do not have the capacity to create a cyphertext in a systematic way. They either 1) do not provide the data due to privacy concerns, or 2) the data does not an identifier we can use in the future. Here I use R’s &lt;code&gt;digest()&lt;/code&gt; package to show how to anomymize individuals and generate an identifier using &lt;code&gt;sha1&lt;/code&gt; algorithm. &lt;code&gt;sha1&lt;/code&gt; (Secure Hash Algorithm 1) is a cryptographic hash function which takes an input and produces a 40 digits long hash value known as a message digest. The user needs to have the random seed to decrypt the hash value and recover the original value. We can just pass the code to the data provider, and ask them to run it (R is free!). What they need to remember is jus the random seed.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(digest)
+# Suppose variable Name is the variable to be hashed
+# But we have to make the string to be hashed as character
+Data$CharName &amp;lt;- as.character(Data$Name)
+# sha1() function only work on one string each time
+# Hence we first vectorize this function so it can work on a column
+vSha1 &amp;lt;- Vectorize(sha1)
+
+#########################################################################
+## Set the random see for the hash function                            ##
+## Procedurally, if you want to make sure that youself cannot recover  ##
+## the original name, you let them to set the seed and run the code.   ##
+SeedForDigest = 200 
+#########################################################################
+
+## Hash it!
+# To avoid serializing the vector, we set serialize=FALSE
+
+Data$HashedName = vSha1(Data$CharName, algo=c(&amp;quot;sha1&amp;quot;), serialize=FALSE, file=FALSE, 
+                     length=Inf, skip=&amp;quot;auto&amp;quot;, ascii=FALSE, raw=FALSE, seed=SeedForDigest, 
+                     errormode=c(&amp;quot;warn&amp;quot;))
+### Drop the original name
+Data$Name = NULL
+Data$CharName = NULL
+Data&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##              Secret                               HashedName
+## 1          Hate dog f3a82702bb67f0e1e54cf48e00d04b7960f5041d
+## 2   Afraid of ghost 55fd163065050770f063b60bca14ffcb62604b79
+## 3 A bathroom dancer 39c02d0609f6e88ff8d1a34d5454fe7631a3d485&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Limited Attention in Response to Email Scam -- A Toy Model</title>
+      <link>/post/limited-attention-in-response-to-email-scam-a-toy-model/</link>
+      <pubDate>Mon, 20 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/limited-attention-in-response-to-email-scam-a-toy-model/</guid>
+      <description>&lt;p&gt;About one year ago or so, I started a project on consumer’s fraud protection issue, especially on how to protect consumers from falling prey to phishing emails – the emails sent by scammers to obtain senstive information such as password, credit card number. How to model consumer’s response to the scam? Natually I would assume that conusmers have limited attention. That is, paying attention is effortful and costly. More effort the consumer exerts, the more accurate information the consumer will acquire. Therefore the consumer has to make tradeoff between acquiring accurate information and exerting effort. A simple (toy) model is built as follows:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;When a user receives an email, the prior belief that the email is unsafe and safe is &lt;span class=&#34;math inline&#34;&gt;\(B_{0}\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(1-B_{0}\)&lt;/span&gt;, respectively.&lt;/li&gt;
+&lt;li&gt;The user exerts some effort &lt;span class=&#34;math inline&#34;&gt;\(e\)&lt;/span&gt; to verify whether the email is safe. Given the effort level &lt;span class=&#34;math inline&#34;&gt;\(e\)&lt;/span&gt;, the user would receive a signal &lt;span class=&#34;math inline&#34;&gt;\(s\)&lt;/span&gt; which is informative about the nature of the email.&lt;/li&gt;
+&lt;li&gt;Based on the signal, the user updates her belief &lt;span class=&#34;math inline&#34;&gt;\(B_{t}\)&lt;/span&gt; and decides whether to neglect or comply to the content of the email.&lt;/li&gt;
+&lt;li&gt;If the email is safe, the user will receive &lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt; (&lt;span class=&#34;math inline&#34;&gt;\(v&amp;gt;0\)&lt;/span&gt;) by complying to it and incur cost &lt;span class=&#34;math inline&#34;&gt;\(m\)&lt;/span&gt; (&lt;span class=&#34;math inline&#34;&gt;\(m&amp;gt;0\)&lt;/span&gt;) by neglecting it. If the email is unsafe, the user will receive damage &lt;span class=&#34;math inline&#34;&gt;\(d\)&lt;/span&gt; (&lt;span class=&#34;math inline&#34;&gt;\(d&amp;gt;0\)&lt;/span&gt;) by complying to it and receive &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt; by neglecting it.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;/img/LimitedAttentionFig1.png&#34; /&gt;
+
+&lt;/div&gt;
+&lt;p&gt;We model the user’s limited attention as a process of costly information acquisition. There are two types of email: &lt;span class=&#34;math inline&#34;&gt;\(T=\{safe, unsafe\}=\{1, -1\}\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(P(T=1)=B_{0}\)&lt;/span&gt;. The user observe a signal &lt;span class=&#34;math inline&#34;&gt;\(S=\{-1,1\}\)&lt;/span&gt; about the type of the email. The informativeness of the signal &lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt; is represented as:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\small g(S=s|T)=\frac{1+T\cdot s}{2}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;From equation above, we can easily verify that &lt;span class=&#34;math inline&#34;&gt;\(\small g(S=1|T=1)=g(S=-1|T=-1)=1\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\small g(S=-1|T=1)=g(S=1|T=-1)=0\)&lt;/span&gt;. For simplicity, here we assume the signal is perfectly correlated with the type of the email.&lt;/p&gt;
+&lt;p&gt;The user chooses the effort level &lt;span class=&#34;math inline&#34;&gt;\(e\)&lt;/span&gt; (&lt;span class=&#34;math inline&#34;&gt;\(e\in [0,1]\)&lt;/span&gt;) to verify the email. The effort level will determine the informativeness of the signal that the user will observe. Given the effort level and the type of the email, the distribution of the signal the user receives is a mixture between an informative experiment &lt;span class=&#34;math inline&#34;&gt;\(g(S=s|T)\)&lt;/span&gt; and an uninformative signal &lt;span class=&#34;math inline&#34;&gt;\(h(s)=\frac{1}{2}\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\small f(S=s|T,e)=e\cdot g(S=s|T)+(1-e)\cdot \frac{1}{2}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;As a result, the signal is perfectly informative if the user exerts effort &lt;span class=&#34;math inline&#34;&gt;\(e=1\)&lt;/span&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\small f(s=1|T=1,e=1)=f(s=-1|T=-1,e=1)=1\]&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[\small f(s=-1|T=1,e=1)=f(s=1|T=-1,e=1)=0\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;The signal is completely uninformative if the user exerts effort &lt;span class=&#34;math inline&#34;&gt;\(e=0\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[\small f(s=1|T=1,e=0)=f(s=-1|T=-1,e=0)=\frac{1}{2}\]&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[\small f(s=-1|T=1,e=0)=f(s=1|T=-1,e=0)=\frac{1}{2}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Conditional on the signal and effort level, the user update her belief about the nature of the email in a Bayesian fashion:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\small B(T=1|S=s,e)\]&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[\small =\frac{f(S=s|T=1,e)\cdot P(T=1)}{f(S=s|T=1,e)\cdot P(T=1)+f(S=s|T=-1,e)\cdot P(T=-1)}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Based on the updated belief, the user decides whether to neglect the email or comply to the content of the email, represented by &lt;span class=&#34;math inline&#34;&gt;\(A=\{n, c\}\)&lt;/span&gt;. The expected utility of neglecting and complying are &lt;span class=&#34;math inline&#34;&gt;\(E[U_n]\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(E[U_c]\)&lt;/span&gt;, respectively. The user would comply to the content of the email if &lt;span class=&#34;math inline&#34;&gt;\(E[U_c] \geq E[U_n]\)&lt;/span&gt;. That is:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\small \begin{split}
+&amp;amp; B(T=1|S=s,e)\cdot v + B(T=-1|S=s,e)\cdot(-d)  \\
+&amp;amp;\quad \geq B(T=1|S=s,e)\cdot (-m) + B(T=-1|S=s,e)\cdot 0 
+\end{split}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(\Rightarrow\)&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[\small \frac{d}{v+m}\leq \frac{f(S=s|T=1,e)}{f(S=s|T=-1,e)}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\small =\frac{[e\cdot \frac{1+s}{2}+(1-e)\cdot \frac{1}{2}]\cdot B_0}{[e\cdot \frac{1-s}{2}+(1-e)\cdot \frac{1}{2}]\cdot (1-B_0)}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;The user solves the following problem:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[V(e, A) = arg\max_{e \in [0,1]}\Big[\sum_{T\in \Gamma}\sum_{s \in S}P(T)\cdot f(s|T,e)\Big]\Big[\max_{a\in A}\sum_{T\in \Gamma}B(T|s,e)U_a \Big]-K(e)\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(K(e)\)&lt;/span&gt; is the cost of paying attention by exerting &lt;span class=&#34;math inline&#34;&gt;\(e\)&lt;/span&gt;. The first term in equation  is the probability of each signal, and the second is the maximum achievable expected utility from choosing to neglect (&lt;span class=&#34;math inline&#34;&gt;\(a=n\)&lt;/span&gt;) or comply (&lt;span class=&#34;math inline&#34;&gt;\(a=c\)&lt;/span&gt;) to the email given the updated belief &lt;span class=&#34;math inline&#34;&gt;\(B(T|s,e)\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;To gain some basic intuition of the model, assume the user chooses only two effort level: &lt;span class=&#34;math inline&#34;&gt;\(e\in \{0,1\}\)&lt;/span&gt;. If &lt;span class=&#34;math inline&#34;&gt;\(e=1\)&lt;/span&gt;, then &lt;span class=&#34;math inline&#34;&gt;\(K(e)=k\)&lt;/span&gt;. And we further assume &lt;span class=&#34;math inline&#34;&gt;\(B_0\geq \frac{d}{v+m+d}\)&lt;/span&gt;, which implies that if the user exerts no effort &lt;span class=&#34;math inline&#34;&gt;\(e=0\)&lt;/span&gt; and hence receives uninformative signal &lt;span class=&#34;math inline&#34;&gt;\(\small f(s=1|T=1,0)=f(s=-1|T=1,0)=f(s=1|T=-1,0)=f(s=-1|T=-1,0)=\frac{1}{2}\)&lt;/span&gt;, the user would comply to the email (by equation ). If the user exert &lt;span class=&#34;math inline&#34;&gt;\(e=1\)&lt;/span&gt;, then the signal is completely informative (by equation above). As a result, the user will neglect the email if observing &lt;span class=&#34;math inline&#34;&gt;\(s=-1\)&lt;/span&gt; and comply to the email if observing &lt;span class=&#34;math inline&#34;&gt;\(s=1\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;If the user exerts &lt;span class=&#34;math inline&#34;&gt;\(e=0\)&lt;/span&gt;, then:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\small \begin{split}
+&amp;amp; B_0 \Big\{ f(s=1|T=1,0)[B(T=1|s=1,0)\cdot v + B(T=-1|s=1,0)\cdot (-d)] \\
+&amp;amp;\quad  +f(s=-1|T=1,0)[B(T=1|s=-1,0)\cdot v + B(T=-1|s=-1,0)\cdot (-d)]\Big\} \\
+&amp;amp;\quad  (1-B_0) \Big\{ f(s=1|T=-1,0)[B(T=1|s=1,0)\cdot v + B(T=-1|s=1,0)\cdot (-d)] \\
+&amp;amp;\quad  +f(s=-1|T=-1,0)[B(T=1|s=-1,0)\cdot v + B(T=-1|s=-1,0)\cdot (-d)]\Big\} \\
+&amp;amp;\quad = B_0 \cdot v + (1-B_0)\cdot (-d)
+\end{split}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;If the user exerts &lt;span class=&#34;math inline&#34;&gt;\(e=1\)&lt;/span&gt;, then:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\small \begin{split}
+&amp;amp; B_0 \Big\{ f(s=1|T=1,1)[B(T=1|s=1,1)\cdot v + B(T=-1|s=1,1 )\cdot (-d)] \\
+&amp;amp;\quad  +f(s=-1|T=1,0)[B(T=1|s=-1,0)\cdot (-m) + B(T=-1|s=-1,0)\cdot 0]\Big\} \\
+&amp;amp;\quad  (1-B_0) \Big\{ f(s=1|T=-1,0)[B(T=1|s=1,0)\cdot v + B(T=-1|s=1,0)\cdot (-d)] \\
+&amp;amp;\quad  +f(s=-1|T=-1,0)[B(T=1|s=-1,0)\cdot (-m) + B(T=-1|s=-1,0)\cdot 0]\Big\} -k \\
+&amp;amp;\quad = B_0\cdot v-k
+\end{split}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;From equations above, &lt;span class=&#34;math inline&#34;&gt;\(V(1,A)\geq V(0,A)\)&lt;/span&gt; if &lt;span class=&#34;math inline&#34;&gt;\(B_0\leq \frac{d-k}{d}\)&lt;/span&gt;. Together with early assumption that &lt;span class=&#34;math inline&#34;&gt;\(B_0\geq \frac{d}{v+m+d}\)&lt;/span&gt;, we have the observation that if &lt;span class=&#34;math inline&#34;&gt;\(\frac{d}{v+m+d}\leq B_0 \leq \frac{d-k}{d}\)&lt;/span&gt; (suppose &lt;span class=&#34;math inline&#34;&gt;\(k\leq \frac{d(v+m)}{v+m+d}\)&lt;/span&gt;), then the user will exert &lt;span class=&#34;math inline&#34;&gt;\(e=1\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;On the other hand, suppose &lt;span class=&#34;math inline&#34;&gt;\(B_0\leq \frac{d}{v+m+d}\)&lt;/span&gt;, and then the user will choose to neglect the email conditional on a completely uninformative signal. If the user exerts &lt;span class=&#34;math inline&#34;&gt;\(e=0\)&lt;/span&gt;, then:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\small \begin{split}
+&amp;amp; B_0 \Big\{ f(s=1|T=1,0)[B(T=1|s=1,0)\cdot (-m) + B(T=-1|s=1,0)\cdot 0] \\
+&amp;amp;\quad  +f(s=-1|T=1,0)[B(T=1|s=-1,0)\cdot (-m) + B(T=-1|s=-1,0)\cdot 0]\Big\} \\
+&amp;amp;\quad  (1-B_0) \Big\{ f(s=1|T=-1,0)[B(T=1|s=1,0)\cdot (-m) + B(T=-1|s=1,0)\cdot 0] \\
+&amp;amp;\quad  +f(s=-1|T=-1,0)[B(T=1|s=-1,0)\cdot (-m) + B(T=-1|s=-1,0)\cdot 0]\Big\} \\
+&amp;amp;\quad = B_0 \cdot (-m)
+\end{split}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;If the user exerts &lt;span class=&#34;math inline&#34;&gt;\(e=1\)&lt;/span&gt;, then:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\small \begin{split}
+&amp;amp; B_0 \Big\{ f(s=1|T=1,1)[B(T=1|s=1,1)\cdot v + B(T=-1|s=1,1 )\cdot (-d)] \\
+&amp;amp;\quad  +f(s=-1|T=1,0)[B(T=1|s=-1,0)\cdot (-m) + B(T=-1|s=-1,0)\cdot 0]\Big\} \\
+&amp;amp;\quad  (1-B_0) \Big\{ f(s=1|T=-1,0)[B(T=1|s=1,0)\cdot v + B(T=-1|s=1,0)\cdot (-d)] \\
+&amp;amp;\quad  +f(s=-1|T=-1,0)[B(T=1|s=-1,0)\cdot (-m) + B(T=-1|s=-1,0)\cdot 0]\Big\} -k \\
+&amp;amp;\quad = B_0\cdot v-k
+\end{split}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;In such case, the user will exert &lt;span class=&#34;math inline&#34;&gt;\(e=1\)&lt;/span&gt; if &lt;span class=&#34;math inline&#34;&gt;\(\frac{k}{v+m}\leq B_0 \leq \frac{d}{v+m+d}\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;As can be seen, if &lt;span class=&#34;math inline&#34;&gt;\(B_0\leq \frac{k}{v+m}\)&lt;/span&gt; which implies that the prior of receiving a safe email is low, exerting effort is not cost-effective, and the user will exert zero effort and neglect the email irrespective of the signals. If &lt;span class=&#34;math inline&#34;&gt;\(B_0\geq \frac{d-k}{d}\)&lt;/span&gt;, implying that the prior of receiving a safe email is high, exerting effort is not cost-effective either, and the user will exert zero effort and comply to the email irrespective of the signals. The user will exert &lt;span class=&#34;math inline&#34;&gt;\(e=1\)&lt;/span&gt; only when &lt;span class=&#34;math inline&#34;&gt;\(\frac{k}{v+m} \leq B_0 \leq \frac{d-k}{d}\)&lt;/span&gt;. User’s prior &lt;span class=&#34;math inline&#34;&gt;\(B_0\)&lt;/span&gt; and corresponding action is presented in Figure 2.&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;/img/LimitedAttentionFig2.png&#34; /&gt;
+
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Observations:&lt;/strong&gt; From the analysis above, we obtained the following observations:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Impact of attention cost:&lt;/strong&gt; If the cost of paying attention is decreasing, i.e., &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt; goes smaller, the region that &lt;span class=&#34;math inline&#34;&gt;\(e=1\)&lt;/span&gt; becomes larger. When &lt;span class=&#34;math inline&#34;&gt;\(k=0\)&lt;/span&gt;, the user will always exert effort.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Impact of value of complying:&lt;/strong&gt; As the value of complying to a safe email &lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt; or the cost of neglecting a safe email &lt;span class=&#34;math inline&#34;&gt;\(m\)&lt;/span&gt; increases, the region that &lt;span class=&#34;math inline&#34;&gt;\(e=1\)&lt;/span&gt; becomes larger.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Impact of cost of complying:&lt;/strong&gt; As the cost of complying to a unsafe email &lt;span class=&#34;math inline&#34;&gt;\(d\)&lt;/span&gt; increase, the region that &lt;span class=&#34;math inline&#34;&gt;\(e=1\)&lt;/span&gt; becomes larger.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Impact of cost of complying:&lt;/strong&gt; Suppose the user cannot exert &lt;span class=&#34;math inline&#34;&gt;\(e=1\)&lt;/span&gt; (which may be resulted from fatigue), the user will choose &lt;span class=&#34;math inline&#34;&gt;\(\{e=0, comply\}\)&lt;/span&gt; if &lt;span class=&#34;math inline&#34;&gt;\(B_0\geq \frac{d}{v+m+d}\)&lt;/span&gt; and choose &lt;span class=&#34;math inline&#34;&gt;\(\{e=0, neglect\}\)&lt;/span&gt; if &lt;span class=&#34;math inline&#34;&gt;\(B_0&amp;lt;\frac{d}{v+m+d}\)&lt;/span&gt; (see Figure 3).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;/img/LimitedAttentionFig3.png&#34; /&gt;
+
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>How much we can learn from Google search data</title>
+      <link>/post/how-much-can-we-learn-from-google-search-data/</link>
+      <pubDate>Thu, 05 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/how-much-can-we-learn-from-google-search-data/</guid>
+      <description>&lt;hr /&gt;
+&lt;p&gt;I just finished the book &lt;a href=&#34;https://www.amazon.com/Everybody-Lies-Internet-About-Really/dp/0062390856/ref=sr_1_1?ie=UTF8&amp;amp;qid=1515677064&amp;amp;sr=8-1&amp;amp;keywords=everyone+lies+book&#34;&gt;Everybody Lies: Big Data, New Data, and What the Internet Can Tell Us About Who We Really Are&lt;/a&gt; by Seth Stephens-Davidowitz, which is a highly rated book. The author devoted a great amount of text to the Google Trends data. My fun part of reading this book is that I could dig the results from the Google Trends &lt;a href=&#34;https://trends.google.com/trends/&#34;&gt;website&lt;/a&gt; myself.&lt;/p&gt;
+&lt;p&gt;Here is one example: in the book the author argues that Google search reveals that contemporary American parents are far more focused on their son’s intelligence than on their daughters. The author has an article on New York Times &lt;a href=&#34;https://www.nytimes.com/2014/01/19/opinion/sunday/google-tell-me-is-my-son-a-genius.html?rref=collection%2Fbyline%2Fseth-stephens-davidowitz&amp;amp;mtrref=www.nytimes.com&amp;amp;assetType=opinion&#34;&gt;article&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I first reproduce the graph here. The upper panel is the search volume for “Is my daughter a genius?” and “Is my son a genius?” from 2004 to 2017. As can be seen, in most years, there are more searches for “Is my son a genius?” than “Is my daughter a genius?”. The lower panel is the average search volume. The volume for son (1.38) is almost three times than that for the daughter (0.44).&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2017-10-05-how-much-can-we-learn-from-google-search-data_files/figure-html/DaughterSon-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Okay, it seems that American parents care whether their son is genius more than their daughters. What about “myself”? Do people care themselves whether they are genius? I contrast the search volume of &lt;strong&gt;“Am I a genius”&lt;/strong&gt; against the search for son and daughter. After all, we are narcissists, kind of. The figure is shown below.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2017-10-05-how-much-can-we-learn-from-google-search-data_files/figure-html/DaughterSonSelf-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;The search volume for “Am I a genius” is way way higher than the search volume for son and daughter. See, we are narcissistic. Not surprising at all.&lt;/p&gt;
+&lt;p&gt;Let’s try something crazy: do people care whether their &lt;strong&gt;dogs&lt;/strong&gt; are genius?&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2017-10-05-how-much-can-we-learn-from-google-search-data_files/figure-html/DaughterSonDog-1.png&#34; width=&#34;768&#34; /&gt; There are more searches on dog than daughter! Dog’s intelligence is more important than daughter’s? If this is true, no matter whether you are a feminist, this is jarring. But, wait a minute, really? Drawing conclusions from the data is very tricky. To reach the conclusions that parents are biased, we have to assume the distributions of the intelligence between boys and girls are identical, which may not be the case. Girls actually outperform boys in academically. Don’t get me wrong. I am not saying there is no gender bias issue these days. I am just saying the evidence from the Google search may not precisely reflect this issue.&lt;/p&gt;
+&lt;p&gt;Why are there more searches on dog than daughter about intelligence? One explanation is people do not apply the word “genius” equally among the objects. That is, the criteria for identifying “genius” is different. An ownder of a dog may start to search whether her dog is genius when she finds the dog can understand simple sign language. The threshold for kids is much higher. Another reason is much simpler: there are more demestic dogs in the US than girls. According to this &lt;a href=&#34;https://www.statista.com/statistics/198100/dogs-in-the-united-states-since-2000/&#34;&gt;source&lt;/a&gt;, in 2017, a total of about 89.7 million dogs lived in households in the United States as pets, which is more than twice as much as 40.2 million, the number of girls aged between 0 to 19 (see &lt;a href=&#34;https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?src=bkmk&#34;&gt;here&lt;/a&gt;). But when comparing “genius cat” vs. “genius dog”, there are more searches on “genius dog” than “genius cat” though there are more domestic cat (95.6 million) than dogs (well, dogs are &lt;a href=&#34;https://news.nationalgeographic.com/2017/11/dog-cat-brains-neurons-intelligence-study-spd/&#34;&gt;shown&lt;/a&gt; to have more neurons in the brain).&lt;/p&gt;
+&lt;p&gt;All in all, the book raised more questions than it addressed.&lt;/p&gt;
 </description>
     </item>
     

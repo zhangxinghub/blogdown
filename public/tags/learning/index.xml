@@ -13,13 +13,12 @@
     
     
     <item>
-      <title>Sample Size</title>
+      <title>Is it the end of the world if $\alpha=0.005$ is the new norm?</title>
       <link>/post/sample-size/</link>
       <pubDate>Mon, 25 Dec 2017 00:00:00 +0000</pubDate>
       
       <guid>/post/sample-size/</guid>
-      <description>This note describes how sample size calculator works. There are must be better notes somewhere else, but I find the best notes for me is the note written by myself.
-How Sample Size is Determined?Suppose there are two groups, Treatment (T) and Control (C) group. The research is to test whether there is difference in the proportion of the response between two groups. The null hypothesis is there is no difference in response (\(H_0\): \(p_T=p_C\)), and the alternative hypothesis is \(H_A\): \(p_T\neq p_C\).</description>
+      <description>In this paper by Benjamin et al (2017) on redefining statistical significance, they proposed to change the default P-value threshold for statistical significance from 0.05 to 0.005 for claims of new discoveries. That is the proposed p-value is one tenth of the conventional one!! Suppose the world changed to p=0.005. Do we need 10X more sample? As a researcher without sufficient funding, we care about how much additional sample we need suppose our hypothesis is true.</description>
     </item>
     
   </channel>

@@ -72,7 +72,7 @@
   <meta property="og:description" content="Postdoc Researcher">
   <meta property="og:locale" content="en-us">
   
-  <meta property="og:updated_time" content="2017-12-25T00:00:00&#43;00:00">
+  <meta property="og:updated_time" content="2018-01-19T00:00:00&#43;00:00">
   
 
   
@@ -230,12 +230,51 @@
   
   
   <div>
-    <h2><a href="/post/sample-size/">Sample Size</a></h2>
+    <h2><a href="/post/personalized-data-summary-function-using-data-table/">Personalized Data Summary Function Using &#34;data.table&#34;</a></h2>
     <div class="article-style">
       
-      This note describes how sample size calculator works. There are must be better notes somewhere else, but I find the best notes for me is the note written by myself.
-How Sample Size is Determined?
-Suppose there are two groups, Treatment (T) and Control &copy; group. The research is to test whether there is difference in the proportion of the response between two groups. The null hypothesis is there is no difference in response ((H_0): (p_T=p_C)), and the alternative hypothesis is (H_A): (p_T\neq p_C).
+      One function I miss about Stata is its tabstat. By using just one line code, it can produce very useful summary statistics such as mean, and standard error by groups by conditions. R has its own built-in summary function – summary(), too, but in most cases in my research, I found the summaries produced is barely useful. Consider the following pseudo-data:
+library(data.table)
+set.seed(10)
+N = 120
+DT = data.table(x = rnorm(N,1), y = rnorm(N,2),
+category = sample(letters[1:3], N, replace = T))
+DT[1:10]</p>
+
+<h2 id="x-y-category">x y category</h2>
+
+<h2 id="1-1">1: 1.</h2>
+
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/post/sample-size/">Is it the end of the world if $\alpha=0.005$ is the new norm?</a></h2>
+    <div class="article-style">
+      
+      In this paper by Benjamin et al (2017) on redefining statistical significance, they proposed to change the default P-value threshold for statistical significance from 0.05 to 0.005 for claims of new discoveries. That is the proposed p-value is one tenth of the conventional one!! Suppose the world changed to p=0.005. Do we need 10X more sample? As a researcher without sufficient funding, we care about how much additional sample we need suppose our hypothesis is true.
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/post/anonymize-using-digest/">Anonymize Individuals using digest()</a></h2>
+    <div class="article-style">
+      
+      <p>When requesting individual level data from others (a company or a government agency), we usually need to properly anomymize the individuals to protect their privacy. The following is an example:
+(Data = data.frame(Name = c(&quot;John Smith&quot;, &quot;Jenny Ford&quot;,&quot;Vivian Lee&quot;), Secret = c(&quot;Hate dog&quot;,&quot;Afraid of ghost&quot;,&quot;A bathroom dancer&quot;)))</p>
+
+<h2 id="name-secret">Name Secret</h2>
+
+<h2 id="1-john-smith-hate-dog">1 John Smith Hate dog</h2>
+
+<h2 id="2-jenny-ford-afraid-of-ghost">2 Jenny Ford Afraid of ghost</h2>
+
+<h2 id="3-vivian-lee-a-bathroom-dancer">3 Vivian Lee A bathroom dancer</h2>
+
+<p>One simple way is we can just drop the Name, and only keep the Secret since we are more interested in their secrets.</p>
+
       
     </div>
   </div>

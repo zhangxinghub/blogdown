@@ -5,8 +5,53 @@
     
     <url>
     
+      <loc>/post/fake-news-consumption-and-segregation-on-twitter/</loc>
+      <lastmod>2018-03-28T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/post/personalized-data-summary-function-using-data-table/</loc>
+      <lastmod>2018-01-19T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/post/sample-size/</loc>
       <lastmod>2017-12-25T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/post/anonymize-using-digest/</loc>
+      <lastmod>2017-12-14T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/post/limited-attention-in-response-to-email-scam-a-toy-model/</loc>
+      <lastmod>2017-11-20T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/post/how-much-can-we-learn-from-google-search-data/</loc>
+      <lastmod>2017-10-05T00:00:00+00:00</lastmod>
     </url>
     
   
@@ -115,7 +160,47 @@
     
     <url>
     
+      <loc>/tags/book/</loc>
+      <lastmod>2017-10-05T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/categories/</loc>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/consumer-behavior/</loc>
+      <lastmod>2017-11-20T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/data/</loc>
+      <lastmod>2018-01-19T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/data-science/</loc>
+      <lastmod>2018-03-28T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -154,8 +239,88 @@
     
     <url>
     
+      <loc>/tags/fake-news/</loc>
+      <lastmod>2018-03-28T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/game-theory/</loc>
+      <lastmod>2017-11-20T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/gender/</loc>
+      <lastmod>2017-10-05T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/google/</loc>
+      <lastmod>2017-10-05T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/tags/learning/</loc>
       <lastmod>2017-12-25T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/limited-attention/</loc>
+      <lastmod>2017-11-20T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/model/</loc>
+      <lastmod>2017-11-20T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/polarization/</loc>
+      <lastmod>2018-03-28T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/privacy/</loc>
+      <lastmod>2017-12-14T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -185,7 +350,17 @@
     <url>
     
       <loc>/tags/r/</loc>
-      <lastmod>2017-12-25T00:00:00+00:00</lastmod>
+      <lastmod>2018-01-19T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/social-media/</loc>
+      <lastmod>2018-03-28T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -195,7 +370,7 @@
     <url>
     
       <loc>/tags/statistics/</loc>
-      <lastmod>2017-12-25T00:00:00+00:00</lastmod>
+      <lastmod>2018-01-19T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -214,8 +389,28 @@
     
     <url>
     
+      <loc>/tags/twitter/</loc>
+      <lastmod>2018-03-28T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/visualization/</loc>
+      <lastmod>2018-03-28T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/</loc>
-      <lastmod>2017-10-15T00:00:00+08:00</lastmod>
+      <lastmod>2017-12-25T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
