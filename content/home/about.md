@@ -37,4 +37,4 @@ weight = 5
 
 I am a postdoctoral researcher in the Singapore-ETH Center at ETH Zurich. My research considers how people perceive risk and uncertainty, and how people learn over their experiences. I conduct both empirical research to tackle the descriptive problems of how certain behaviour occurs, and theoretical research to tackle the prescriptive problems of how policymakers should respond. I seek to develop evidence-based policy recommendations to help decision makers deal with risk in cybersecurity and health.
 
-{{% staticref "files/cv.pdf" %}}Download my CV{{% /staticref %}}
+{{% staticref "files/CV_XingZhang.pdf" %}}Download my CV{{% /staticref %}}
