@@ -29,8 +29,8 @@ filter_default = 0
   tag = "*"
   
 [[filter]]
-  name = "Deep Learning"
-  tag = ".deep-learning"
+  name = "Self-Control"
+  tag = ".Self-Control"
 
 [[filter]]
   name = "Other"

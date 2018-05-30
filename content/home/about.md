@@ -10,9 +10,9 @@ weight = 5
 # List your academic interests.
 [interests]
   interests = [
-    "Behavioral Economics",
-    "Judgement and Decision Making",
-    "Consumer Learning"
+    "Self-control",
+    "Consumer Learning",
+	"Judgement and Decision Making",
   ]
 
 # List your qualifications (such as academic degrees).
@@ -35,6 +35,6 @@ weight = 5
 
 # Biography
 
-I am a postdoctoral researcher in the Singapore-ETH Center at ETH Zurich. My research considers how people perceive risk and uncertainty, and how people learn over their experiences. I conduct both empirical research to tackle the descriptive problems of how certain behaviour occurs, and theoretical research to tackle the prescriptive problems of how policymakers should respond. I seek to develop evidence-based policy recommendations to help decision makers deal with risk in cybersecurity and health.
+I am a postdoctoral researcher in the Singapore-ETH Center at ETH Zurich. My research considers how firms should incorporate consumer behavioral biases into pricing and choice architecture design. I conduct both empirical research to tackle the descriptive problems of how certain behaviour occurs, and theoretical research to tackle the prescriptive problems of how firms should respond. I use field experiments to develop evidence-based policy recommendations.
 
 {{% staticref "files/CV_XingZhang.pdf" %}}Download my CV{{% /staticref %}}

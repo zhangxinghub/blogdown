@@ -3,7 +3,7 @@
 date = "2018-04-27"
 
 # Project title.
-title = "Biology and Consumer Self Control"
+title = "Consumer Self Control"
 
 # Project summary to display on homepage.
 summary = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
