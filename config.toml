@@ -47,7 +47,7 @@ defaultContentLanguageInSubdir = false
   organizations = [ { name = "Singapore-ETH Center", url = "http://www.sec.ethz.ch/" },{ name = "ETH Zurich", url = "https://www.ethz.ch/en.html" }  ]
 
   gravatar = false  # Get your avatar from Gravatar.com? (true/false)
-  avatar = "ZX3.jpg"  # Specify an avatar image (in `static/img/` folder) or delete value to disable avatar.
+  avatar = "ZX.jpg"  # Specify an avatar image (in `static/img/` folder) or delete value to disable avatar.
   email = "zhangxingis@gmail.com"
   address = "1 CREATE Way, #06-01 CREATE Tower, Singapore, 138602"
   office_hours = "Email for appointment"
