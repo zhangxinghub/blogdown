@@ -1,5 +1,5 @@
 baseurl = "https://xingzhangsite.netlify.com/"  # End your URL with a `/` trailing slash, e.g. `https://example.com/`.
-title = "Xing's Site"
+title = "Xing Zhang"
 copyright = "&copy; Zhang Xing"
 theme = "hugo-academic"
 enableEmoji = true
@@ -40,7 +40,7 @@ defaultContentLanguageInSubdir = false
 
   # Your details.
   name = "Xing Zhang"
-  role = "Postdoc Researcher"
+  role = "Postdoctoral Researcher"
 
   # Organizations/Affiliations.
   #   Separate multiple entries with a comma, using the form: `[ {name="Org1", url=""}, {name="Org2", url=""} ]`.

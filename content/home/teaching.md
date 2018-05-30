@@ -16,7 +16,7 @@ weight = 60
 +++
 
 - Tutor for **Principles of Marketing**, 2015
-(Teaching Evaluation: **4.2/5.0**; Department Average: 4.0/5.0)
+(Teaching Evaluation: 4.2/5.0; Department Average: 4.0/5.0)
 - Teaching Assistant for **Marketing Research**, 2013
 - Guest lecturer in **Behavioral and Experimental Economics**, 2010
 - Part-time guitar tutor, 2006-2007

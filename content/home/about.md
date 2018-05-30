@@ -33,7 +33,7 @@ weight = 5
  
 +++
 
-# Biography
+# About me
 
 I am a postdoctoral researcher in the Singapore-ETH Center at ETH Zurich. My research considers how firms should incorporate consumer behavioral biases into pricing and choice architecture design. I conduct both empirical research to tackle the descriptive problems of how certain behaviour occurs, and theoretical research to tackle the prescriptive problems of how firms should respond. I use field experiments to develop evidence-based policy recommendations.
 
