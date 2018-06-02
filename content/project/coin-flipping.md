@@ -27,6 +27,6 @@ math = false
 #caption = "Tug of war between two selves"
 
 +++
-**Xing Zhang** and **Songfa Zhong**
+**Xing Zhang** and [Songfa Zhong](https://zhongsongfa.weebly.com/)
 
 When confronted with difficult choices, individuals often choose to avoid decisions by failing to act, sticking to the status quo, or procrastinating. Here we examine the usage of coin flipping to help resolve choice difficulty in the setting of donation. In a randomized field experiment, we find that coin flipping increases donation when choice is hard due to choosing between two equally attractive charities, but not when choice is relatively easy with matching fund provided to one of the two charities. A laboratory experiment replicates the observed patterns and further sheds light on the underlying psychological mechanism. More generally, our results point to the power of randomization as an effective tool in nudging individuals into making active decisions.
