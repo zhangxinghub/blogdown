@@ -33,8 +33,8 @@ filter_default = 0
   tag = ".Self-Control"
 
 [[filter]]
-  name = "Other"
-  tag = ".demo"
+  name = "Learning"
+  tag = ".Learning"
 
 +++
 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Homes on Xing&#39;s Site</title>
+    <title>Homes on Xing Zhang</title>
     <link>/home/</link>
-    <description>Recent content in Homes on Xing&#39;s Site</description>
+    <description>Recent content in Homes on Xing Zhang</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Zhang Xing</copyright>
@@ -18,11 +18,11 @@
       <pubDate>Mon, 25 Dec 2017 00:00:00 +0000</pubDate>
       
       <guid>/home/about/</guid>
-      <description>Biography I am a postdoctoral researcher in the Singapore-ETH Center at ETH Zurich. My research considers how people perceive risk and uncertainty, and how people learn over their experiences. I conduct both empirical research to tackle the descriptive problems of how certain behaviour occurs, and theoretical research to tackle the prescriptive problems of how policymakers should respond. I seek to develop evidence-based policy recommendations to help decision makers deal with risk in cybersecurity and health.</description>
+      <description>About me I am a postdoctoral researcher in the Singapore-ETH Center at ETH Zurich. My research considers how firms should incorporate consumer behavioral biases into pricing and choice architecture design. I conduct both empirical research to tackle the descriptive problems of how certain behaviour occurs, and theoretical research to tackle the prescriptive problems of how firms should respond. In my current work, I use field experiments to develop evidence-based policy and strategy recommendations.</description>
     </item>
     
     <item>
-      <title>Selected Publications</title>
+      <title>Publications</title>
       <link>/home/publications_selected/</link>
       <pubDate>Wed, 20 Apr 2016 00:00:00 +0800</pubDate>
       
@@ -49,14 +49,12 @@
     </item>
     
     <item>
-      <title>Teaching</title>
+      <title>Teaching Experience</title>
       <link>/home/teaching/</link>
-      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 20 Apr 2018 00:00:00 +0000</pubDate>
       
       <guid>/home/teaching/</guid>
-      <description>This is an example of using the custom widget to create your own homepage section.
-I am a teaching instructor for the following courses at University X:
- CS101: An intro to computer science CS102: An intro to computer science CS103: An intro to computer science CS104: An intro to computer science CS105: An intro to computer science CS106: An intro to computer science CS107: An intro to computer science  </description>
+      <description> Tutor for Principles of Marketing, 2015 (Teaching Evaluation: 4.2&amp;frasl;5.0; Department Average: 4.0/5.0) Teaching Assistant for Marketing Research, 2013 Guest lecturer in Behavioral and Experimental Economics, 2010 Part-time guitar tutor, 2006-2007  </description>
     </item>
     
     <item>

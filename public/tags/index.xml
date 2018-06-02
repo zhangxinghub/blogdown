@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on Xing&#39;s Site</title>
+    <title>Tags on Xing Zhang</title>
     <link>/tags/</link>
-    <description>Recent content in Tags on Xing&#39;s Site</description>
+    <description>Recent content in Tags on Xing Zhang</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Zhang Xing</copyright>
@@ -31,11 +31,47 @@
     </item>
     
     <item>
+      <title>Charity</title>
+      <link>/tags/charity/</link>
+      <pubDate>Sat, 02 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/charity/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Choice Architecure Design</title>
+      <link>/tags/choice-architecure-design/</link>
+      <pubDate>Sat, 02 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/choice-architecure-design/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Consumer Behavior</title>
       <link>/tags/consumer-behavior/</link>
       <pubDate>Mon, 20 Nov 2017 00:00:00 +0000</pubDate>
       
       <guid>/tags/consumer-behavior/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Consumer Protection</title>
+      <link>/tags/consumer-protection/</link>
+      <pubDate>Fri, 27 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/consumer-protection/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cyber-fraud</title>
+      <link>/tags/cyber-fraud/</link>
+      <pubDate>Fri, 27 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/cyber-fraud/</guid>
       <description></description>
     </item>
     
@@ -58,20 +94,20 @@
     </item>
     
     <item>
-      <title>Deep-learning</title>
-      <link>/tags/deep-learning/</link>
-      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
+      <title>Default Effect</title>
+      <link>/tags/default-effect/</link>
+      <pubDate>Sat, 02 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>/tags/deep-learning/</guid>
+      <guid>/tags/default-effect/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Demo</title>
-      <link>/tags/demo/</link>
-      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
+      <title>Experiment</title>
+      <link>/tags/experiment/</link>
+      <pubDate>Sat, 02 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>/tags/demo/</guid>
+      <guid>/tags/experiment/</guid>
       <description></description>
     </item>
     
@@ -123,7 +159,7 @@
     <item>
       <title>Learning</title>
       <link>/tags/learning/</link>
-      <pubDate>Mon, 25 Dec 2017 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 27 Apr 2018 00:00:00 +0000</pubDate>
       
       <guid>/tags/learning/</guid>
       <description></description>
@@ -148,11 +184,29 @@
     </item>
     
     <item>
+      <title>Overconfidence</title>
+      <link>/tags/overconfidence/</link>
+      <pubDate>Fri, 27 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/overconfidence/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Polarization</title>
       <link>/tags/polarization/</link>
       <pubDate>Wed, 28 Mar 2018 00:00:00 +0000</pubDate>
       
       <guid>/tags/polarization/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Pricing</title>
+      <link>/tags/pricing/</link>
+      <pubDate>Sat, 02 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/pricing/</guid>
       <description></description>
     </item>
     
@@ -175,6 +229,24 @@
     </item>
     
     <item>
+      <title>Satisfaction</title>
+      <link>/tags/satisfaction/</link>
+      <pubDate>Sat, 02 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/satisfaction/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Self-Control</title>
+      <link>/tags/self-control/</link>
+      <pubDate>Fri, 27 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/self-control/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Social Media</title>
       <link>/tags/social-media/</link>
       <pubDate>Wed, 28 Mar 2018 00:00:00 +0000</pubDate>
@@ -189,6 +261,15 @@
       <pubDate>Fri, 19 Jan 2018 00:00:00 +0000</pubDate>
       
       <guid>/tags/statistics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sunk Cost Fallacy</title>
+      <link>/tags/sunk-cost-fallacy/</link>
+      <pubDate>Sat, 02 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/sunk-cost-fallacy/</guid>
       <description></description>
     </item>
     

@@ -1,24 +1,33 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>2 on Xing&#39;s Site</title>
+    <title>2 on Xing Zhang</title>
     <link>/publication_types/2/</link>
-    <description>Recent content in 2 on Xing&#39;s Site</description>
+    <description>Recent content in 2 on Xing Zhang</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Zhang Xing</copyright>
-    <lastBuildDate>Tue, 01 Sep 2015 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 23 Nov 2016 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/publication_types/2/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>A Person Re-Identification System For Mobile Devices</title>
-      <link>/publication/person-re-identification/</link>
-      <pubDate>Tue, 01 Sep 2015 00:00:00 +0000</pubDate>
+      <title>How Monitoring Influences Trust: A Tale of Two Faces</title>
+      <link>/publication/monitoring-trust/</link>
+      <pubDate>Wed, 23 Nov 2016 00:00:00 +0000</pubDate>
       
-      <guid>/publication/person-re-identification/</guid>
-      <description>More detail can easily be written here using Markdown and $\rm \LaTeX$ math code.</description>
+      <guid>/publication/monitoring-trust/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Delay Discounting, Genetic Sensitivity, and Leukocyte Telomere Length</title>
+      <link>/publication/delay-discounting-telomere/</link>
+      <pubDate>Fri, 01 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/delay-discounting-telomere/</guid>
+      <description></description>
     </item>
     
   </channel>

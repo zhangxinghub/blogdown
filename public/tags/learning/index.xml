@@ -1,16 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Learning on Xing&#39;s Site</title>
+    <title>Learning on Xing Zhang</title>
     <link>/tags/learning/</link>
-    <description>Recent content in Learning on Xing&#39;s Site</description>
+    <description>Recent content in Learning on Xing Zhang</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Zhang Xing</copyright>
-    <lastBuildDate>Mon, 25 Dec 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 27 Apr 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/learning/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Consumer learning in response to cyber-fraud</title>
+      <link>/project/learning/</link>
+      <pubDate>Fri, 27 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/project/learning/</guid>
+      <description>Xing Zhang and Jeeva Somasundaram
+We study how consumers respond to a common fraudulent practice in the market &amp;ndash; scam emails over time. In a field experiment with more than 14,000 email users, we found that repeated experience with one type of scam is mainly helpful for the consumer to deal with the same type of scam, but may backfire when the consumers face a new type of scam. More specifically, one group of users received 3 scam emails in 2 months ostensibly asking users to install a security update, and another group of users &amp;ndash; control group, did not receive such emails during this period.</description>
+    </item>
     
     <item>
       <title>Is it the end of the world if $\alpha=0.005$ is the new norm?</title>

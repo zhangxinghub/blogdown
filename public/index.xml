@@ -1,14 +1,64 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Xing&#39;s Site on Xing&#39;s Site</title>
+    <title>Xing Zhang on Xing Zhang</title>
     <link>/</link>
-    <description>Recent content in Xing&#39;s Site on Xing&#39;s Site</description>
+    <description>Recent content in Xing Zhang on Xing Zhang</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Zhang Xing</copyright>
     <lastBuildDate>Mon, 25 Dec 2017 00:00:00 +0000</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Rebate Schemes and the Sunk Cost Fallacy</title>
+      <link>/project/museum/</link>
+      <pubDate>Sat, 02 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/project/museum/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Teck-hua Ho&lt;/strong&gt; &lt;strong&gt;Hang Wu&lt;/strong&gt; and &lt;strong&gt;Xing Zhang&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Consumers commit the sunk cost fallacy, a canonical example of irrationality, when their decisions are influenced by costs that have already been incurred and cannot be reversed. Results from field studies on the existence of the sunk cost effect are mixed. In this paper, the authors report a large-scale randomized field experiment involving more than 2,800 museum customers. The authors randomly assigned the participating customers to different rebate schemes and studied the influence of sunk costs on the length of time customers stayed in the museum. On average, customers who received a full rebate for the cost of the admission ticket reduced their length of stay in the museum by 9%. The sunk cost effect was mainly observed in the behavior of customers who came alone or with family members, rather than friends. For these customers, making a choice between two rebate schemes with identical expected rebate amounts increased the length of stay. The observation is consistent with the predictions of a mental accounting model with a reference-dependent sunk cost effect.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Using Coin Flipping to Resolve Choice Difficulty Problem</title>
+      <link>/project/coin-flipping/</link>
+      <pubDate>Sat, 02 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/project/coin-flipping/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Xing Zhang&lt;/strong&gt; and &lt;strong&gt;Songfa Zhong&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;When confronted with difficult choices, individuals often choose to avoid decisions by failing to act, sticking to the status quo, or procrastinating. Here we examine the usage of coin flipping to help resolve choice difficulty in the setting of donation. In a randomized field experiment, we find that coin flipping increases donation when choice is hard due to choosing between two equally attractive charities, but not when choice is relatively easy with matching fund provided to one of the two charities. A laboratory experiment replicates the observed patterns and further sheds light on the underlying psychological mechanism. More generally, our results point to the power of randomization as an effective tool in nudging individuals into making active decisions.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Consumer learning in response to cyber-fraud</title>
+      <link>/project/learning/</link>
+      <pubDate>Fri, 27 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/project/learning/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Xing Zhang&lt;/strong&gt; and &lt;strong&gt;Jeeva Somasundaram&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;We study how consumers respond to a common fraudulent practice in the market &amp;ndash; scam emails over time. In a field experiment with more than 14,000 email users, we found that repeated experience with one type of scam is mainly helpful for the consumer to deal with the same type of scam, but may backfire when the consumers face a new type of scam. More specifically, one group of users received 3 scam emails in 2 months ostensibly asking users to install a security update, and another group of users &amp;ndash; control group, did not receive such emails during this period. Then both groups received a scam email as hotel booking confirmation. We observed that the group had prior experience with security update has significantly higher rate of falling prey to the new scam than the control group. Together with other experimental conditions, we distinguish between knowledge-based learning (e.g., how to identify scam) and belief-based learning (e.g., how likely one will receive certain type of scam). In the email scam context, knowledge-based learning is more essential than belief-based learning.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Self-Control</title>
+      <link>/project/self-control/</link>
+      <pubDate>Fri, 27 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/project/self-control/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Xing Zhang&lt;/strong&gt;, &lt;strong&gt;Juin Kuan Chong&lt;/strong&gt;, &lt;strong&gt;Ganesh Iyer&lt;/strong&gt;, and &lt;strong&gt;Xiaoyan Xu&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;This paper examines the role of the sunk cost fallacy as a self-commitment device and its implication for optimal price contract design. Consumers evince the sunk cost fallacy if they condition the consumption level on the sunk cost incurred in the past. Our empirical study suggests that consumers are able to anticipate the fallacy associated with the health club membership fee \textit{ex ante}, and hence they may rationally exploit this fallacy to counteract their future self-control problem in health club attendance.&lt;/p&gt;
+
+&lt;p&gt;Therefore, a firm&amp;rsquo;s optimal price contract has to balance the demand for flexibility due to the sunk cost fallacy and the demand for commitment due to the self-control problem. Our analytical results show that in the market for investment goods such as health club attendance, the sunk cost fallacy may increase or decrease the consumer&amp;rsquo;s expected utility depending on the degree of self-control problem. In the market for leisure goods such as casino gambling, however, the consumer&amp;rsquo;s expected utility is always decreasing with the sunk cost fallacy. Our analysis on optimal two-part tariff contract reveals that the per-visit fee is increasing with the sunk cost fallacy, and sometimes it should be charged higher than the marginal cost in response to the concern of overconsumption problem. Interestingly, the lump-sum fee is decreasing with the sunk cost fallacy in the market for investment goods whereas is increasing with the sunk cost fallacy in the market for leisure goods. In equilibrium, the firm internalizes the behavioral biases, and the social welfare is independent of the degree of sunk-cost fallacy and self-control problem. At last, we examine the welfare implication for naive consumers who are unaware of their self-control problem, and find that naive consumers with the sunk cost fallacy may be better-off compared to the sophisticated counterparts in the market for investment goods&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Fake News Consumption and Segregation on Twitter</title>
@@ -387,50 +437,21 @@ Data&lt;/code&gt;&lt;/pre&gt;
     </item>
     
     <item>
-      <title>Deep Learning</title>
-      <link>/project/deep-learning/</link>
-      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
+      <title>How Monitoring Influences Trust: A Tale of Two Faces</title>
+      <link>/publication/monitoring-trust/</link>
+      <pubDate>Wed, 23 Nov 2016 00:00:00 +0000</pubDate>
       
-      <guid>/project/deep-learning/</guid>
-      <description>&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam. Quisque risus orci, mollis id ante sit amet, gravida egestas nisl. Sed ac tempus magna. Proin in dui enim. Donec condimentum, sem id dapibus fringilla, tellus enim condimentum arcu, nec volutpat est felis vel metus. Vestibulum sit amet erat at nulla eleifend gravida.&lt;/p&gt;
-
-&lt;p&gt;Nullam vel molestie justo. Curabitur vitae efficitur leo. In hac habitasse platea dictumst. Sed pulvinar mauris dui, eget varius purus congue ac. Nulla euismod, lorem vel elementum dapibus, nunc justo porta mi, sed tempus est est vel tellus. Nam et enim eleifend, laoreet sem sit amet, elementum sem. Morbi ut leo congue, maximus velit ut, finibus arcu. In et libero cursus, rutrum risus non, molestie leo. Nullam congue quam et volutpat malesuada. Sed risus tortor, pulvinar et dictum nec, sodales non mi. Phasellus lacinia commodo laoreet. Nam mollis, erat in feugiat consectetur, purus eros egestas tellus, in auctor urna odio at nibh. Mauris imperdiet nisi ac magna convallis, at rhoncus ligula cursus.&lt;/p&gt;
-
-&lt;p&gt;Cras aliquam rhoncus ipsum, in hendrerit nunc mattis vitae. Duis vitae efficitur metus, ac tempus leo. Cras nec fringilla lacus. Quisque sit amet risus at ipsum pharetra commodo. Sed aliquam mauris at consequat eleifend. Praesent porta, augue sed viverra bibendum, neque ante euismod ante, in vehicula justo lorem ac eros. Suspendisse augue libero, venenatis eget tincidunt ut, malesuada at lorem. Donec vitae bibendum arcu. Aenean maximus nulla non pretium iaculis. Quisque imperdiet, nulla in pulvinar aliquet, velit quam ultrices quam, sit amet fringilla leo sem vel nunc. Mauris in lacinia lacus.&lt;/p&gt;
-
-&lt;p&gt;Suspendisse a tincidunt lacus. Curabitur at urna sagittis, dictum ante sit amet, euismod magna. Sed rutrum massa id tortor commodo, vitae elementum turpis tempus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean purus turpis, venenatis a ullamcorper nec, tincidunt et massa. Integer posuere quam rutrum arcu vehicula imperdiet. Mauris ullamcorper quam vitae purus congue, quis euismod magna eleifend. Vestibulum semper vel augue eget tincidunt. Fusce eget justo sodales, dapibus odio eu, ultrices lorem. Duis condimentum lorem id eros commodo, in facilisis mauris scelerisque. Morbi sed auctor leo. Nullam volutpat a lacus quis pharetra. Nulla congue rutrum magna a ornare.&lt;/p&gt;
-
-&lt;p&gt;Aliquam in turpis accumsan, malesuada nibh ut, hendrerit justo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque sed erat nec justo posuere suscipit. Donec ut efficitur arcu, in malesuada neque. Nunc dignissim nisl massa, id vulputate nunc pretium nec. Quisque eget urna in risus suscipit ultricies. Pellentesque odio odio, tincidunt in eleifend sed, posuere a diam. Nam gravida nisl convallis semper elementum. Morbi vitae felis faucibus, vulputate orci placerat, aliquet nisi. Aliquam erat volutpat. Maecenas sagittis pulvinar purus, sed porta quam laoreet at.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>External Project</title>
-      <link>/project/example-external-project/</link>
-      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
-      
-      <guid>/project/example-external-project/</guid>
+      <guid>/publication/monitoring-trust/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>A Person Re-Identification System For Mobile Devices</title>
-      <link>/publication/person-re-identification/</link>
-      <pubDate>Tue, 01 Sep 2015 00:00:00 +0000</pubDate>
+      <title>Delay Discounting, Genetic Sensitivity, and Leukocyte Telomere Length</title>
+      <link>/publication/delay-discounting-telomere/</link>
+      <pubDate>Fri, 01 Jul 2016 00:00:00 +0000</pubDate>
       
-      <guid>/publication/person-re-identification/</guid>
-      <description>&lt;p&gt;More detail can easily be written here using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Mobile visual clothing search</title>
-      <link>/publication/clothing-search/</link>
-      <pubDate>Mon, 01 Jul 2013 00:00:00 +0000</pubDate>
-      
-      <guid>/publication/clothing-search/</guid>
-      <description>&lt;p&gt;More detail can easily be written here using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
-</description>
+      <guid>/publication/delay-discounting-telomere/</guid>
+      <description></description>
     </item>
     
   </channel>
