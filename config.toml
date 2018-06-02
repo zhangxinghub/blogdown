@@ -243,7 +243,11 @@ defaultContentLanguageInSubdir = false
 
 [[menu.main]]
   name = "Working Paper"
+<<<<<<< HEAD
   url = "#projects"
+=======
+  url = "#Working_paper"
+>>>>>>> master
   weight = 3
 
 [[menu.main]]
