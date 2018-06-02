@@ -1,11 +1,11 @@
 +++
 # Projects widget.
 # This widget displays all projects from `content/project/`.
-widget = "projects"
+widget = "Working_paper"
 active = true
 date = "2016-04-20T00:00:00"
 
-title = "Projects"
+title = "Working Papers"
 subtitle = ""
 
 # Order that this section will appear in.
@@ -33,8 +33,8 @@ filter_default = 0
   tag = ".Self-Control"
 
 [[filter]]
-  name = "Other"
-  tag = ".demo"
+  name = "Sunk Cost Fallacy"
+  tag = ".Sunk Cost Fallacy"
 
 +++
 
