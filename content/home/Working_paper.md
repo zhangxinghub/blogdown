@@ -5,7 +5,7 @@ widget = "Working_paper"
 active = true
 date = "2016-04-20T00:00:00"
 
-title = "Working Papers"
+title = "Working_paper"
 subtitle = ""
 
 # Order that this section will appear in.
@@ -33,8 +33,8 @@ filter_default = 0
   tag = ".Self-Control"
 
 [[filter]]
-  name = "Sunk Cost Fallacy"
-  tag = ".Sunk Cost Fallacy"
+  name = "Sunk-Cost"
+  tag = ".Sunk-Cost"
 
 +++
 
