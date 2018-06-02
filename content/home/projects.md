@@ -36,7 +36,7 @@ filter_default = 0
   tag = ".Learning"
 [[filter]]
   name = "Field Experiment"
-  tag = ".Field Experiment"
+  tag = ".Field-Experiment"
 [[filter]]
   name = "Pricing"
   tag = ".Pricing"

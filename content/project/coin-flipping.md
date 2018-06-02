@@ -13,7 +13,7 @@ image_preview = "Buridan.png"
 
 # Tags: can be used for filtering projects.
 # Example: `tags = ["machine-learning", "deep-learning"]`
-tags = ["Choice Architecure Design","Charity","Field Experiment","Judgement and Decision Making"]
+tags = ["Choice Architecure Design","Charity","Field-Experiment","Judgement and Decision Making"]
 
 # Optional external URL for project (replaces project detail page).
 external_link = ""
