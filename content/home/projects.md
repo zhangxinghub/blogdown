@@ -31,10 +31,15 @@ filter_default = 0
 [[filter]]
   name = "Self-Control"
   tag = ".Self-Control"
-
 [[filter]]
   name = "Learning"
   tag = ".Learning"
+[[filter]]
+  name = "Field Experiment"
+  tag = ".Field Experiment"
+[[filter]]
+  name = "Pricing"
+  tag = ".Pricing"
 
 +++
 

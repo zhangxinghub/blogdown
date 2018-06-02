@@ -12,7 +12,7 @@ image_preview = "BeliefLearning.png"
 
 # Tags: can be used for filtering projects.
 # Example: `tags = ["machine-learning", "deep-learning"]`
-tags = ["Learning","Cyber-fraud","Consumer Protection"]
+tags = ["Learning","Cyber-fraud","Consumer Protection","Field Experiment"]
 
 # Optional external URL for project (replaces project detail page).
 external_link = ""

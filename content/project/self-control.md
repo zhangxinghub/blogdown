@@ -3,10 +3,10 @@
 date = "2018-04-27"
 
 # Project title.
-title = "Self-Control"
+title = "Pay Enough to Go to the Gym"
 
 # Project summary to display on homepage.
-summary = "We study how firm should set the optimal price for investment goods and leisure goods when consumers exhibit both the self-control problem and the sunk cost fallacy"
+summary = "We study how firm should set the optimal price for investment goods (e.g., gym membership) and leisure goods (e.g., video games) when consumers exhibit both the self-control problem and the sunk cost fallacy"
 
 # Optional image to display on homepage (relative to `static/img/` folder).
 image_preview = "PredictionError.png"
