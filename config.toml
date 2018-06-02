@@ -261,6 +261,12 @@ defaultContentLanguageInSubdir = false
   url = "#contact"
   weight = 6
 
+
+[[menu.main]]
+  name = "workingpapers"
+  url = "#workingpaper"
+  weight = 7
+
 # Taxonomies.
 [taxonomies]
   tag = "tags"
