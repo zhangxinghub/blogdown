@@ -13,6 +13,15 @@
     
     
     <item>
+      <title>U-Shape Test using &#34;Two Lines&#34; - A Simpler Solution for Discrete IV</title>
+      <link>/post/u-shape-test-using-two-lines/</link>
+      <pubDate>Fri, 25 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/u-shape-test-using-two-lines/</guid>
+      <description>MotivationTwo-lines ApproachesIssue with Discrete Dependent VariableMotivationIn this paper by Uri Simonsohn (2017), the author proposed a noval method to test U-Shape relationship. In the literature, the popular way of testing U-shapeness relationship between x and y is to add a quadratic term in the regression \(y=\beta_0+\beta_1 x + \beta_2 x^2 +\epsilon\) (\(\epsilon\) is an i.i.d noise). If \(\beta_1\) is statistitally significant, then the relationship betewen x and y are U-shape.</description>
+    </item>
+    
+    <item>
       <title>Fake News Consumption and Segregation on Twitter</title>
       <link>/post/fake-news-consumption-and-segregation-on-twitter/</link>
       <pubDate>Wed, 28 Mar 2018 00:00:00 +0000</pubDate>

@@ -1,0 +1,169 @@
+---
+title: U-Shape Test using "Two Lines" - A Simpler Solution for Discrete IV
+author: Xing
+date: '2018-05-25'
+output:
+  blogdown::html_page:
+    toc: true
+slug: u-shape-test-using-two-lines
+categories: []
+tags:
+  - Statistics
+  - Data Science
+  - Model Selection
+---
+
+
+# Motivation
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+In this [paper](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3021690) by Uri Simonsohn (2017), the author proposed a noval method to test U-Shape relationship. In the literature, the popular way of testing U-shapeness relationship between `x` and `y` is to add a quadratic term in the regression $y=\beta_0+\beta_1 x + \beta_2 x^2 +\epsilon$ ($\epsilon$ is an *i.i.d* noise). If $\beta_1$ is statistitally significant, then the relationship betewen `x` and `y` are U-shape. There are plenty of examples in the real world that two variables have such kind of relationship (consider x = amount of sugar in the icecream, and y = the taste). Simonsohn pointed out that using the quadratic regression would lead to high false positive rate.
+
+I am directly borrowing the example he gave in the paper. Suppose the underlying relationship is $y=\log{x} +\epsilon$, where $x\sim U[0,1]$. We first simulate the data and have the following plot:
+
+
+```{r Results}
+set.seed(111)
+obs = 10000 # Sample Size of Observations
+x = runif(n = obs)^2 # Unnecessary to have the ^2 term, 
+# but it gives more striking graph fitting the quadratic term
+x2 = x*x
+y=log(x)+ rnorm(obs, 0, 1)
+plot(x, y)
+curve(log(x),from=0,to=1,col='red',
+      lwd='2',ylab="y",xlab="x",xaxt='n',add=TRUE)
+```
+
+The yellow line is the curve $y=\log{x}$, and using naked eyes, there is no way it would be close to a U-shape. Now let's fit a quadratic model  $y=\beta_0+\beta_1 x + \beta_2 x^2 +\epsilon$ in the regression, and we get:
+
+```{r regression}
+summary(lm(y~x+x2))
+```
+From the the results, the coefficients on both $x$ and $x^2$ are highly significant. In the plot, we have:
+
+```{r Results1, echo = FALSE}
+plot(x, fitted(lm(y~x+x2)),col='black',ylab='y')
+curve(log(x),from=0,to=1,col='red',
+      lwd='2',ylab="y",xlab="x",xaxt='n',add=TRUE)
+legend(.5,-3,col=c('red','black'),lty=c(1,2),lwd=2,
+       c("True relationship:        y=log(x)",
+         expression(paste("Quadratic regression: y = 14.1x - 10.57",x^2, sep = ""))),cex=.65)
+text(0.2,0,"The true model and fitted model",cex=1)
+```
+In such case, the regression with quadratic term may not be a good choice to test the underlying relationship between `x` and `y`. How to fix it? 
+
+# Two-lines Approaches
+
+The idea behind Professor Simonsohn's two-lines approach is rather simple and intuitive: if `x` and `y` truly have U-shape relationship (in the example, it is an inverted U-shape), we should be able to find a cutoff point where `x` and `y` should have opposite relationship before and after the point. 
+
+Consider the example above. When we fitted the quadratic curve, it implies that if $x <\frac{14.1}{2 * 10.57}=0.67$, the axis of symmetry, $x$ has a positive relationship with $y$, and if $x >0.67$, $x$ has a negative relationship with $y$, which we know from the data generating process is untrue. Intuitively (the intuition is going to be revisited shortly), we can simply run two linear regressions:
+
+* $y=\beta_0+\beta_1^{1}\cdot x+\epsilon$, when $x<0.67$
+* $y=\beta_0+\beta_1^{2}\cdot x+\epsilon$, when $x>0.67$
+
+If $\beta_1^{1}$ is positive and $\beta_1^{2}$ is negative, and both coefficients are significant, then we can be more confident that we find an inverted U-shape relationship.
+
+Interestingly, as the author shows in the paper, the quadratic function's axis of symmetry is not a good option to serve as the cut-off point. He proposed a Robinhood algorithm which would automatically find the cut-off point. In a horse-race simulation test, it gives lowest type-I error rate and highest power (see an [online App](http://webstimate.org/twolines/) and corresponding [R code](http://webstimate.org/twolines/twolines_2017_11_28.R) in which other researchers can simply upload the data and conduct two-lines test by themselves.). 
+
+
+# Issue with Discrete Dependent Variable
+
+One problem with method (the author also pointed in supplimentary materials) is it based on the assumption that independent variable is continuous. However, in many circumstances, the independent variable is a discrete one. Will that create problem? The following example would show that Type-II error may arise.
+
+Suppose this is the data.
+
+```{r UData, echo = TRUE}
+set.seed(343)
+N = 30
+SD = 6
+DT1 = data.frame(x = rep(1, N), y = rnorm(n = N, mean = 1, sd = SD))
+DT2 = data.frame(x = rep(2, N), y = rnorm(n = N, mean = 2, sd = SD))
+DT3 = data.frame(x = rep(3, N), y = rnorm(n = N/2, mean = 3, sd = SD))
+DT4 = data.frame(x = rep(4, N), y = rnorm(n = 20*N, mean = 2, sd = SD))
+DT5 = data.frame(x = rep(5, N), y = rnorm(n = N, mean = 1.8, sd = SD))
+DT6 = data.frame(x = rep(6, N), y = rnorm(n = N, mean = 1.5, sd = SD))
+DT7 = data.frame(x = rep(7, N), y = rnorm(n = N, mean = 1, sd = SD))
+DT = rbind(DT1, DT2, DT3, DT4, DT5, DT6, DT7)
+```
+
+If we plot the data, we have:
+
+
+```{r ShowBarChart, fig.width=8, fig.height=6, echo = FALSE}
+library(data.table)
+set.seed(343)
+N = 30
+SD = 6
+DT1 = data.frame(x = rep(1, N), y = rnorm(n = N, mean = 1, sd = SD))
+DT2 = data.frame(x = rep(2, N), y = rnorm(n = N, mean = 2, sd = SD))
+DT3 = data.frame(x = rep(3, N), y = rnorm(n = N/2, mean = 3, sd = SD))
+DT4 = data.frame(x = rep(4, N), y = rnorm(n = 20*N, mean = 2, sd = SD))
+DT5 = data.frame(x = rep(5, N), y = rnorm(n = N, mean = 1.8, sd = SD))
+DT6 = data.frame(x = rep(6, N), y = rnorm(n = N, mean = 1.5, sd = SD))
+DT7 = data.frame(x = rep(7, N), y = rnorm(n = N, mean = 1, sd = SD))
+DT = rbind(DT1, DT2, DT3, DT4, DT5, DT6, DT7)
+DT = data.table(DT)
+Summary = DT[, .(Mean = mean(y, na.rm=TRUE), 
+                     N = sum(!is.na(y)), 
+                     SE = sd(y, na.rm=TRUE)/sqrt(sum(!is.na(y)))), by = x]
+
+library(ggplot2)
+ggplot(Summary, aes(x = x, y = Mean)) +
+  geom_bar(position="dodge", stat = "identity",fill="black") +
+  geom_errorbar(aes(ymin=Mean - SE, ymax=Mean + SE), 
+                position=position_dodge(0.9), width=.2,col="grey45")+
+  geom_text(aes(label= N), vjust=1.5, colour="white",
+            position=position_dodge(.9), size=8) +
+  theme(legend.position="bottom", legend.text=element_text(size=24), 
+        legend.title = element_text(size = "24"), 
+        plot.title = element_text(size = rel(4), hjust = 0.5),
+        axis.title.y = element_text(size = rel(3)), 
+        axis.title.x = element_text(size = rel(3)),
+        axis.text.x = element_text(angle=0, vjust=1,hjust=1, size=30), 
+        axis.text.y = element_text(angle=0, vjust=1, size=30),
+        strip.text = element_text(size=30),
+        axis.line = element_line(colour = "black"),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.border = element_blank(),
+        panel.background = element_blank(),
+        strip.background = element_blank())+ 
+  labs(title = "", 
+       x = "x", y = "Mean") 
+```
+
+Using `a= twolines(y ~ x, data = DT)`, the twoline test yields insignificant results:
+```{r TwoLine, fig.width=8, fig.height=6, echo = FALSE}
+source("http://webstimate.org/twolines/twolines.R")
+set.seed(343)
+N = 30
+SD = 6
+DT1 = data.frame(x = rep(1, N), y = rnorm(n = N, mean = 1, sd = SD))
+DT2 = data.frame(x = rep(2, N), y = rnorm(n = N, mean = 2, sd = SD))
+DT3 = data.frame(x = rep(3, N), y = rnorm(n = N/2, mean = 3, sd = SD))
+DT4 = data.frame(x = rep(4, N), y = rnorm(n = 20*N, mean = 2, sd = SD))
+DT5 = data.frame(x = rep(5, N), y = rnorm(n = N, mean = 1.8, sd = SD))
+DT6 = data.frame(x = rep(6, N), y = rnorm(n = N, mean = 1.5, sd = SD))
+DT7 = data.frame(x = rep(7, N), y = rnorm(n = N, mean = 1, sd = SD))
+DT = rbind(DT1, DT2, DT3, DT4, DT5, DT6, DT7)
+a= twolines(y ~ x, data = DT)
+```
+
+We may find that the data at $x=4$ were splited to the left line, which results in flatter slope. Ideally, the left line should only include $x=1,2,3$, and right line only include $x=4,5,6,7$. In such case, perhaps the simpler way is just run two regressions:
+
+
+```{r TwoRegression}
+summary(lm(y~x, data=DT[DT$x<=3,]))
+summary(lm(y~x, data=DT[DT$x>=4,]))
+```
+
+This would result in significant results for both lines. 
+
+There are also other limiations of the original two-line method. For example:
+
+* A bunch of fixed effects I have to control. My economists friends usually have hundreds or thousands fixed effects to control (like controlling each counties' specific effect in the US.)
+* The standard errors are serially correlated within certain segments
+
+It is less of an issue if we use the `felm` from `lfe` package in the regression.
+

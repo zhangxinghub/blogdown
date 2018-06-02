@@ -35,6 +35,146 @@
     </item>
     
     <item>
+      <title>U-Shape Test using &#34;Two Lines&#34; - A Simpler Solution for Discrete IV</title>
+      <link>/post/u-shape-test-using-two-lines/</link>
+      <pubDate>Fri, 25 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/u-shape-test-using-two-lines/</guid>
+      <description>&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#motivation&#34;&gt;Motivation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#two-lines-approaches&#34;&gt;Two-lines Approaches&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#issue-with-discrete-dependent-variable&#34;&gt;Issue with Discrete Dependent Variable&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;motivation&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Motivation&lt;/h1&gt;
+&lt;p&gt;In this &lt;a href=&#34;https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3021690&#34;&gt;paper&lt;/a&gt; by Uri Simonsohn (2017), the author proposed a noval method to test U-Shape relationship. In the literature, the popular way of testing U-shapeness relationship between &lt;code&gt;x&lt;/code&gt; and &lt;code&gt;y&lt;/code&gt; is to add a quadratic term in the regression &lt;span class=&#34;math inline&#34;&gt;\(y=\beta_0+\beta_1 x + \beta_2 x^2 +\epsilon\)&lt;/span&gt; (&lt;span class=&#34;math inline&#34;&gt;\(\epsilon\)&lt;/span&gt; is an &lt;em&gt;i.i.d&lt;/em&gt; noise). If &lt;span class=&#34;math inline&#34;&gt;\(\beta_1\)&lt;/span&gt; is statistitally significant, then the relationship betewen &lt;code&gt;x&lt;/code&gt; and &lt;code&gt;y&lt;/code&gt; are U-shape. There are plenty of examples in the real world that two variables have such kind of relationship (consider x = amount of sugar in the icecream, and y = the taste). Simonsohn pointed out that using the quadratic regression would lead to high false positive rate.&lt;/p&gt;
+&lt;p&gt;I am directly borrowing the example he gave in the paper. Suppose the underlying relationship is &lt;span class=&#34;math inline&#34;&gt;\(y=\log{x} +\epsilon\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(x\sim U[0,1]\)&lt;/span&gt;. We first simulate the data and have the following plot:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;set.seed(111)
+obs = 10000 # Sample Size of Observations
+x = runif(n = obs)^2 # Unnecessary to have the ^2 term, 
+# but it gives more striking graph fitting the quadratic term
+x2 = x*x
+y=log(x)+ rnorm(obs, 0, 1)
+plot(x, y)
+curve(log(x),from=0,to=1,col=&amp;#39;red&amp;#39;,
+      lwd=&amp;#39;2&amp;#39;,ylab=&amp;quot;y&amp;quot;,xlab=&amp;quot;x&amp;quot;,xaxt=&amp;#39;n&amp;#39;,add=TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2018-06-02-simple-two-line-test-of-u-shape_files/figure-html/Results-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;The yellow line is the curve &lt;span class=&#34;math inline&#34;&gt;\(y=\log{x}\)&lt;/span&gt;, and using naked eyes, there is no way it would be close to a U-shape. Now let’s fit a quadratic model &lt;span class=&#34;math inline&#34;&gt;\(y=\beta_0+\beta_1 x + \beta_2 x^2 +\epsilon\)&lt;/span&gt; in the regression, and we get:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(lm(y~x+x2))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## Call:
+## lm(formula = y ~ x + x2)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -12.4851  -0.7435   0.0933   0.9304   4.5570 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&amp;gt;|t|)    
+## (Intercept)  -4.59872    0.02702 -170.19   &amp;lt;2e-16 ***
+## x            14.09972    0.16903   83.42   &amp;lt;2e-16 ***
+## x2          -10.57034    0.18953  -55.77   &amp;lt;2e-16 ***
+## ---
+## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
+## 
+## Residual standard error: 1.445 on 9997 degrees of freedom
+## Multiple R-squared:  0.5841, Adjusted R-squared:  0.584 
+## F-statistic:  7020 on 2 and 9997 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;From the the results, the coefficients on both &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(x^2\)&lt;/span&gt; are highly significant. In the plot, we have:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2018-06-02-simple-two-line-test-of-u-shape_files/figure-html/Results1-1.png&#34; width=&#34;672&#34; /&gt; In such case, the regression with quadratic term may not be a good choice to test the underlying relationship between &lt;code&gt;x&lt;/code&gt; and &lt;code&gt;y&lt;/code&gt;. How to fix it?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;two-lines-approaches&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Two-lines Approaches&lt;/h1&gt;
+&lt;p&gt;The idea behind Professor Simonsohn’s two-lines approach is rather simple and intuitive: if &lt;code&gt;x&lt;/code&gt; and &lt;code&gt;y&lt;/code&gt; truly have U-shape relationship (in the example, it is an inverted U-shape), we should be able to find a cutoff point where &lt;code&gt;x&lt;/code&gt; and &lt;code&gt;y&lt;/code&gt; should have opposite relationship before and after the point.&lt;/p&gt;
+&lt;p&gt;Consider the example above. When we fitted the quadratic curve, it implies that if &lt;span class=&#34;math inline&#34;&gt;\(x &amp;lt;\frac{14.1}{2 * 10.57}=0.67\)&lt;/span&gt;, the axis of symmetry, &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; has a positive relationship with &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt;, and if &lt;span class=&#34;math inline&#34;&gt;\(x &amp;gt;0.67\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; has a negative relationship with &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt;, which we know from the data generating process is untrue. Intuitively (the intuition is going to be revisited shortly), we can simply run two linear regressions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(y=\beta_0+\beta_1^{1}\cdot x+\epsilon\)&lt;/span&gt;, when &lt;span class=&#34;math inline&#34;&gt;\(x&amp;lt;0.67\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(y=\beta_0+\beta_1^{2}\cdot x+\epsilon\)&lt;/span&gt;, when &lt;span class=&#34;math inline&#34;&gt;\(x&amp;gt;0.67\)&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If &lt;span class=&#34;math inline&#34;&gt;\(\beta_1^{1}\)&lt;/span&gt; is positive and &lt;span class=&#34;math inline&#34;&gt;\(\beta_1^{2}\)&lt;/span&gt; is negative, and both coefficients are significant, then we can be more confident that we find an inverted U-shape relationship.&lt;/p&gt;
+&lt;p&gt;Interestingly, as the author shows in the paper, the quadratic function’s axis of symmetry is not a good option to serve as the cut-off point. He proposed a Robinhood algorithm which would automatically find the cut-off point. In a horse-race simulation test, it gives lowest type-I error rate and highest power (see an &lt;a href=&#34;http://webstimate.org/twolines/&#34;&gt;online App&lt;/a&gt; and corresponding &lt;a href=&#34;http://webstimate.org/twolines/twolines_2017_11_28.R&#34;&gt;R code&lt;/a&gt; in which other researchers can simply upload the data and conduct two-lines test by themselves.).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;issue-with-discrete-dependent-variable&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Issue with Discrete Dependent Variable&lt;/h1&gt;
+&lt;p&gt;One problem with method (the author also pointed in supplimentary materials) is it based on the assumption that independent variable is continuous. However, in many circumstances, the independent variable is a discrete one. Will that create problem? The following example would show that Type-II error may arise.&lt;/p&gt;
+&lt;p&gt;Suppose this is the data.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;set.seed(343)
+N = 30
+SD = 6
+DT1 = data.frame(x = rep(1, N), y = rnorm(n = N, mean = 1, sd = SD))
+DT2 = data.frame(x = rep(2, N), y = rnorm(n = N, mean = 2, sd = SD))
+DT3 = data.frame(x = rep(3, N), y = rnorm(n = N/2, mean = 3, sd = SD))
+DT4 = data.frame(x = rep(4, N), y = rnorm(n = 20*N, mean = 2, sd = SD))
+DT5 = data.frame(x = rep(5, N), y = rnorm(n = N, mean = 1.8, sd = SD))
+DT6 = data.frame(x = rep(6, N), y = rnorm(n = N, mean = 1.5, sd = SD))
+DT7 = data.frame(x = rep(7, N), y = rnorm(n = N, mean = 1, sd = SD))
+DT = rbind(DT1, DT2, DT3, DT4, DT5, DT6, DT7)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If we plot the data, we have:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2018-06-02-simple-two-line-test-of-u-shape_files/figure-html/ShowBarChart-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Using &lt;code&gt;a= twolines(y ~ x, data = DT)&lt;/code&gt;, the twoline test yields insignificant results:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;## 载入需要的程辑包：nlme&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## This is mgcv 1.8-23. For overview type &amp;#39;help(&amp;quot;mgcv-package&amp;quot;)&amp;#39;.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 载入需要的程辑包：zoo&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## 载入程辑包：&amp;#39;zoo&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## The following objects are masked from &amp;#39;package:base&amp;#39;:
+## 
+##     as.Date, as.Date.numeric&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2018-06-02-simple-two-line-test-of-u-shape_files/figure-html/TwoLine-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;We may find that the data at &lt;span class=&#34;math inline&#34;&gt;\(x=4\)&lt;/span&gt; were splited to the left line, which results in flatter slope. Ideally, the left line should only include &lt;span class=&#34;math inline&#34;&gt;\(x=1,2,3\)&lt;/span&gt;, and right line only include &lt;span class=&#34;math inline&#34;&gt;\(x=4,5,6,7\)&lt;/span&gt;. In such case, perhaps the simpler way is just run two regressions:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(lm(y~x, data=DT[DT$x&amp;lt;=3,]))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## Call:
+## lm(formula = y ~ x, data = DT[DT$x &amp;lt;= 3, ])
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -11.9096  -3.3686  -0.1478   3.0677  13.5946 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&amp;gt;|t|)  
+## (Intercept)  -1.7686     1.3892  -1.273   0.2063  
+## x             1.6543     0.6431   2.573   0.0118 *
+## ---
+## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
+## 
+## Residual standard error: 4.981 on 88 degrees of freedom
+## Multiple R-squared:  0.06994,    Adjusted R-squared:  0.05938 
+## F-statistic: 6.618 on 1 and 88 DF,  p-value: 0.01177&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(lm(y~x, data=DT[DT$x&amp;gt;=4,]))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## Call:
+## lm(formula = y ~ x, data = DT[DT$x &amp;gt;= 4, ])
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -20.0009  -3.7641   0.0881   3.9437  16.0451 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&amp;gt;|t|)    
+## (Intercept)   5.4296     1.3282   4.088 4.87e-05 ***
+## x            -0.8765     0.3072  -2.853  0.00446 ** 
+## ---
+## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
+## 
+## Residual standard error: 5.933 on 688 degrees of freedom
+## Multiple R-squared:  0.0117, Adjusted R-squared:  0.01026 
+## F-statistic: 8.142 on 1 and 688 DF,  p-value: 0.004455&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This would result in significant results for both lines.&lt;/p&gt;
+&lt;p&gt;There are also other limiations of the original two-line method. For example:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A bunch of fixed effects I have to control. My economists friends usually have hundreds or thousands fixed effects to control (like controlling each counties’ specific effect in the US.)&lt;/li&gt;
+&lt;li&gt;The standard errors are serially correlated within certain segments&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;It is less of an issue if we use the &lt;code&gt;felm&lt;/code&gt; from &lt;code&gt;lfe&lt;/code&gt; package in the regression.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Consumer learning in response to cyber-fraud</title>
       <link>/project/learning/</link>
       <pubDate>Fri, 27 Apr 2018 00:00:00 +0000</pubDate>

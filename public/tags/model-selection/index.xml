@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Model Selection on Xing Zhang</title>
+    <link>/tags/model-selection/</link>
+    <description>Recent content in Model Selection on Xing Zhang</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; Zhang Xing</copyright>
+    <lastBuildDate>Fri, 25 May 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/model-selection/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>U-Shape Test using &#34;Two Lines&#34; - A Simpler Solution for Discrete IV</title>
+      <link>/post/u-shape-test-using-two-lines/</link>
+      <pubDate>Fri, 25 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/u-shape-test-using-two-lines/</guid>
+      <description>MotivationTwo-lines ApproachesIssue with Discrete Dependent VariableMotivationIn this paper by Uri Simonsohn (2017), the author proposed a noval method to test U-Shape relationship. In the literature, the popular way of testing U-shapeness relationship between x and y is to add a quadratic term in the regression \(y=\beta_0+\beta_1 x + \beta_2 x^2 +\epsilon\) (\(\epsilon\) is an i.i.d noise). If \(\beta_1\) is statistitally significant, then the relationship betewen x and y are U-shape.</description>
+    </item>
+    
+  </channel>
+</rss>
