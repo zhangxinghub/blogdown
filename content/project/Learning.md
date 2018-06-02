@@ -3,10 +3,10 @@
 date = "2018-04-27"
 
 # Project title.
-title = "Learning"
+title = "Consumer learning in response to cyber-fraud"
 
 # Project summary to display on homepage.
-summary = "We study how firm should set the optimal price for investment goods and leisure goods when consumers exhibit both the self-control problem and the sunk cost fallacy"
+summary = "Using a field experiment, we study how consumers learn to respond to phishing attack"
 
 # Optional image to display on homepage (relative to `static/img/` folder).
 image_preview = "BeliefLearning.png"
@@ -27,6 +27,4 @@ math = false
 #caption = "Tug of war between two selves"
 
 +++
-This paper examines the role of the sunk cost fallacy as a self-commitment device and its implication for optimal price contract design. Consumers evince the sunk cost fallacy if they condition the consumption level on the sunk cost incurred in the past. Our empirical study suggests that consumers are able to anticipate the fallacy associated with the health club membership fee \textit{ex ante}, and hence they may rationally exploit this fallacy to counteract their future self-control problem in health club attendance.
-
-Therefore, a firm's optimal price contract has to balance the demand for flexibility due to the sunk cost fallacy and the demand for commitment due to the self-control problem. Our analytical results show that in the market for investment goods such as health club attendance, the sunk cost fallacy may increase or decrease the consumer's expected utility depending on the degree of self-control problem. In the market for leisure goods such as casino gambling, however, the consumer's expected utility is always decreasing with the sunk cost fallacy. Our analysis on optimal two-part tariff contract reveals that the per-visit fee is increasing with the sunk cost fallacy, and sometimes it should be charged higher than the marginal cost in response to the concern of overconsumption problem. Interestingly, the lump-sum fee is decreasing with the sunk cost fallacy in the market for investment goods whereas is increasing with the sunk cost fallacy in the market for leisure goods. In equilibrium, the firm internalizes the behavioral biases, and the social welfare is independent of the degree of sunk-cost fallacy and self-control problem. At last, we examine the welfare implication for naive consumers who are unaware of their self-control problem, and find that naive consumers with the sunk cost fallacy may be better-off compared to the sophisticated counterparts in the market for investment goods
+we study how consumers respond to a common fraudulent practice in the market – scam emails over time. In a field experiment with 14,000 email users, we found that repeated experience with one type of scam is mainly helpful for the consumer to deal with the same type of scam, but may backfire when the consumers face a new type of scam. More specifically, one group of users received 3 scam emails in 2 months ostensibly asking users to install a security update, and another group of users – control group, did not receive such emails during this period. Then both groups received a scam email as hotel booking confirmation. We observed that the group had prior experience with security update has significantly higher rate of falling prey to the new scam than the control group. Together with other experimental conditions, we distinguish between knowledge-based learning (e.g., how to identify scam) and belief-based learning (e.g., how likely one will receive certain type of scam). In the email scam context, knowledge-based learning is more essential than belief-based learning.
