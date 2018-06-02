@@ -1,5 +1,5 @@
 ---
-title: U-Shape Test using "Two Lines" - A Simpler Solution for Discrete IV
+title: U-Shape Test using "Two Lines" - A Simple Solution for Discrete IV
 author: Xing
 date: '2018-05-25'
 output:
@@ -90,7 +90,7 @@ DT = rbind(DT1, DT2, DT3, DT4, DT5, DT6, DT7)</code></pre>
 <p><img src="/post/2018-06-02-simple-two-line-test-of-u-shape_files/figure-html/ShowBarChart-1.png" width="768" /></p>
 <p>Pretty good "U-shape" results, huh? But using <code>a= twolines(y ~ x, data = DT)</code>, the twoline test yields insignificant results:</p>
 <p><img src="/post/2018-06-02-simple-two-line-test-of-u-shape_files/figure-html/TwoLine-1.png" width="768" /></p>
-<p>We may find that the data at <span class="math inline">\(x=4\)</span> were splited to the left line, which results in flatter slope. Ideally, the left line should only include <span class="math inline">\(x=1,2,3\)</span>, and right line only include <span class="math inline">\(x=4,5,6,7\)</span>. In such case, perhaps the simpler way is just run two regressions:</p>
+<p>The reason is that the data at <span class="math inline">\(x=4\)</span> were splited to the left line, which results in flatter slope and hence insignificant coefficient. Ideally, the left line should only include <span class="math inline">\(x=1,2,3\)</span>, and right line only include <span class="math inline">\(x=4,5,6,7\)</span>. In such case, perhaps the simpler way is just run two regressions:</p>
 <pre class="r"><code>summary(lm(y~x, data=DT[DT$x&lt;=3,]))</code></pre>
 <pre><code>## 
 ## Call:
