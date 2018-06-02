@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Pricing on Xing Zhang</title>
-    <link>/tags/pricing/</link>
-    <description>Recent content in Pricing on Xing Zhang</description>
+    <title>Judgement and Decision Making on Xing Zhang</title>
+    <link>/tags/judgement-and-decision-making/</link>
+    <description>Recent content in Judgement and Decision Making on Xing Zhang</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Zhang Xing</copyright>
     <lastBuildDate>Sat, 02 Jun 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/pricing/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/judgement-and-decision-making/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -23,13 +23,13 @@ Consumers commit the sunk cost fallacy, a canonical example of irrationality, wh
     </item>
     
     <item>
-      <title>Pay Enough to Go to the Gym</title>
-      <link>/project/self-control/</link>
-      <pubDate>Fri, 27 Apr 2018 00:00:00 +0000</pubDate>
+      <title>Using Coin Flipping to Resolve Choice Difficulty Problem</title>
+      <link>/project/coin-flipping/</link>
+      <pubDate>Sat, 02 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>/project/self-control/</guid>
-      <description>Xing Zhang, Juin Kuan Chong, Ganesh Iyer, and Xiaoyan Xu
-This paper examines the role of the sunk cost fallacy as a self-commitment device and its implication for optimal price contract design. Consumers evince the sunk cost fallacy if they condition the consumption level on the sunk cost incurred in the past. Our empirical study suggests that consumers are able to anticipate the fallacy associated with the health club membership fee \textit{ex ante}, and hence they may rationally exploit this fallacy to counteract their future self-control problem in health club attendance.</description>
+      <guid>/project/coin-flipping/</guid>
+      <description>Xing Zhang and Songfa Zhong
+When confronted with difficult choices, individuals often choose to avoid decisions by failing to act, sticking to the status quo, or procrastinating. Here we examine the usage of coin flipping to help resolve choice difficulty in the setting of donation. In a randomized field experiment, we find that coin flipping increases donation when choice is hard due to choosing between two equally attractive charities, but not when choice is relatively easy with matching fund provided to one of the two charities.</description>
     </item>
     
   </channel>

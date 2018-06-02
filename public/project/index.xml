@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Pricing on Xing Zhang</title>
-    <link>/tags/pricing/</link>
-    <description>Recent content in Pricing on Xing Zhang</description>
+    <title>Projects on Xing Zhang</title>
+    <link>/project/</link>
+    <description>Recent content in Projects on Xing Zhang</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Zhang Xing</copyright>
     <lastBuildDate>Sat, 02 Jun 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/pricing/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/project/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -20,6 +20,26 @@
       <guid>/project/museum/</guid>
       <description>Teck-hua Ho Hang Wu and Xing Zhang
 Consumers commit the sunk cost fallacy, a canonical example of irrationality, when their decisions are influenced by costs that have already been incurred and cannot be reversed. Results from field studies on the existence of the sunk cost effect are mixed. In this paper, the authors report a large-scale randomized field experiment involving more than 2,800 museum customers. The authors randomly assigned the participating customers to different rebate schemes and studied the influence of sunk costs on the length of time customers stayed in the museum.</description>
+    </item>
+    
+    <item>
+      <title>Using Coin Flipping to Resolve Choice Difficulty Problem</title>
+      <link>/project/coin-flipping/</link>
+      <pubDate>Sat, 02 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/project/coin-flipping/</guid>
+      <description>Xing Zhang and Songfa Zhong
+When confronted with difficult choices, individuals often choose to avoid decisions by failing to act, sticking to the status quo, or procrastinating. Here we examine the usage of coin flipping to help resolve choice difficulty in the setting of donation. In a randomized field experiment, we find that coin flipping increases donation when choice is hard due to choosing between two equally attractive charities, but not when choice is relatively easy with matching fund provided to one of the two charities.</description>
+    </item>
+    
+    <item>
+      <title>Consumer learning in response to cyber-fraud</title>
+      <link>/project/learning/</link>
+      <pubDate>Fri, 27 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/project/learning/</guid>
+      <description>Xing Zhang and Jeeva Somasundaram
+We study how consumers respond to a common fraudulent practice in the market &amp;ndash; scam emails over time. In a field experiment with more than 14,000 email users, we found that repeated experience with one type of scam is mainly helpful for the consumer to deal with the same type of scam, but may backfire when the consumers face a new type of scam. More specifically, one group of users received 3 scam emails in 2 months ostensibly asking users to install a security update, and another group of users &amp;ndash; control group, did not receive such emails during this period.</description>
     </item>
     
     <item>

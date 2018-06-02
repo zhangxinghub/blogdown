@@ -257,26 +257,6 @@
     
     <url>
     
-      <loc>/tags/default-effect/</loc>
-      <lastmod>2018-06-02T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/tags/experiment/</loc>
-      <lastmod>2018-06-02T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
       <loc>/tags/experiments/</loc>
       <lastmod>2017-12-25T00:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -289,6 +269,16 @@
     
       <loc>/tags/fake-news/</loc>
       <lastmod>2018-03-28T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/field-experiment/</loc>
+      <lastmod>2018-06-02T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -319,6 +309,16 @@
     
       <loc>/tags/google/</loc>
       <lastmod>2017-10-05T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/judgement-and-decision-making/</loc>
+      <lastmod>2018-06-02T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     

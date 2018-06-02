@@ -94,24 +94,6 @@
     </item>
     
     <item>
-      <title>Default Effect</title>
-      <link>/tags/default-effect/</link>
-      <pubDate>Sat, 02 Jun 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/default-effect/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Experiment</title>
-      <link>/tags/experiment/</link>
-      <pubDate>Sat, 02 Jun 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/experiment/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Experiments</title>
       <link>/tags/experiments/</link>
       <pubDate>Mon, 25 Dec 2017 00:00:00 +0000</pubDate>
@@ -126,6 +108,15 @@
       <pubDate>Wed, 28 Mar 2018 00:00:00 +0000</pubDate>
       
       <guid>/tags/fake-news/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Field-Experiment</title>
+      <link>/tags/field-experiment/</link>
+      <pubDate>Sat, 02 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/field-experiment/</guid>
       <description></description>
     </item>
     
@@ -153,6 +144,15 @@
       <pubDate>Thu, 05 Oct 2017 00:00:00 +0000</pubDate>
       
       <guid>/tags/google/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Judgement and Decision Making</title>
+      <link>/tags/judgement-and-decision-making/</link>
+      <pubDate>Sat, 02 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/judgement-and-decision-making/</guid>
       <description></description>
     </item>
     
