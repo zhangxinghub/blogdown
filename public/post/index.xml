@@ -13,7 +13,7 @@
     
     
     <item>
-      <title>U-Shape Test using &#34;Two Lines&#34; - A Simpler Solution for Discrete IV</title>
+      <title>U-Shape Test using &#34;Two Lines&#34; - A Simple Solution for Discrete IV</title>
       <link>/post/u-shape-test-using-two-lines/</link>
       <pubDate>Fri, 25 May 2018 00:00:00 +0000</pubDate>
       
@@ -71,7 +71,7 @@ library(data.table)set.seed(10)N = 120DT = data.table(x = rnorm(N,1), y = rno
     <item>
       <title>How much we can learn from Google search data</title>
       <link>/post/how-much-can-we-learn-from-google-search-data/</link>
-      <pubDate>Thu, 05 Oct 2017 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 05 Nov 2017 00:00:00 +0000</pubDate>
       
       <guid>/post/how-much-can-we-learn-from-google-search-data/</guid>
       <description>I just finished the book Everybody Lies: Big Data, New Data, and What the Internet Can Tell Us About Who We Really Are by Seth Stephens-Davidowitz, which is a highly rated book. The author devoted a great amount of text to the Google Trends data. My fun part of reading this book is that I could dig the results from the Google Trends website myself.

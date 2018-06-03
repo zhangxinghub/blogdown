@@ -16,7 +16,7 @@
       <pubDate>Sat, 02 Jun 2018 00:00:00 +0000</pubDate>
       
       <guid>/project/museum/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;Teck-hua Ho&lt;/strong&gt; &lt;strong&gt;Hang Wu&lt;/strong&gt; and &lt;strong&gt;Xing Zhang&lt;/strong&gt;&lt;/p&gt;
+      <description>&lt;p&gt;&lt;a href=&#34;http://teckho.com&#34; target=&#34;_blank&#34;&gt;Teck-hua Ho&lt;/a&gt;, &lt;a href=&#34;https://hangwu.weebly.com/&#34; target=&#34;_blank&#34;&gt;Hang Wu&lt;/a&gt; and &lt;strong&gt;Xing Zhang&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;Consumers commit the sunk cost fallacy, a canonical example of irrationality, when their decisions are influenced by costs that have already been incurred and cannot be reversed. Results from field studies on the existence of the sunk cost effect are mixed. In this paper, the authors report a large-scale randomized field experiment involving more than 2,800 museum customers. The authors randomly assigned the participating customers to different rebate schemes and studied the influence of sunk costs on the length of time customers stayed in the museum. On average, customers who received a full rebate for the cost of the admission ticket reduced their length of stay in the museum by 9%. The sunk cost effect was mainly observed in the behavior of customers who came alone or with family members, rather than friends. For these customers, making a choice between two rebate schemes with identical expected rebate amounts increased the length of stay. The observation is consistent with the predictions of a mental accounting model with a reference-dependent sunk cost effect.&lt;/p&gt;
 </description>
@@ -28,14 +28,14 @@
       <pubDate>Sat, 02 Jun 2018 00:00:00 +0000</pubDate>
       
       <guid>/project/coin-flipping/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;Xing Zhang&lt;/strong&gt; and &lt;strong&gt;Songfa Zhong&lt;/strong&gt;&lt;/p&gt;
+      <description>&lt;p&gt;&lt;strong&gt;Xing Zhang&lt;/strong&gt; and &lt;a href=&#34;https://zhongsongfa.weebly.com/&#34; target=&#34;_blank&#34;&gt;Songfa Zhong&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;When confronted with difficult choices, individuals often choose to avoid decisions by failing to act, sticking to the status quo, or procrastinating. Here we examine the usage of coin flipping to help resolve choice difficulty in the setting of donation. In a randomized field experiment, we find that coin flipping increases donation when choice is hard due to choosing between two equally attractive charities, but not when choice is relatively easy with matching fund provided to one of the two charities. A laboratory experiment replicates the observed patterns and further sheds light on the underlying psychological mechanism. More generally, our results point to the power of randomization as an effective tool in nudging individuals into making active decisions.&lt;/p&gt;
 </description>
     </item>
     
     <item>
-      <title>U-Shape Test using &#34;Two Lines&#34; - A Simpler Solution for Discrete IV</title>
+      <title>U-Shape Test using &#34;Two Lines&#34; - A Simple Solution for Discrete IV</title>
       <link>/post/u-shape-test-using-two-lines/</link>
       <pubDate>Fri, 25 May 2018 00:00:00 +0000</pubDate>
       
@@ -114,17 +114,9 @@ DT7 = data.frame(x = rep(7, N), y = rnorm(n = N, mean = 1, sd = SD))
 DT = rbind(DT1, DT2, DT3, DT4, DT5, DT6, DT7)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;If we plot the data, we have:&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;/post/2018-06-02-simple-two-line-test-of-u-shape_files/figure-html/ShowBarChart-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;Using &lt;code&gt;a= twolines(y ~ x, data = DT)&lt;/code&gt;, the twoline test yields insignificant results:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;## 载入需要的程辑包：nlme&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## This is mgcv 1.8-23. For overview type &amp;#39;help(&amp;quot;mgcv-package&amp;quot;)&amp;#39;.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 载入需要的程辑包：zoo&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 
-## 载入程辑包：&amp;#39;zoo&amp;#39;&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## The following objects are masked from &amp;#39;package:base&amp;#39;:
-## 
-##     as.Date, as.Date.numeric&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Pretty good &#34;U-shape&#34; results, huh? But using &lt;code&gt;a= twolines(y ~ x, data = DT)&lt;/code&gt;, the twoline test yields insignificant results:&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;/post/2018-06-02-simple-two-line-test-of-u-shape_files/figure-html/TwoLine-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;We may find that the data at &lt;span class=&#34;math inline&#34;&gt;\(x=4\)&lt;/span&gt; were splited to the left line, which results in flatter slope. Ideally, the left line should only include &lt;span class=&#34;math inline&#34;&gt;\(x=1,2,3\)&lt;/span&gt;, and right line only include &lt;span class=&#34;math inline&#34;&gt;\(x=4,5,6,7\)&lt;/span&gt;. In such case, perhaps the simpler way is just run two regressions:&lt;/p&gt;
+&lt;p&gt;The reason is that the data at &lt;span class=&#34;math inline&#34;&gt;\(x=4\)&lt;/span&gt; were splited to the left line, which results in flatter slope and hence insignificant coefficient. Ideally, the left line should only include &lt;span class=&#34;math inline&#34;&gt;\(x=1,2,3\)&lt;/span&gt;, and right line only include &lt;span class=&#34;math inline&#34;&gt;\(x=4,5,6,7\)&lt;/span&gt;. In such case, perhaps the simpler way is just run two regressions:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(lm(y~x, data=DT[DT$x&amp;lt;=3,]))&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## 
 ## Call:
@@ -180,7 +172,7 @@ DT = rbind(DT1, DT2, DT3, DT4, DT5, DT6, DT7)&lt;/code&gt;&lt;/pre&gt;
       <pubDate>Fri, 27 Apr 2018 00:00:00 +0000</pubDate>
       
       <guid>/project/learning/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;Xing Zhang&lt;/strong&gt; and &lt;strong&gt;Jeeva Somasundaram&lt;/strong&gt;&lt;/p&gt;
+      <description>&lt;p&gt;&lt;strong&gt;Xing Zhang&lt;/strong&gt; and &lt;a href=&#34;http://jeevasomasundaram.com/&#34; target=&#34;_blank&#34;&gt;Jeeva Somasundaram&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;We study how consumers respond to a common fraudulent practice in the market &amp;ndash; scam emails over time. In a field experiment with more than 14,000 email users, we found that repeated experience with one type of scam is mainly helpful for the consumer to deal with the same type of scam, but may backfire when the consumers face a new type of scam. More specifically, one group of users received 3 scam emails in 2 months ostensibly asking users to install a security update, and another group of users &amp;ndash; control group, did not receive such emails during this period. Then both groups received a scam email as hotel booking confirmation. We observed that the group had prior experience with security update has significantly higher rate of falling prey to the new scam than the control group. Together with other experimental conditions, we distinguish between knowledge-based learning (e.g., how to identify scam) and belief-based learning (e.g., how likely one will receive certain type of scam). In the email scam context, knowledge-based learning is more essential than belief-based learning.&lt;/p&gt;
 </description>
@@ -548,7 +540,7 @@ Data&lt;/code&gt;&lt;/pre&gt;
     <item>
       <title>How much we can learn from Google search data</title>
       <link>/post/how-much-can-we-learn-from-google-search-data/</link>
-      <pubDate>Thu, 05 Oct 2017 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 05 Nov 2017 00:00:00 +0000</pubDate>
       
       <guid>/post/how-much-can-we-learn-from-google-search-data/</guid>
       <description>&lt;hr /&gt;

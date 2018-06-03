@@ -1,7 +1,7 @@
 ---
 title: How much we can learn from Google search data
 author: Xing
-date: '2017-10-05'
+date: '2017-11-05'
 slug: how-much-can-we-learn-from-google-search-data
 categories: []
 tags:
