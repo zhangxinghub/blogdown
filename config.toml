@@ -237,13 +237,13 @@ defaultContentLanguageInSubdir = false
   weight = 1
 
 [[menu.main]]
-  name = "Publications"
-  url = "#publications_selected"
+  name = "Working Papers"
+  url = "#projects"
   weight = 2
 
 [[menu.main]]
-  name = "Working Papers"
-  url = "#projects"
+  name = "Publications"
+  url = "#publications_selected"
   weight = 3
 
 [[menu.main]]
