@@ -30,10 +30,12 @@ image_preview = ""
 # Is this a selected publication? (true/false)
 selected = true
 
+tags = ["Self-control","Experiment","Judgement and Decision Making"]
+
 # Projects (optional).
 #   Associate this publication with one or more of your projects.
 #   Simply enter the filename (excluding '.md') of your project file in `content/project/`.
-projects = ["deep-learning"]
+projects = ["self-control"]
 
 # Links (optional).
 #url_pdf = "http://www.pnas.org/content/113/10/2780"
