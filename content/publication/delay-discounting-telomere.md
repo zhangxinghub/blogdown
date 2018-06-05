@@ -3,7 +3,7 @@ title = "Delay Discounting, Genetic Sensitivity, and Leukocyte Telomere Length"
 date = "2016-07-01"
 
 # Authors. Comma separated list, e.g. `["Bob Smith", "David Jones"]`.
-authors = ["Onn Siong Yim", "Xing Zhang", "Idan Shalev", "Mikhail Monakhov", "Songfa Zhong", "Ming Hsu", "Soo Hong Chew", "Poh San Lai", "Richard P. Ebstein"]
+authors = ["Onn Siong Yim*", "Xing Zhang*", "Idan Shalev", "Mikhail Monakhov", "Songfa Zhong", "Ming Hsu", "Soo Hong Chew", "Poh San Lai", "Richard P. Ebstein"]
 
 # Publication type.
 # Legend:
@@ -65,3 +65,6 @@ image = "headers/DNA.jpg"
 caption = ""
 
 +++
+**(Corresponding author, *Co-first authorship)**
+
+**Media coverage**: The Telegraph, The Times, The Daily Mail, Huffington Post, Xinhua News, People.com.cn
