@@ -3,7 +3,7 @@ title = "Delay Discounting, Genetic Sensitivity, and Leukocyte Telomere Length"
 date = "2016-07-01"
 
 # Authors. Comma separated list, e.g. `["Bob Smith", "David Jones"]`.
-authors = ["Onn Siong Yim", "**Xing Zhang**", "Idan Shalev", "Mikhail Monakhov", "Songfa Zhong", "Ming Hsu", "Soo Hong Chew", "Poh San Lai", "Richard P. Ebstein (**(Corresponding author and Co-first authorship)**)"]
+authors = ["Onn Siong Yim", "**Xing Zhang** (**Co-first authorship** and **Corresponding author**)", "Idan Shalev", "Mikhail Monakhov", "Songfa Zhong", "Ming Hsu", "Soo Hong Chew", "Poh San Lai", "Richard P. Ebstein"]
 
 # Publication type.
 # Legend:
