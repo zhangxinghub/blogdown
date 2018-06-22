@@ -15,9 +15,9 @@ weight = 40
 
 +++
 
-- Tutor for **Principles of Marketing**, 2015
+- Tutor for **Principles of Marketing**, 2015, NUS
 (**Teaching Evaluation: 4.2/5.0**; Department Average: 4.0/5.0. 
 {{% staticref "files/Teaching_Evaluation.pdf" %}} Download the Full Report {{% /staticref %}})
-- Teaching Assistant for **Marketing Research**, 2013
-- Guest lecturer in **Behavioral and Experimental Economics**, 2010
-- Part-time guitar tutor, 2006-2007
+- Teaching Assistant for **Marketing Research**, 2013, NUS
+- Guest lecturer in **Behavioral and Experimental Economics**, 2010, NUS
+- Part-time guitar tutor, 2006-2007, Jinan University Guitar Club
