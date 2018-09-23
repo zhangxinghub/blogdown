@@ -3,7 +3,7 @@
 date = "2018-06-02"
 
 # Project title.
-title = "Incorporating the Sunk Cost Fallacy and Consumer Choice into Designing Price Discounts – A Large Field Experiment"
+title = "Incorporating the Sunk Cost Fallacy and Consumer Choice into Designing Price Discounts - A Large Field Experiment"
 
 # Project summary to display on homepage.
 summary = "We compare the impact of probabilistic price discount and sure price on customers' duration of stay in a museum"
