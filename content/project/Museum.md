@@ -3,10 +3,10 @@
 date = "2018-06-02"
 
 # Project title.
-title = "Rebate Schemes and the Sunk Cost Fallacy"
+title = "Incorporating the Sunk Cost Fallacy and Consumer Choice into Designing Price Discounts – A Large Field Experiment"
 
 # Project summary to display on homepage.
-summary = "We test the sunk cost fallacy using different rebate schemes in a museum"
+summary = "We compare the impact of probabilistic price discount and sure price on customers' duration of stay in a museum"
 
 # Optional image to display on homepage (relative to `static/img/` folder).
 image_preview = "Museum.png"
@@ -28,5 +28,4 @@ math = false
 
 +++
 [Teck-hua Ho](http://teckho.com), [Hang Wu](https://hangwu.weebly.com/) and **Xing Zhang**
-
-Consumers commit the sunk cost fallacy, a canonical example of irrationality, when their decisions are influenced by costs that have already been incurred and cannot be reversed. Results from field studies on the existence of the sunk cost effect are mixed. In this paper, the authors report a large-scale randomized field experiment involving more than 2,800 museum customers. The authors randomly assigned the participating customers to different rebate schemes and studied the influence of sunk costs on the length of time customers stayed in the museum. On average, customers who received a full rebate for the cost of the admission ticket reduced their length of stay in the museum by 9%. The sunk cost effect was mainly observed in the behavior of customers who came alone or with family members, rather than friends. For these customers, making a choice between two rebate schemes with identical expected rebate amounts increased the length of stay. The observation is consistent with the predictions of a mental accounting model with a reference-dependent sunk cost effect.
+People commit the sunk cost fallacy when their decisions are influenced by costs that have already been incurred and cannot be reversed. The implication of the sunk cost fallacy to price discount is that people tend to consume less of the product when they purchase the product at discounted price. Recently, the gambling- or lottery-type price discount is drawing more and more attention from both practitioners and researchers. It is unclear how this probabilistic price discount affects consumption, and how it differs from the sure price discount with the same cost. In a large-scale randomized field experiment conducted in a museum, we compare the impact of these two price discount schemes on the length of time customers stayed in the museum. We found that the length of stay is more likely to be reduced by the probabilistic price discount than the sure price discount. In another treatment condition, we offered the consumer a choice between these two price discount schemes. We found offering choice increases the length of stay compared to the probabilistic price discount and sure price discount without choice. The results are consistent with diminishing sensitivity to sunk cost and reference-dependent sunk cost effect.
