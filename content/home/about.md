@@ -35,6 +35,4 @@ weight = 5
 
 # About me
 
-My research considers how firms should incorporate consumer behavioral biases into pricing and choice architecture design. I conduct both empirical research to tackle the descriptive problems of how certain behaviour occurs, and theoretical research to tackle the prescriptive problems of how firms should respond. In my current work, I use field experiments to develop evidence-based policy and strategy recommendations.
-
-{{% staticref "files/CV_XingZhang.pdf" %}}Download my CV{{% /staticref %}}
+I am a postdoc research fellow at the Department of Marketing at the Chinese University of Hong Kong. I will be joining Sungkyunkwan University Graduate School of Business (SKK GSB) as an assistant professor in Marketing in August, 2019. My research considers how firms should incorporate consumer behavioral biases into pricing and choice architecture design. I conduct both empirical research to tackle the descriptive problems of how certain behaviour occurs, and theoretical research to tackle the prescriptive problems of how firms should respond. In my current work, I use field experiments to develop evidence-based policy and strategy recommendations.
