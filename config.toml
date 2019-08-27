@@ -40,18 +40,18 @@ defaultContentLanguageInSubdir = false
 
   # Your details.
   name = "Xing Zhang"
-  #role = "Postdoctoral Researcher"
+  role = "Assistant Professor"
 
   # Organizations/Affiliations.
   #   Separate multiple entries with a comma, using the form: `[ {name="Org1", url=""}, {name="Org2", url=""} ]`.
-  # organizations = [ { name = "Singapore-ETH Center", url = "http://www.sec.ethz.ch/" },{ name = "ETH Zurich", url = "https://www.ethz.ch/en.html" }  ]
+  organizations = [ { name = "Graduate School of Business", url = "https://gsb.skku.edu/en/index.do" },{ name = "Sungkyunkwan University(SKKU)", url = "https://www.skku.edu/eng/" }  ]
 
   gravatar = false  # Get your avatar from Gravatar.com? (true/false)
   avatar = "ZX4.jpg"  # Specify an avatar image (in `static/img/` folder) or delete value to disable avatar.
   email = "zhangxingis@gmail.com"
-  address = "1 CREATE Way, #06-01 CREATE Tower, Singapore, 138602"
+  address = "Room 90329, International Hall, 25-2, Sungkyunkwan-Ro, Jongno-Gu, 03063"
   office_hours = "Email for appointment"
-  phone = "6601 6076"
+  phone = "+82 02 740 1795"
   skype = "so.bad.apple"
   telegram = ""
 
@@ -83,8 +83,8 @@ defaultContentLanguageInSubdir = false
   #   3: OpenStreetMap (Mapbox)
   map = 1
   map_api_key = "AIzaSyAfBdZHZd-JmIsvP2bnRe3hWJFXpqCi630"
-  latitude = "1.3039"
-  longitude = "103.7736"
+  latitude = "37.588208"
+  longitude = "126.993611"
   zoom = 15
 
   # Date and time format (refer to Go's date format: http://fuckinggodateformat.com )
