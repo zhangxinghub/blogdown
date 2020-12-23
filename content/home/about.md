@@ -35,4 +35,4 @@ weight = 5
 
 # About me
 
-I work at Sungkyunkwan University Graduate School of Business (SKK GSB) as an assistant professor in Marketing. My research considers how firms should incorporate consumer behavioral biases into pricing and choice architecture design. I conduct both empirical research to tackle the descriptive problems of how certain behaviour occurs, and theoretical research to tackle the prescriptive problems of how firms should respond. In my current work, I use field experiments to develop evidence-based policy and marketing strategy recommendations.
+I work at Sungkyunkwan University Graduate School of Business (SKK GSB) as an assistant professor in marketing. My research considers how firms should incorporate consumer behavioral biases into pricing and choice architecture design. I conduct both empirical research to tackle the descriptive problems of how certain behaviour occurs, and theoretical research to tackle the prescriptive problems of how firms should respond. In my current work, I use field experiments to develop evidence-based policy and marketing strategy recommendations.

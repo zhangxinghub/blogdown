@@ -14,10 +14,8 @@ subtitle = ""
 weight = 40
 
 +++
-
-- Tutor for **Principles of Marketing**, 2015, NUS
-(**Teaching Evaluation: 4.2/5.0**; Department Average: 4.0/5.0. 
-{{% staticref "files/Teaching_Evaluation.pdf" %}} Download the Full Report {{% /staticref %}})
-- Teaching Assistant for **Marketing Research**, 2013, NUS
-- Guest lecturer in **Behavioral and Experimental Economics**, 2010, NUS
+- **Customer Analytics**, Master of Science in Business Analytics, SKK GSB
+- **Marketing Analytics**, full-time and professional MBA program, SKK GSB
+- **Marketing Managment**, full-time and professional MBA program, SKK GSB
+- **Principles of Marketing**, 2015, NUS
 - Part-time guitar tutor, 2006-2007, Jinan University Guitar Club
