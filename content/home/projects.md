@@ -31,11 +31,8 @@ filter_default = 0
   name = "Field-Experiment"
   tag = ".Field-Experiment"  
 [[filter]]
-  name = "Self-Control"
-  tag = ".Self-Control"
-[[filter]]
-  name = "Learning"
-  tag = ".Learning"
+  name = "Behavioral Economics"
+  tag = ".Behavioral Economics"
 [[filter]]
   name = "Pricing"
   tag = ".Pricing"

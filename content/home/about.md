@@ -10,9 +10,9 @@ weight = 5
 # List your academic interests.
 [interests]
   interests = [
-    "Self-control",
-    "Consumer Learning",
-	"Judgement and Decision Making",
+    "Pricing",
+    "Judgement and decision making",
+	"Behavioral economics",
   ]
 
 # List your qualifications (such as academic degrees).
