@@ -1,6 +1,6 @@
 +++
 title = "How Monitoring Influences Trust: A Tale of Two Faces"
-date = "2016-11-23"
+date = "2018-01-01"
 
 # Authors. Comma separated list, e.g. `["Bob Smith", "David Jones"]`.
 authors = ["Maurice E. Schweitzer","Teck-Hua Ho","Xing Zhang"]
